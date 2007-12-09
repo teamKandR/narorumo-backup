@@ -21,33 +21,33 @@
            (histogram-help
             (lambda (prev-val prev-count lst)
               (cond
-                [(null? lst) (if prev-val
+                ((null? lst) (if prev-val
                                  (list (list prev-val prev-count))
-                                 null)]
-                [(equal? prev-val (car lst))
-                 (histogram-help prev-val (+ 1 prev-count) (cdr lst))]
-                [#t
+                                 null))
+                ((equal? prev-val (car lst))
+                 (histogram-help prev-val (+ 1 prev-count) (cdr lst)))
+                (#t
                  (let ((rst (histogram-help (car lst) 1 (cdr lst))))
                    (if prev-val
                        (cons (list prev-val prev-count) rst)
-                       rst))]))))    
+                       rst)))))))    
     (histogram-help #f #f sorted)))
 
 ;; utility functions -- so we don't need to include any PLT libraries.
 (define (filter pred lst)
   (cond
-    [(null? lst) '()]
-    [(pred (car lst))
-     (cons (car lst) (filter pred (cdr lst)))]
-    [#t (filter pred (cdr lst))]))
+    ((null? lst) '())
+    ((pred (car lst))
+     (cons (car lst) (filter pred (cdr lst))))
+    (#t (filter pred (cdr lst)))))
 
 (define (quicksort lst)
   (cond
-    [(null? lst) '() ]
-    [#t
+    ((null? lst) '() )
+    (#t
      (let* ((pivot (car lst))
             (firstpart (quicksort
                         (filter (lambda(x) (< x pivot)) (cdr lst))))
             (lastpart (quicksort
                        (filter (lambda(x) (>= x pivot)) (cdr lst)))))
-       (append firstpart (list pivot) lastpart))]))
+       (append firstpart (list pivot) lastpart)))))
