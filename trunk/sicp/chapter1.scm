@@ -2,19 +2,19 @@
 ;; Chapter 1
 ;; Lindsey Kuper and Alex Rudnick
 
-;; 1.1
+;;;; 1.1
 ;; What is the result printed by the interpreter in response to each
 ;; expression? ...
 
 
-;; 1.2
+;;;; 1.2
 ;; Translate the following expression into prefix form.
 
 (define (one-point-two)
   (/ (+ 5 4 (- 2 (- 3 (+ 6 4/5))))
      (* 3 (- 6 2) (- 2 7))))
 
-;; 1.3
+;;;; 1.3
 ;; Define a procedure that takes three numbers as arguments and returns
 ;; the sum of squares of the two larger numbers.
 
@@ -38,7 +38,7 @@
    (#t
     (sum-of-squares a b))))
 
-;; 1.4
+;;;; 1.4
 ;; Observe that our model of evaluation allows for combinations whose operators
 ;; are compound expressions. Use this observation to describe the behavior of
 ;; the following procedure:
@@ -50,7 +50,7 @@
 ;; ... and the value of the expression is either + or -, such that we always add
 ;; the absolute value of b to a.
 
-;; 1.5
+;;;; 1.5
 ;; Ben Bitdiddle defines the following procedures...
 
 (define (p) (p))
@@ -74,12 +74,25 @@
 ;; **) would expand out the expression to be (if (= 0 0) 0 (p)), and evaluate
 ;; out to 0, never jumping into the infinite tail recursion.
 
-;; 1.6
+;;;; 1.6
 ;; Alyssa P. Hacker doesn't see why /if/ needs to be provided as a special
 ;; form...
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
 	(else else-clause)))
+
+;; (previously defined functions, needed here)
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
 
 ;; Delighted, Alyssa uses new-if to rewrite the square root program:
 (define (sqrt-iter guess x)
@@ -87,3 +100,14 @@
 	  guess
 	  (sqrt-iter (improve guess x)
 		     x)))
+;; What happens when Alyssa attempts to use this to compute square roots?
+
+;; alexr: Eva Lu Ator has good intentions, but until we figure out how to use
+;; the macro system (Scheme has a macro system, yes? We could write this in
+;; Common Lisp macros, anyway) our expressions still get evaluated in
+;; applicative order, including this function new-if. This means that when we
+;; evaluate, for example, (sqrt-iter 1 25), all three arguments to new-if are
+;; evaluated. Thus, irrespective of whether the guess is good enough, we will
+;; recursively call sqrt-iter again with an improved guess. So with new-if,
+;; sqrt-iter will never return (but it shouldn't blow the stack, either, being
+;; tail-recursive.)
