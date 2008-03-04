@@ -2,8 +2,8 @@
 
 = SICP Chapter 3=
 
-= Notes =
+== Notes ==
 
-= Considerations =
+== Considerations ==
 
-= Problems =
+== Problems ==
