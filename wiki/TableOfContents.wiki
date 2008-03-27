@@ -1,1 +1,4 @@
-foo foo foo foo.
+*** ** ** * ** **
+
+  * bullet bullet foo[[ [[ ] ] ]] ]
+  **  ** ** what?
