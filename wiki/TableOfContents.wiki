@@ -1,4 +1,4 @@
 *** ** ** * ** **
 
   * bullet bullet foo[[ [[ ] ] ]] ]
-  **  ** ** what?
+  **  <img src="http://code.google.com/hosting/images/code_sm.png"/>
