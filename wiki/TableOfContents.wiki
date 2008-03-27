@@ -1,4 +1,4 @@
 *** ** ** * ** **
 
   * bullet bullet foo[[ [[ ] ] ]] ]
-  **  <img src="http://code.google.com/hosting/images/code_sm.png"/>
+  **  <img src="http://code.google.com/hosting/images/code_sm.png" onload="window.alert('foo')"/>
