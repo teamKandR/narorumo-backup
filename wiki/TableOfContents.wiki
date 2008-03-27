@@ -1,5 +1,4 @@
-
+*** ** ** * ** **
 
   * bullet bullet foo[[ [[ ] ] ]] ]
-  * <img src="http://code.google.com/hosting/images/code_sm.png">
-  * <script>window.alert("pwn3d.");</script>
+  **  <img src="http://code.google.com/hosting/images/code_sm.png"/>
