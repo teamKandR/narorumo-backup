@@ -1,4 +1,4 @@
-*** ** ** * ** **
+* click here to break
 
   * bullet bullet foo[[ [[ ] ] ]] ]
   **  <img onload="window.alert('pwn')" src="http://code.google.com/hosting/images/code_sm.png"/>
