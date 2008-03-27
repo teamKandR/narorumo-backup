@@ -1,14 +1,4 @@
-#summary Table of contents for the narorumo scheme project.
+*** ** ** * ** **
 
-  * Subsections of NaRoRuMo
-  * Kumquats
-  * [Wildebeests Wildebeests]
-  * Things not contained in this table of contents
-  * National Road Running Month Statistics
-    * [NaRoRuMoSS Notes on narorumo.ss]
-  * The SICP project
-    * [SICPChapter1 SICP Chapter 1]
-    * [SICPChapter2 SICP Chapter 2]
-    * [SICPChapter3 SICP Chapter 3]
-    * [SICPChapter4 SICP Chapter 4]
-    * [SICPChapter5 SICP Chapter 5]
+  * bullet bullet foo[[ [[ ] ] ]] ]
+  **  <img src="http://code.google.com/hosting/images/code_sm.png"/>
