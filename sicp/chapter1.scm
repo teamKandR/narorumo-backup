@@ -271,3 +271,85 @@
 ;; (A 1 (A 1 (A 0 2)))
 ;; (A 1 (A 1 4))
 ;; ... TODO(alexr).
+
+;;;; 1.11
+;; A function f is defined by the rule that f(n) = n if n<3 and f(n) = f(n - 1)
+;; + 2f(n - 2) + 3f(n - 3) if n> 3. Write a procedure that computes f by means
+;; of a recursive process. Write a procedure that computes f by means of an
+;; iterative process.
+
+;; recursive version.
+
+(define (f-recursive n)
+  (cond
+   ((< n 3) n)
+   (else (+ (f-recursive (- n 1))
+	    (* 2 (f-recursive (- n 2)))
+	    (* 3 (f-recursive (- n 3)))))))
+
+;; alexr: the iterative version took some thinking, and I wrote it in Python
+;; first. This looks pretty scheme-able!
+
+;; def f_iterative(n):
+;;   oneago = min(n-1, 2)
+;;   twoago = min(n-2, 1)
+;;   threeago = min(n-3, 0)
+;;   sofar = min(2, n)
+;;
+;;   for i in xrange(3, n + 1):
+;;     sofar = oneago + 2 * twoago + 3 * threeago
+;;
+;;     threeago = twoago
+;;     twoago = oneago
+;;     oneago = sofar
+
+;;   return sofar
+
+
+(define (f-iter i n sofar one two three)
+  (cond
+   ((> i n) sofar)
+
+   (else
+    (f-iter (+ i 1)
+	    n
+	    (+ sofar (* 2 one) (* 3 two))
+	    sofar
+	    one
+	    two))))
+
+(define (f-iterative n)
+  (let ((oneago (min (- n 1) 2))
+	(twoago (min (- n 2) 1))
+	(threeago (min (- n 3) 0))
+	(sofar (min 2 n)))
+
+    (cond
+     ((< n 3) n)
+     (else (f-iter 3 n sofar oneago twoago threeago)))))
+
+;; (define (f-iterative n)
+;;   (define (iterate i sofar oneago twoago threeago)
+;;     (letrec
+;; 	((sofar (+ oneago (* 2 twoago) (* 3 threeago)))
+;; 	 (threeago twoago)
+;; 	 (twoago oneago)
+;; 	 (oneago sofar))
+    
+;;       (cond
+;;        ((= i n) sofar)
+;;        (else
+;; 	(iterate (+ 1 i)
+;; 		 sofar
+;; 		 oneago
+;; 		 twoago
+;; 		 threeago)))))
+    
+;;   (let ((oneago (min (- n 1) 2))
+;; 	(twoago (min (- n 2) 1))
+;; 	(threeago (min (- n 3) 0))
+;; 	(sofar (min 2 n)))
+
+;;     (cond
+;;      ((< n 3) n)
+;;      (else (iterate 3 sofar oneago twoago threeago)))))
