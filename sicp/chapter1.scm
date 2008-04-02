@@ -25,18 +25,18 @@
 
 (define (sum-of-squares-of-largest-two a b c)
   (cond
-   ;; a is the smallest.
-   ((and (< a b) (< a c))
-    (print 12)
-    (sum-of-squares b c))
-
-   ;; b is the smallest.
-   ((and (< b a) (< b c))
-    (sum-of-squares a c))
-
-   ;; otherwise c is the smallest.
-   (#t
-    (sum-of-squares a b))))
+    ;; a is the smallest.
+    ((and (< a b) (< a c))
+     (print 12)
+     (sum-of-squares b c))
+    
+    ;; b is the smallest.
+    ((and (< b a) (< b c))
+     (sum-of-squares a c))
+    
+    ;; otherwise c is the smallest.
+    (#t
+     (sum-of-squares a b))))
 
 ;;;; 1.4
 ;; Observe that our model of evaluation allows for combinations whose operators
@@ -127,9 +127,9 @@
   (print guess)
   (newline)
   (if (good-enough? guess x)
-	  guess
-	  (sqrt-iter (improve guess x)
-		     x)))
+      guess
+      (sqrt-iter (improve guess x)
+                 x)))
 
 (define (sqrt x)
   (sqrt-iter 1.0 x))
@@ -178,7 +178,7 @@
     (if (small-change? prevguess guess)
 	guess
 	(cbrt-iter guess (cbrt-improve guess x))))
-
+  
   (cbrt-iter 0.0 1.0))
 
 ;;;; 1.9
@@ -234,7 +234,7 @@
   (cond ((= y 0) 0)
 	((= x 0) (* 2 y))
 	((= y 1) 2)
-
+        
 	(else (A (- x 1)
 		 (A x (- y 1))))))
 
@@ -272,9 +272,69 @@
 ;; (A 1 (A 1 4))
 ;; ... TODO(alexr).
 
+;; lindseykuper:
+;; well, if f(n) = 2n
+;; and
+;; g(n) = n^2
+;; maybe h(n) will be, uh, n^n?
+;; okay, empirically no, because h(1) = 2.
+;; 2, 4, 16, 65536. 2^(n^2) ?
+;; no, because h(2) = 4, not 16.  We need something that doesn't expand *quite* so fast.
+
+;; Let's try a mathier approach:
+;; We ought to be able to define h in terms of g,
+;; and g in terms of f:
+
+(define more-verbose-g
+  (lambda (n)
+    (f (g (- n 1)))))
+
+(define more-verbose-h
+  (lambda (n)
+    (g (h (- n 1)))))
+
+(define even-more-verbose-h
+  (lambda (n)
+    ((lambda (n)
+       (f (g (- n 1))))
+     (h (- n 1)))))
+
+;; That's interesting, but it hasn't gotten me anywhere just yet.
+;; Let's do the expansion thing, but keep it in terms of f.
+;; (g 4)
+;; (f (g 3))
+;; (f (f (g 2)))
+;; (f (f (f (g 1))))
+;; (f (f (f 2)))
+;; (f (f 4)) ;; we know that f doubles its input 
+;; (f 8)
+;; 16
+
+;; Now we have a base case for more-verbose-g.  Woohoo!
+(define recursive-verbose-g
+  (lambda (n)
+    (if (= n 1)
+        2
+        (f (recursive-verbose-g (- n 1))))))
+
+;; And:
+
+;; (h 4)
+;; (g (h 3))
+;; (g (g (h 2)))
+;; (g (g (g (h 1))))
+;; (g (g (g 2)))
+;; (g (g 4))
+;; (g 16)
+;; 65536
+
+;; lindseykuper and alexr: (h n) is the expansion of n (g (g ... 2)) (for n nested instances
+;; of /g/) -- which is to say that it's 2^(2^(2 ...)). It's 2 with a bunch of exponents going
+;; up diagonally, of length n. Win!
+
 ;;;; 1.11
 ;; A function f is defined by the rule that f(n) = n if n<3 and f(n) = f(n - 1)
-;; + 2f(n - 2) + 3f(n - 3) if n> 3. Write a procedure that computes f by means
+;; + 2f(n - 2) + 3f(n - 3) if n >= 3. Write a procedure that computes f by means
 ;; of a recursive process. Write a procedure that computes f by means of an
 ;; iterative process.
 
@@ -282,10 +342,11 @@
 
 (define (f-recursive n)
   (cond
-   ((< n 3) n)
-   (else (+ (f-recursive (- n 1))
-	    (* 2 (f-recursive (- n 2)))
-	    (* 3 (f-recursive (- n 3)))))))
+    ((< n 3) n)
+    (else (+ (f-recursive (- n 1))
+             (* 2 (f-recursive (- n 2)))
+             (* 3 (f-recursive (- n 3)))))))
+
 
 ;; alexr: the iterative version took some thinking, and I wrote it in Python
 ;; first. This looks pretty scheme-able!
@@ -306,50 +367,42 @@
 ;;   return sofar
 
 
-(define (f-iter i n sofar one two three)
-  (cond
-   ((> i n) sofar)
+;; lindseykuper and alexr: Python v2
+;def f_iterative(n):
+;  if (n < 3):
+;    return n
+;
+;  oneago = 2
+;  twoago = 1
+;  threeago = 0
+;  sofar = 2
+;
+;  for i in xrange(3, n + 1):
+;    sofar = oneago + 2 * twoago + 3 * threeago
+;
+;    threeago = twoago
+;    twoago = oneago
+;    oneago = sofar
+;
+;  return sofar
 
-   (else
-    (f-iter (+ i 1)
-	    n
-	    (+ sofar (* 2 one) (* 3 two))
-	    sofar
-	    one
-	    two))))
+;; lindseykuper: iterative Scheme version.
 
-(define (f-iterative n)
-  (let ((oneago (min (- n 1) 2))
-	(twoago (min (- n 2) 1))
-	(threeago (min (- n 3) 0))
-	(sofar (min 2 n)))
+(define f-iter
+  (lambda (n)
+    (letrec ((f-iter-kernel
+              (lambda (n oneago twoago threeago i)
+                (let ((sofar (+ oneago (* 2 twoago) (* 3 threeago))))
+                  (if (= n i)
+                      sofar
+                      (f-iter-kernel n sofar oneago twoago (+ i 1)))))))
+      (if (< n 3)
+          n
+          (f-iter-kernel n 2 1 0 3)))))
 
-    (cond
-     ((< n 3) n)
-     (else (f-iter 3 n sofar oneago twoago threeago)))))
 
-;; (define (f-iterative n)
-;;   (define (iterate i sofar oneago twoago threeago)
-;;     (letrec
-;; 	((sofar (+ oneago (* 2 twoago) (* 3 threeago)))
-;; 	 (threeago twoago)
-;; 	 (twoago oneago)
-;; 	 (oneago sofar))
-    
-;;       (cond
-;;        ((= i n) sofar)
-;;        (else
-;; 	(iterate (+ 1 i)
-;; 		 sofar
-;; 		 oneago
-;; 		 twoago
-;; 		 threeago)))))
-    
-;;   (let ((oneago (min (- n 1) 2))
-;; 	(twoago (min (- n 2) 1))
-;; 	(threeago (min (- n 3) 0))
-;; 	(sofar (min 2 n)))
 
-;;     (cond
-;;      ((< n 3) n)
-;;      (else (iterate 3 sofar oneago twoago threeago)))))
+
+
+
+
