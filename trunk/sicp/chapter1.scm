@@ -400,9 +400,34 @@
           n
           (f-iter-kernel n 2 1 0 3)))))
 
+;;;; 1.12
+;; ... Write a procedure that computes elements of Pascal's triangle by means of a
+;; recursive process. 
 
+;;       1
+;;      1 1
+;;     1 2 1
+;;    1 3 3 1
+;;   1 4 6 4 1
+;;  1 5 A A 5 1
 
+;; Yoshi! ("Do it!", roughly)
 
+;; alexr: Base case: if it's "on the edge", it's a 1.
+;; The ith row is i+1 elements wide. So an element is On The Edge if its index is 0 or i.
 
+;; lindseykuper: So, to get (row 3, col 1), which is supposed to be 3,
+;; check if col == 0 or 3.  It's not.
+;; So, then, look at row "row-1", cols "col-1" and "col".  The sum of those is the answer.
 
+;; The most that row can ever be is col-1.
 
+(define pascals-triangle
+  ;"Returns the value of one element in Pascal's Triangle at specified coordinates."
+  (lambda (row col)
+    (cond
+      ((or (= col 0) (= col row)) 1)
+      ((> col row) 'dontdothat) 
+      (else 
+       (+ (pascals-triangle (- row 1) (- col 1))
+          (pascals-triangle (- row 1) col))))))
