@@ -1,0 +1,12 @@
+It solves sudoku puzzles :)
+
+There are some hardcoded paths, which is gross (sorry) -- I'm not
+super-familiar with python or mod_python yet. But if it doesn't work,
+change the chunks of code where it's changing the pythonpath at the top of
+sudoku.py and web_sudoku.py.
+
+To run from the commandline, go ./main.py <filename>
+
+Enjoy!
+
+-- alexr (march 2006)

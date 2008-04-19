@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<LINK href="style/style.css" rel="stylesheet" type="text/css">
+<title>the app hosting engine sudoku solver</title>
+</head>
+
+<body>
+<h1>python sudoku solver!</h1>
+<p><small>(by alexr, early 2008)
+</small></p>
+
+<table>
+{% for row in board %}
+  <tr>
+  {% for cell in row %}
+    <td>{{ cell }}</td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+body {
+	color:#eeeeee;
+	background:#3030a0;
+
+	margin-left: 10%; 
+	margin-right: 10%; 
+	
+	font-family: monospace;
+	font-size: 100%;
+}
+
+a:link {
+	color:#a0a0ff;
+}
+
+a:visited {
+	color:#a0a0ff;
+}
+
+table {
+	font-family: monospace;
+	font-size: 150%;
+}
+
+td {
+	width: 30px;
+	height: 30px;
+}
+
+td input {
+  background-color: #3030a0;
+  color:#eeeeee;
+}
+
+#InputTable {
+        margin-bottom: 1em;
+}
+
+li {
+	padding: 0.5em;
+}
+
+li.small {
+	font-size: 60%;
+}
