@@ -1,6 +1,7 @@
 import wsgiref.handlers
 import os
 import sudoku
+import Board
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
@@ -18,11 +19,15 @@ class MainPage(webapp.RequestHandler):
 
   def post(self):
     constraints = inputvalues(self.request)
-    board = sudoku.build_board()
+    board = Board.Board()
 
-    sudoku.set_constraints(board, constraints)
-    solved = sudoku.solve(board)
-    template_values = {'board':solved}
+    Board.set_constraints(board, constraints)
+
+    solved = board.solve()
+    if (solved):
+      template_values = {'board': board.as_list()}
+    else:
+      template_values = {}
 
     path = os.path.join(os.path.dirname(__file__), 'showanswer.html')
     self.response.out.write(template.render(path, template_values))
