@@ -1,3 +1,4 @@
+#!/usr/bin/env python2.5
 import math
 import copy
 import random

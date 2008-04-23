@@ -12,15 +12,21 @@
 <p><small>(by alexr, early 2008)
 </small></p>
 
-<table>
-{% for row in board %}
-  <tr>
-  {% for cell in row %}
-    <td>{{ cell }}</td>
+{% if board %}
+  <table>
+  {% for row in board %}
+    <tr>
+    {% for cell in row %}
+      <td>{{ cell }}</td>
+    {% endfor %}
+    </tr>
   {% endfor %}
-  </tr>
-{% endfor %}
-</table>
+  </table>
+{% else %}
+  <div class="fail">
+    Fail.
+  </div>
+{% endif %}
 
 </body>
 </html>
