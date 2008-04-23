@@ -25,7 +25,7 @@ class Area:
     out = ""
     for square in self.squares:
       if isinstance(square, list):
-        out += "x "
+        out += "? "
       else:
         out += (str(square) + " ")
     return out
@@ -63,6 +63,19 @@ class Board:
     thebox[boxpos] = val
 
   def as_list(self):
+    out = []
+    rowindex = 0
+    for row in self.rows:
+      out.append([])
+      for square in row.squares:
+        if isinstance(square, list):
+          out[rowindex].append('?')
+        else:
+          out[rowindex].append(square)
+      rowindex += 1
+
+    return out
+    
 
   def solve(self):
     """Crunch until we think we're done. Return True when we find a solution,
