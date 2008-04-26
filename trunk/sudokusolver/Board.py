@@ -3,6 +3,32 @@
 import copy
 import sys
 
+class Square:
+  def __init__(self, board, rowindex, colindex):
+    self.possibilities = set(range(1, 9 + 1))
+    self.fixed = False
+    self.answer = None
+    self.board = board
+    self.rowindex = rowindex
+    self.colindex = colindex
+
+  def remove_possibility(self, x):
+    self.possibilities.remove(x)
+
+    if len(self.possibilities) == 1:
+      self.fixed = True
+      self.answer = foo.pop()
+      self.board.set(rowindex, colindex, self.answer)
+
+  def __repr__(self):
+    if self.fixed:
+      return str(answer)
+    else:
+      return "x"
+
+  def __str__(self):
+    return repr(self)
+
 class Area:
   def __init__(self, size=9, lst=None):
     if(lst):
@@ -11,6 +37,12 @@ class Area:
       self.squares = []
       for i in range(size):
         self.squares.append( range(1,size+1) )
+
+  def infer(self, board):
+    """Where the magic happens. If we have a fixed square in this area,
+    remove that possibility from every other square in the area. If a square is
+    out of possibilities, make it be fixed."""
+
 
   def __getitem__(self, key):
     return self.squares[key]
@@ -75,15 +107,53 @@ class Board:
       rowindex += 1
 
     return out
-    
+
+  def infer_areas(self, areas):
+    """Pass in a list of Area objects, such as self.rows or self.boxes. If
+    we've made at least one step forward, return true."""
+    made_changes = False 
+
+    for area in areas:
+      made_changes |= area.infer(self)
+
+    return made_changes
+
+  def infer_rows(self):
+    self.infer_areas(self.rows)
+
+  def infer_cols(self):
+    self.infer_areas(self.cols)
+
+  def infer_boxes(self):
+    self.infer_areas(self.boxes)
 
   def solve(self):
     """Crunch until we think we're done. Return True when we find a solution,
        or False if we think we can't find one."""
-    if(self.contradiction()):
+    if self.contradiction():
       return False
 
-    return True
+    made_changes = True
+    while made_changes:
+      made_changes = False
+
+      made_changes |= self.infer_rows()
+      made_changes |= self.infer_cols()
+      made_changes |= self.infer_boxes()
+
+      made_changes |= self.infer_rows()
+      made_changes |= self.infer_cols()
+      made_changes |= self.infer_boxes()
+
+    if self.solved():
+      return True
+
+    # make assumptions!
+
+    # find next free square, assume about it, solve that. Failing that, try the
+    # box after that one.
+
+    return False
 
   def contradiction(self):
     return False
