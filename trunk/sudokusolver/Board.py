@@ -12,37 +12,59 @@ class Square:
     self.rowindex = rowindex
     self.colindex = colindex
 
+  def set(self, val):
+    print ("setting (%d, %d) to %d" % (self.rowindex, self.colindex, val))
+
+    if (self.fixed and val != self.answer):
+      raise Exception("answer was %d, tried to set to %d" % (self.answer, val))
+
+    self.answer = val
+    self.possibilities = set()
+
+    self.fixed = True
+    self.board.square_has_fixed(self)
+
   def remove_possibility(self, x):
-    self.possibilities.remove(x)
+    if self.fixed:
+      return
+
+    if x in self.possibilities:
+      self.possibilities.remove(x)
 
     if len(self.possibilities) == 1:
-      self.fixed = True
-      self.answer = foo.pop()
-      self.board.set(rowindex, colindex, self.answer)
+      self.set(self.possibilities.pop())
+      print ("eliminated everything else: (%d,%d) is %d"
+          % (self.rowindex,self.colindex,self.answer))
 
   def __repr__(self):
     if self.fixed:
-      return str(answer)
+      return str(self.answer)
     else:
       return "x"
 
   def __str__(self):
     return repr(self)
 
-class Area:
-  def __init__(self, size=9, lst=None):
-    if(lst):
-      self.squares = copy.deepcopy(lst)
-    else:
-      self.squares = []
-      for i in range(size):
-        self.squares.append( range(1,size+1) )
-
+class Area(object):
   def infer(self, board):
     """Where the magic happens. If we have a fixed square in this area,
     remove that possibility from every other square in the area. If a square is
     out of possibilities, make it be fixed."""
 
+    return False
+
+  def contradiction(self):
+    """For now -- if more than one square is fixed to the same value
+    (pigeonhole principle: if the size of the set is smaller than the size of
+    the list), then true. In the future, we may encode more rules and do
+    better."""
+
+    fixeds = [square.answer for square in self.squares if square.fixed]
+    return len(set(fixeds)) < len(fixeds)
+
+  def remove_possibility(self, val):
+    for square in self.squares:
+      square.remove_possibility(val)
 
   def __getitem__(self, key):
     return self.squares[key]
@@ -62,13 +84,35 @@ class Area:
         out += (str(square) + " ")
     return out
 
+class Row(Area):
+  def __init__(self, board, rowindex, size=9):
+    self.squares = []
+    self.area_index = rowindex
+
+    colindex = 0
+    for i in range(size):
+      self.squares.append(Square(board, rowindex, colindex))
+      colindex += 1
+
+class Column(Area):
+  def __init__(self, board, squares, area_index, size=9):
+    self.squares = squares
+    self.area_index = area_index
+
+class Box(Area):
+  def __init__(self, board, squares, area_index, size=9):
+    self.squares = squares
+    self.area_index = area_index
+
 class Board:
   def __init__(self):
     self.rows = []
     self.size = 9
 
+    rowindex = 0
     for i in range(9):
-      self.rows.append(Area())
+      self.rows.append(Row(self, rowindex))
+      rowindex += 1
 
     self.cols = self.buildCols()
     self.boxes = self.buildBoxes()
@@ -80,19 +124,25 @@ class Board:
     return newboard
 
   def set(self, row, col, val):
+    """Fix the one square, then remove the possibility from everybody else in
+    the apropos row, column, and box."""
     therow = self.rows[row]
-    thecol = self.cols[col]
-    thebox = self.boxes[row_col_to_box(row,col)]
+    therow[col].set(val)
 
-    # set in rows.
-    therow[col] = val
+  def square_has_fixed(self, square):
+    rowindex = square.rowindex 
+    colindex = square.colindex 
+    boxindex = row_col_to_box_index(rowindex,colindex)
 
-    # set in cols.
-    thecol[row] = val
+    answer = square.answer
 
-    # set in boxes.
-    boxpos = row_col_to_boxpos(row, col)
-    thebox[boxpos] = val
+    therow = self.rows[rowindex]
+    thecol = self.cols[colindex]
+    thebox = self.boxes[boxindex]
+
+    therow.remove_possibility(answer)
+    thecol.remove_possibility(answer)
+    thebox.remove_possibility(answer)
 
   def as_list(self):
     out = []
@@ -119,13 +169,13 @@ class Board:
     return made_changes
 
   def infer_rows(self):
-    self.infer_areas(self.rows)
+    return self.infer_areas(self.rows)
 
   def infer_cols(self):
-    self.infer_areas(self.cols)
+    return self.infer_areas(self.cols)
 
   def infer_boxes(self):
-    self.infer_areas(self.boxes)
+    return self.infer_areas(self.boxes)
 
   def solve(self):
     """Crunch until we think we're done. Return True when we find a solution,
@@ -156,19 +206,36 @@ class Board:
     return False
 
   def contradiction(self):
+    for row in self.rows:
+      if row.contradiction():
+        return True
+    for col in self.cols:
+      if col.contradiction():
+        return True
+    for box in self.boxes:
+      if box.contradiction():
+        return True
     return False
+
+  def solved(self):
+    """Return True if we're done, False otherwise."""
+    for row in self.rows:
+      for i in range(9):
+        if not row[i].fixed:
+          return False
+    return True
 
   def buildBox(self, i):
     """build the ith box and return it."""
-    top = i / 3
-    left = i % 2
+    top = i - (i % 3)
+    left = (i % 3) * 3
 
     squares = []
     for row in range(top, top+3):
       for col in range(left, left+3):
         squares.append(self.rows[row][col])
     
-    out = Area(9, squares)
+    out = Box(self, squares, i)
     return out
 
   def buildBoxes(self):
@@ -181,7 +248,7 @@ class Board:
     for row in range(self.size):
       squares.append(self.rows[row][i])
 
-    out = Area(9, squares)
+    out = Column(self, squares, i)
     return out
 
   def buildCols(self):
@@ -195,10 +262,12 @@ class Board:
       out += "\n"
     return out
 
-def row_col_to_box(row, col):
+def row_col_to_box_index(row, col):
+  """... what does this do? """
   return (row - (row % 3)) + (col / 3)
 
 def row_col_to_boxpos(row, col):
+  """What does this do?"""
   return ((row % 3) * 3) + (col % 3)
 
 def board_from_stream(bf):
@@ -240,6 +309,7 @@ def main():
     arg = "board"
 
   board = read_board(arg)
+
   print board
 
 if __name__ == "__main__":
