@@ -525,25 +525,20 @@
 ;; ab^n = the answer.
 ;; a = 1 initially.
 ;; in the transformation, let a = ab^(n/2)
-;; and let b = b^(n/2)
+;; and let b^n = b^(n/2).
 ;; n will equal 0 and b^n will equal 1 by the time we're done.
 
 (define fast-expt-iter
   (lambda (b n)
     (fast-expt-iter-kernel b n 1)))
 
-;(define fast-expt-iter-kernel
-;  (lambda (b n a)
-;    (cond ((= n 1) (* b a))
-;          ((even? n) (fast-expt-iter-kernel b (/ n 2) (* a (fast-expt-iter b (/ n 2)))))
-;          (else (* b (fast-expt-iter b (- n 1)))))))
-
 (define fast-expt-iter-kernel
   (lambda (b n a)
     (cond ((= n 0) a)
           ((even? n) (fast-expt-iter-kernel b (/ n 2) (* a (fast-expt-iter b (/ n 2)))))
-          (else (* b (fast-expt-iter-kernel b (- n 1) (* a b)))))))
+          (else (fast-expt-iter-kernel b (- n 1) (* a b))))))
 
-(fast-expt-iter 2 2)
-
-
+; Test cases:
+;(fast-expt-iter 2 2)
+;(fast-expt-iter 2 5)
+;(fast-expt-iter 2 30)
