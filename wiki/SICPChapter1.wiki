@@ -8,3 +8,35 @@
   * Applicative-order evaluation is clearly the same as "eager evaluation", and normal-order seems to be the same as lazy evaluation -- but is this the same thing as passing a thunk? What's the relationship there?
 
 == Problems ==
+
+Okay, I see what was going wrong in 1.16 in my [http://code.google.com/p/narorumo/source/diff?r=57&format=side&path=/trunk/sicp/chapter1.scm last commit].  My procedure was computing iteratively AND recursively and MULTIPLYING the products, so that 2^1 = 4, 2^2 = 16, 2^3 = 64, 2^4 = 256, et cetera.  Badness!  I wish I were better at thinking iteratively.
+
+Here's what an example expansion looked like in the buggy version:
+
+{{{
+(fast-expt-iter 2 4)
+(fast-expt-iter-kernel 2 4 1)
+(* 2 (fast-expt-iter-kernel 2 3 2))
+(* 2 (* 2 (fast-expt-iter-kernel 2 2 4)))
+(* 2 (* 2 (* 2 (fast-expt-iter-kernel 2 1 8))))
+(* 2 (* 2 (* 2 (* 2 (fast-expt-iter-kernel 2 0 16)))))
+(* 2 (* 2 (* 2 (* 2 16))))
+(* 2 (* 2 (* 2 32)))
+(* 2 (* 2 64))
+(* 2 128)
+256
+}}}
+
+
+So, the the value of /a/ is correct at the end (a = 16), but then we're doing all the backed-up multiplications for the recursion, too!  Oh, noes!
+
+On the plus side, now I'll know exactly to do if my students make this mistake:
+"Lindsey!  My code is acting sort of wrong.  Everything's coming out the SQUARE of what it's supposed to be."
+"Interesting!  What do you think might cause it to do that?"
+"I got the state transformation for the iteration wrong."
+"No, you got that part right."
+"But--"
+"You got the iteration right."
+"Okay, then I got the recursion wrong."
+"You got the recursion right."
+"But if I--if both--what--oh."
