@@ -9,7 +9,7 @@
 
 == Problems ==
 
-Okay, I see what was going wrong in 1.16 in my [http://code.google.com/p/narorumo/source/diff?r=57&format=side&path=/trunk/sicp/chapter1.scm last commit].  My procedure was computing iteratively AND recursively and MULTIPLYING the products, so that 2^1 = 4, 2^2 = 16, 2^3 = 64, 2^4 = 256, et cetera.  Badness!  I wish I were better at thinking iteratively.
+Okay, I see what was going wrong in 1.16 in my [http://code.google.com/p/narorumo/source/diff?r=57&format=side&path=/trunk/sicp/chapter1.scm last commit].  My procedure was computing iteratively AND recursively and MULTIPLYING the products, so that 2^1^ = 4, 2^2^ = 16, 2^3^ = 64, 2^4^ = 256, et cetera.  Badness!  I wish I were better at thinking iteratively.
 
 Here's what an example expansion looked like in the buggy version:
 
