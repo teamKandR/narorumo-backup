@@ -13,7 +13,7 @@ class Square:
     self.colindex = colindex
 
   def set(self, val):
-    print ("setting (%d, %d) to %d" % (self.rowindex, self.colindex, val))
+    print ("setting (%d,%d) to %d" % (self.rowindex, self.colindex, val))
 
     if (self.fixed and val != self.answer):
       raise Exception("answer was %d, tried to set to %d" % (self.answer, val))
@@ -30,6 +30,8 @@ class Square:
 
     if x in self.possibilities:
       self.possibilities.remove(x)
+      print ("removing from (%d,%d): %d"
+          % (self.rowindex,self.colindex,x))
 
     if len(self.possibilities) == 1:
       self.set(self.possibilities.pop())
