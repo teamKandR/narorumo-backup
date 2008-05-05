@@ -557,6 +557,27 @@
 ;; and let b^n = b^(n/2).
 ;; n will equal 0 and b^n will equal 1 by the time we're done.
 
+;; lindseykuper: No, I take it back!  The trouble with doing a = ab^(n/2) is that,
+;; in every step, we have to calculate another exponent to a power that we don't 
+;; know yet.  So this can never be entirely iterative, because we'll keep on
+;; stacking up recursive calls to fast-expt-iter so that we can find b^(n/2).
+
+;; However!  
+;; We know that: b^n = b^(n/2) * b^(n/2) = (b^(n/2))^2 = (b^2)^(n/2).
+
+;; So, (fast-expt-iter b n) ought to be the same as 
+;; (fast-expt-iter (square b) (/ n 2)).
+
+;; Why can't we just do this?
+
+;; (define fast-expt-iter
+;;   (lambda (b n)
+;;   (fast-expt-iter (square b) (/ n 2))))
+
+;; Well, that would be great if  /n/ were always even (i.e., if it were a power
+;; of 2 initially).  But we can't guarantee that.  So we need the state variable
+;; /a/ *just* to handle cases where n is odd.
+
 (define fast-expt-iter
   (lambda (b n)
     (fast-expt-iter-kernel b n 1)))
@@ -564,14 +585,13 @@
 (define fast-expt-iter-kernel
   (lambda (b n a)
     (cond ((= n 0) a)
-          ((even? n) (fast-expt-iter-kernel 
-                      b 
-                      (/ n 2) 
-                      (* a (fast-expt-iter b (/ n 2)))
-                      ))
+          ((even? n) (fast-expt-iter-kernel (square b) (/ n 2) a))
           (else (fast-expt-iter-kernel b (- n 1) (* a b))))))
 
 ; Test cases:
-;(fast-expt-iter 2 2)
-;(fast-expt-iter 2 5)
-;(fast-expt-iter 2 30)
+;(fast-expt-iter 2 2)     ; 4
+;(fast-expt-iter 2 5)     ; 32
+;(fast-expt-iter 2 30)    ; 1073741824
+;(fast-expt-iter 2 10000) ; ph33r my l33t sp33d.
+
+
