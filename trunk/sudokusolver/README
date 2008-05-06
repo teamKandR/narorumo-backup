@@ -1,3 +1,12 @@
+April 2006, I tried rewriting my old sudoku solver to work with Google App
+Engine. And it worked, except it was really slow and might have a subtle bug in
+it (it runs way too long on underspecified problems), but naive backtracking
+search is a little boring anyway, and I want to have two versions now, one that
+does DLX (which is amazingly fast, I saw somebody else's version just chew
+through supposedly "hard" problems), and one that does randomized
+hill-climbing, for comparison. Simulated Annealing FTW.
+
+** from the 2006 README
 It solves sudoku puzzles :)
 
 There are some hardcoded paths, which is gross (sorry) -- I'm not
