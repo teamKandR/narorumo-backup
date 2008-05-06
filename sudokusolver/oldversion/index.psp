@@ -1,0 +1,59 @@
+<%
+import sys
+sys.path.append('/home/alex/public_html/sudoku/')
+
+import sudoku
+reload(sudoku)
+import sudoku_web
+reload(sudoku_web)
+
+import psp
+
+board = False
+done = False
+
+if(form.has_key("posted")):
+    board = sudoku_web.form_to_board(form)
+    # req.write(str(board))
+    if(board):
+        done = sudoku.solve(board, 0)
+
+#end if
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html>
+<head>
+<LINK href="css/style.css" rel="stylesheet" type="text/css">
+<title>the python sudoku solver</title>
+</head>
+
+<body>
+<h1>python sudoku solver!</h1>
+<p><small>(by alex r, early 2006)
+<a href="http://hackmode.org/~alex/code/sudoku.tgz">(code here)</a>
+</small></p>
+
+
+<%
+if(form.has_key("posted")):
+    #start
+%>
+    <%= sudoku_web.board_to_table(done) %>
+    <p><a href="http://hackmode.org/~alex/sudoku/">Again!!</a></p>
+<%
+else:
+%>
+    <form method="post" action="http://hackmode.org/~alex/sudoku/">
+    <input name="posted" type="hidden" value="foo"/>
+    <%= sudoku_web.build_input_table() %>
+    <input type="submit" value="solve!!"/>
+    <input type="reset" value="clear!!"/>
+    </form>
+<%
+#end
+%>
+
+</body>
+</html>

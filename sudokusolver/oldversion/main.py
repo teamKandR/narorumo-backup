@@ -10,6 +10,6 @@ except (IndexError):
     arg = "board"
 
 board = sudoku.read_board(arg)
-done = sudoku.solve(board)
+done = sudoku.solve(board, 0)
 
 sudoku.print_board(done)

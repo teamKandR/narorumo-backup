@@ -25,7 +25,7 @@ class MainPage(webapp.RequestHandler):
 
     solved = board.solve()
     if (solved):
-      template_values = {'board': board.as_list()}
+      template_values = {'board': solved.as_list()}
     else:
       template_values = {}
 

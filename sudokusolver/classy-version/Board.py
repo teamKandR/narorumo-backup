@@ -2,10 +2,12 @@
 
 import copy
 import sys
+import traceback
 
 class Square:
   def __init__(self, board, rowindex, colindex):
-    self.possibilities = set(range(1, 9 + 1))
+    # self.possibilities = set(range(1, 9 + 1))
+    self.possibilities = range(1, 9 + 1)
     self.fixed = False
     self.answer = None
     self.board = board
@@ -13,13 +15,11 @@ class Square:
     self.colindex = colindex
 
   def set(self, val):
-    print ("setting (%d,%d) to %d" % (self.rowindex, self.colindex, val))
-
     if (self.fixed and val != self.answer):
       raise Exception("answer was %d, tried to set to %d" % (self.answer, val))
 
     self.answer = val
-    self.possibilities = set()
+    self.possibilities = []
 
     self.fixed = True
     self.board.square_has_fixed(self)
@@ -30,13 +30,14 @@ class Square:
 
     if x in self.possibilities:
       self.possibilities.remove(x)
-      print ("removing from (%d,%d): %d"
-          % (self.rowindex,self.colindex,x))
+
+    # if self.rowindex == 0 and self.colindex == 5:
+      # print ("removing from (%d,%d): %d" % (self.rowindex,self.colindex,x))
+      # print self.possibilities
 
     if len(self.possibilities) == 1:
       self.set(self.possibilities.pop())
-      print ("eliminated everything else: (%d,%d) is %d"
-          % (self.rowindex,self.colindex,self.answer))
+      # print ("eliminated everything else: (%d,%d) is %d" % (self.rowindex,self.colindex,self.answer))
 
   def __repr__(self):
     if self.fixed:
@@ -48,13 +49,6 @@ class Square:
     return repr(self)
 
 class Area(object):
-  def infer(self, board):
-    """Where the magic happens. If we have a fixed square in this area,
-    remove that possibility from every other square in the area. If a square is
-    out of possibilities, make it be fixed."""
-
-    return False
-
   def contradiction(self):
     """For now -- if more than one square is fixed to the same value
     (pigeonhole principle: if the size of the set is smaller than the size of
@@ -62,7 +56,17 @@ class Area(object):
     better."""
 
     fixeds = [square.answer for square in self.squares if square.fixed]
-    return len(set(fixeds)) < len(fixeds)
+    out = (len(set(fixeds)) < len(fixeds))
+
+    # if out:
+    #   print "!! contradiction at", self.__class__, self.area_index
+    #   print fixeds
+    #   print set(fixeds)
+    #   print self.board
+    #   traceback.print_stack()
+    #   sys.exit()
+
+    return out
 
   def remove_possibility(self, val):
     for square in self.squares:
@@ -80,16 +84,16 @@ class Area(object):
   def __str__(self):
     out = ""
     for square in self.squares:
-      if isinstance(square, list):
-        out += "? "
-      else:
-        out += (str(square) + " ")
+      out += (str(square) + " ")
+
+    out = out.strip()
     return out
 
 class Row(Area):
   def __init__(self, board, rowindex, size=9):
     self.squares = []
     self.area_index = rowindex
+    self.board = board
 
     colindex = 0
     for i in range(size):
@@ -100,11 +104,13 @@ class Column(Area):
   def __init__(self, board, squares, area_index, size=9):
     self.squares = squares
     self.area_index = area_index
+    self.board = board
 
 class Box(Area):
   def __init__(self, board, squares, area_index, size=9):
     self.squares = squares
     self.area_index = area_index
+    self.board = board
 
 class Board:
   def __init__(self):
@@ -124,6 +130,23 @@ class Board:
     newboard.set(row, col, val)
 
     return newboard
+
+  def assumption_generator(self):
+    rowindex = 0
+    colindex = 0
+
+    for row in self.rows:
+      for square in row.squares:
+        if not square.fixed:
+          possibilities = square.possibilities
+          for val in possibilities:
+            yield (rowindex, colindex, val)
+
+        colindex += 1
+      rowindex += 1
+      colindex = 0
+
+    return
 
   def set(self, row, col, val):
     """Fix the one square, then remove the possibility from everybody else in
@@ -179,33 +202,68 @@ class Board:
   def infer_boxes(self):
     return self.infer_areas(self.boxes)
 
-  def solve(self):
-    """Crunch until we think we're done. Return True when we find a solution,
-       or False if we think we can't find one."""
+  def solve(self, level=0):
+    """Crunch until we think we're done. Return the solved board when we find a
+    solution, or False if we think we can't find one."""
     if self.contradiction():
+      # print "contradiction, back up."
       return False
 
-    made_changes = True
-    while made_changes:
-      made_changes = False
-
-      made_changes |= self.infer_rows()
-      made_changes |= self.infer_cols()
-      made_changes |= self.infer_boxes()
-
-      made_changes |= self.infer_rows()
-      made_changes |= self.infer_cols()
-      made_changes |= self.infer_boxes()
-
     if self.solved():
-      return True
+      return self
 
-    # make assumptions!
+    # make assumptions! Use a generator! Be like "give me the next assumption
+    # to make for this board!
+    # find next free square, assume about it, solve that. If it doesn't work,
+    # move on until we're out of possibilities.
+    # assumptions = self.assumption_generator()
+    # for assumption in assumptions:
+    #   print assumption
+    # return
 
-    # find next free square, assume about it, solve that. Failing that, try the
-    # box after that one.
+    # assumptions = self.assumption_generator()
+
+    rowindex = 0
+    colindex = 0
+
+    for row in self.rows:
+      for square in row.squares:
+        if not square.fixed:
+          possibilities = square.possibilities
+
+          for val in possibilities:
+            assumed = self.assume(rowindex,colindex,val)
+
+            solved = assumed.solve(level + 1)
+            if (solved):
+              return solved
+
+        colindex += 1
+      rowindex += 1
+      colindex = 0
+
+    # for assumption in assumptions:
+    #   rowindex,colindex,value = assumption
+
 
     return False
+
+    ## This section might not turn out to be helpful. It might be that just by
+    ## what goes on as a result of setting a square to a particular value
+    ## (called before we get here, or alternatively in "assume", we get
+    ## everything that we imagine we could get out of this. Let's take it
+    ## out for now, just skip to the assuming.
+
+    # made_changes = True
+    # while made_changes:
+    #   made_changes = False
+    #   made_changes |= self.infer_rows()
+    #   made_changes |= self.infer_cols()
+    #   made_changes |= self.infer_boxes()
+
+    #   made_changes |= self.infer_rows()
+    #   made_changes |= self.infer_cols()
+    #   made_changes |= self.infer_boxes()
 
   def contradiction(self):
     for row in self.rows:
@@ -222,8 +280,8 @@ class Board:
   def solved(self):
     """Return True if we're done, False otherwise."""
     for row in self.rows:
-      for i in range(9):
-        if not row[i].fixed:
+      for square in row.squares:
+        if not square.fixed:
           return False
     return True
 
@@ -312,7 +370,8 @@ def main():
 
   board = read_board(arg)
 
-  print board
+  solved = board.solve()
+  print solved.as_list()
 
 if __name__ == "__main__":
   main()
