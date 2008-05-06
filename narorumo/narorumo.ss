@@ -17,6 +17,7 @@
   '(3.7 ;;; http://www.gmap-pedometer.com/?r=1430525
     3.7 ;;;                     "
     3.7 ;;;                     "
+    3.7 ;;;                     "
     3.6 ;;; http://www.gmap-pedometer.com/?r=1869316
 ))
 
