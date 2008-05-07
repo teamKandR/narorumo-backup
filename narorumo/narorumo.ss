@@ -14,12 +14,13 @@
     4.4 3.7))                   ;;; 11/29/2007-11/30/2007
 
 (define lindsey-miles-2008-05
-  '(3.7 ;;; http://www.gmap-pedometer.com/?r=1430525
-    3.7 ;;;                     "
-    3.7 ;;;                     "
-    3.7 ;;;                     "
-    3.6 ;;; http://www.gmap-pedometer.com/?r=1869316
-))
+  '(3.7 ;;; 1 Thursday http://www.gmap-pedometer.com/?r=1430525
+    3.7 ;;; 2 Friday                    "
+    3.7 ;;; 3 Saturday                  "
+    3.7 ;;; 4 Sunday                    "
+    3.6 ;;; 5 Monday http://www.gmap-pedometer.com/?r=1869316
+    3.7 ;;; 6 Tuesday http://www.gmap-pedometer.com/?r=1430525
+    ))
 
 (define alex-miles-2008-05
   '(3.6 ;;; 1 Thursday http://www.gmap-pedometer.com/?r=1432587
