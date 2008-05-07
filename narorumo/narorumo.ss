@@ -22,7 +22,12 @@
 ))
 
 (define alex-miles-2008-05
-  '())                 
+  '(3.6 ;;; 1 Thursday http://www.gmap-pedometer.com/?r=1432587
+    4.4 ;;; 2 Friday http://www.gmap-pedometer.com/?r=1450332
+    6.1 ;;; 3 Saturday http://www.gmap-pedometer.com/?r=1872789 
+    3.6 ;;; 4 Sunday http://www.gmap-pedometer.com/?r=1872765
+    5.2 ;;; 5 Monday http://www.gmap-pedometer.com/?r=1872774
+    ))                 
 
 ;; Sadly, inexact->exact didn't quite do what I wanted!
 (define (exactify lst)
