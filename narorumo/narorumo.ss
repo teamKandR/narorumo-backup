@@ -27,6 +27,7 @@
     6.1 ;;; 3 Saturday http://www.gmap-pedometer.com/?r=1872789 
     3.6 ;;; 4 Sunday http://www.gmap-pedometer.com/?r=1872765
     5.2 ;;; 5 Monday http://www.gmap-pedometer.com/?r=1872774
+    4.4 ;;; 6 Tuesday http://www.gmap-pedometer.com/?r=1450332
     ))                 
 
 ;; Sadly, inexact->exact didn't quite do what I wanted!
