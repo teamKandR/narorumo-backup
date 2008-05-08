@@ -594,4 +594,37 @@
 ;(fast-expt-iter 2 30)    ; 1073741824
 ;(fast-expt-iter 2 10000) ; ph33r my l33t sp33d.
 
+;;;; 1.17
+;; ...design a multiplication procedure analogous to /fast-expt/ that uses a 
+;; logarithmic number of steps.
+
+;; lindseykuper:
+;; The idea is that (a * b) is equal to ((a/2) * 2b), assuming /a/ is even.  So,
+;; test if a = 1, and if so, we're done.  Otherwise, on each iteration, test for 
+;; /a/'s evenness.  If /a/ is odd, subtract 1 from /a/ and add /b/ to the
+;; accumulator (which again only exists to deal with odd cases).  If /a/ is even, 
+;; halve /a/, double /b/, and call the procedure again with the resulting values. 
+;; The final answer will be /b/ plus whatever's accumulated in the accumulator.
+
+(define double
+  (lambda (n)
+    (+ n n)))
+
+(define halve
+  (lambda (n)
+    (if (even? n)
+        (/ n 2)
+        (error "That number wasn't even!"))))
+
+(define fast-mult
+  (lambda (a b)
+    (fast-mult-kernel a b 0)))
+
+(define fast-mult-kernel
+  (lambda (a b accumulator)
+    (cond ((= a 1) (+ b accumulator))
+          ((even? a) (fast-mult-kernel (halve a) (double b) accumulator))
+          (else (fast-mult-kernel (- a 1) b (+ b accumulator))))))
+
+
 
