@@ -80,7 +80,7 @@
 ;; form...
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
-	(else else-clause)))
+        (else else-clause)))
 
 ;; (previously defined functions, needed here)
 (define (improve guess x)
@@ -98,9 +98,9 @@
 ;; Delighted, Alyssa uses new-if to rewrite the square root program:
 (define (sqrt-iter-new-if guess x)
   (new-if (good-enough? guess x)
-	  guess
-	  (sqrt-iter (improve guess x)
-		     x)))
+          guess
+          (sqrt-iter (improve guess x)
+                     x)))
 ;; What happens when Alyssa attempts to use this to compute square roots?
 
 ;; alexr: Eva Lu Ator has good intentions, but until we figure out how to use
@@ -160,8 +160,8 @@
     (print guess)
     (newline)
     (if (small-change? prevguess guess)
-	guess
-	(sqrt-iter guess (improve guess x))))
+        guess
+        (sqrt-iter guess (improve guess x))))
   (sqrt-iter 0.0 1.0))
 
 ;;;; 1.8
@@ -177,8 +177,8 @@
 (define (newton-cbrt x)
   (define (cbrt-iter prevguess guess)
     (if (small-change? prevguess guess)
-	guess
-	(cbrt-iter guess (cbrt-improve guess x))))
+        guess
+        (cbrt-iter guess (cbrt-improve guess x))))
   
   (cbrt-iter 0.0 1.0))
 
@@ -234,11 +234,11 @@
 ;; Ackermann's function:
 (define (A x y)
   (cond ((= y 0) 0)
-	((= x 0) (* 2 y))
-	((= y 1) 2)
+        ((= x 0) (* 2 y))
+        ((= y 1) 2)
         
-	(else (A (- x 1)
-		 (A x (- y 1))))))
+        (else (A (- x 1)
+                 (A x (- y 1))))))
 
 ;; What are the values of the following expressions?
 ;; (A 1 10)
@@ -598,14 +598,6 @@
 ;; ...design a multiplication procedure analogous to /fast-expt/ that uses a 
 ;; logarithmic number of steps.
 
-;; lindseykuper:
-;; The idea is that (a * b) is equal to ((a/2) * 2b), assuming /a/ is even.  So,
-;; test if a = 1, and if so, we're done.  Otherwise, on each iteration, test for 
-;; /a/'s evenness.  If /a/ is odd, subtract 1 from /a/ and add /b/ to the
-;; accumulator (which again only exists to deal with odd cases).  If /a/ is even, 
-;; halve /a/, double /b/, and call the procedure again with the resulting values. 
-;; The final answer will be /b/ plus whatever's accumulated in the accumulator.
-
 (define double
   (lambda (n)
     (+ n n)))
@@ -618,13 +610,50 @@
 
 (define fast-mult
   (lambda (a b)
-    (fast-mult-kernel a b 0)))
+    (cond 
+      ; one or both of the operands is 0
+      ((or (= a 0) (= b 0)) 0) 
+      ; exactly one of the operands is negative
+      ((xor (< a 0) (< b 0)) (- (fast-mult-kernel (abs a) (abs b))))
+      ; both operands are of the same sign
+      (else (fast-mult-kernel (abs a) (abs b))))))
 
 (define fast-mult-kernel
+  (lambda (a b)
+    (cond ((= a 1) b)
+          ((even? a) (fast-mult (halve a) (double b)))
+          (else (+ b (fast-mult (- a 1) b))))))
+
+;;;; 1.18
+;; ...devise a procedure that generates an iterative proces for multiplying two
+;; integers in terms of adding, doubling, and halving and uses a logarithmic 
+;; number of steps.
+
+;; lindseykuper:
+;; The idea is that (a * b) is equal to ((a/2) * 2b), assuming /a/ is even.  So,
+;; test if a = 1, and if so, we're done.  Otherwise, on each iteration, test for 
+;; /a/'s evenness.  If /a/ is odd, subtract 1 from /a/ and add /b/ to the
+;; accumulator (which again only exists to deal with odd cases).  If /a/ is even, 
+;; halve /a/, double /b/, and call the procedure again with the resulting values. 
+;; The final answer will be /b/ plus whatever's accumulated in the accumulator.
+
+;; lindseykuper: I decided we needed to define xor.
+(define xor 
+  (lambda (left right)
+    (or (and left (not right)) (and right (not left)))))
+
+(define fast-mult-iter
+  (lambda (a b)
+    (cond 
+      ; one or both of the operands is 0
+      ((or (= a 0) (= b 0)) 0) 
+      ; exactly one of the operands is negative
+      ((xor (< a 0) (< b 0)) (- (fast-mult-iter-kernel (abs a) (abs b) 0)))
+      ; both operands are of the same sign
+      (else (fast-mult-iter-kernel (abs a) (abs b) 0)))))
+
+(define fast-mult-iter-kernel
   (lambda (a b accumulator)
     (cond ((= a 1) (+ b accumulator))
-          ((even? a) (fast-mult-kernel (halve a) (double b) accumulator))
-          (else (fast-mult-kernel (- a 1) b (+ b accumulator))))))
-
-
-
+          ((even? a) (fast-mult-iter-kernel (halve a) (double b) accumulator))
+          (else (fast-mult-iter-kernel (- a 1) b (+ b accumulator))))))
