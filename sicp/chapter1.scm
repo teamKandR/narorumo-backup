@@ -621,8 +621,8 @@
 (define fast-mult-kernel
   (lambda (a b)
     (cond ((= a 1) b)
-          ((even? a) (fast-mult (halve a) (double b)))
-          (else (+ b (fast-mult (- a 1) b))))))
+          ((even? a) (fast-mult-kernel (halve a) (double b)))
+          (else (+ b (fast-mult-kernel (- a 1) b))))))
 
 ;;;; 1.18
 ;; ...devise a procedure that generates an iterative proces for multiplying two
