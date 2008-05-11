@@ -23,7 +23,7 @@
     3.7 ;;; 7 Wednesday                 "
     2.6 ;;; 8 Thursday http://www.gmap-pedometer.com/?r=1426927
     2.1 ;;; 9 Friday http://www.gmap-pedometer.com/?r=1884791
-    
+    5.8 ;;; 10 Saturday http://www.gmap-pedometer.com/?r=1884921    
     1.3 ;;; 11 Sunday http://www.gmap-pedometer.com/?r=1886211
     ))
 
@@ -38,7 +38,7 @@
     7.1 ;;; 8 Thursday http://www.gmap-pedometer.com/?r=1476515, plus 1 mile on
         ;;;   treadmill (fast) to test DEFYANCE shoes.
     2.1 ;;; 9 Friday http://www.gmap-pedometer.com/?r=1884791
-    
+    5.8 ;;; 10 Saturday http://www.gmap-pedometer.com/?r=1884921    
     1.3 ;;; 11 Sunday http://www.gmap-pedometer.com/?r=1886211
     ))                 
 
