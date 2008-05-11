@@ -685,8 +685,8 @@
 ;; So, we've got:
 ;;
 ;; T_pq_TWICE = {
-;;      a <--(becomes)-- 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2
-;;      b <--(becomes)-- bp^2  + bq^2 + aq^2 + 2apq
+;;      a -> 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2
+;;      b -> bp^2  + bq^2 + aq^2 + 2apq
 ;; }
 ;;
 ;; I think what we have to do now is figure out how what we have above fits into
