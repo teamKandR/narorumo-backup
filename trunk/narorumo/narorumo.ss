@@ -20,6 +20,9 @@
     3.7 ;;; 4 Sunday                    "
     3.6 ;;; 5 Monday http://www.gmap-pedometer.com/?r=1869316
     3.7 ;;; 6 Tuesday http://www.gmap-pedometer.com/?r=1430525
+    3.7 ;;; 7 Wednesday                 "
+    2.6 ;;; 8 Thursday http://www.gmap-pedometer.com/?r=1426927
+    2.1 ;;; 9 Friday http://www.gmap-pedometer.com/?r=1884791
     ))
 
 (define alex-miles-2008-05
@@ -29,6 +32,10 @@
     3.6 ;;; 4 Sunday http://www.gmap-pedometer.com/?r=1872765
     5.2 ;;; 5 Monday http://www.gmap-pedometer.com/?r=1872774
     4.4 ;;; 6 Tuesday http://www.gmap-pedometer.com/?r=1450332
+    3.6 ;;; 7 Wednesday http://www.gmap-pedometer.com/?r=1872765 barefoot shoes
+    7.1 ;;; 8 Thursday http://www.gmap-pedometer.com/?r=1476515, plus 1 mile on
+        ;;;   treadmill (fast) to test DEFYANCE shoes.
+    2.1 ;;; 9 Friday http://www.gmap-pedometer.com/?r=1884791
     ))                 
 
 ;; Sadly, inexact->exact didn't quite do what I wanted!
