@@ -544,7 +544,7 @@
 
 ;;;; 1.16
 ;; Design a procedure that evolves an iterative exponentiation process that 
-;; uses successive squariong and uses a logarithmic number of steps, as does 
+;; uses successive squaring and uses a logarithmic number of steps, as does 
 ;; /fast-expt/.
 
 ;; lindseykuper: The idea is that we'll work from the bottom up and keep 
@@ -625,7 +625,7 @@
           (else (+ b (fast-mult-kernel (- a 1) b))))))
 
 ;;;; 1.18
-;; ...devise a procedure that generates an iterative proces for multiplying two
+;; ...devise a procedure that generates an iterative process for multiplying two
 ;; integers in terms of adding, doubling, and halving and uses a logarithmic 
 ;; number of steps.
 
@@ -657,3 +657,65 @@
     (cond ((= a 1) (+ b accumulator))
           ((even? a) (fast-mult-iter-kernel (halve a) (double b) accumulator))
           (else (fast-mult-iter-kernel (- a 1) b (+ b accumulator))))))
+
+;;;; 1.19
+;; (logarithmic procedure for computing Fib(n))
+
+;; The transformation T is when you do 
+;; T = {
+;;       a <--(becomes)-- a + b
+;;       b <--(becomes)-- a
+;; }
+;;
+;; T is a special case of T_pq where p = 0 and q = 1.
+;; T_pq = {  
+;;      a <--(becomes)-- bq + aq + ap
+;;      b <--(becomes)-- bp + aq
+;; }
+;;
+;; Okay, what happens when we apply T_pq twice, in general?
+;; a = bq + aq + ap 
+;; b = bp + aq
+;; new a = (bp + aq)q + (bq + aq + ap)q + (bq + aq + ap)p
+;; new b = (bp + aq)p + (bq + aq + ap)q
+;; simplified:
+;; new a = 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2
+;; new b = bp^2  + bq^2 + aq^2 + 2apq
+;; 
+;; So, we've got:
+;;
+;; T_pq_TWICE = {
+;;      a <--(becomes)-- 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2
+;;      b <--(becomes)-- bp^2  + bq^2 + aq^2 + 2apq
+;; }
+;;
+;; I think what we have to do now is figure out how what we have above fits into
+;; the T_pq mold.  That is, we have to figure out what /p/ and /q/ have to be to
+;; make the T_pq_TWICE transformation happen.
+
+;; bq' + aq' + ap' = 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2
+;; bp' + aq'       = bp^2  + bq^2 + aq^2 + 2apq
+
+
+
+
+
+
+
+(define (fib n)
+  (fib-iter 1 0 0 1 n))
+(define (fib-iter a b p q count)
+  (cond ((= count 0) b)
+        ((even? count)
+         (fib-iter a
+                   b
+                   <??>      ; compute p'
+                   <??>      ; compute q'
+                   (/ count 2)))
+        (else (fib-iter (+ (* b q) (* a q) (* a p))
+                        (+ (* b p) (* a q))
+                        p
+                        q
+                        (- count 1)))))
+
+
