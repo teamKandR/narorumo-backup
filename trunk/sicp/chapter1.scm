@@ -663,14 +663,14 @@
 
 ;; The transformation T is when you do 
 ;; T = {
-;;       a <--(becomes)-- a + b
-;;       b <--(becomes)-- a
+;;       a -> a + b
+;;       b -> a
 ;; }
 ;;
 ;; T is a special case of T_pq where p = 0 and q = 1.
 ;; T_pq = {  
-;;      a <--(becomes)-- bq + aq + ap
-;;      b <--(becomes)-- bp + aq
+;;      a -> bq + aq + ap
+;;      b -> bp + aq
 ;; }
 ;;
 ;; Okay, what happens when we apply T_pq twice, in general?
@@ -693,24 +693,45 @@
 ;; the T_pq mold.  That is, we have to figure out what /p/ and /q/ have to be to
 ;; make the T_pq_TWICE transformation happen.
 
-;; bq' + aq' + ap' = 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2
-;; bp' + aq'       = bp^2  + bq^2 + aq^2 + 2apq
+;; bq' + aq' + ap' = 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2      (1)
+;; bp' + aq'       = bp^2  + bq^2 + aq^2 + 2apq               (2)
 
+;; Subtract equation (2) from equation (1):
+;; ap' + bq' - bp'    = ap^2 + 2bpq  + aq^2 - bp^2
+;; a(p') + b(q' - p') = a(p^2 + q^2) + b(2pq - p^2)
+;;       p' + q' - p' = p^2 + q^2 + 2pq - p^2
+;;                 q' = q^2 + 2pq
 
+;; and then
+;; bp' + a(q^2 + 2pq) = bp^2  + bq^2 + aq^2 + 2apq  
+;; bp' + aq^2 + 2apq  = bp^2  + bq^2 + aq^2 + 2apq  
+;;                bp' = bp^2  + bq^2
+;;                 p' = p^2 + q^2
 
+;; Do those values for /p'/ and /q'/ check out?
 
+;; a = bq + aq + ap
+;; a = b(q^2 + 2pq) + a(q^2 + 2pq) + a(p^2 + q^2)
+;; a = bq^2 + 2bpq + aq^2 + 2apq + ap^2 + aq^2 
+;; (yes, this equals what we have in T_pq_TWICE.)
 
+;; b = bp + aq
+;; b = b(p^2 + q^2) + a(q^2 + 2pq)
+;; b = bp^2 + bq^2 + aq^2 + 2apq
+;; (yes, this equals what we have in T_pq_TWICE.)
 
+;; Great!  So our procedure:
 
 (define (fib n)
   (fib-iter 1 0 0 1 n))
+
 (define (fib-iter a b p q count)
   (cond ((= count 0) b)
         ((even? count)
          (fib-iter a
                    b
-                   <??>      ; compute p'
-                   <??>      ; compute q'
+                   (+ (square p) (square q))      ; compute p'
+                   (+ (square q) (* 2 p q))       ; compute q'
                    (/ count 2)))
         (else (fib-iter (+ (* b q) (* a q) (* a p))
                         (+ (* b p) (* a q))
@@ -718,4 +739,8 @@
                         q
                         (- count 1)))))
 
-
+; Fib test cases:
+;(fib 13)      ; 233
+;(fib 20)      ; 6765
+;(fib 1000000) ; big, but it looks like it matches what this person found:
+               ; http://www.upl.cs.wisc.edu/~bethenco/fibo/
