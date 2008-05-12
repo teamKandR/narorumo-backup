@@ -1,6 +1,6 @@
 #summary Our stuff; let us show you it.
 
-  * SICP
+  * [SICP SICP]
     * [ReallyBigFibonacciNumbers Really big Fibonacci numbers]
   * [Us Us]
     * [Alex Alex]
