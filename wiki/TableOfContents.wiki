@@ -1,8 +1,8 @@
 #summary Our stuff; let us show you it.
 
-  * [SICP SICP]
+  * SICP stuff
     * [ReallyBigFibonacciNumbers Really big Fibonacci numbers]
-  * [Us Us]
+  * Us
     * [Alex Alex]
     * [Lindsey Lindsey]
   * [Wildebeests Wildebeests]
