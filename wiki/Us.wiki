@@ -1,8 +1,0 @@
-#summary Your hosts.
-
-= Us =
-
-  * [Alex]
-  * [Lindsey]
-
-"Nostrum vicis decerno."
