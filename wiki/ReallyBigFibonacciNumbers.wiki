@@ -2,8 +2,7 @@
 #labels Featured,Fibonacci,SICP,bignum,algorithms,Scheme
 
 =Really big Fibonacci numbers=
-===Lindsey Kuper===
-===May 12, 2008===
+(an article by [Lindsey]
 
 _SICP_ [http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-11.html#%_thm_1.19 Exercise 1.19] gives most of a procedure for computing [http://en.wikipedia.org/wiki/Fibonacci_number Fibonacci numbers] that runs in a logarithmic number of steps.  The exercise is to complete the procedure by replacing the `<??>`s in the code below with the appropriate expressions.
 
