@@ -31,7 +31,7 @@ Next I tried [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%2
 
 How about the hundred millionth?  Well, it's running now, and I'll let you know if it ever decides to stop.
 
-Should you want to try it at home, I've got the code and some test cases, along with an explanation of how I found _p'_ and _q'_, in a [http://code.google.com/p/narorumo/source/browse/trunk/sicp/1.19.scm file] you can grab.  It's about 20 lines of vanilla !R5RS Scheme, plus a lot of comments.  
+Should you want to try it at home, I've got the code and some test cases, along with an explanation of how I found _p'_ and _q'_, in a [http://code.google.com/p/narorumo/source/browse/trunk/sicp/1.19.scm file] you can grab.  It's about 20 lines of vanilla R^5^RS Scheme, plus a lot of comments.  
 
 == Acknowledgments ==
 
