@@ -49,7 +49,4 @@ It took about two hours to do this exercise.  [http://code.google.com/u/alex.rud
 
 ^4^ This one [http://digg.com/programming/Ten_Millionth_Fibonacci_Number made Digg] as well.  Apparently, `(fib 1000000)` counts as "odd stuff" while `(fib 10000000)` counts as "programming".
 
-
-
-
-^4^ According to [http://books.google.com/books?id=yJIghWULQV8C&pg=PA155&lpg=PA155&dq=%2210,000,000th+fibonacci+number%22&ots=GIMiKnKkc7&sig=XyUXMfRTiPU2nsNXkAFwsmPVCTY this book], you can do it in "about 19 seconds" using Mathematica.  `*`whistle`*`   
+^5^ But other people have done it still faster.  According to [http://books.google.com/books?id=yJIghWULQV8C&pg=PA155&lpg=PA155&dq=%2210,000,000th+fibonacci+number%22&ots=GIMiKnKkc7&sig=XyUXMfRTiPU2nsNXkAFwsmPVCTY this book], you can do it in "about 19 seconds" using Mathematica.  `*`whistle`*`   
