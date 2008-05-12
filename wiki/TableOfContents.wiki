@@ -4,7 +4,7 @@
     * [NaRoRuMoSS Notes on narorumo.ss]
   * The SICP project
     * [SICPChapter1 SICP Chapter 1]
-      * [TheMillionthFibonacciNumber The millionth Fibonacci number]
+      * [ReallyBigFibonacciNumbers Computing really big Fibonacci numbers]
     * [SICPChapter2 SICP Chapter 2]
     * [SICPChapter3 SICP Chapter 3]
     * [SICPChapter4 SICP Chapter 4]
