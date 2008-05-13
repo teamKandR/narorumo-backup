@@ -33,7 +33,7 @@ After I [http://code.google.com/p/narorumo/source/diff?r=81&format=side&path=/tr
 
 To make sure I had it right, I googled [http://www.google.com/search?q=%22millionth+fibonacci+number%22 "millionth fibonacci number"].^2^  [http://www.upl.cs.wisc.edu/~bethenco/fibo/ This person's result]^3^ turned out to be the same as mine, according to `diff`.
 
-Next, I tried `(fib 10000000)`, which took about 26 seconds to calculate.^6^  The resulting number has 2,089,877 digits.  A search for [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%22 "ten millionth fibonacci number"]^4^ turned up [http://www.bigzaphod.org/fibonacci/ this person's work],^5^ which also matched my result according to `diff`.
+Next, I tried `(fib 10000000)`, which took about 26 seconds to calculate.^6^  The resulting number had 2,089,877 digits.  A search for [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%22 "ten millionth fibonacci number"]^4^ turned up [http://www.bigzaphod.org/fibonacci/ this person's work],^5^ which also seemed to match my result.
 
 How about `(fib 100000000)`, the hundred millionth Fibonacci number?  It took 14 minutes and 22.568 seconds to calculate and has 20,898,764 digits in base 10.  The first 76 digits are:
 
