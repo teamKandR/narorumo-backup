@@ -29,11 +29,11 @@ _Structure and Interpretation of Computer Programs_ gives most of a procedure fo
                         (- count 1)))))
 }}}
 
-After I [http://code.google.com/p/narorumo/source/diff?r=81&format=side&path=/trunk/sicp/chapter1.scm did the exercise], it seemed to be working pretty snappily on the smaller numbers I tested it with, so I tried `(fib 1000000)`.  The resulting number, which takes about 0.945 seconds to calculate^1^  on my 2.4 GHz !MacBook Pro, turns out to have 208,988 digits in base 10.
+After I [http://code.google.com/p/narorumo/source/diff?r=81&format=side&path=/trunk/sicp/chapter1.scm did the exercise], it seemed to be working pretty snappily on the smaller numbers I tested it with, so I tried `(fib 1000000)`.  The resulting number, which took about 0.945 seconds to calculate^1^  on my 2.4 GHz !MacBook Pro, turned out to have 208,988 digits.
 
 To make sure I had it right, I googled [http://www.google.com/search?q=%22millionth+fibonacci+number%22 "millionth fibonacci number"].^2^  [http://www.upl.cs.wisc.edu/~bethenco/fibo/ This person's result]^3^ turned out to be the same as mine, according to `diff`.
 
-Next I tried [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%22 "ten millionth fibonacci number"]^4^ and found [http://www.bigzaphod.org/fibonacci/ this person's work].^5^  The author wrote, "This sucker took around 31 hours of computation on a 1.67Ghz G4 !PowerBook."  With this algorithm on my machine, it takes about 26 seconds.^6^  The resulting number has 2,089,877 digits in base 10, and again, `diff` says we have the same answer.
+Next, I tried `(fib 10000000)`, which took about 26 seconds to calculate.^6^  The resulting number has 2,089,877 digits.  A search for [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%22 "ten millionth fibonacci number"]^4^ turned up [http://www.bigzaphod.org/fibonacci/ this person's work],^5^ which also matched my result according to `diff`.
 
 How about `(fib 100000000)`, the hundred millionth Fibonacci number?  It took 14 minutes and 22.568 seconds to calculate and has 20,898,764 digits in base 10.  The first 76 digits are:
 
@@ -69,6 +69,6 @@ It took about three hours to do the math for this exercise.  [http://code.google
 
 ^4^ This one returned 13 results.  I thought they might keep decreasing by half, but neither [http://www.google.com/search?q=%22hundred+millionth+fibonacci+number%22 "hundred millionth fibonacci number"] nor [http://www.google.com/search?q=%22100%2C000%2C000th+fibonacci+number%22 "100,000,000th fibonacci number"] returned anything.  (How long until _this_ page gets indexed?)
 
-^5^ This one [http://digg.com/programming/Ten_Millionth_Fibonacci_Number made Digg] as well.  Apparently, `(fib 1000000)` counts as "odd stuff" while `(fib 10000000)` counts as "programming".
+^5^ The author wrote, "This sucker took around 31 hours of computation on a 1.67Ghz G4 !PowerBook."  This one [http://digg.com/programming/Ten_Millionth_Fibonacci_Number made Digg] as well; apparently, `(fib 1000000)` counts as "odd stuff" while `(fib 10000000)` counts as "programming".
 
 ^6^ 26.720 seconds on my machine, running [http://code.google.com/p/narorumo/source/browse/trunk/sicp/1.19.scm 1.19.scm] with all the test cases but `(display (fib 10000000))` commented out, using the command `time mzscheme -r 1.19.scm > ten-millionth-fibonacci-number.txt`.  Can it be even faster?  According to [http://books.google.com/books?id=yJIghWULQV8C&pg=PA155&lpg=PA155&dq=%2210,000,000th+fibonacci+number%22&ots=GIMiKnKkc7&sig=XyUXMfRTiPU2nsNXkAFwsmPVCTY this book], you can do it in "about 19 seconds" using Mathematica, although I haven't tried.
