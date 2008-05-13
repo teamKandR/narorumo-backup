@@ -41,7 +41,7 @@ How about `(fib 100000000)`, the hundred millionth Fibonacci number?  It took 14
 473710347345633696254897131335103865754868289377201030193412163431081491642
 }}}
 
-I would like to have independent confirmation of this number, but so far, I haven't found anyone else who has calculated it.
+I would like to have independent confirmation (or disproof!) of this number, but so far, I haven't found anyone else who has calculated it.  
 
 == Try this at home ==  
 
