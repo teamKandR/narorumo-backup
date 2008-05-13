@@ -26,15 +26,19 @@
 ;;;; Test cases:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(fib 13)       ; 233
+;(display (fib 13))        ; 233
 
-(fib 20)       ; 6765
+;(display (fib 20))        ; 6765
 
-;(fib 1000000)  ; Runs in about 8 seconds on my machine, and matches what this 
-                ; person found: http://www.upl.cs.wisc.edu/~bethenco/fibo/
+;(display (fib 100))       ; 354224848179261915075
 
-;(fib 10000000) ; Runs in about 8.5 minutes on my machine, and matches what this
-                ; person found: http://www.bigzaphod.org/fibonacci/
+;(display (fib 1000000))   ; The millionth Fibonacci number.
+                           ; http://www.upl.cs.wisc.edu/~bethenco/fibo/
+
+;(display (fib 10000000))  ; The ten millionth Fibonacci number.
+                           ; http://www.bigzaphod.org/fibonacci/
+
+;(display (fib 100000000)) ; The hundred millionth Fibonacci number.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;; Explanation:
