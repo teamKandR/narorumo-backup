@@ -29,9 +29,9 @@ After I [http://code.google.com/p/narorumo/source/diff?r=81&format=side&path=/tr
 
 To make sure I had it right, I googled [http://www.google.com/search?q=%22millionth+fibonacci+number%22 "millionth fibonacci number"].^2^  [http://www.upl.cs.wisc.edu/~bethenco/fibo/ This person's result]^3^ turned out to be the same as mine, according to `diff`.
 
-Next I tried [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%22 "ten millionth fibonacci number"]^4^ and found [http://www.bigzaphod.org/fibonacci/ this person's work].^5^  The author wrote, "This sucker took around 31 hours of computation on a 1.67Ghz G4 !PowerBook."  On my machine, it takes about 26 seconds.^6^  There are 2,089,877 digits in base 10, and again, `diff` says we have the same answer.
+Next I tried [http://www.google.com/search?q=%22ten+millionth+fibonacci+number%22 "ten millionth fibonacci number"]^4^ and found [http://www.bigzaphod.org/fibonacci/ this person's work].^5^  The author wrote, "This sucker took around 31 hours of computation on a 1.67Ghz G4 !PowerBook."  On my machine, it takes about 26 seconds.^6^  The resulting number has 2,089,877 digits in base 10, and again, `diff` says we have the same answer.
 
-How about the hundred millionth?  Well, it's running now, and I'll let you know if it ever decides to stop.
+How about the hundred millionth Fibonacci number?  Well, `(fib 100000000)` is running now, and I'll let you know if it ever decides to stop.
 
 Should you want to try it at home, I took the code, some test cases, and an explanation of how I found _p'_ and _q'_ and pulled them out into a separate file.  It's about 20 lines of Scheme, plus a lot of comments:
   * [http://code.google.com/p/narorumo/source/browse/trunk/sicp/1.19.scm 1.19.scm]  
