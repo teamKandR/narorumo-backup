@@ -55,7 +55,7 @@ You can also download the output of the program as a text file:
 
 == Acknowledgments ==
 
-It took about three hours to do the math for this exercise.  [http://code.google.com/u/alex.rudnick/ Alex] patiently let me [http://c2.com/cgi/wiki?RubberDucking rubber-duck] through the first part of the problem, then suggested that I start using _p'_ and _q'_ so that I'd be able to tell "old" and "new" _p_ and _q_ apart, which saved me from Lexical Scoping Insanity.  He was also the one who pointed out that I had a system of equations that I could use to solve for _p'_ and _q'_.  Once I was done with the math, it took only a couple of minutes to write the code.
+It took me about three hours to do the math for this exercise.  [http://code.google.com/u/alex.rudnick/ Alex] patiently let me [http://c2.com/cgi/wiki?RubberDucking rubber-duck] through the first part of the problem, then suggested that I start using _p'_ and _q'_ so that I'd be able to tell "old" and "new" _p_ and _q_ apart, which saved me from Lexical Scoping Insanity.  He was also the one who pointed out that I had a system of equations that I could use to solve for _p'_ and _q'_.  Once I was done with the math, it took only a couple of minutes to write the code.
 
 [http://xkcd.com/289/ http://imgs.xkcd.com/comics/alone.png]
 
