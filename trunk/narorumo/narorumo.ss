@@ -27,6 +27,7 @@
     1.3 ;;; 11 Sunday http://www.gmap-pedometer.com/?r=1886211
     2.0 ;;; 12 Monday http://www.gmap-pedometer.com/?r=1899098
     2.6 ;;; 13 Tuesday http://www.gmap-pedometer.com/?r=1426927
+    2.6 ;;; 14 Wednesday http://www.gmap-pedometer.com/?r=1426927
     ))
 
 (define alex-miles-2008-05
@@ -100,6 +101,6 @@
        (append firstpart (list pivot) lastpart)))))
 
 ;; Test cases
-(total (exactify lindsey-miles-2007-11))
+;(total (exactify lindsey-miles-2007-11))
 
 
