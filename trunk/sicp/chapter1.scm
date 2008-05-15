@@ -744,3 +744,68 @@
 ;(fib 20)      ; 6765
 ;(fib 1000000) ; big, but it looks like it matches what this person found:
                ; http://www.upl.cs.wisc.edu/~bethenco/fibo/
+
+;;;; 1.20
+;; ...illustrate the process generated in evaluating /(gcd 206 40)/ and
+;; indicate the /remainder/ operations that are actually performed.
+
+;; Applicative order: "evaluate the arguments and then apply"
+;(gcd 206 40)                  ; eval
+;(gcd 40 (remainder 206 40))   ; apply
+;(gcd 40 6)                    ; eval
+;(gcd 6 (remainder 40 6))      ; apply
+;(gcd 6 4)                     ; eval
+;(gcd 4 (remainder 6 4))       ; apply
+;(gcd 4 2)                     ; eval
+;(gcd 2 (remainder 4 2))       ; apply
+;(gcd 2 0)                     ; eval
+;2                             ; result
+
+;; Normal order: "fully expand and then reduce"
+;(gcd 206 40) ; expand
+;(gcd 40 (remainder 206 40)) ; expand
+;(gcd (remainder 206 40) (remainder 40 (remainder 206 40))) ; expand
+;
+;(gcd (remainder 40 (remainder 206 40)) 
+;     (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) ; expand
+;
+;; second argument to gcd finally equals 0
+;(gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+;     (remainder (remainder 40 (remainder 206 40)) 
+;                (remainder (remainder 206 40) 
+;                           (remainder 40 (remainder 206 40))))) 
+;
+;; finally, an expression made of only primitives
+;(remainder (remainder 206 40) (remainder 40 (remainder 206 40))) ; reduce
+;
+;(remainder 6 (remainder 40 6)) ; reduce
+;(remainder 6 4) ; reduce
+;2 ; result
+
+;; In the normal-order version, we have to call /remainder/ 28 times!
+;; In the applicative-order version, we have to call /remainder/ only 4 times.
+
+;;;; 1.21
+;; Use the /smallest-divisor/ procedure to find the smallest divisor of each of
+;; the following numbers: 199, 1999, 19999.
+
+;> (smallest-divisor 199)
+;199
+;> (smallest-divisor 1999)
+;1999
+;> (smallest-divisor 19999)
+;7
+
+(define (smallest-divisor n)
+  (find-divisor n 2))
+
+(define (find-divisor n test-divisor)
+  (cond ((> (square test-divisor) n) n)
+        ((divides? test-divisor n) test-divisor)
+        (else (find-divisor n (+ test-divisor 1)))))
+
+(define (divides? a b)
+  (= (remainder b a) 0))
+
+(define (prime? n)
+  (= n (smallest-divisor n)))
