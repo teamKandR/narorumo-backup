@@ -766,8 +766,9 @@
 ;(gcd 40 (remainder 206 40)) ; expand
 ;(gcd (remainder 206 40) (remainder 40 (remainder 206 40))) ; expand
 ;
+;; expand
 ;(gcd (remainder 40 (remainder 206 40)) 
-;     (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) ; expand
+;     (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))) 
 ;
 ;; second argument to gcd finally equals 0
 ;(gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
@@ -786,8 +787,8 @@
 ;; In the applicative-order version, we have to call /remainder/ only 4 times.
 
 ;;;; 1.21
-;; Use the /smallest-divisor/ procedure to find the smallest divisor of each of
-;; the following numbers: 199, 1999, 19999.
+;; Use the /smallest-divisor/ procedure to find the smallest divisor of each
+;; of the following numbers: 199, 1999, 19999.
 
 ;> (smallest-divisor 199)
 ;199
