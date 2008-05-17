@@ -33,11 +33,11 @@
 
 (define alex-miles-2008-05
   '(3.6 ;;; 1 Thursday http://www.gmap-pedometer.com/?r=1432587
-    4.4 ;;; 2 Friday http://www.gmap-pedometer.com/?r=1450332
+    4.3 ;;; 2 Friday http://www.gmap-pedometer.com/?r=1436748
     6.1 ;;; 3 Saturday http://www.gmap-pedometer.com/?r=1872789 
     3.6 ;;; 4 Sunday http://www.gmap-pedometer.com/?r=1872765
     5.2 ;;; 5 Monday http://www.gmap-pedometer.com/?r=1872774
-    4.4 ;;; 6 Tuesday http://www.gmap-pedometer.com/?r=1450332
+    4.3 ;;; 6 Tuesday http://www.gmap-pedometer.com/?r=1436748
     3.6 ;;; 7 Wednesday http://www.gmap-pedometer.com/?r=1872765 barefoot shoes
     7.1 ;;; 8 Thursday http://www.gmap-pedometer.com/?r=1476515, plus 1 mile on
         ;;;   treadmill (fast) to test DEFYANCE shoes.
@@ -47,6 +47,8 @@
     4.3 ;;; 12 Monday http://www.gmap-pedometer.com/?r=1891491
     5.5 ;;; 13 Tuesday http://www.gmap-pedometer.com/?r=1895305 barefoot shoes
     6.1 ;;; 14 Wednesday http://www.gmap-pedometer.com/?r=1899204
+    4.3 ;;; 15 Thursday http://www.gmap-pedometer.com/?r=1436748
+    3.6 ;;; 15 Friday http://www.gmap-pedometer.com/?r=1432587
     ))                 
 
 ;; Sadly, inexact->exact didn't quite do what I wanted!
