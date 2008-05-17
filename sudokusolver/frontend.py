@@ -1,6 +1,6 @@
 import wsgiref.handlers
 import os
-import sudoku
+# import sudoku
 import Board
 
 from google.appengine.ext.webapp import template
