@@ -37,7 +37,7 @@ class DLX(object):
     """
     search(k):
       if R[h] = h, print the current solution (see below) and return.
-      "If we're all out of rows, win!"
+      "If we're all out of columns, win!"
 
       Otherwise, choose a column object c (see below)
       Cover column c.
@@ -103,8 +103,8 @@ class DLX(object):
 
   def choosecolumn():
     ### choosing a column object
-    """To choose a column object,... (to minimize the branching factor), we set s
-    to infinity and...
+    """To choose a column object,... (to minimize the branching factor), we set
+    s to infinity and...
 
     for each j <- R[h], R[R[h]]... while j != h
       if S[j] < s, set c <- j and s <- S[j].
@@ -112,38 +112,68 @@ class DLX(object):
     Which is to say, just iteratively pick the column with the fewest 1s in it.
     """
 
-## Each 1 in the matrix has five fields, L, R, U, D, and C.
+nodes = {}
+def build_node(row,col):
+  nodes[(row,col)] = Node()
+
+def get_node(row, col):
+  if nodes.has_key((row,col)):
+    return nodes[(row,col)]
+  else:
+    return None
+
+## Each 1 in the matrix has five fields, left/right/up/down, column
 class Node(object):
-  def __init__(self, rowindex, colindex):
+  def __init__(column):
     self.left = self
     self.right = self
     self.up = self
     self.down = self
-    self.column = self
-
-    self.rowindex = rowindex
-    self.colindex = colindex
+    self.column = column
 
 class Column(object):
-  def __init__(self, name, col):
+  def __init__(self, index, col)
     print "Column constructor!"
-    self.name = name
+    self.name = index
     self.size = 0
 
-    self.left = self
-    self.right = self
-    self.up = self
-    self.down = self
-    self.column = self
+    self.column_head = None
 
-    self.include_col(col)
+    self.include_col(col, index)
+    self.link_column(col)
 
-  def include_col(self, col):
-    for position in col:
-      if position:
-        node = Node(0,0)
+    self.print_col()
+
+  def print_col():
+    pass
+
+  def include_col(self, col, col_index):
+    row_index = 0
+    for here in col:
+      if here:
+        build_node(row_index, col_index)
         
-        ## link it in.
+  def link_column(self, col):
+    prev = None
+    top = None
+    row_index = 0
+
+    for place in col:
+      if place:
+        node = get_node(row_index, self.col_index)
+
+        if not top:
+          top = get_node(row_index, self.col_index)
+
+        if prev:
+          node.up = prev
+          prev.down = node
+
+      prev = node
+      row_index += 1
+
+    node.down = top
+    top.up = node
 
   def add(self, otherCol):
     """Link in this column, to the right."""
@@ -153,10 +183,18 @@ def buildDLX(rows):
   """"Take a list of rows, where each row is a list of 0s and 1s, build a DLX
   object out of it."""
 
+  ## what to do.
+
+  ## build a Column object for each column, using asCols to get columns as
+  ## lists. This will hook up the up, down, and header links for each one-Node.
+
+  ## hook up the left and right for each column, at the top. Then go down each
+  ## column and find the apropos lefts and rights, hook those up too.
+
   out = DLX()
   cols = asCols(rows)
 
-  columns = [Column(i, col) for col,i in zip(cols, range(len(rows[0]))) ]
+  columns = [Column(i, col) for col,i in zip(range(len(rows[0])), cols) ]
 
   return out
 
