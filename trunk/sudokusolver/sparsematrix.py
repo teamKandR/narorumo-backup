@@ -3,18 +3,95 @@
 ## Each 1 in the matrix has five fields, left/right/up/down, column
 
 node_table = {}
+SOLUTION = []
 
 class DLX(object):
   def __init__(self, columns):
     self.columns = columns
     self.first_column = columns[0]
 
+    self.current_column = self.first_column
+
     self.link_columns()
-    pass
+    self.link_nodes()
+
+  def search(self, position):
+    current_column = self.current_column
+    if current_column.right == current_column:
+      print SOLUTION
+      return SOLUTION
+
+    current_column = self.choose_column()
+
+  def choosecolumn(self):
+    ### choosing a column object
+    ### XXX: make this work.
+    lowestsize = sys.maxint
+    here = self.first_column
+
+    while True:
+      if here.size
+      here = here.right
+      if here == first:
+        break
+
+  def printout(self):
+    print "dlx printout!!"
+    first = self.first_column
+    here = first
+
+    while True:
+      print "loop:", here
+      here = here.right
+      if here == first:
+        break
+    print "end dlx printout!!"
 
   def link_columns(self):
+    prev = None
+    first = None
+
     for column in self.columns:
-      top = column.top
+      if not first:
+        first = column
+      elif prev:
+        column.left = prev
+        prev.right = column
+      prev = column
+
+    column.right = first
+    if first:
+      first.left = column
+
+  def link_nodes(self):
+    # Find all of the rowindexes that we use, grab each node that lives at that
+    # rowindex, and link them together in a loop.
+    keys = node_table.keys()
+    rowindices = [rowindex for (rowindex,colindex) in keys]
+    rowindices = list(set(rowindices))
+
+    rowindices.sort()
+
+    for rowindex in rowindices:
+      rowkeys = [(r,c) for (r,c) in keys if r == rowindex]
+      rowkeys.sort(key=lambda(pair): pair[1])
+
+      leftmost = None
+      prev = None
+      for key in rowkeys:
+        node = node_table[key]
+
+        if not leftmost:
+          leftmost = node
+        if prev:
+          node.left = prev
+          prev.right = node
+
+        prev = node
+
+      node.right = leftmost
+      if leftmost:
+        leftmost.left = node
 
 
 class Node(object):
@@ -34,10 +111,21 @@ class Node(object):
     return ("(%d,%d)" % (self.rowindex, self.colindex))
 
 class Column(object):
-  def __init__(self, ones):
+  def __init__(self, ones, name):
+    self.size = len(ones)
     self.top = None
+    self.left = None
+    self.right = None
+    self.name = name
+
     self.ones = ones
     self.link_ones()
+
+  def __repr__(self):
+    return str(self)
+
+  def __str__(self):
+    return ("<column %d>" % self.name)
 
   def link_ones(self):
     prev = None
@@ -52,7 +140,6 @@ class Column(object):
       elif prev:
         node.up = prev
         prev.down = node
-
       prev = node
 
     node.down = top
@@ -71,9 +158,6 @@ class Column(object):
       if here == topnode:
         break
 
-  def __repr__(self):
-    return str(self.ones)
-
 def list_columns(indices):
   """Take in a list of (row,col) pairs and produce a list of columns."""
   out = []
@@ -82,9 +166,13 @@ def list_columns(indices):
   uniq_cols = list(set(cols))
   uniq_cols.sort()
 
+  name = 0
   for colindex in uniq_cols:
     indices_in_column = [(row,col) for (row,col) in indices if col == colindex]
-    out.append(Column(indices_in_column))
+
+    next_column = Column(indices_in_column, name)
+    out.append(next_column)
+    name += 1
   
   return out
 
@@ -124,10 +212,7 @@ def main():
   columns = list_columns(sparse)
   dlx = DLX(columns)
   
-  print columns
-
-  first = columns[0]
-  first.printout()
+  dlx.printout()
 
 if __name__ == "__main__":
   main()

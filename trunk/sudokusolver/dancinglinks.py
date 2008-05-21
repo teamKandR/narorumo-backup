@@ -33,7 +33,7 @@ class DLX(object):
 
     self.firstColumn = None
 
-  def search():
+  def search(self):
     """
     search(k):
       if R[h] = h, print the current solution (see below) and return.
@@ -72,7 +72,7 @@ class DLX(object):
     """
     pass
 
-  def cover(column):
+  def cover(self, column):
     """
     Covering a column...
 
@@ -87,7 +87,7 @@ class DLX(object):
     """
     pass
 
-  def uncover(column):
+  def uncover(self, column):
     """
     Uncovering a column...
 
@@ -101,7 +101,7 @@ class DLX(object):
     pass
 
 
-  def choosecolumn():
+  def choosecolumn(self):
     ### choosing a column object
     """To choose a column object,... (to minimize the branching factor), we set
     s to infinity and...
