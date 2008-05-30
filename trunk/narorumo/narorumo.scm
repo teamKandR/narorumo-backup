@@ -40,7 +40,9 @@
     2.6 ;;; 24 Saturday http://www.gmap-pedometer.com/?r=1426927
     3.7 ;;; 25 Sunday http://www.gmap-pedometer.com/?r=1430525
     3.7 ;;; 26 Monday                   "
-    3.6 ;;; 27 Tuesday http://www.gmap-pedometer.com/?r=1869316  
+    3.6 ;;; 27 Tuesday http://www.gmap-pedometer.com/?r=1869316
+    2.6 ;;; 28 Wednesday http://www.gmap-pedometer.com/?r=1426927
+    2.6 ;;; 29 Thursday                 "
     ))
 
 (define alex-miles-2008-05
