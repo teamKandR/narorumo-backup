@@ -43,6 +43,8 @@
     3.6 ;;; 27 Tuesday http://www.gmap-pedometer.com/?r=1869316
     2.6 ;;; 28 Wednesday http://www.gmap-pedometer.com/?r=1426927
     2.6 ;;; 29 Thursday                 "
+    5.1 ;;; 30 Friday http://www.gmap-pedometer.com/?r=1949911
+    3.1 ;;; 31 Saturday http://www.gmap-pedometer.com/?r=1949924 5K race!  Time: 27 minutes and change.
     ))
 
 (define alex-miles-2008-05
@@ -76,6 +78,8 @@
     4.2 ;;; 27 Tuesday http://www.gmap-pedometer.com/?r=1935969
     7.8 ;;; 28 Wednesday http://www.gmap-pedometer.com/?r=1939434
     4.3 ;;; 29 Thursday http://www.gmap-pedometer.com/?r=1436748
+    5.1 ;;; 30 Friday http://www.gmap-pedometer.com/?r=1949911
+    3.1 ;;; 31 Saturday http://www.gmap-pedometer.com/?r=1949924 5K race!
     ))                 
 
 ;; Sadly, inexact->exact didn't quite do what I wanted!
