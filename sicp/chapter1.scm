@@ -959,3 +959,81 @@
 
 (define (prime? n)
   (= n (smallest-divisor n)))
+
+;;;; 1.30
+
+;(define (sum term a next b)
+;  (if (> a b)
+;      0
+;      (+ (term a)
+;         (sum term (next a) next b))))
+
+;; The /sum/ procedure above generates a linear recursion.  The procedure can
+;; be rewritten so that the sum is performed iteratively.  Show how to do this
+;; by filling in the missing expressions in the following definition:
+
+;(define (sum term a next b)
+;  (define (iter a result)
+;    (if <??>
+;        <??>
+;        (iter <??> <??>)))
+;  (iter <??? <??>))
+
+;; lindseykuper:
+;; Well, /a/ is the only parameter that changes in the repeated calls to /sum/.
+;; It gets replaced with the value of /(next a)/.  But /term/, /next/, and /b/ 
+;; all stay the same.
+
+;; I'm betting that /result/ is what we want to return at the end.  We can also
+;; use it as an accumulator and have it start at 0.
+
+;; Let's call this "summation" -- less confusing.
+
+(define (summation-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (+ (term a) result))))
+  (iter a 0))
+
+;; seems to work!
+
+;;;; 1.34
+;; Suppose we define the procedure
+
+(define (f g)
+  (g 2))
+
+;; Then we have
+;;
+;: > (f square)
+;; 4
+;;
+;: > (f (lambda (z) (* z (+ z 1))))
+;; 6
+;;
+;; What happens if we (perversely) ask the interpreter to evaluate the
+;; combination /(f f)/?  Explain.
+
+;; lindseykuper:
+;; /f/ takes a function and returns the value of that function called with 2
+;; as its argument.  So,
+
+;; (f f)
+
+;; will evaluate to
+
+;; (f 2)
+
+;; which will evaluate to
+
+;; (2 2) 
+
+;; which will fail, because 2 isn't a procedure.
+
+;; (Incidentally, /f/ will only work if the function we pass to it has arity 1.
+;; So, (f fib) would return 1, but (f xor) would return an error because the
+;; /xor/ procedure expects 2 arguments.)
+
+
+
