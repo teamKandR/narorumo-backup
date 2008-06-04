@@ -29,7 +29,7 @@ _Structure and Interpretation of Computer Programs_ gives most of a procedure fo
                         (- count 1)))))
 }}}
 
-The exercise is to complete the procedure by replacing the `<??>`s in the code with the appropriate expressions.  After I [http://code.google.com/p/narorumo/source/diff?r=81&format=side&path=/trunk/sicp/chapter1.scm did that], it seemed to be working pretty snappily on the smaller numbers I tested it with, so I tried `(fib 1000000)`.  The resulting number, which took about 0.945 seconds to calculate^1^  on my 2.4 GHz !MacBook Pro, turns out to have 208,988 digits.
+The exercise is to complete the procedure by replacing the `<??>`s in the code with the appropriate expressions.  After I [http://code.google.com/p/narorumo/source/diff?r=81&format=unidiff&path=/trunk/sicp/chapter1.scm did that], it seemed to be working pretty snappily on the smaller numbers I tested it with, so I tried `(fib 1000000)`.  The resulting number, which took about 0.945 seconds to calculate^1^  on my 2.4 GHz !MacBook Pro, turns out to have 208,988 digits.
 
 To make sure I had it right, I googled [http://www.google.com/search?q=%22millionth+fibonacci+number%22 "millionth fibonacci number"].^2^  [http://www.upl.cs.wisc.edu/~bethenco/fibo/ This person's result]^3^ turned out to be the same as mine, according to `diff`.
 
