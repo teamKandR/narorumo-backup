@@ -968,7 +968,7 @@
 (define (timed-prime-test n)
   (newline)
   (display n)
-  (start-prime-test n (runtime)))
+  (start-prime-test n (runtime)))    
 
 (define (start-prime-test n start-time)
   (if (prime? n)
@@ -1036,6 +1036,42 @@
 ;; (sqrt  10,000,000) =  3162 (more or less)
 ;; (sqrt 100,000,000) = 10000
 
+
+;; alexr: Well! I think we could do with some more precise numbers, because
+;; our computers are so fast, these days. Let's run the prime test a bunch
+;; of times in a loop -- it'll be like having a larger sample size.
+(define (longer-prime-test n)
+  (define (test-kernel n i times)
+    (cond
+     ((= i times) (prime? n))
+     (else (begin
+	     (prime? n)
+	     (test-kernel n (+ i 1) times)))))
+
+  (let ((start-time (runtime)))
+    (if (test-kernel n 0 5000)
+	(report-prime (- (runtime) start-time)))))
+
+(define (longer-timed-prime-test n)
+  (newline)
+  (display n)
+  (longer-prime-test n))
+
+(define (longer-search-for-primes start finish)
+  (longer-search-for-primes-kernel start finish (runtime)))
+
+(define (longer-search-for-primes-kernel start finish start-time)
+  (if (not (eq? start finish))
+      (cond ((even? start) (longer-search-for-primes-kernel (+ start 1)
+							    finish start-time))
+	    (else (longer-timed-prime-test start)
+		  (longer-search-for-primes-kernel (+ start 1)
+						   finish
+						   start-time)))
+      (begin
+	(newline)
+	(display "total runtime: ")
+	(display (- (runtime) start-time)))))
 
 
 ;;;; 1.30
