@@ -44,15 +44,13 @@ The first thing I did was to write `sum-of-squares` the way I'd do it _without_ 
         (+ (square (car ls)) (boring-sum-of-squares (cdr ls)))))))
 }}}
 
-I timed myself, and this took five minutes.  And then I just generalized it out:
+And then I just generalized it out:
 
 {{{
 (define sum-of-squares
   (lambda (ls)
     (accumulate + 0 (map (lambda (x) (* x x)) ls))))
 }}}
-
-which took another seven minutes.
 
 This turned out to be different from [http://www.joelonsoftware.com/articles/TestYourself.html Joel's solution], which puts the squaring in a different place and doesn't use `map`.  It hadn't occurred to me that using the built-in `map` might not be allowed, but in that case I'd write my own:
 
@@ -67,4 +65,4 @@ This turned out to be different from [http://www.joelonsoftware.com/articles/Tes
       (accumulate + 0 (map (lambda (x) (* x x)) ls)))))
 }}}
 
-This took about ten minutes, most of which was spent trying to remember what the `letrec` syntax looked like.  So, 22 minutes on this problem, and my solution isn't as nice as the one that's given, but at least it works.  Honor somewhat intact!  I can't do pointertastic C like the second and third problems call for, especially not at three in the morning like it is right now.  But darn it, I can understand recursion.
+Doing the initial problem with `map` took about twelve minutes, and doing it without `map` took another ten, most of which I spent trying to remember what the `letrec` syntax looked like.  So, 22 minutes total on this problem, and my solution isn't as nice as the one that's given, but at least it works.  Honor somewhat intact!  I can't do pointertastic C like the second and third problems call for, especially not at three in the morning like it is right now.  But darn it, I can understand recursion.
