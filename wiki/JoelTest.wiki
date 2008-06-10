@@ -1,0 +1,66 @@
+#summary I can has job?
+#labels Scheme,Joel
+
+= Joel's "Could you have passed my freshman-year midterms?" test =
+
+[Lindsey Lindsey Kuper]
+
+I was having a [http://lindseykuper.livejournal.com/261785.html hard time] with _SICP_ today.  Because I have my Honor To Defend, or possibly because I'm a masochist, I decided to take part of a [http://www.joelonsoftware.com/articles/TestYourself.html programming test] linked to from [http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html one of thse classic Joel on Software articles] of a few years ago.
+
+ Using the function
+
+{{{
+(define (accumulate combiner null-value l) 
+   (if (null? l)
+       null-value
+       (combiner (car l)
+                 (accumulate combiner
+                             null-value
+                             (cdr l)))))
+}}}
+
+
+ Implement `sum-of-squares`, which calculates the sum of squares of a list, 
+ for example
+
+{{{
+ sum-of-squares '(1 2 3 4 5))
+}}}
+
+ should evaluate to 55.
+
+The first thing I did was to write `sum-of-squares` the way I'd do it _without_ `accumulate`:
+
+{{{
+(define boring-sum-of-squares
+  (lambda (ls)
+    (let ((square (lambda (x) (* x x))))
+    (if (null? ls)
+        0
+        (+ (square (car ls)) (boring-sum-of-squares (cdr ls)))))))
+}}}
+
+I timed myself, and this took five minutes.  And then I just generalized it out:
+
+{{{
+(define sum-of-squares
+  (lambda (ls)
+    (accumulate + 0 (map (lambda (x) (* x x)) ls))))
+}}}
+
+which took another seven minutes.
+
+This turned out to be different from [http://www.joelonsoftware.com/articles/TestYourself.html Joel's solution], which puts the squaring in a different place and doesn't use `map`.  It hadn't occurred to me that using the built-in `map` might not be allowed, but in that case I'd write my own:
+
+{{{
+(define sum-of-squares
+  (letrec ((map
+            (lambda (fn ls)
+              (if (null? ls)
+                  '()
+                  (cons (fn (car ls)) (map fn (cdr ls)))))))
+    (lambda (ls)
+      (accumulate + 0 (map (lambda (x) (* x x)) ls)))))
+}}}
+
+This took about ten minutes, most of which was spent trying to remember what the `letrec` syntax looked like.  So, 22 minutes on this problem.  Not awful.  I can't do pointertastic C like the second and third problems call for, but darn it, I can understand recursion.
