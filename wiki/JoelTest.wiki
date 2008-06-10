@@ -1,11 +1,11 @@
 #summary I can has job?
-#labels Scheme,Joel
+#labels Scheme,JoelSpolsky
 
 = Joel's "Could you have passed my freshman-year midterms?" test =
 
 [Lindsey Lindsey Kuper]
 
-I was having a [http://lindseykuper.livejournal.com/261785.html hard time] with _SICP_ today.  Because I have my Honor To Defend, or possibly because I'm a masochist, I decided to take part of a [http://www.joelonsoftware.com/articles/TestYourself.html programming test] linked to from [http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html one of thse classic Joel on Software articles] of a few years ago.
+I was having a [http://lindseykuper.livejournal.com/261785.html hard time] with _SICP_ today.  Because I have my Honor To Defend, or possibly because I'm a masochist, I decided to take part of a [http://www.joelonsoftware.com/articles/TestYourself.html programming test] linked to from [http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html one of those classic Joel on Software articles] of a few years ago.
 
  Using the function
 
