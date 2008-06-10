@@ -1019,6 +1019,25 @@
 ;; ...
 ;; 100000007 is prime (and it took 9 ms to find out)
 
+;; lindseykuper again:
+;; So, the hypothesis is that testing for primes around 10,000 should take 
+;; about (sqrt 10) (or roughly 3.16) times as long as testing for primes around
+;; 1,000.  But our data *don't* really bear this out.  We don't see much of a
+;; change until we get up to primes around 10,000,000.  So, I'm hypothesizing
+;; that it's actually *fourth root*?  Or however people say (sqrt (sqrt n)).
+
+;; Hey, Alex!  What do you think?
+
+;; For reference:
+;; (sqrt       1,000) =    32 (ish)
+;; (sqrt      10,000) =   100
+;; (sqrt     100,000) =   316 (roughly)
+;; (sqrt   1,000,000) =  1000
+;; (sqrt  10,000,000) =  3162 (more or less)
+;; (sqrt 100,000,000) = 10000
+
+
+
 ;;;; 1.30
 
 ;(define (sum term a next b)
