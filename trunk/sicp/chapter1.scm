@@ -961,6 +961,7 @@
   (= n (smallest-divisor n)))
 
 ;;;; 1.22
+
 ; make /runtime/ work in drscheme and mzscheme!
 (define runtime current-milliseconds) 
 
@@ -974,8 +975,12 @@
       (report-prime (- (runtime) start-time))))
 
 (define (report-prime elapsed-time)
-  (display " *** ")
-  (display elapsed-time))
+  (display " is prime (and it took ")
+  (display elapsed-time)
+  (display " ms to find out)"))
+
+;; ...write a procedure search-for-primes that checks the primality of
+;; consecutive odd integers in a specified range. 
 
 (define search-for-primes
   (lambda (start finish)
@@ -984,7 +989,8 @@
 (define search-for-primes-kernel
   (lambda (start finish start-time)
     (if (not (eq? start finish))
-        (cond ((even? start) (search-for-primes-kernel (+ start 1) finish start-time))
+        (cond ((even? start) (search-for-primes-kernel (+ start 1)
+                                                       finish start-time))
               (else (timed-prime-test start)
                     (search-for-primes-kernel (+ start 1) finish start-time)))
         (begin
@@ -992,6 +998,26 @@
           (display "total runtime: ")
           (display (- (runtime) start-time))))))
 
+;; Use your procedure to find the three smallest primes larger than 1000; larger
+;; than 10,000; larger than 100,000; larger than 1,000,000. 
+
+;; lindseykuper:
+;; Three smallest primes larger than     1,000:    1009,    1013,    1019
+;;   "      "       "      "     "      10,000:   10007,   10009,   10037
+;;   "      "       "      "     "     100,000:  100003,  100019,  100043
+;;   "      "       "      "     "   1,000,000: 1000003, 1000033, 1000037
+
+;; My /runtime/ isn't showing me very interesting data for these, though.  It
+;; doesn't start to be anything but "0 milliseconds" or "1 millisecond" until
+;; we get up into the Really Big numbers:
+
+;; > (search-for-primes 10000000 10000020) ; ten million
+;; ...
+;; 10000019 is prime (and it took 2 ms to find out)
+
+;; > (search-for-primes 10000000 10000020) ; a hundred million
+;; ...
+;; 100000007 is prime (and it took 9 ms to find out)
 
 ;;;; 1.30
 
