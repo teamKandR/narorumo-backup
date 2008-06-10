@@ -962,7 +962,7 @@
 
 ;;;; 1.22
 ; make /runtime/ work in drscheme and mzscheme!
-(define runtime current-process-milliseconds) 
+(define runtime current-milliseconds) 
 
 (define (timed-prime-test n)
   (newline)
@@ -979,14 +979,19 @@
 
 (define search-for-primes
   (lambda (start finish)
-    (if (not (eq? start finish))
-        (cond ((even? start) (search-for-primes (+ start 1) finish))
-              (else (timed-prime-test start)
-                    (search-for-primes (+ start 1) finish))))))
+    (search-for-primes-kernel start finish (runtime))))
 
-;; I'm a little confused right now -- why are we only recording the time the
-;; test takes when it actually finds a prime?  Shouldn't we be recording the
-;; time it takes for numbers that don't turn out to be primes, too?
+(define search-for-primes-kernel
+  (lambda (start finish start-time)
+    (if (not (eq? start finish))
+        (cond ((even? start) (search-for-primes-kernel (+ start 1) finish start-time))
+              (else (timed-prime-test start)
+                    (search-for-primes-kernel (+ start 1) finish start-time)))
+        (begin
+          (newline)
+          (display "total runtime: ")
+          (display (- (runtime) start-time))))))
+
 
 ;;;; 1.30
 
