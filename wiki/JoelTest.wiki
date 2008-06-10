@@ -67,4 +67,4 @@ This turned out to be different from [http://www.joelonsoftware.com/articles/Tes
       (accumulate + 0 (map (lambda (x) (* x x)) ls)))))
 }}}
 
-This took about ten minutes, most of which was spent trying to remember what the `letrec` syntax looked like.  So, 22 minutes on this problem.  Honor somewhat intact!  I can't do pointertastic C like the second and third problems call for, especially not at three in the morning like it is right now.  But darn it, I can understand recursion.
+This took about ten minutes, most of which was spent trying to remember what the `letrec` syntax looked like.  So, 22 minutes on this problem, and my solution isn't as nice as the one that's given, but at least it works.  Honor somewhat intact!  I can't do pointertastic C like the second and third problems call for, especially not at three in the morning like it is right now.  But darn it, I can understand recursion.
