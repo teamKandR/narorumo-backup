@@ -1,7 +1,8 @@
 #summary Our stuff; let us show you it.
 
-  * SICP stuff
+  * Scheme stuff
     * [ReallyBigFibonacciNumbers Really big Fibonacci numbers]
+    * [JoelTest Joel's "Could you have passed my freshman-year midterms?" test]
   * Us
     * [Alex Alex]
     * [Lindsey Lindsey]
