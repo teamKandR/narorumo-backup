@@ -1049,7 +1049,7 @@
 	     (test-kernel n (+ i 1) times)))))
 
   (let ((start-time (runtime)))
-    (if (test-kernel n 0 5000)
+    (if (test-kernel n 0 1000)
 	(report-prime (- (runtime) start-time)))))
 
 (define (longer-timed-prime-test n)
@@ -1072,6 +1072,36 @@
 	(newline)
 	(display "total runtime: ")
 	(display (- (runtime) start-time)))))
+
+;; lindseykuper:
+;; You're right.  I don't know why it would be 4th root -- that was a wild stab!
+;; Now I think that the issue is that this problem was written in 1985, and none
+;; of the tests take long enough to distinguish.  Using your test, here's how long
+;; it takes to test each of these numbers 1000 times  (I changed the number of 
+;; loops to 1000 to make the arithmetic easier):
+
+;;    1009  (19 ms),     1013 (18 ms),     1019 (19 ms)  (avg:  18.67)
+;;   10007  (59 ms),    10009 (58 ms),    10037 (59 ms)  (avg:  58.67)
+;;  100003 (373 ms),  100019 (199 ms),  100043 (197 ms)  (avg: 256.33)
+;; 1000003 (604 ms), 1000033 (597 ms), 1000037 (602 ms)  (avg: 601.00)
+
+;; > (* 18.67 (sqrt 10))
+;; 59.03972400882986
+;; Pretty close to 58.67 -- so, our data for primes around 10,000 *do* bear out
+;; our (sqrt 10) hypothesis.
+
+;; > (* 18.67 (sqrt 100))
+;; 186.7000000026119
+;; Not super-close to 256.33, but then 373 was an outlier.  This is pretty close
+;; to 199 or 197.
+
+;; > (* 18.67 (sqrt 1000))
+;; 590.3973483545885
+;; Pretty close to 601.
+
+;; So, I feel okay saying that our data support the (sqrt n) prediction Pretty
+;; Well.  Whew.  Let's move on to a problem that isn't so machine-dependent!
+
 
 
 ;;;; 1.30
