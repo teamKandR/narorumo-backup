@@ -1159,10 +1159,9 @@
 	     (test n)
 	     (test-kernel n (+ i 1) times)))))
 
-  (letrec ((start-time (runtime))
-	   (isprime (test-kernel n 0 1000))
-	   (time (- (runtime) start-time)))
-    time))
+  (let ((start-time (runtime)))
+    (begin (test-kernel n 0 1000)
+           (- (runtime) start-time))))
 
 ;; Take a list of integers and run the faster-prime? test on all of them, a
 ;; thousand times each. Return a list of runtimes.
