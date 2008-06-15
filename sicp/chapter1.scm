@@ -1124,15 +1124,63 @@
 ;; all the prime numbers, testing for primality would be easy -- just check if a
 ;; number is in that list.
 
-(define (find-divisor n test-divisor)
-  (define (next divisor)
-    (if (= 2 divisor)
-	3
-	(+ divisor 2)))
 
+;; By the time we call this function, we know it's not even, and > 2.
+(define (faster-smallest-divisor n)
+  (faster-find-divisor n 3))
+
+;; We tried a version with a /next/ function, but that was slow. /next/ involves
+;; a function call and a conditional. Why not just always add 2 instead of
+;; asking every single time?
+(define (faster-find-divisor n test-divisor)
   (cond ((> (square test-divisor) n) n)
         ((divides? test-divisor n) test-divisor)
-        (else (find-divisor n (next test-divisor)))))
+        (else (faster-find-divisor n (+ test-divisor 2)))))
+
+;; Primality test with our new, faster functions. 2 is prime, other even numbers
+;; are not. 
+(define (faster-prime? n)
+  (cond
+   ((= n 2) #t)
+   ((even? n) #f)
+   (else
+    (= n (faster-smallest-divisor n)))))
+
+(define test-primes '(1009 1013 1019 10007 10009 10037 100003 100019 100043
+			   1000003 1000033 1000037))
+
+;; The parameter "test" takes a predicate from int->boolean, hopefully either
+;; /prime?/ or /faster-prime?/.
+(define (abstract-longer-prime-test test n)
+  (define (test-kernel n i times)
+    (cond
+     ((= i times) (test n))
+     (else (begin
+	     (test n)
+	     (test-kernel n (+ i 1) times)))))
+
+  (letrec ((start-time (runtime))
+	   (isprime (test-kernel n 0 1000))
+	   (time (- (runtime) start-time)))
+    time))
+
+;; Take a list of integers and run the faster-prime? test on all of them, a
+;; thousand times each. Return a list of runtimes.
+(define (faster-times primes)
+  (map (lambda (prime)
+	 (abstract-longer-prime-test faster-prime? prime))
+       primes))
+
+;; Take a list of integers and run the prime? test on all of them, a thousand
+;; times each. Return a list of runtimes.
+(define (slower-times primes)
+  (map (lambda (prime) (abstract-longer-prime-test prime? prime))
+       primes))
+
+;; Use this like:
+;;  (ratios (faster-times test-primes) (slower-times test-primes))
+(define (ratios lst1 lst2)
+  (map (lambda (x) (* x 1.0)) (map / lst1 lst2)))
 
 ;; lindseykuper:
 ;; Actually, how about we just redefine /find-divisor/.  So, here are the
