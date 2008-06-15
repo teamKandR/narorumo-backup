@@ -1124,19 +1124,31 @@
 ;; all the prime numbers, testing for primality would be easy -- just check if a
 ;; number is in that list.
 
-
 ;; By the time we call this function, we know it's not even, and > 2.
 (define (faster-smallest-divisor n)
   (faster-find-divisor n 3))
 
-;; We tried a version with a /next/ function, but that was slow. /next/ involves
-;; a function call and a conditional. Why not just always add 2 instead of
-;; asking every single time?
+;; lindseykuper:
+;; First we tried a version with a /next/ procedure.  Here are the results of my
+;; testing that version with our 12 primes from 1.22:
+
+;;    1009  (16 ms),     1013 (13 ms),     1019 (12 ms)  (avg:  13.67)
+;;   10007  (36 ms),    10009 (36 ms),    10037 (36 ms)  (avg:  36.00)
+;;  100003 (115 ms),  100019 (119 ms),  100043 (115 ms)  (avg: 116.33)
+;; 1000003 (371 ms), 1000033 (368 ms), 1000037 (456 ms)  (avg: 398.33)
+
+;; The average times are 73%, 61%, 45%, and 66% of the old ones respectively.  I
+;; don't think this counts as "twice as fast".
+
+;; alexr points out that every call to /next/ includes a function call and a
+;; conditional. Why not just always add 2 instead of asking every single time?
+
 (define (faster-find-divisor n test-divisor)
   (cond ((> (square test-divisor) n) n)
         ((divides? test-divisor n) test-divisor)
         (else (faster-find-divisor n (+ test-divisor 2)))))
 
+;; alexr:
 ;; Primality test with our new, faster functions. 2 is prime, other even numbers
 ;; are not. 
 (define (faster-prime? n)
@@ -1181,14 +1193,40 @@
 (define (ratios lst1 lst2)
   (map (lambda (x) (* x 1.0)) (map / lst1 lst2)))
 
-;; lindseykuper:
-;; Actually, how about we just redefine /find-divisor/.  So, here are the
-;; numbers I'm getting now:
+;; And here's what we're getting now:
+;> (ratios (faster-times test-primes) (slower-times test-primes))
+;(0.5263157894736842
+; 0.5555555555555556
+; 0.5263157894736842
+; 0.5084745762711864
+; 0.5
+; 0.5084745762711864
+; 0.49732620320855614
+; 0.5053763440860215
+; 0.49732620320855614
+; 0.5110356536502547
+; 0.5264054514480409
+; 0.4891846921797005)
 
-;;    1009  (16 ms),     1013 (13 ms),     1019 (12 ms)  (avg:  13.67)
-;;   10007  (36 ms),    10009 (36 ms),    10037 (36 ms)  (avg:  36.00)
-;;  100003 (115 ms),  100019 (119 ms),  100043 (115 ms)  (avg: 116.33)
-;; 1000003 (371 ms), 1000033 (368 ms), 1000037 (456 ms)  (avg: 398.33)
+;; And the average is:
+
+(define average-list
+  (lambda (ls)
+    (define sum
+      (lambda (ls)
+        (if (null? ls)
+            0
+            (+ (car ls) (sum (cdr ls))))))
+    (/ (sum ls) (length ls))))
+
+;> (average-list (ratios (faster-times test-primes) (slower-times test-primes)))
+;0.5070729743263689
+
+;; Pretty damn close to "twice as fast".  Woohoo!
+    
+
+
+
 
 
 
