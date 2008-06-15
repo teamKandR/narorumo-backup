@@ -1118,9 +1118,30 @@
 ;; observed ratio of the speeds of the two algorithms, and how do you explain
 ;; the fact that it is different from 2?
 
+;; alexr: Alright, let's make faster-smallest-divisor and friends. It seems
+;; like, if we were really clever, we could have some way for /next/ to just
+;; generate the list of prime numbers. But then, if we could build the list of
+;; all the prime numbers, testing for primality would be easy -- just check if a
+;; number is in that list.
+
+(define (faster-smallest-divisor n)
+  (faster-find-divisor n 2))
+
+(define (faster-find-divisor n test-divisor)
+  (define (next divisor)
+    (if (= 2 divisor)
+	3
+	(+ divisor 2)))
+
+  (cond ((> (square test-divisor) n) n)
+        ((divides? test-divisor n) test-divisor)
+        (else (find-divisor n (next test-divisor)))))
+
+(define (faster-prime? n)
+  (= n (faster-smallest-divisor n)))
+
 ;; lindseykuper:
 
-;; alexr:
 
 ;;;; 1.30
 
