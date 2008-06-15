@@ -1124,10 +1124,7 @@
 ;; all the prime numbers, testing for primality would be easy -- just check if a
 ;; number is in that list.
 
-(define (faster-smallest-divisor n)
-  (faster-find-divisor n 2))
-
-(define (faster-find-divisor n test-divisor)
+(define (find-divisor n test-divisor)
   (define (next divisor)
     (if (= 2 divisor)
 	3
@@ -1137,10 +1134,16 @@
         ((divides? test-divisor n) test-divisor)
         (else (find-divisor n (next test-divisor)))))
 
-(define (faster-prime? n)
-  (= n (faster-smallest-divisor n)))
-
 ;; lindseykuper:
+;; Actually, how about we just redefine /find-divisor/.  So, here are the
+;; numbers I'm getting now:
+
+;;    1009  (16 ms),     1013 (13 ms),     1019 (12 ms)  (avg:  13.67)
+;;   10007  (36 ms),    10009 (36 ms),    10037 (36 ms)  (avg:  36.00)
+;;  100003 (115 ms),  100019 (119 ms),  100043 (115 ms)  (avg: 116.33)
+;; 1000003 (371 ms), 1000033 (368 ms), 1000037 (456 ms)  (avg: 398.33)
+
+
 
 
 ;;;; 1.30
