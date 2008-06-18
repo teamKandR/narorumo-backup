@@ -68,4 +68,5 @@ This turned out to be different from [http://www.joelonsoftware.com/articles/Tes
 Doing the initial problem with `map` took about twelve minutes, and doing it without `map` took another ten, most of which I spent trying to remember what the `letrec` syntax looked like.  So, 22 minutes total on this problem, and my solution isn't as nice as the one that's given, but at least it works.  Honor somewhat intact!  I can't do pointertastic C like the second and third problems call for, especially not at three in the morning like it is right now.  But darn it, I can understand recursion.
 
 [Alex Alex Rudnick]
-`accumulate` is [http://en.wikipedia.org/wiki/Reduce_(higher-order_function) Reduce] -- particularly, foldr!
+
+`accumulate` is [http://en.wikipedia.org/wiki/Reduce_(higher-order_function) reduce]; particularly in this case, foldr!
