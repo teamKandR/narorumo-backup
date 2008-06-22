@@ -1283,6 +1283,12 @@
 
 ;; Right now, I'm not really sure why...
 
+;; lindseykuper: actually, here, in case we ever need it.  The built-in /log/ is
+;;natural log, and log_2(x) = log_2(e) ln(x).
+(define log_2
+  (lambda (x)
+    (* 1.443 (log x))))
+
 
 ;;;; 1.30
 
