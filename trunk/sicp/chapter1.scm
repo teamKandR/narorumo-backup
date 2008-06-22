@@ -1223,12 +1223,65 @@
 ;0.5070729743263689
 
 ;; Pretty damn close to "twice as fast".  Woohoo!
-    
 
+;;;; 1.24
+;; Modify the timed-prime-test procedure of exercise 1.22 to use fast-prime? (the
+;; Fermat method), and test each of the 12 primes you found in that exercise.
 
+;; lindseykuper:  Well, I wanted to just take /fast-prime?/ and pass it along to 
+;; Alex's /abstract-longer-prime-test/ with our list of /test-primes/.  But 
+;; /fast-prime?/ takes two arguments.  So first I want to rewrite /fast-prime?/ as
+;; a unary function so we can use all this accursed scaffolding we had to go and 
+;; build.  :)
 
+(define (unary-fast-prime? n)
+  (fast-prime? n 1)) ;; Let's just use 1 as the number of tests,
+                     ;; since the point of this exercise isn't really to test the
+                     ;; numbers for primality anyway (we know they're prime!).
+  
+(define (times-using-fermat-method primes)
+  (map (lambda (prime)
+	 (abstract-longer-prime-test unary-fast-prime? prime))
+       primes))
 
+;; fast-prime? and friends from booksource.
 
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (remainder (square (expmod base (/ exp 2) m))
+                    m))
+        (else
+         (remainder (* base (expmod base (- exp 1) m))
+                    m))))        
+
+(define (fermat-test n)
+  (define (try-it a)
+    (= (expmod a n n) a))
+  (try-it (+ 1 (random (- n 1)))))
+
+(define (fast-prime? n times)
+  (cond ((= times 0) true)
+        ((fermat-test n) (fast-prime? n (- times 1)))
+        (else false)))
+
+;; Here's what we get:
+;> (times-using-fermat-method test-primes)
+;(11 12 12 14 14 15 26 27 27 35 34 36)
+
+;; Since the Fermat test has (log n) growth, how would you expect the time to
+;; test primes near 1,000,000 to compare with the time needed to test primes near
+;; 1000? Do your data bear this out? Can you explain any discrepancy you find?
+
+;; Well, log_2(1,000) =~ 9.966, and log_2(1,000,000) =~ 19.932.  So, I guess it 
+;; should take twice as long to test primes near 1,000,000 as it does to test
+;; primes near 1000.  It's actually taking around three times as long:
+
+;> (ratios (times-using-fermat-method '(1000003 1000033 1000037)) 
+;          (times-using-fermat-method '(1009 1013 1019)))
+;(3.272727272727273 2.8333333333333335 3.272727272727273)
+
+;; Right now, I'm not really sure why...
 
 
 ;;;; 1.30
