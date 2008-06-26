@@ -4,53 +4,55 @@
 
 == Progress ==
 
-1  
-2  √
-3  √
-4  √
-5  √
-6  √
-7  √
-8  √
-9  √
-10  √
-11  √
-12  √
-13  √
-14  √
-15  √
-16  √
-17  √
-18  √
-19  √
-20  √
-21  √
-22  √
-23  √
-24  √ (mostly)
-25  
-26  
-27  
-28  
-29  
-30  √
-31  
-32  
-33  
-34  √
-35  
-36  
-37  
-38  
-39  
-40  
-41  
-42  
-43  
-44  
-45  
-46  
-47 
+|| number || status ||
+|| 1      || not started ||
+|| 2      || done ||
+|| 3      || done ||
+|| 4      || done ||
+|| 5      || done ||
+|| 6      || done ||
+|| 7      || done ||
+|| 8      || done ||
+|| 9      || done ||
+|| 10     || done ||
+|| 11     || done ||
+|| 12     || done ||
+|| 13     || done ||
+|| 14     || done ||
+|| 15     || done ||
+|| 16     || done ||
+|| 17     || done ||
+|| 18     || done ||
+|| 19     || done ||
+|| 20     || done ||
+|| 21     || done ||
+|| 22     || done ||
+|| 23     || done ||
+|| 24     || mostly done ||
+|| 25     || not started ||
+|| 26     || not started ||
+|| 27     || not started ||
+|| 28     || not started ||
+|| 29     || not started ||
+|| 30     || done ||
+|| 31     || not started ||
+|| 32     || not started ||
+|| 33     || not started ||
+|| 34     || done ||
+|| 35     || not started ||
+|| 36     || not started ||
+|| 37     || not started ||
+|| 38     || not started ||
+|| 39     || not started ||
+|| 40     || not started ||
+|| 41     || not started ||
+|| 42     || not started ||
+|| 43     || not started ||
+|| 44     || not started ||
+|| 45     || not started ||
+|| 46     || not started ||
+|| 47     || not started ||
+
 
 == Considerations ==
   * Applicative-order evaluation is clearly the same as "eager evaluation", and normal-order seems to be the same as lazy evaluation -- but is this the same thing as passing a thunk? What's the relationship there?
