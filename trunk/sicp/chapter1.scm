@@ -1314,14 +1314,14 @@
 ;; base^exp could be a big savings if exp is large.
 
 ;; To find out how big of a savings, let's build some test infrastructure, then
-;; try using /expmod/ and /alyssa-expmod/ with some big values of exp.  Say, 4
-;; million, 5 million and 6 million, for instance.
+;; try using /expmod/ and /alyssa-expmod/ with some big values of exp.  Say,
+;; 400,000, 500,000 and 600,000, for instance.
 
 (define 1-25-example-values
   (list 
-   '(2 4000000 6)
-   '(5 5000000 10)
-   '(8 6000000 3)
+   '(2 400000 6)
+   '(5 500000 10)
+   '(8 600000 3)
    ))
 
 ;; We'll also want a procedure to turn the above into the combinations we
@@ -1344,17 +1344,17 @@
           ((= i times)
            (begin
              (display "result: ")
-             (display combination)
+             (display (eval combination))
              (newline)
              (- (runtime) start-time) ; returned value
              )) 
-          (else (begin
-                  (eval combination)
-                  (kernel combination (+ i 1) times start-time))))))
+          (else 
+           (begin
+             (eval combination)
+             (kernel combination (+ i 1) times start-time)
+             )))))
     (let ((start-time (runtime)))
       (kernel combination 0 times start-time))))
-
-
 
 
 ;; With this, we can do things like:
@@ -1377,7 +1377,7 @@
          list-of-combinations)))
 
 ;;  Use this like:
-;(running-time-each (1-25-example-combinations 1-25-example-values expmod) 1000)
+; (running-time-each (1-25-example-combinations 1-25-example-values expmod) 10)
 
 ;; Cool.  So, here's Alyssa's procedure, with its dependencies:
 
@@ -1389,10 +1389,40 @@
         ((even? n) (square (fast-expt b (/ n 2))))
         (else (* b (fast-expt b (- n 1))))))
 
+;; I find that /expmod/ runs consistently faster that /alyssa-expmod/ on the 
+;; values in /1-25-example-values/:
 
+;> (running-time-each (1-25-example-combinations 1-25-example-values expmod) 10)
+;result: 4
+;result: 5
+;result: 1
+;(20 8 10)
+;> (running-time-each 
+;   (1-25-example-combinations 1-25-example-values alyssa-expmod) 10)
+;result: 4
+;result: 5
+;result: 1
+;(33 3448 217)
 
+;; Using /average-list/ and /ratios/, if I'm interpreting this correctly, we see
+;; we see /expmod/ running in about 12% of the time of /alyssa-expmod/ on these
+;; data:
+
+;> (average-list
+; (ratios
+;  (running-time-each 
+;   (1-25-example-combinations 1-25-example-values expmod) 10)
+;  (running-time-each 
+;   (1-25-example-combinations 1-25-example-values alyssa-expmod) 10)))
+;result: 4
+;result: 5
+;result: 1
+;result: 4
+;result: 5
+;result: 1
+;0.12168422102327629
          
-;; On the other hand, /alyssa-expmod/ can requuire fewer computation steps for
+;; On the other hand, /alyssa-expmod/ can require fewer computation steps for
 ;; some values of base, exp, and m. Suppose we want to find 2^4 mod 6.
 
 ;; Using /alyssa-expmod/:
@@ -1432,12 +1462,13 @@
 ;(remainder 4 6)
 ;4
 
-;; 15 steps, this way!
+;; 15 steps, this way!  These steps don't necessarily take equal time, though.
 
-;; So, in conclusion: it depends.  :)  /expmod/ can be more efficient for large
-;; values of exp; /alyssa-expmod/ for smaller ones.  If we dug deeper, we might
-;; be able to find out where the cutoff is.  Also, I'm assuming that exp is more
-;; significant than base and m, but I could be wrong.
+;; So, in conclusion: it depends.  :)  /expmod/ can be more efficient than 
+;; /alyssa-expmod/ for large values of ex.  If we dug deeper, we might be able
+;; to find out where the cutoff is.  We also need to take into account how base
+;; and m affect the computation, although I'm assuming that exp is more
+;; significant, regardless of which version we're running.
 
 ;;;; 1.30
 
