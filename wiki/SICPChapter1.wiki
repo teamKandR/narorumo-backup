@@ -29,7 +29,7 @@
 || 22     || done ||
 || 23     || done ||
 || 24     || mostly done ||
-|| 25     || not started ||
+|| 25     || done ||
 || 26     || not started ||
 || 27     || not started ||
 || 28     || not started ||
