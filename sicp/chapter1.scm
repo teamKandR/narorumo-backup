@@ -1325,7 +1325,7 @@
    ))
 
 ;; We'll also want a procedure to turn the above into the combinations we
-;; want, e.g., (expmod 2 4000000 6) and (alyssa-expmod 2 4000000 6).
+;; want, e.g., (expmod 2 400000 6) and (alyssa-expmod 2 400000 6).
 (define 1-25-example-combinations
   (lambda (list-of-lists proc)
     (map (lambda (ls) (cons proc ls))
@@ -1405,8 +1405,7 @@
 ;(33 3448 217)
 
 ;; Using /average-list/ and /ratios/, if I'm interpreting this correctly, we see
-;; we see /expmod/ running in about 12% of the time of /alyssa-expmod/ on these
-;; data:
+;; /expmod/ running in about 12% of the time of /alyssa-expmod/ on these data:
 
 ;> (average-list
 ; (ratios
