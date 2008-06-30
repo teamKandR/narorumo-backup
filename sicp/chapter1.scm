@@ -1328,9 +1328,7 @@
 ;; want, e.g., (expmod 2 4000000 6) and (alyssa-expmod 2 4000000 6).
 (define 1-25-example-combinations
   (lambda (list-of-lists proc)
-    (map (lambda (list) (proc (car list) ; (maybe there's a more elegant way?)
-                              (cadr list)
-                              (caddr list)))
+    (map (lambda (ls) (cons proc ls))
          list-of-lists)))
 
 ;; And a procedure that will evaluate any combination any number of times and
@@ -1355,6 +1353,7 @@
                   (kernel combination (+ i 1) times start-time))))))
     (let ((start-time (runtime)))
       (kernel combination 0 times start-time))))
+
 
 
 
