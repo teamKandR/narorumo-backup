@@ -132,8 +132,8 @@
       (sqrt-iter (improve guess x)
                  x)))
 
-(define (sqrt x)
-  (sqrt-iter 1.0 x))
+;(define (sqrt x)
+; (sqrt-iter 1.0 x))
 
 ;; alexr: Well, in the case of small numbers, once we're working at a small
 ;; enough order of magnitude, all numbers will be marked as Good Enough. For
@@ -1284,11 +1284,161 @@
 ;; Right now, I'm not really sure why...
 
 ;; lindseykuper: actually, here, in case we ever need it.  The built-in /log/ is
-;;natural log, and log_2(x) = log_2(e) ln(x).
+;; natural log, and log_2(x) = log_2(e) ln(x).
 (define log_2
   (lambda (x)
     (* 1.443 (log x))))
 
+;;;; 1.25
+;; Alyssa P. Hacker complains that we went to a lot of extra work in writing
+;; /expmod/. After all, she says, since we already know how to compute
+;; exponentials, we could have simply written
+
+;(define (expmod base exp m)
+;  (remainder (fast-expt base exp) m))
+
+;; Is she correct? Would this procedure serve as well for our fast prime tester?
+;; Explain. 
+
+;; lindseykuper: Alyssa's technique is correct and would return the same result
+;; as our /expmod/, but the computation would be shaped differently.
+
+;; The /fast-expt/ procedure (which Alyssa's technique uses) takes advantage of
+;; the fact that, for even exp, base^exp = (base^(exp/2))^2.  It calculates the
+;; two halves separately, then squares them and puts them back together to
+;; calculate the final result, base^exp, before finding its remainder mod m.
+
+;; Our /expmod/, on the other hand, never actually calculates base^exp.  It
+;; turns out that, just as base^exp = (base^(exp/2))^2,
+;; base^exp mod m = ((base^(exp/2) mod m)^2) mod m.  Not having to calculate 
+;; base^exp could be a big savings if exp is large.
+
+;; To find out how big of a savings, let's build some test infrastructure, then
+;; try using /expmod/ and /alyssa-expmod/ with some big values of exp.  Say, 4
+;; million, 5 million and 6 million, for instance.
+
+(define 1-25-example-values
+  (list 
+   '(2 4000000 6)
+   '(5 5000000 10)
+   '(8 6000000 3)
+   ))
+
+;; We'll also want a procedure to turn the above into the combinations we
+;; want, e.g., (expmod 2 4000000 6) and (alyssa-expmod 2 4000000 6).
+(define 1-25-example-combinations
+  (lambda (list-of-lists proc)
+    (map (lambda (list) (proc (car list) ; (maybe there's a more elegant way?)
+                              (cadr list)
+                              (caddr list)))
+         list-of-lists)))
+
+;; And a procedure that will evaluate any combination any number of times and
+;; tell us how long it took:
+
+;; combination-running-time: evaluate a combination a certain number of times,
+;; display result of the last evaluation, and return total running time.
+(define combination-running-time
+  (lambda (combination times)
+    (define kernel
+      (lambda (combination i times start-time)
+        (cond
+          ((= i times)
+           (begin
+             (display "result: ")
+             (display combination)
+             (newline)
+             (- (runtime) start-time) ; returned value
+             )) 
+          (else (begin
+                  (eval combination)
+                  (kernel combination (+ i 1) times start-time))))))
+    (let ((start-time (runtime)))
+      (kernel combination 0 times start-time))))
+
+
+
+;; With this, we can do things like:
+
+;> (combination-running-time (square 3) 1)
+;result: 9
+;0
+;> (combination-running-time (square 3) 1000)
+;result: 9
+;86
+;> (combination-running-time (square 300) 1000)
+;result: 90000
+;88
+
+;; And we can apply it to a list:
+(define running-time-each
+  (lambda (list-of-combinations times)
+    (map (lambda (combination) 
+           (combination-running-time combination times)) 
+         list-of-combinations)))
+
+;;  Use this like:
+;(running-time-each (1-25-example-combinations 1-25-example-values expmod) 1000)
+
+;; Cool.  So, here's Alyssa's procedure, with its dependencies:
+
+(define (alyssa-expmod base exp m)
+  (remainder (fast-expt base exp) m))
+
+(define (fast-expt b n)
+  (cond ((= n 0) 1)
+        ((even? n) (square (fast-expt b (/ n 2))))
+        (else (* b (fast-expt b (- n 1))))))
+
+
+
+         
+;; On the other hand, /alyssa-expmod/ can requuire fewer computation steps for
+;; some values of base, exp, and m. Suppose we want to find 2^4 mod 6.
+
+;; Using /alyssa-expmod/:
+;(alyssa-expmod 2 4 6)
+;(remainder (fast-expt 2 4) 6)
+;(remainder (square (fast-expt 2 (/ 4 2))) 6)
+;(remainder (square (fast-expt 2 2)) 6)
+;(remainder (square (square (fast-expt 2 (/ 2 2)))) 6)
+;(remainder (square (square (fast-expt 2 1))) 6)
+;(remainder (square (square (* 2 (fast-expt 2 (- 1 1))))) 6)
+;(remainder (square (square (* 2 (fast-expt 2 0)))) 6)
+;(remainder (square (square (* 2 1))) 6)
+;(remainder (square (square 2)) 6)
+;(remainder (square 4) 6)
+;(remainder 16 6)
+;4
+
+;; 13 steps to get an answer.
+
+;; Using /expmod/:
+;; Using our own:
+;(expmod 2 4 6)
+;(remainder (square (expmod 2 (/ 4 2) 6)) 6)
+;(remainder (square (expmod 2 2 6)) 6)
+;(remainder (square (remainder (square (expmod 2 (/ 2 2) 6)) 6)) 6)
+;(remainder (square (remainder (square (expmod 2 1 6)) 6)) 6)
+;(remainder (square (remainder (square (remainder 
+;                                       (* 2 (expmod 2 (- 1 1) 6)) 6)) 6)) 6)
+;(remainder (square (remainder (square (remainder 
+;                                       (* 2 (expmod 2 0 6)) 6)) 6)) 6)
+;(remainder (square (remainder (square (remainder (* 2 1) 6)) 6)) 6)
+;(remainder (square (remainder (square (remainder 2 6)) 6)) 6)
+;(remainder (square (remainder (square (remainder 2 6)) 6)) 6)
+;(remainder (square (remainder (square 2) 6)) 6)
+;(remainder (square (remainder 4 6)) 6)
+;(remainder (square 2) 6)
+;(remainder 4 6)
+;4
+
+;; 15 steps, this way!
+
+;; So, in conclusion: it depends.  :)  /expmod/ can be more efficient for large
+;; values of exp; /alyssa-expmod/ for smaller ones.  If we dug deeper, we might
+;; be able to find out where the cutoff is.  Also, I'm assuming that exp is more
+;; significant than base and m, but I could be wrong.
 
 ;;;; 1.30
 
