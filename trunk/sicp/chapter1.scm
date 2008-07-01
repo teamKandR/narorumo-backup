@@ -1469,6 +1469,152 @@
 ;; and m affect the computation, although I'm assuming that exp is more
 ;; significant, regardless of which version we're running.
 
+;;;; 1.26
+;; Louis Reasoner is having great difficulty doing exercise 1.24.  His
+;; /fast-prime?/ test seems to run more slowly than his /prime?/ test.  Louis 
+;; calls his friend Eva Lu Ator over to help.  When they examine Louis's code,
+;; they find that he has written the /expmod/ procedure to use an explicit 
+;; multiplication, rather than calling /square/:
+
+;(define (expmod base exp m)
+;  (cond ((= exp 0) 1)
+;        ((even? exp)
+;         (remainder (* (expmod base (/ exp 2) m)
+;                       (expmod base (/ exp 2) m))
+;                    m))
+;        (else
+;         (remainder (* base (expmod base (- exp 1) m))
+;                    m))))
+
+;; "I don't see what difference that could make," says Louis.  "I do," says Eva.
+;; "By writing the procedure like that, you have transformed the 0(log n) process
+;; into a 0(n) process."  Explain.
+
+;; lindseykuper: The expression
+
+; (* (expmod base (/ exp 2) m) (expmod base (/ exp 2) m))
+
+;; will take longer to evaluate than the expression 
+
+; (square (expmod base (/ exp 2) m))
+
+;; because of applicative-order evaluation.  The /*/ and /square/ procedures
+;; evaluate their arguments before applying, so in the first case,
+;; (expmod base (/ exp 2) m) gets calculated twice.  This is especically
+;; inefficient because it's a recursive call to /expmod/, so our procedure
+;; generates two identical recursive processes!
+
+;; So, we know Louis' procedure is slower.  But why is it specifically O(n) now,
+;; instead of O(log n)?  Well, we're still dividing exp by 2 in every step, so
+;; it still takes (log n) steps to get to the bottom of the recursion tree.  But
+;; with Louis' version, the number of times we have to perform the same 
+;; computation increases by powers of 2 with each step down the tree!  So, the
+;; (log n) and the (n^2) "cancel out", in a sense, leaving us with O(n) for the
+;; whole thing.  Ouch.
+
+;;;; 1.27
+;; Demonstrate that the Carmichael numbers listed in footnote 47 really do fool
+;; the Fermat test.  That is, write a procedure that takes an integer /n/ and
+;; tests whether /a^n/ is congruent to /a/ modulo /n/ for every /a/ < /n/, and
+;; try your procedure on the given Carmichael numbers.
+
+;; lindseykuper:
+
+(define carmichael-numbers '(561 1105 1729 2465 2821 6601))
+
+(define congruent?
+  (lambda (x y n)
+    (if (= (remainder x n) (remainder y n))
+        #t
+        #f)))
+
+(define fools-fermat?
+  (lambda (n)
+    (fools-fermat-kernel n 1)))
+
+(define fools-fermat-kernel
+  (lambda (n a)
+    (cond ((= n a) #t)
+          ((not (congruent? (fast-expt a n) (remainder a n) n)) #f)
+          (else (fools-fermat-kernel n (+ a 1))))))
+
+(define test-carmichael-numbers
+  (lambda ()
+    (map fools-fermat? carmichael-numbers)))
+
+; > (test-carmichael-numbers)
+;(#t #t #t #t #t #t)
+
+;; And also, just for the heck of it, here's a procedure for finding Carmichael
+;; numbers (although it's terribly slow and I wouldn't want to use it to find
+;; any larger than the ones we already know).
+
+(define find-carmichael-numbers-below
+  (lambda (test-up-to)
+    (letrec ((kernel
+              (lambda (i)
+                (cond ((= i test-up-to) (display "Done!"))
+                      ((and (not (prime? i)) (fools-fermat? i)) 
+                       (begin
+                         (display i)
+                         (newline)
+                         (kernel (+ i 1))))
+                      (else (kernel (+ i 1)))))))
+      (kernel 1))))
+
+
+;;;; 1.29
+;; ...Using Simpson's Rule, the integral of a function /f/ between /a/ and /b/
+;; is approximated as
+
+; h
+; - [ y_0 + 4y_1 + 2y_2 + 4y_3 + 2y_4 + ... + 2y_(n-2) + 4y_(n-1) + y_n ] 
+; 3
+
+;; where h = (b - a)/n, for some even integer /n/, and y_k = f(a + kh).
+
+;; ...Define a procedure that takes as arguments /f/, /a/, /b/ and /n/ and 
+;; returns the value of the integral, computed using Simpson's Rule.  Use your
+;; procedure to integrate /cube/ between 0 and 1 (with /n/ = 100 and /n/ =
+;; 1000), and compare the results to those of the /integral/ procedure shown
+;; above.
+
+;; lindseykuper:
+
+(define simpsons-rule
+  (lambda (f a b n)
+    (letrec ((h (/ (- b a) n))
+             (y (lambda (k)
+                  (f (+ a (* k h)))))
+             
+             ;; n is even, so, n-1 is odd.
+             ;; coefficient is always 4 for odd k, and always 2 for even k.
+             (next-coefficient (lambda (k)
+                                 (if (even? k) 
+                                     2
+                                     4)))
+             (finalize (lambda (f a n summation)
+                         (* (/ h 3) 
+                            (+ summation
+                               ;; the special terms are y_0 and y_n,
+                               ;; which don't have a coefficient at all.
+                               (f a)                 ; y_0
+                               (f (+ a (* n h))))))) ; y_n
+             
+             (kernel (lambda (f a b n k accumulator)
+                       (if (= k n)
+                           (finalize f a n accumulator)
+                           (kernel f a b n (+ k 1) 
+                                      (+ accumulator 
+                                         (* (next-coefficient k) 
+                                            (y k))))))))
+      (kernel f a b n 0 0))))
+
+(define (cube x) (* x x x))
+
+;; (simpsons-rule cube 0 1 100) and (simpsons-rule cube 0 1 1000) both return
+;; 1/4, which is the exact value of the integral.  Hell yeah!
+
 ;;;; 1.30
 
 ;(define (sum term a next b)
