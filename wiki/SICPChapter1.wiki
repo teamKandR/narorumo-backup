@@ -30,10 +30,10 @@
 || 23     || done ||
 || 24     || mostly done ||
 || 25     || done ||
-|| 26     || not started ||
-|| 27     || not started ||
+|| 26     || done ||
+|| 27     || done ||
 || 28     || not started ||
-|| 29     || not started ||
+|| 29     || done ||
 || 30     || done ||
 || 31     || not started ||
 || 32     || not started ||
