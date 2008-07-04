@@ -1,0 +1,4805 @@
+aam perturbs to:
+	arba
+	baar
+	bara
+acampsia perturbs to:
+	parabasic
+acetaminol perturbs to:
+	baronetical
+achroma perturbs to:
+	borracha
+achromatinic perturbs to:
+	bronchiarctia
+aciculum perturbs to:
+	cubicular
+acinetiform perturbs to:
+	birefraction
+acme perturbs to:
+	acerb
+	brace
+	caber
+acoma perturbs to:
+	caroba
+acomous perturbs to:
+	boracous
+acontium perturbs to:
+	incubator
+acosmic perturbs to:
+	ascorbic
+acromial perturbs to:
+	arborical
+actinomere perturbs to:
+	cerebration
+actinosome perturbs to:
+	obsecration
+actualism perturbs to:
+	arcubalist
+	ultrabasic
+acumen perturbs to:
+	bucrane
+	unbrace
+adamant perturbs to:
+	abradant
+adarme perturbs to:
+	abrader
+adeem perturbs to:
+	beader
+	bedare
+adharma perturbs to:
+	badarrah
+adlumine perturbs to:
+	indurable
+	unbrailed
+	unridable
+adman perturbs to:
+	bandar
+	raband
+admi perturbs to:
+	barid
+	bidar
+	braid
+	rabid
+admire perturbs to:
+	braider
+	rebraid
+admittee perturbs to:
+	batteried
+adream perturbs to:
+	abrader
+adreamt perturbs to:
+	taberdar
+afoam perturbs to:
+	bafaro
+agami perturbs to:
+	gariba
+agamont perturbs to:
+	tarbogan
+agendum perturbs to:
+	ungarbed
+agleam perturbs to:
+	algebra
+agnamed perturbs to:
+	bandager
+ahmadi perturbs to:
+	daribah
+ahum perturbs to:
+	bahur
+ailment perturbs to:
+	albertin
+aim perturbs to:
+	abir
+	bari
+aimara perturbs to:
+	arariba
+aimful perturbs to:
+	fibular
+alamo perturbs to:
+	aboral
+	arbalo
+alamonti perturbs to:
+	antilabor
+album perturbs to:
+	bulbar
+albumen perturbs to:
+	burnable
+albumose perturbs to:
+	subboreal
+alchemy perturbs to:
+	bachelry
+aldamine perturbs to:
+	albardine
+	drainable
+aldim perturbs to:
+	bildar
+	bridal
+	ribald
+aldime perturbs to:
+	bedrail
+	bridale
+	ridable
+alem perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+alembic perturbs to:
+	barbicel
+alemite perturbs to:
+	iterable
+	liberate
+aliment perturbs to:
+	albertin
+alimony perturbs to:
+	bonairly
+allotheism perturbs to:
+	tolerablish
+alma perturbs to:
+	labra
+almadie perturbs to:
+	radiable
+almandite perturbs to:
+	antebridal
+alme perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+almoign perturbs to:
+	laboring
+almond perturbs to:
+	bandrol
+almous perturbs to:
+	suboral
+almuce perturbs to:
+	culebra
+	curable
+almude perturbs to:
+	durable
+almuten perturbs to:
+	turnable
+aloma perturbs to:
+	aboral
+	arbalo
+altometer perturbs to:
+	retortable
+alum perturbs to:
+	lubra
+alumina perturbs to:
+	binaural
+alumine perturbs to:
+	ruinable
+alumnae perturbs to:
+	abneural
+alumnus perturbs to:
+	sublunar
+am perturbs to:
+	bar
+	bra
+	rab
+ama perturbs to:
+	arba
+	baar
+	bara
+amah perturbs to:
+	bahar
+	bhara
+amain perturbs to:
+	arabin
+Amakosa perturbs to:
+	Absaroka
+amala perturbs to:
+	labara
+amandin perturbs to:
+	rainband
+amani perturbs to:
+	arabin
+amanitin perturbs to:
+	antiabrin
+amar perturbs to:
+	barra
+amatol perturbs to:
+	ablator
+amaze perturbs to:
+	zareba
+ambagious perturbs to:
+	brabagious
+ambary perturbs to:
+	barbary
+amber perturbs to:
+	barber
+amberfish perturbs to:
+	barberfish
+ambit perturbs to:
+	rabbit
+ambital perturbs to:
+	barbital
+amble perturbs to:
+	barbel
+	labber
+	rabble
+ambler perturbs to:
+	rabbler
+ambonite perturbs to:
+	barbitone
+	barbotine
+ambos perturbs to:
+	absorb
+ambrite perturbs to:
+	rabbiter
+ambrose perturbs to:
+	absorber
+	reabsorb
+ambulate perturbs to:
+	barbulate
+ame perturbs to:
+	bare
+	bear
+	brae
+ameed perturbs to:
+	beader
+	bedare
+ameen perturbs to:
+	beearn
+amelia perturbs to:
+	airable
+Amen perturbs to:
+	Abner
+	Arneb
+amen perturbs to:
+	reban
+amend perturbs to:
+	bander
+amende perturbs to:
+	breaden
+amene perturbs to:
+	beearn
+amenity perturbs to:
+	barytine
+ament perturbs to:
+	banter
+amentia perturbs to:
+	rabatine
+amerce perturbs to:
+	cerebra
+	rebrace
+amesite perturbs to:
+	breastie
+ametrope perturbs to:
+	perborate
+	prorebate
+	reprobate
+ami perturbs to:
+	abir
+	bari
+amic perturbs to:
+	baric
+	rabic
+amiced perturbs to:
+	carbide
+amid perturbs to:
+	barid
+	bidar
+	braid
+	rabid
+amide perturbs to:
+	abider
+	bardie
+amidol perturbs to:
+	labroid
+amidon perturbs to:
+	inboard
+amidulin perturbs to:
+	bidiurnal
+amil perturbs to:
+	blair
+	brail
+	libra
+amin perturbs to:
+	abrin
+	bairn
+	brain
+aminate perturbs to:
+	rabatine
+amination perturbs to:
+	bonitarian
+amine perturbs to:
+	berain
+amino perturbs to:
+	bonair
+amir perturbs to:
+	briar
+amissness perturbs to:
+	brassiness
+amla perturbs to:
+	labra
+amli perturbs to:
+	blair
+	brail
+	libra
+Amma perturbs to:
+	Abram
+amma perturbs to:
+	ambar
+amman perturbs to:
+	barman
+ammine perturbs to:
+	ambrein
+	mirbane
+ammo perturbs to:
+	broma
+ammonal perturbs to:
+	abnormal
+ammonite perturbs to:
+	brominate
+ammonitic perturbs to:
+	antibromic
+ammoniticone perturbs to:
+	recombination
+ammu perturbs to:
+	umbra
+ammunition perturbs to:
+	inumbration
+amniac perturbs to:
+	arbacin
+	carabin
+amniatic perturbs to:
+	antirabic
+amniote perturbs to:
+	abrotine
+	baritone
+	obtainer
+	reobtain
+amok perturbs to:
+	borak
+amole perturbs to:
+	boreal
+among perturbs to:
+	barong
+	brogan
+amor perturbs to:
+	arbor
+amoral perturbs to:
+	arboral
+amoret perturbs to:
+	arboret
+	taborer
+amorist perturbs to:
+	arborist
+	ribroast
+amorous perturbs to:
+	arborous
+amotion perturbs to:
+	abortion
+	robotian
+amotus perturbs to:
+	abortus
+amount perturbs to:
+	aburton
+ampul perturbs to:
+	burlap
+amra perturbs to:
+	barra
+amreeta perturbs to:
+	aberrate
+amt perturbs to:
+	brat
+amuck perturbs to:
+	buckra
+amuletic perturbs to:
+	lubricate
+amuse perturbs to:
+	abuser
+amusee perturbs to:
+	reabuse
+amusette perturbs to:
+	bursattee
+amy perturbs to:
+	bray
+	yarb
+amylate perturbs to:
+	betrayal
+	tearably
+amylin perturbs to:
+	bairnly
+amyloidal perturbs to:
+	aryballoid
+anadem perturbs to:
+	bardane
+anagram perturbs to:
+	barragan
+anama perturbs to:
+	araban
+Anamite perturbs to:
+	Atabrine
+anamite perturbs to:
+	rabatine
+anatomic perturbs to:
+	anabrotic
+Anemia perturbs to:
+	Arnebia
+anemic perturbs to:
+	carbine
+anemometric perturbs to:
+	carbonimeter
+angeldom perturbs to:
+	boglander
+	longbeard
+angiostomy perturbs to:
+	obsignatory
+anima perturbs to:
+	arabin
+animal perturbs to:
+	branial
+animalish perturbs to:
+	basirhinal
+animate perturbs to:
+	rabatine
+animation perturbs to:
+	bonitarian
+anime perturbs to:
+	berain
+anomalism perturbs to:
+	isabnormal
+Anomia perturbs to:
+	Abronia
+anomite perturbs to:
+	abrotine
+	baritone
+	obtainer
+	reobtain
+anomy perturbs to:
+	barony
+anosmia perturbs to:
+	abrasion
+anthomyiid perturbs to:
+	hybridation
+antimalaria perturbs to:
+	atrabilarian
+antimonium perturbs to:
+	inumbration
+antimoral perturbs to:
+	intralobar
+aortism perturbs to:
+	arborist
+	ribroast
+aplomb perturbs to:
+	probabl
+aplome perturbs to:
+	ropable
+armed perturbs to:
+	barred
+armer perturbs to:
+	barrer
+armet perturbs to:
+	barret
+	barter
+armied perturbs to:
+	braider
+	rebraid
+arming perturbs to:
+	barring
+armload perturbs to:
+	larboard
+army perturbs to:
+	barry
+aroma perturbs to:
+	arroba
+arsenism perturbs to:
+	barriness
+arthemis perturbs to:
+	herbarist
+ascoma perturbs to:
+	borasca
+asem perturbs to:
+	barse
+	besra
+	saber
+	serab
+asemia perturbs to:
+	abaiser
+ashimmer perturbs to:
+	herbarism
+	shambrier
+asmalte perturbs to:
+	arbalest
+assume perturbs to:
+	rubasse
+	surbase
+assumed perturbs to:
+	surbased
+asteam perturbs to:
+	abreast
+asterism perturbs to:
+	arbitress
+atemporal perturbs to:
+	proratable
+atimon perturbs to:
+	abortin
+	taborin
+atma perturbs to:
+	rabat
+atmidometer perturbs to:
+	tetrabromide
+atmo perturbs to:
+	abort
+	tabor
+atom perturbs to:
+	abort
+	tabor
+atomy perturbs to:
+	tarboy
+atterminal perturbs to:
+	rattlebrain
+augmentive perturbs to:
+	gubernative
+aum perturbs to:
+	baru
+aumil perturbs to:
+	burial
+autem perturbs to:
+	arbute
+autoecism perturbs to:
+	bacterious
+bam perturbs to:
+	barb
+	brab
+bantam perturbs to:
+	brabant
+batman perturbs to:
+	brabant
+beam perturbs to:
+	barbe
+	bebar
+	breba
+	rebab
+beamy perturbs to:
+	babery
+	yabber
+bearm perturbs to:
+	barber
+becalm perturbs to:
+	cabbler
+	clabber
+becram perturbs to:
+	crabber
+bedim perturbs to:
+	dibber
+	ribbed
+bedlam perturbs to:
+	dabbler
+	drabble
+beedom perturbs to:
+	berobed
+belam perturbs to:
+	barbel
+	labber
+	rabble
+beldam perturbs to:
+	dabbler
+	drabble
+beloam perturbs to:
+	belabor
+	borable
+bema perturbs to:
+	barbe
+	bebar
+	breba
+	rebab
+bemad perturbs to:
+	barbed
+	dabber
+beman perturbs to:
+	nabber
+bemar perturbs to:
+	barber
+bemat perturbs to:
+	barbet
+	rabbet
+	tabber
+bemata perturbs to:
+	barbate
+bemaul perturbs to:
+	barbule
+bemeal perturbs to:
+	beblear
+bemire perturbs to:
+	rebribe
+bemoan perturbs to:
+	barbone
+	bebaron
+bemud perturbs to:
+	dubber
+	rubbed
+bemused perturbs to:
+	subbreed
+besmut perturbs to:
+	stubber
+besom perturbs to:
+	sobber
+bireme perturbs to:
+	rebribe
+blame perturbs to:
+	barbel
+	labber
+	rabble
+blamed perturbs to:
+	dabbler
+	drabble
+blamer perturbs to:
+	rabbler
+blastema perturbs to:
+	barbastel
+bom perturbs to:
+	brob
+bramble perturbs to:
+	brabbler
+bream perturbs to:
+	barber
+bregma perturbs to:
+	grabber
+bromamide perturbs to:
+	bombardier
+brome perturbs to:
+	robber
+bromine perturbs to:
+	ribboner
+brume perturbs to:
+	rubber
+bumble perturbs to:
+	blubber
+	bubbler
+caam perturbs to:
+	braca
+cadism perturbs to:
+	scabrid
+cadmia perturbs to:
+	carabid
+caiman perturbs to:
+	arbacin
+	carabin
+calamite perturbs to:
+	bacterial
+	calibrate
+calamus perturbs to:
+	labrusca
+calcemia perturbs to:
+	bracciale
+calmy perturbs to:
+	carbyl
+calvarium perturbs to:
+	vibracular
+calymma perturbs to:
+	carbamyl
+cam perturbs to:
+	crab
+camaca perturbs to:
+	baccara
+camalote perturbs to:
+	carbolate
+camansi perturbs to:
+	sarbican
+camber perturbs to:
+	crabber
+came perturbs to:
+	acerb
+	brace
+	caber
+camel perturbs to:
+	cabler
+camerate perturbs to:
+	crabeater
+camilla perturbs to:
+	bacillar
+	cabrilla
+camisado perturbs to:
+	scaraboid
+camise perturbs to:
+	ascribe
+camisole perturbs to:
+	obeliscar
+camlet perturbs to:
+	beclart
+	crablet
+camleteen perturbs to:
+	centerable
+camuning perturbs to:
+	unbracing
+camwood perturbs to:
+	crabwood
+canamo perturbs to:
+	carbona
+carman perturbs to:
+	carbarn
+carmele perturbs to:
+	cerebral
+carom perturbs to:
+	carbro
+caseum perturbs to:
+	subrace
+caulomic perturbs to:
+	corbicula
+celemin perturbs to:
+	bernicle
+cemental perturbs to:
+	celebrant
+cementum perturbs to:
+	recumbent
+centimo perturbs to:
+	betorcin
+ceroma perturbs to:
+	bracero
+ceruminal perturbs to:
+	incurrable
+cesium perturbs to:
+	suberic
+chacma perturbs to:
+	bacchar
+cham perturbs to:
+	brach
+chandam perturbs to:
+	archband
+chelem perturbs to:
+	belcher
+chemiloon perturbs to:
+	bronchiole
+chemism perturbs to:
+	besmirch
+chemotaxy perturbs to:
+	carbethoxy
+chromatician perturbs to:
+	bronchiarctia
+chymia perturbs to:
+	biarchy
+cinema perturbs to:
+	carbine
+clame perturbs to:
+	cabler
+clammy perturbs to:
+	crambly
+cleam perturbs to:
+	cabler
+cleamer perturbs to:
+	cerebral
+coanimate perturbs to:
+	abreaction
+cobleman perturbs to:
+	calbroben
+codamine perturbs to:
+	carbonide
+coelom perturbs to:
+	becolor
+coelomatic perturbs to:
+	borocalcite
+coenamor perturbs to:
+	carbonero
+coinmate perturbs to:
+	bicornate
+	carbonite
+	reboantic
+colemanite perturbs to:
+	celebration
+colima perturbs to:
+	orbical
+coma perturbs to:
+	carbo
+	carob
+	coarb
+	cobra
+comanic perturbs to:
+	carbonic
+comble perturbs to:
+	clobber
+	cobbler
+comedian perturbs to:
+	carbonide
+comeling perturbs to:
+	corbeling
+comes perturbs to:
+	scrobe
+comical perturbs to:
+	carbolic
+comingle perturbs to:
+	corbeling
+comino perturbs to:
+	boronic
+	cobiron
+comma perturbs to:
+	crambo
+commation perturbs to:
+	combinator
+commie perturbs to:
+	microbe
+comminuate perturbs to:
+	bimucronate
+comprisable perturbs to:
+	proscribable
+comprise perturbs to:
+	proscribe
+consomme perturbs to:
+	scombrone
+coram perturbs to:
+	carbro
+costume perturbs to:
+	scorbute
+costumer perturbs to:
+	subrector
+costumic perturbs to:
+	scorbutic
+coumalic perturbs to:
+	corbicula
+coumalin perturbs to:
+	binocular
+countermand perturbs to:
+	counterbrand
+countertime perturbs to:
+	recontribute
+crambe perturbs to:
+	crabber
+cream perturbs to:
+	bracer
+	craber
+cremone perturbs to:
+	cerebron
+crystoleum perturbs to:
+	locustberry
+cueman perturbs to:
+	bucrane
+	unbrace
+cum perturbs to:
+	curb
+cumay perturbs to:
+	bacury
+cumene perturbs to:
+	crubeen
+cumin perturbs to:
+	uncrib
+cuminole perturbs to:
+	colubrine
+cummer perturbs to:
+	crumber
+cumulate perturbs to:
+	lucubrate
+	tubercula
+cumulation perturbs to:
+	lucubration
+customer perturbs to:
+	subrector
+cymba perturbs to:
+	crabby
+cyme perturbs to:
+	becry
+cymulose perturbs to:
+	obscurely
+cystitome perturbs to:
+	obstetricy
+daemon perturbs to:
+	bandore
+	broaden
+daemonic perturbs to:
+	carbonide
+daimen perturbs to:
+	inbread
+daimiate perturbs to:
+	biradiate
+daimon perturbs to:
+	inboard
+daleman perturbs to:
+	balander
+dam perturbs to:
+	bard
+	brad
+	drab
+dama perturbs to:
+	barad
+daman perturbs to:
+	bandar
+	raband
+dambose perturbs to:
+	absorbed
+dame perturbs to:
+	ardeb
+	beard
+	bread
+	debar
+damie perturbs to:
+	abider
+	bardie
+damier perturbs to:
+	braider
+	rebraid
+damine perturbs to:
+	inbread
+damlike perturbs to:
+	bardlike
+damn perturbs to:
+	brand
+damned perturbs to:
+	branded
+damner perturbs to:
+	brander
+	rebrand
+damnify perturbs to:
+	brandify
+damnous perturbs to:
+	baudrons
+dampen perturbs to:
+	penbard
+dampish perturbs to:
+	bardship
+deadmelt perturbs to:
+	bladderet
+decima perturbs to:
+	carbide
+decorament perturbs to:
+	centerboard
+decuman perturbs to:
+	unbraced
+deem perturbs to:
+	brede
+	breed
+	rebed
+deemer perturbs to:
+	breeder
+	rebreed
+deermeat perturbs to:
+	treebeard
+degum perturbs to:
+	bedrug
+	budger
+deiform perturbs to:
+	reforbid
+deism perturbs to:
+	debris
+demal perturbs to:
+	balder
+	bardel
+	bedlar
+	bedral
+	belard
+	blader
+demand perturbs to:
+	branded
+demast perturbs to:
+	dabster
+deme perturbs to:
+	brede
+	breed
+	rebed
+demean perturbs to:
+	breaden
+dement perturbs to:
+	betrend
+demerit perturbs to:
+	bedirter
+demi perturbs to:
+	bider
+	bredi
+	bride
+	rebid
+demicoronal perturbs to:
+	incorrodable
+demidog perturbs to:
+	bridegod
+demigod perturbs to:
+	bridegod
+demiowl perturbs to:
+	wildbore
+demise perturbs to:
+	sibrede
+demit perturbs to:
+	bedirt
+demivol perturbs to:
+	lovebird
+demivolt perturbs to:
+	drivebolt
+demob perturbs to:
+	dobber
+demoid perturbs to:
+	doebird
+demon perturbs to:
+	bonder
+demoniac perturbs to:
+	carbonide
+demonial perturbs to:
+	ordinable
+demonic perturbs to:
+	bicorned
+demonist perturbs to:
+	birdstone
+	stonebird
+demount perturbs to:
+	obtunder
+demy perturbs to:
+	derby
+denim perturbs to:
+	binder
+	inbred
+	rebind
+denumeral perturbs to:
+	unbarreled
+derma perturbs to:
+	barred
+dermatine perturbs to:
+	netbraider
+dermoneural perturbs to:
+	underlaborer
+desma perturbs to:
+	serdab
+despumate perturbs to:
+	bepastured
+determine perturbs to:
+	interbreed
+diadem perturbs to:
+	braided
+diatomic perturbs to:
+	diabrotic
+diem perturbs to:
+	bider
+	bredi
+	bride
+	rebid
+dim perturbs to:
+	bird
+	drib
+dimble perturbs to:
+	dibbler
+	dribble
+dime perturbs to:
+	bider
+	bredi
+	bride
+	rebid
+dimer perturbs to:
+	birder
+dimeric perturbs to:
+	ricebird
+dimeter perturbs to:
+	bedirter
+dioptometry perturbs to:
+	botryopterid
+diosmose perturbs to:
+	sorboside
+dirgeman perturbs to:
+	brigander
+discompose perturbs to:
+	proboscides
+diseme perturbs to:
+	sibrede
+dishome perturbs to:
+	shoebird
+dismain perturbs to:
+	disbrain
+disme perturbs to:
+	debris
+dogma perturbs to:
+	bogard
+dogmata perturbs to:
+	tagboard
+dolman perturbs to:
+	bandrol
+dolmen perturbs to:
+	blendor
+dom perturbs to:
+	bord
+	brod
+domain perturbs to:
+	inboard
+dome perturbs to:
+	boder
+	orbed
+domer perturbs to:
+	border
+	roberd
+dominial perturbs to:
+	biordinal
+domino perturbs to:
+	bridoon
+donum perturbs to:
+	burdon
+doom perturbs to:
+	brood
+doomer perturbs to:
+	brooder
+dopamelanin perturbs to:
+	inpardonable
+dormie perturbs to:
+	broider
+dosimetry perturbs to:
+	oysterbird
+doum perturbs to:
+	bourd
+drama perturbs to:
+	barrad
+drayman perturbs to:
+	barnyard
+dream perturbs to:
+	barred
+drome perturbs to:
+	border
+	roberd
+ducamara perturbs to:
+	barracuda
+dum perturbs to:
+	burd
+	drub
+dumbly perturbs to:
+	drubbly
+dummel perturbs to:
+	drumble
+dumose perturbs to:
+	rosebud
+duramen perturbs to:
+	errabund
+	unbarred
+econometric perturbs to:
+	cerebrotonic
+ectromelic perturbs to:
+	correctible
+ectropium perturbs to:
+	retropubic
+edema perturbs to:
+	beader
+	bedare
+edgerman perturbs to:
+	bergander
+egma perturbs to:
+	bagre
+	barge
+	begar
+	rebag
+elastomer perturbs to:
+	restorable
+electivism perturbs to:
+	vitrescible
+elemi perturbs to:
+	belier
+elemin perturbs to:
+	berline
+elmy perturbs to:
+	beryl
+em perturbs to:
+	ber
+	reb
+embalm perturbs to:
+	bramble
+embar perturbs to:
+	barber
+embay perturbs to:
+	babery
+	yabber
+emblic perturbs to:
+	cribble
+embog perturbs to:
+	gobber
+emboly perturbs to:
+	lobbyer
+embound perturbs to:
+	unrobbed
+embryo perturbs to:
+	robbery
+embubble perturbs to:
+	beblubber
+eme perturbs to:
+	beer
+	bere
+	bree
+emend perturbs to:
+	bender
+	berend
+	rebend
+emerald perturbs to:
+	barreled
+emetic perturbs to:
+	terebic
+emetine perturbs to:
+	treebine
+emir perturbs to:
+	berri
+	brier
+emit perturbs to:
+	biter
+	tribe
+emma perturbs to:
+	amber
+	bearm
+	bemar
+	bream
+	embar
+emotional perturbs to:
+	borolanite
+emotive perturbs to:
+	overbite
+emporial perturbs to:
+	perilobar
+emu perturbs to:
+	bure
+emulant perturbs to:
+	turnable
+emulgent perturbs to:
+	begruntle
+emyd perturbs to:
+	derby
+enam perturbs to:
+	reban
+enamel perturbs to:
+	enabler
+	renable
+enamelist perturbs to:
+	insertable
+enamor perturbs to:
+	enarbor
+enarm perturbs to:
+	barren
+endamage perturbs to:
+	rebandage
+endome perturbs to:
+	redbone
+enema perturbs to:
+	beearn
+enigma perturbs to:
+	bearing
+	begrain
+	brainge
+	rigbane
+enorm perturbs to:
+	reborn
+enseam perturbs to:
+	besnare
+enseem perturbs to:
+	besneer
+entame perturbs to:
+	tenebra
+entelam perturbs to:
+	rentable
+entomic perturbs to:
+	betorcin
+epilabrum perturbs to:
+	peribulbar
+erasement perturbs to:
+	sternebrae
+esteem perturbs to:
+	besteer
+	rebeset
+estimator perturbs to:
+	birostrate
+ethylamide perturbs to:
+	hereditably
+eumerism perturbs to:
+	reimburse
+falltime perturbs to:
+	filtrable
+	flirtable
+fam perturbs to:
+	frab
+fameful perturbs to:
+	ruffable
+famish perturbs to:
+	barfish
+famous perturbs to:
+	frabous
+femicide perturbs to:
+	febricide
+femora perturbs to:
+	forbear
+filemot perturbs to:
+	firebolt
+filmet perturbs to:
+	filbert
+fimble perturbs to:
+	fribble
+flame perturbs to:
+	fabler
+flamy perturbs to:
+	barfly
+fleam perturbs to:
+	fabler
+foamer perturbs to:
+	forbear
+foremade perturbs to:
+	freeboard
+formene perturbs to:
+	freeborn
+freakdom perturbs to:
+	forkbeard
+fumily perturbs to:
+	lubrify
+gam perturbs to:
+	brag
+	garb
+	grab
+Gamaliel perturbs to:
+	Gabriella
+gamble perturbs to:
+	gabbler
+	grabble
+gambler perturbs to:
+	grabbler
+gambling perturbs to:
+	grabbling
+gambrel perturbs to:
+	grabbler
+game perturbs to:
+	bagre
+	barge
+	begar
+	rebag
+gamelike perturbs to:
+	bargelike
+gametal perturbs to:
+	glabrate
+gamin perturbs to:
+	baring
+gammon perturbs to:
+	rambong
+gaumless perturbs to:
+	bluegrass
+gem perturbs to:
+	berg
+	gerb
+geminous perturbs to:
+	subregion
+gemma perturbs to:
+	bregma
+gemmae perturbs to:
+	gambeer
+gemmate perturbs to:
+	bregmate
+gemot perturbs to:
+	gorbet
+gemul perturbs to:
+	bugler
+	bulger
+	burgle
+gendarme perturbs to:
+	bergander
+gentilism perturbs to:
+	blistering
+geomantical perturbs to:
+	carbogelatin
+germal perturbs to:
+	garbler
+germanely perturbs to:
+	angleberry
+germin perturbs to:
+	bringer
+	rebring
+germina perturbs to:
+	berrigan
+geum perturbs to:
+	bugre
+	gebur
+gim perturbs to:
+	brig
+gimble perturbs to:
+	gribble
+gimel perturbs to:
+	gerbil
+gimlet perturbs to:
+	gilbert
+gleam perturbs to:
+	garbel
+	garble
+gleeman perturbs to:
+	engarble
+glime perturbs to:
+	gerbil
+glioma perturbs to:
+	garboil
+gloam perturbs to:
+	brolga
+	gorbal
+glome perturbs to:
+	gorble
+glumal perturbs to:
+	burgall
+glume perturbs to:
+	bugler
+	bulger
+	burgle
+glummy perturbs to:
+	grumbly
+golem perturbs to:
+	gorble
+grame perturbs to:
+	barger
+grandame perturbs to:
+	bargander
+grummel perturbs to:
+	grumbler
+gudame perturbs to:
+	beguard
+gudemother perturbs to:
+	gudebrother
+gum perturbs to:
+	burg
+	grub
+gumby perturbs to:
+	grubby
+gumless perturbs to:
+	grubless
+gumwood perturbs to:
+	woodgrub
+gymnical perturbs to:
+	bracingly
+hairmeal perturbs to:
+	herbarial
+halma perturbs to:
+	bharal
+hamal perturbs to:
+	bharal
+hameil perturbs to:
+	hirable
+hamel perturbs to:
+	herbal
+hami perturbs to:
+	harbi
+Hamites perturbs to:
+	Hebraist
+hamlet perturbs to:
+	blather
+	halbert
+hamsa perturbs to:
+	abrash
+haremism perturbs to:
+	herbarism
+	shambrier
+heatmaker perturbs to:
+	heartbreak
+helmet perturbs to:
+	herblet
+hem perturbs to:
+	herb
+hemal perturbs to:
+	herbal
+hemase perturbs to:
+	behears
+	beshear
+hematein perturbs to:
+	hibernate
+	inbreathe
+hematid perturbs to:
+	rhabdite
+hematoplast perturbs to:
+	blepharostat
+hemicrany perturbs to:
+	chinaberry
+hemitone perturbs to:
+	hebronite
+hermit perturbs to:
+	brither
+	rebirth
+hiemal perturbs to:
+	hirable
+homestead perturbs to:
+	broadsheet
+homo perturbs to:
+	bohor
+	rohob
+homocline perturbs to:
+	bronchiole
+homoplastic perturbs to:
+	blastophoric
+hum perturbs to:
+	buhr
+humect perturbs to:
+	butcher
+humet perturbs to:
+	turbeh
+hummel perturbs to:
+	humbler
+hypomania perturbs to:
+	baryphonia
+hypomanic perturbs to:
+	baryphonic
+hyraceum perturbs to:
+	brachyure
+iamb perturbs to:
+	rabbi
+iambi perturbs to:
+	biriba
+iceman perturbs to:
+	carbine
+idiothermy perturbs to:
+	redhibitory
+idleman perturbs to:
+	bilander
+ijma perturbs to:
+	bajri
+illuminant perturbs to:
+	unbrilliant
+ilmenite perturbs to:
+	berlinite
+	libertine
+image perturbs to:
+	begari
+imago perturbs to:
+	gibaro
+imam perturbs to:
+	abrim
+	birma
+imaret perturbs to:
+	arbiter
+	rarebit
+imban perturbs to:
+	rabbin
+imband perturbs to:
+	ribband
+imbat perturbs to:
+	rabbit
+imbe perturbs to:
+	bribe
+imbed perturbs to:
+	dibber
+	ribbed
+imber perturbs to:
+	briber
+	ribber
+imi perturbs to:
+	biri
+imide perturbs to:
+	birdie
+imitatively perturbs to:
+	veritability
+immane perturbs to:
+	ambrein
+	mirbane
+immensurate perturbs to:
+	subtermarine
+immerge perturbs to:
+	begrimer
+immorally perturbs to:
+	morbillary
+immound perturbs to:
+	moribund
+	unmorbid
+immune perturbs to:
+	umbrine
+immute perturbs to:
+	burmite
+	imbrute
+	terbium
+impatible perturbs to:
+	bipartible
+impatient perturbs to:
+	bipartient
+impede perturbs to:
+	bepride
+impermutable perturbs to:
+	imperturbable
+implate perturbs to:
+	partible
+implume perturbs to:
+	uplimber
+importunate perturbs to:
+	perturbation
+impose perturbs to:
+	bispore
+impresa perturbs to:
+	ribspare
+	sparerib
+impuberal perturbs to:
+	peribulbar
+impugn perturbs to:
+	upbring
+imu perturbs to:
+	buri
+inamorate perturbs to:
+	aberration
+inarculum perturbs to:
+	unrubrical
+income perturbs to:
+	bicorne
+inerm perturbs to:
+	briner
+ingotman perturbs to:
+	bintangor
+inmate perturbs to:
+	atebrin
+	rabinet
+inmeats perturbs to:
+	banister
+inoma perturbs to:
+	bonair
+insteam perturbs to:
+	banister
+intermutual perturbs to:
+	intertubular
+intimately perturbs to:
+	rentability
+iotacismus perturbs to:
+	scribatious
+islesman perturbs to:
+	brainless
+ismatic perturbs to:
+	tribasic
+ismy perturbs to:
+	birsy
+isoemodin perturbs to:
+	robinoside
+isomeric perturbs to:
+	bicirrose
+isotherm perturbs to:
+	herborist
+isotimal perturbs to:
+	sibilator
+itacism perturbs to:
+	tribasic
+item perturbs to:
+	biter
+	tribe
+itmo perturbs to:
+	orbit
+jama perturbs to:
+	bajra
+jami perturbs to:
+	bajri
+kame perturbs to:
+	baker
+	brake
+	break
+kermes perturbs to:
+	berserk
+kim perturbs to:
+	birk
+kimnel perturbs to:
+	blinker
+kiotome perturbs to:
+	brookite
+kismet perturbs to:
+	brisket
+kitchenmaid perturbs to:
+	thickbrained
+kokam perturbs to:
+	bokark
+krome perturbs to:
+	broker
+laceman perturbs to:
+	balancer
+	barnacle
+lackeyism perturbs to:
+	barleysick
+lacmus perturbs to:
+	buscarl
+lademan perturbs to:
+	balander
+lama perturbs to:
+	labra
+lamba perturbs to:
+	barbal
+lambaste perturbs to:
+	barbastel
+lamber perturbs to:
+	rabbler
+lame perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+lamedh perturbs to:
+	halberd
+lamel perturbs to:
+	baller
+lameness perturbs to:
+	blearness
+lameter perturbs to:
+	barrelet
+	terebral
+lamina perturbs to:
+	branial
+laminae perturbs to:
+	inarable
+laminarite perturbs to:
+	libertarian
+laminate perturbs to:
+	trainable
+laminated perturbs to:
+	antebridal
+lammer perturbs to:
+	marbler
+	rambler
+lammy perturbs to:
+	marbly
+lamnid perturbs to:
+	blarnid
+lamprey perturbs to:
+	palberry
+Lamus perturbs to:
+	Labrus
+lanameter perturbs to:
+	arrentable
+lanum perturbs to:
+	alburn
+latecomer perturbs to:
+	celebrator
+leadman perturbs to:
+	balander
+leafdom perturbs to:
+	fordable
+leam perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+leamer perturbs to:
+	errable
+lecama perturbs to:
+	calaber
+leetman perturbs to:
+	rentable
+legman perturbs to:
+	brangle
+leman perturbs to:
+	branle
+lemma perturbs to:
+	ambler
+	blamer
+	lamber
+	marble
+	ramble
+lemonade perturbs to:
+	banderole
+	bandoleer
+lemur perturbs to:
+	burler
+	burrel
+leproma perturbs to:
+	prelabor
+lepromatous perturbs to:
+	postrubeolar
+leucism perturbs to:
+	bursicle
+leucocism perturbs to:
+	scrobicule
+likesome perturbs to:
+	soberlike
+lim perturbs to:
+	birl
+Lima perturbs to:
+	Libra
+limacon perturbs to:
+	carbinol
+limaille perturbs to:
+	illiberal
+limation perturbs to:
+	libration
+limbed perturbs to:
+	dibbler
+	dribble
+lime perturbs to:
+	birle
+	liber
+limeade perturbs to:
+	rideable
+limen perturbs to:
+	berlin
+limequat perturbs to:
+	quatrible
+limer perturbs to:
+	birler
+limes perturbs to:
+	birsle
+limetta perturbs to:
+	titrable
+limitary perturbs to:
+	irritably
+limmu perturbs to:
+	umbril
+limoid perturbs to:
+	oilbird
+limoniad perturbs to:
+	biordinal
+limose perturbs to:
+	sorbile
+lipoma perturbs to:
+	bipolar
+	parboil
+liposome perturbs to:
+	peribolos
+lissomely perturbs to:
+	beryllosis
+llama perturbs to:
+	labral
+loam perturbs to:
+	bolar
+	boral
+	labor
+	lobar
+loaming perturbs to:
+	laboring
+loamless perturbs to:
+	laborless
+lodgeman perturbs to:
+	boglander
+	longbeard
+loimic perturbs to:
+	colibri
+loma perturbs to:
+	bolar
+	boral
+	labor
+	lobar
+lomita perturbs to:
+	orbital
+loom perturbs to:
+	brool
+lum perturbs to:
+	blur
+	burl
+lumber perturbs to:
+	burbler
+	rubbler
+lumberly perturbs to:
+	bullberry
+lumen perturbs to:
+	relbun
+luminate perturbs to:
+	untirable
+	untriable
+lummy perturbs to:
+	rumbly
+lyreman perturbs to:
+	barrenly
+ma perturbs to:
+	bar
+	bra
+	rab
+maam perturbs to:
+	ambar
+mabi perturbs to:
+	rabbi
+mac perturbs to:
+	crab
+macao perturbs to:
+	caroba
+macaroon perturbs to:
+	barracoon
+mace perturbs to:
+	acerb
+	brace
+	caber
+macer perturbs to:
+	bracer
+	craber
+macerate perturbs to:
+	crabeater
+machila perturbs to:
+	brachial
+machin perturbs to:
+	branchi
+machinal perturbs to:
+	branchial
+machinate perturbs to:
+	branchiate
+machinery perturbs to:
+	chinaberry
+machree perturbs to:
+	breacher
+macies perturbs to:
+	ascribe
+mack perturbs to:
+	brack
+mackle perturbs to:
+	blacker
+macle perturbs to:
+	cabler
+maco perturbs to:
+	carbo
+	carob
+	coarb
+	cobra
+maconite perturbs to:
+	bicornate
+	carbonite
+	reboantic
+macro perturbs to:
+	carbro
+macrothere perturbs to:
+	torchbearer
+macrotin perturbs to:
+	tricarbon
+maculate perturbs to:
+	trabecula
+macule perturbs to:
+	culebra
+	curable
+mad perturbs to:
+	bard
+	brad
+	drab
+madden perturbs to:
+	branded
+maddish perturbs to:
+	shadbird
+maddle perturbs to:
+	bladder
+made perturbs to:
+	ardeb
+	beard
+	bread
+	debar
+madling perturbs to:
+	bardling
+madly perturbs to:
+	drably
+madnep perturbs to:
+	penbard
+madness perturbs to:
+	drabness
+mado perturbs to:
+	abord
+	bardo
+	board
+	broad
+	dobra
+	dorab
+madship perturbs to:
+	bardship
+madstone perturbs to:
+	adsorbent
+mae perturbs to:
+	bare
+	bear
+	brae
+maenad perturbs to:
+	bardane
+maffle perturbs to:
+	baffler
+mafic perturbs to:
+	fabric
+mag perturbs to:
+	brag
+	garb
+	grab
+magani perturbs to:
+	bargain
+mage perturbs to:
+	bagre
+	barge
+	begar
+	rebag
+maggot perturbs to:
+	boggart
+magi perturbs to:
+	girba
+magot perturbs to:
+	bogart
+maha perturbs to:
+	bahar
+	bhara
+mahmudi perturbs to:
+	rhabdium
+maid perturbs to:
+	barid
+	bidar
+	braid
+	rabid
+maiden perturbs to:
+	inbread
+mail perturbs to:
+	blair
+	brail
+	libra
+mailed perturbs to:
+	bedrail
+	bridale
+	ridable
+maim perturbs to:
+	abrim
+	birma
+main perturbs to:
+	abrin
+	bairn
+	brain
+mainly perturbs to:
+	bairnly
+mains perturbs to:
+	brains
+maintain perturbs to:
+	antiabrin
+maizer perturbs to:
+	bizarre
+	brazier
+make perturbs to:
+	baker
+	brake
+	break
+makedom perturbs to:
+	bakerdom
+makefast perturbs to:
+	breakfast
+maker perturbs to:
+	barker
+	braker
+maki perturbs to:
+	karbi
+making perturbs to:
+	barking
+mako perturbs to:
+	borak
+mala perturbs to:
+	labra
+malachite perturbs to:
+	charitable
+maladive perturbs to:
+	adverbial
+malaise perturbs to:
+	raisable
+malate perturbs to:
+	latebra
+	ratable
+male perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+malease perturbs to:
+	erasable
+maleate perturbs to:
+	elabrate
+	tearable
+maleic perturbs to:
+	caliber
+	calibre
+maleness perturbs to:
+	blearness
+maleo perturbs to:
+	boreal
+mali perturbs to:
+	blair
+	brail
+	libra
+malice perturbs to:
+	caliber
+	calibre
+malign perturbs to:
+	barling
+	bringal
+malines perturbs to:
+	rinsable
+malleate perturbs to:
+	alterable
+	relatable
+mallee perturbs to:
+	labeler
+	relabel
+malmy perturbs to:
+	marbly
+malo perturbs to:
+	bolar
+	boral
+	labor
+	lobar
+malonic perturbs to:
+	carbinol
+malt perturbs to:
+	blart
+maltase perturbs to:
+	arbalest
+malting perturbs to:
+	bratling
+maltose perturbs to:
+	sortable
+	storable
+mameliere perturbs to:
+	irremeable
+mameluco perturbs to:
+	beclamour
+mamo perturbs to:
+	broma
+man perturbs to:
+	barn
+	bran
+manacle perturbs to:
+	balancer
+	barnacle
+manavel perturbs to:
+	abnerval
+mancus perturbs to:
+	unscarb
+mand perturbs to:
+	brand
+mandala perturbs to:
+	balandra
+mandatum perturbs to:
+	adumbrant
+mandil perturbs to:
+	blarnid
+mandore perturbs to:
+	dearborn
+mandra perturbs to:
+	barnard
+mane perturbs to:
+	reban
+maned perturbs to:
+	bander
+manei perturbs to:
+	berain
+maneless perturbs to:
+	blearness
+maney perturbs to:
+	barney
+	nearby
+manful perturbs to:
+	barnful
+mange perturbs to:
+	banger
+	engarb
+	graben
+mangeao perturbs to:
+	baronage
+mangel perturbs to:
+	brangle
+mangi perturbs to:
+	baring
+mangle perturbs to:
+	brangle
+mangler perturbs to:
+	brangler
+mangling perturbs to:
+	brangling
+mango perturbs to:
+	barong
+	brogan
+mani perturbs to:
+	abrin
+	bairn
+	brain
+mania perturbs to:
+	arabin
+maniac perturbs to:
+	arbacin
+	carabin
+manicate perturbs to:
+	bacterian
+manid perturbs to:
+	riband
+manila perturbs to:
+	branial
+manito perturbs to:
+	abortin
+	taborin
+maniu perturbs to:
+	burian
+	urbian
+mank perturbs to:
+	brank
+manly perturbs to:
+	blarny
+manner perturbs to:
+	branner
+mannide perturbs to:
+	endbrain
+mannitol perturbs to:
+	nontribal
+mannitose perturbs to:
+	brainstone
+manny perturbs to:
+	branny
+mano perturbs to:
+	baron
+manoc perturbs to:
+	carbon
+	corban
+manostatic perturbs to:
+	abstraction
+manred perturbs to:
+	brander
+	rebrand
+manroot perturbs to:
+	roborant
+mant perturbs to:
+	brant
+manteau perturbs to:
+	arbutean
+mantevil perturbs to:
+	biventral
+manto perturbs to:
+	barton
+	brotan
+manualii perturbs to:
+	albinuria
+manul perturbs to:
+	alburn
+manurable perturbs to:
+	unbarrable
+many perturbs to:
+	barny
+mao perturbs to:
+	boar
+	bora
+maracan perturbs to:
+	barracan
+	barranca
+marble perturbs to:
+	rabbler
+marbled perturbs to:
+	drabbler
+marco perturbs to:
+	carbro
+mare perturbs to:
+	barer
+	rebar
+margarite perturbs to:
+	arbitrager
+marge perturbs to:
+	barger
+margin perturbs to:
+	barring
+margined perturbs to:
+	brigander
+maria perturbs to:
+	arriba
+marid perturbs to:
+	braird
+marinated perturbs to:
+	barrandite
+marine perturbs to:
+	brainer
+marionette perturbs to:
+	terebration
+marital perturbs to:
+	arbitral
+marking perturbs to:
+	ringbark
+maro perturbs to:
+	arbor
+marrowed perturbs to:
+	wardrober
+marshite perturbs to:
+	herbarist
+martial perturbs to:
+	arbitral
+martinico perturbs to:
+	cribration
+mary perturbs to:
+	barry
+masa perturbs to:
+	sabra
+mash perturbs to:
+	brash
+	shrab
+masha perturbs to:
+	abrash
+mashie perturbs to:
+	bearish
+mashy perturbs to:
+	brashy
+masque perturbs to:
+	brasque
+mass perturbs to:
+	brass
+massage perturbs to:
+	brassage
+masse perturbs to:
+	brasse
+massel perturbs to:
+	barless
+masser perturbs to:
+	brasser
+massily perturbs to:
+	brassily
+massiness perturbs to:
+	brassiness
+masslike perturbs to:
+	brasslike
+massy perturbs to:
+	brassy
+masted perturbs to:
+	dabster
+masticate perturbs to:
+	tetrabasic
+mastotomy perturbs to:
+	strabotomy
+masu perturbs to:
+	bursa
+mat perturbs to:
+	brat
+matachina perturbs to:
+	batrachian
+mataco perturbs to:
+	abactor
+	acrobat
+matador perturbs to:
+	tarboard
+matai perturbs to:
+	arabit
+mate perturbs to:
+	abret
+	bater
+	berat
+mater perturbs to:
+	barret
+	barter
+matey perturbs to:
+	betray
+math perturbs to:
+	barth
+matinal perturbs to:
+	brantail
+matlow perturbs to:
+	blawort
+matrass perturbs to:
+	brassart
+matric perturbs to:
+	tribrac
+matsu perturbs to:
+	aburst
+matte perturbs to:
+	batter
+	tabret
+	tarbet
+maturely perturbs to:
+	barrulety
+maturity perturbs to:
+	tributary
+matutinal perturbs to:
+	intratubal
+matutine perturbs to:
+	tribunate
+	turbinate
+maty perturbs to:
+	rybat
+mau perturbs to:
+	baru
+maudle perturbs to:
+	durable
+mauger perturbs to:
+	garbure
+maul perturbs to:
+	lubra
+maun perturbs to:
+	buran
+	unbar
+	urban
+maund perturbs to:
+	undrab
+maunder perturbs to:
+	errabund
+	unbarred
+mausolean perturbs to:
+	unsoarable
+maw perturbs to:
+	braw
+may perturbs to:
+	bray
+	yarb
+maybe perturbs to:
+	babery
+	yabber
+mayten perturbs to:
+	bantery
+maza perturbs to:
+	braza
+	zabra
+maze perturbs to:
+	braze
+	zebra
+mazer perturbs to:
+	brazer
+me perturbs to:
+	ber
+	reb
+meable perturbs to:
+	beblear
+mead perturbs to:
+	ardeb
+	beard
+	bread
+	debar
+meader perturbs to:
+	bearder
+meadow perturbs to:
+	beadrow
+meager perturbs to:
+	bargeer
+meagre perturbs to:
+	bargeer
+meak perturbs to:
+	baker
+	brake
+	break
+meal perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+mealer perturbs to:
+	errable
+mealily perturbs to:
+	beryllia
+	reliably
+mealiness perturbs to:
+	bleariness
+mealtime perturbs to:
+	meritable
+mealy perturbs to:
+	barely
+	barley
+	bleary
+mean perturbs to:
+	reban
+meandrite perturbs to:
+	netbraider
+meaned perturbs to:
+	breaden
+meanish perturbs to:
+	banisher
+	rebanish
+meanly perturbs to:
+	blarney
+	renably
+meant perturbs to:
+	banter
+mease perturbs to:
+	rebase
+measured perturbs to:
+	subreader
+meat perturbs to:
+	abret
+	bater
+	berat
+meatal perturbs to:
+	latebra
+	ratable
+meated perturbs to:
+	betread
+	debater
+meatily perturbs to:
+	barylite
+meatus perturbs to:
+	bursate
+	surbate
+meatworks perturbs to:
+	breastwork
+meaty perturbs to:
+	betray
+mecate perturbs to:
+	becater
+	betrace
+mechoacan perturbs to:
+	archbeacon
+medal perturbs to:
+	balder
+	bardel
+	bedlar
+	bedral
+	belard
+	blader
+media perturbs to:
+	abider
+	bardie
+mediad perturbs to:
+	braided
+medial perturbs to:
+	bedrail
+	bridale
+	ridable
+median perturbs to:
+	inbread
+mediastinal perturbs to:
+	distrainable
+medieval perturbs to:
+	derivable
+medimnus perturbs to:
+	disnumber
+medio perturbs to:
+	bodier
+	boride
+mediocre perturbs to:
+	cerebroid
+meditate perturbs to:
+	batteried
+medusan perturbs to:
+	unsabred
+meed perturbs to:
+	brede
+	breed
+	rebed
+meek perturbs to:
+	breek
+meered perturbs to:
+	breeder
+	rebreed
+meet perturbs to:
+	beret
+megaerg perturbs to:
+	beggarer
+	rebeggar
+megalith perturbs to:
+	bergalith
+megalophonic perturbs to:
+	bronchoplegia
+megapod perturbs to:
+	pegboard
+meharist perturbs to:
+	herbarist
+meile perturbs to:
+	belier
+mein perturbs to:
+	brine
+	enrib
+meiobar perturbs to:
+	barbeiro
+meith perturbs to:
+	berith
+mela perturbs to:
+	abler
+	baler
+	belar
+	blare
+	blear
+melaconite perturbs to:
+	celebration
+melam perturbs to:
+	ambler
+	blamer
+	lamber
+	marble
+	ramble
+melamed perturbs to:
+	bedlamer
+melange perturbs to:
+	engarble
+melanocerite perturbs to:
+	recelebration
+melanocratic perturbs to:
+	centrobarical
+melanoid perturbs to:
+	ordinable
+melanosed perturbs to:
+	endorsable
+melanure perturbs to:
+	unerrable
+melanuric perturbs to:
+	incurrable
+melasma perturbs to:
+	balsamer
+mele perturbs to:
+	rebel
+melena perturbs to:
+	enabler
+	renable
+melenic perturbs to:
+	bernicle
+meline perturbs to:
+	berline
+melinite perturbs to:
+	berlinite
+	libertine
+meliorant perturbs to:
+	interlobar
+melleous perturbs to:
+	resoluble
+mellite perturbs to:
+	billeter
+	rebillet
+meloe perturbs to:
+	borele
+melosa perturbs to:
+	borlase
+	labrose
+melotrope perturbs to:
+	protorebel
+mem perturbs to:
+	berm
+meminna perturbs to:
+	brineman
+memo perturbs to:
+	brome
+	omber
+memoried perturbs to:
+	embroider
+menace perturbs to:
+	carbeen
+	carbene
+menadione perturbs to:
+	debonnaire
+menilite perturbs to:
+	berlinite
+	libertine
+mensal perturbs to:
+	bransle
+mensual perturbs to:
+	nursable
+mensurate perturbs to:
+	subterrane
+mentalis perturbs to:
+	bisantler
+mentorial perturbs to:
+	interlobar
+menzie perturbs to:
+	zebrine
+mephitical perturbs to:
+	blepharitic
+mephitis perturbs to:
+	tribeship
+meraline perturbs to:
+	inerrable
+merge perturbs to:
+	berger
+meril perturbs to:
+	birler
+merism perturbs to:
+	risberm
+merited perturbs to:
+	bedirter
+mero perturbs to:
+	borer
+	rerob
+	rober
+merop perturbs to:
+	prober
+meros perturbs to:
+	resorb
+merostomous perturbs to:
+	substoreroom
+mesa perturbs to:
+	barse
+	besra
+	saber
+	serab
+mesad perturbs to:
+	serdab
+mesalike perturbs to:
+	saberlike
+mescaline perturbs to:
+	renascible
+mesic perturbs to:
+	scribe
+mesityl perturbs to:
+	blistery
+mesmerian perturbs to:
+	semibarren
+mesmerical perturbs to:
+	cerebralism
+meso perturbs to:
+	boser
+	brose
+	sober
+mesobar perturbs to:
+	absorber
+	reabsorb
+mesode perturbs to:
+	bedsore
+mesothetical perturbs to:
+	heteroblastic
+messaline perturbs to:
+	bleariness
+mestee perturbs to:
+	besteer
+	rebeset
+met perturbs to:
+	bret
+meta perturbs to:
+	abret
+	bater
+	berat
+metaconule perturbs to:
+	recountable
+metacromial perturbs to:
+	barometrical
+metad perturbs to:
+	redtab
+metal perturbs to:
+	balter
+	labret
+	tabler
+metaler perturbs to:
+	barrelet
+	terebral
+metalined perturbs to:
+	deliberant
+metaphony perturbs to:
+	hyperbaton
+metapleuron perturbs to:
+	unreportable
+metapore perturbs to:
+	perborate
+	prorebate
+	reprobate
+metasilicic perturbs to:
+	criticisable
+metastoma perturbs to:
+	boatmaster
+metayer perturbs to:
+	betrayer
+	eatberry
+	rebetray
+	teaberry
+mete perturbs to:
+	beret
+metel perturbs to:
+	belter
+	treble
+meteorism perturbs to:
+	sombrerite
+meter perturbs to:
+	berret
+mether perturbs to:
+	berther
+metic perturbs to:
+	terbic
+metis perturbs to:
+	bestir
+	bister
+metochy perturbs to:
+	botchery
+metopion perturbs to:
+	obreption
+metra perturbs to:
+	barret
+	barter
+metreta perturbs to:
+	barrette
+	batterer
+metrete perturbs to:
+	betterer
+metria perturbs to:
+	arbiter
+	rarebit
+metropole perturbs to:
+	protorebel
+meute perturbs to:
+	rebute
+	retube
+mew perturbs to:
+	brew
+mewer perturbs to:
+	brewer
+	rebrew
+mho perturbs to:
+	borh
+mi perturbs to:
+	rib
+mian perturbs to:
+	abrin
+	bairn
+	brain
+mias perturbs to:
+	baris
+miasm perturbs to:
+	bismar
+miaul perturbs to:
+	burial
+miauler perturbs to:
+	reburial
+mica perturbs to:
+	baric
+	rabic
+micelle perturbs to:
+	belleric
+miching perturbs to:
+	birching
+mick perturbs to:
+	brick
+mickle perturbs to:
+	brickel
+	brickle
+mico perturbs to:
+	boric
+	cribo
+	orbic
+miction perturbs to:
+	bornitic
+mid perturbs to:
+	bird
+	drib
+middle perturbs to:
+	bridled
+mide perturbs to:
+	bider
+	bredi
+	bride
+	rebid
+midge perturbs to:
+	begird
+	bridge
+midland perturbs to:
+	birdland
+midmain perturbs to:
+	midbrain
+midrange perturbs to:
+	brigander
+midsummer perturbs to:
+	summerbird
+midway perturbs to:
+	waybird
+midwise perturbs to:
+	birdwise
+midyear perturbs to:
+	yearbird
+mien perturbs to:
+	brine
+	enrib
+mig perturbs to:
+	brig
+might perturbs to:
+	bright
+mignon perturbs to:
+	borning
+mikie perturbs to:
+	birkie
+mil perturbs to:
+	birl
+mila perturbs to:
+	blair
+	brail
+	libra
+milady perturbs to:
+	bardily
+	rabidly
+	ridably
+milarite perturbs to:
+	irritable
+milden perturbs to:
+	blinder
+milder perturbs to:
+	bridler
+mile perturbs to:
+	birle
+	liber
+miler perturbs to:
+	birler
+military perturbs to:
+	irritably
+milken perturbs to:
+	blinker
+milkness perturbs to:
+	brinkless
+mill perturbs to:
+	brill
+milla perturbs to:
+	libral
+mille perturbs to:
+	biller
+	rebill
+milled perturbs to:
+	redbill
+milliad perturbs to:
+	billiard
+milling perturbs to:
+	ringbill
+milo perturbs to:
+	broil
+milsie perturbs to:
+	risible
+milty perturbs to:
+	trilby
+mim perturbs to:
+	brim
+mima perturbs to:
+	abrim
+	birma
+mime perturbs to:
+	imber
+min perturbs to:
+	birn
+	brin
+mina perturbs to:
+	abrin
+	bairn
+	brain
+minareted perturbs to:
+	netbraider
+mine perturbs to:
+	brine
+	enrib
+miner perturbs to:
+	briner
+mines perturbs to:
+	nebris
+ming perturbs to:
+	bring
+mining perturbs to:
+	inbring
+minion perturbs to:
+	robinin
+minish perturbs to:
+	brinish
+mink perturbs to:
+	brink
+minkery perturbs to:
+	inkberry
+mino perturbs to:
+	inorb
+	robin
+minuend perturbs to:
+	unbrined
+minuet perturbs to:
+	tribune
+	tuberin
+	turbine
+minutation perturbs to:
+	turbination
+minute perturbs to:
+	tribune
+	tuberin
+	turbine
+minuter perturbs to:
+	turbiner
+minutiae perturbs to:
+	urbainite
+miny perturbs to:
+	birny
+	briny
+miquelet perturbs to:
+	bequirtle
+mir perturbs to:
+	birr
+mirate perturbs to:
+	arbiter
+	rarebit
+mire perturbs to:
+	berri
+	brier
+misagent perturbs to:
+	breasting
+misalter perturbs to:
+	stirrable
+miscreant perturbs to:
+	transcribe
+miscreed perturbs to:
+	describer
+miscue perturbs to:
+	suberic
+misdeed perturbs to:
+	birdseed
+	seedbird
+misdo perturbs to:
+	disorb
+misdoer perturbs to:
+	disrober
+mise perturbs to:
+	birse
+miserdom perturbs to:
+	borderism
+mishandle perturbs to:
+	blandisher
+misken perturbs to:
+	brisken
+mislabel perturbs to:
+	saberbill
+misled perturbs to:
+	bilders
+misquote perturbs to:
+	sobriquet
+misrecite perturbs to:
+	cerebritis
+miss perturbs to:
+	briss
+missel perturbs to:
+	ribless
+missile perturbs to:
+	risibles
+misstay perturbs to:
+	sybarist
+mistend perturbs to:
+	birdnest
+mistle perturbs to:
+	blister
+	bristle
+mite perturbs to:
+	biter
+	tribe
+mitered perturbs to:
+	bedirter
+mitome perturbs to:
+	bromite
+mitten perturbs to:
+	bittern
+	britten
+mo perturbs to:
+	bor
+	orb
+	rob
+moan perturbs to:
+	baron
+moat perturbs to:
+	abort
+	tabor
+mob perturbs to:
+	brob
+mobed perturbs to:
+	dobber
+moble perturbs to:
+	lobber
+mocha perturbs to:
+	broach
+mock perturbs to:
+	brock
+mockado perturbs to:
+	backdoor
+mode perturbs to:
+	boder
+	orbed
+model perturbs to:
+	belord
+	bordel
+	rebold
+modena perturbs to:
+	bandore
+	broaden
+moderatist perturbs to:
+	birostrated
+moderato perturbs to:
+	breadroot
+module perturbs to:
+	boulder
+	doubler
+mog perturbs to:
+	borg
+	brog
+	gorb
+moha perturbs to:
+	abhor
+mohar perturbs to:
+	harbor
+moho perturbs to:
+	bohor
+	rohob
+moider perturbs to:
+	broider
+moil perturbs to:
+	broil
+moiler perturbs to:
+	broiler
+moiles perturbs to:
+	sorbile
+moiley perturbs to:
+	boilery
+moiling perturbs to:
+	broiling
+moilingly perturbs to:
+	broilingly
+moise perturbs to:
+	ribose
+moist perturbs to:
+	bistro
+moit perturbs to:
+	orbit
+moity perturbs to:
+	bority
+moke perturbs to:
+	broke
+moko perturbs to:
+	brook
+mola perturbs to:
+	bolar
+	boral
+	labor
+	lobar
+molarity perturbs to:
+	libratory
+mole perturbs to:
+	blore
+	roble
+moler perturbs to:
+	borrel
+molest perturbs to:
+	bolster
+	lobster
+molester perturbs to:
+	bolsterer
+molimen perturbs to:
+	bromelin
+molle perturbs to:
+	beroll
+	boller
+molly perturbs to:
+	brolly
+moly perturbs to:
+	boryl
+mome perturbs to:
+	brome
+	omber
+momism perturbs to:
+	bromism
+momo perturbs to:
+	broom
+mon perturbs to:
+	born
+mona perturbs to:
+	baron
+monad perturbs to:
+	bondar
+	roband
+monadic perturbs to:
+	braconid
+monatomic perturbs to:
+	combinator
+monazite perturbs to:
+	botanizer
+mone perturbs to:
+	boner
+	borne
+moner perturbs to:
+	reborn
+moneyer perturbs to:
+	oneberry
+monism perturbs to:
+	misborn
+monk perturbs to:
+	bronk
+mono perturbs to:
+	boron
+	broon
+monocle perturbs to:
+	cornbole
+monoid perturbs to:
+	bridoon
+monture perturbs to:
+	trueborn
+moo perturbs to:
+	boor
+	boro
+	broo
+mooch perturbs to:
+	brocho
+	brooch
+mood perturbs to:
+	brood
+mooder perturbs to:
+	brooder
+moodiness perturbs to:
+	broodiness
+moodle perturbs to:
+	boodler
+moody perturbs to:
+	broody
+mool perturbs to:
+	brool
+moolet perturbs to:
+	boterol
+moon perturbs to:
+	boron
+	broon
+moose perturbs to:
+	broose
+moost perturbs to:
+	brosot
+moot perturbs to:
+	boort
+	robot
+mop perturbs to:
+	prob
+mope perturbs to:
+	probe
+	rebop
+moper perturbs to:
+	prober
+moping perturbs to:
+	biprong
+mopla perturbs to:
+	probal
+mora perturbs to:
+	arbor
+morale perturbs to:
+	laborer
+morality perturbs to:
+	libratory
+morate perturbs to:
+	arboret
+	taborer
+more perturbs to:
+	borer
+	rerob
+	rober
+moreen perturbs to:
+	enrober
+morel perturbs to:
+	borrel
+mores perturbs to:
+	resorb
+morgue perturbs to:
+	broguer
+moringad perturbs to:
+	organbird
+morne perturbs to:
+	reborn
+morse perturbs to:
+	resorb
+mortician perturbs to:
+	cribration
+mot perturbs to:
+	bort
+	brot
+moted perturbs to:
+	debtor
+motel perturbs to:
+	bolter
+	orblet
+	reblot
+	rebolt
+motet perturbs to:
+	bettor
+moth perturbs to:
+	broth
+	throb
+mother perturbs to:
+	brother
+motherhood perturbs to:
+	brotherhood
+motherless perturbs to:
+	brotherless
+motherlike perturbs to:
+	brotherlike
+motherliness perturbs to:
+	brotherliness
+motherly perturbs to:
+	brothelry
+	brotherly
+mothership perturbs to:
+	brothership
+motherwort perturbs to:
+	brotherwort
+mothless perturbs to:
+	throbless
+mothy perturbs to:
+	brothy
+motif perturbs to:
+	forbit
+motific perturbs to:
+	fibrotic
+motile perturbs to:
+	trilobe
+motive perturbs to:
+	overbit
+motory perturbs to:
+	robotry
+motte perturbs to:
+	bettor
+mottle perturbs to:
+	blotter
+	bottler
+mou perturbs to:
+	buro
+	roub
+mouchardism perturbs to:
+	microrhabdus
+mouche perturbs to:
+	boucher
+moud perturbs to:
+	bourd
+moulter perturbs to:
+	troubler
+mound perturbs to:
+	burdon
+mount perturbs to:
+	burton
+mountainside perturbs to:
+	insubordinate
+mounted perturbs to:
+	obtunder
+mounter perturbs to:
+	trueborn
+mounting perturbs to:
+	binturong
+mouse perturbs to:
+	besour
+	bourse
+	bouser
+mout perturbs to:
+	turbo
+moutan perturbs to:
+	aburton
+mouton perturbs to:
+	outborn
+mow perturbs to:
+	brow
+mown perturbs to:
+	brown
+mowra perturbs to:
+	barrow
+mowse perturbs to:
+	browse
+moxa perturbs to:
+	borax
+moy perturbs to:
+	orby
+mu perturbs to:
+	bur
+	rub
+muang perturbs to:
+	bruang
+mucin perturbs to:
+	uncrib
+muckite perturbs to:
+	reitbuck
+muckle perturbs to:
+	bruckle
+	buckler
+muckna perturbs to:
+	backrun
+	runback
+mucose perturbs to:
+	bescour
+	obscure
+mucosity perturbs to:
+	obscurity
+mud perturbs to:
+	burd
+	drub
+mudar perturbs to:
+	durbar
+mudde perturbs to:
+	budder
+	redbud
+mudding perturbs to:
+	dungbird
+muddle perturbs to:
+	buddler
+mudra perturbs to:
+	durbar
+mudsill perturbs to:
+	subdrill
+muffle perturbs to:
+	bluffer
+	rebluff
+mug perturbs to:
+	burg
+	grub
+mugient perturbs to:
+	unbegirt
+mulder perturbs to:
+	blurred
+mule perturbs to:
+	bluer
+	burel
+	ruble
+muletta perturbs to:
+	burletta
+	rebuttal
+mulita perturbs to:
+	tribual
+mulse perturbs to:
+	beslur
+mult perturbs to:
+	blurt
+multirate perturbs to:
+	triturable
+mumble perturbs to:
+	bumbler
+mun perturbs to:
+	burn
+munch perturbs to:
+	brunch
+mundle perturbs to:
+	blunder
+	bundler
+munga perturbs to:
+	bruang
+munity perturbs to:
+	butyrin
+munshi perturbs to:
+	burnish
+munt perturbs to:
+	brunt
+	burnt
+muntin perturbs to:
+	inburnt
+murage perturbs to:
+	garbure
+mure perturbs to:
+	rerub
+muricate perturbs to:
+	rubricate
+murly perturbs to:
+	blurry
+murre perturbs to:
+	burrer
+musal perturbs to:
+	bursal
+musar perturbs to:
+	bursar
+muscatel perturbs to:
+	scrutable
+muscicole perturbs to:
+	scrobicule
+muse perturbs to:
+	burse
+	rebus
+	suber
+mused perturbs to:
+	surbed
+mush perturbs to:
+	brush
+	shrub
+mushed perturbs to:
+	brushed
+	subherd
+musher perturbs to:
+	brusher
+	rebrush
+mushiness perturbs to:
+	brushiness
+mushy perturbs to:
+	brushy
+musical perturbs to:
+	bicursal
+musie perturbs to:
+	bruise
+musing perturbs to:
+	subgrin
+mussitate perturbs to:
+	substriate
+must perturbs to:
+	burst
+	strub
+muster perturbs to:
+	burster
+	reburst
+muta perturbs to:
+	tubar
+mutage perturbs to:
+	brutage
+mutase perturbs to:
+	bursate
+	surbate
+mutate perturbs to:
+	abutter
+mutation perturbs to:
+	intubator
+mute perturbs to:
+	brute
+	buret
+	rebut
+	tuber
+mutely perturbs to:
+	brutely
+	butlery
+muteness perturbs to:
+	bruteness
+mutilate perturbs to:
+	tribulate
+mutilation perturbs to:
+	tribulation
+mutiny perturbs to:
+	butyrin
+mutism perturbs to:
+	brutism
+mutter perturbs to:
+	brutter
+mutual perturbs to:
+	tubular
+mutualist perturbs to:
+	subtitular
+mutuality perturbs to:
+	tubularity
+mutually perturbs to:
+	tubularly
+muzz perturbs to:
+	bruzz
+mydine perturbs to:
+	bindery
+myna perturbs to:
+	barny
+myolemma perturbs to:
+	memorably
+myological perturbs to:
+	bryological
+myologist perturbs to:
+	bryologist
+myology perturbs to:
+	bryology
+myoma perturbs to:
+	amobyr
+myosote perturbs to:
+	botryose
+mytacism perturbs to:
+	cambistry
+mythopoem perturbs to:
+	ombrophyte
+myxa perturbs to:
+	braxy
+myxotheca perturbs to:
+	carbethoxy
+nam perturbs to:
+	barn
+	bran
+namda perturbs to:
+	bandar
+	raband
+name perturbs to:
+	reban
+nameless perturbs to:
+	blearness
+namely perturbs to:
+	blarney
+	renably
+namer perturbs to:
+	barren
+nasiomental perturbs to:
+	internobasal
+naturism perturbs to:
+	rainburst
+naumk perturbs to:
+	unbark
+neem perturbs to:
+	berne
+nema perturbs to:
+	reban
+nematic perturbs to:
+	bacterin
+	centibar
+neorama perturbs to:
+	arborean
+neuma perturbs to:
+	unbare
+	unbear
+	urbane
+neumic perturbs to:
+	brucine
+neuroma perturbs to:
+	enarbour
+neutralism perturbs to:
+	unstirrable
+nim perturbs to:
+	birn
+	brin
+nimble perturbs to:
+	nibbler
+nimshi perturbs to:
+	brinish
+nincom perturbs to:
+	cornbin
+nitramine perturbs to:
+	interbrain
+nitrolamine perturbs to:
+	nonirritable
+noma perturbs to:
+	baron
+nomad perturbs to:
+	bondar
+	roband
+nomadic perturbs to:
+	braconid
+nome perturbs to:
+	boner
+	borne
+nomic perturbs to:
+	bicorn
+	bicron
+nominy perturbs to:
+	bryonin
+nomism perturbs to:
+	misborn
+nomisma perturbs to:
+	ambrosin
+	barosmin
+	sabromin
+nondemand perturbs to:
+	nonbranded
+notum perturbs to:
+	burton
+nudism perturbs to:
+	sunbird
+numda perturbs to:
+	undrab
+numeral perturbs to:
+	unbarrel
+numerical perturbs to:
+	incurrable
+oam perturbs to:
+	boar
+	bora
+odum perturbs to:
+	bourd
+oftentime perturbs to:
+	forebitten
+ofttime perturbs to:
+	forebitt
+ofttimes perturbs to:
+	frostbite
+ogum perturbs to:
+	bourg
+ohm perturbs to:
+	borh
+ointment perturbs to:
+	nonbitter
+olam perturbs to:
+	bolar
+	boral
+	labor
+	lobar
+olamic perturbs to:
+	orbical
+om perturbs to:
+	bor
+	orb
+	rob
+omber perturbs to:
+	robber
+omega perturbs to:
+	borage
+omen perturbs to:
+	boner
+	borne
+omened perturbs to:
+	redbone
+omentum perturbs to:
+	bronteum
+omer perturbs to:
+	borer
+	rerob
+	rober
+omina perturbs to:
+	bonair
+omit perturbs to:
+	orbit
+omnivorant perturbs to:
+	nonvibrator
+onement perturbs to:
+	bonneter
+onium perturbs to:
+	burion
+onymy perturbs to:
+	bryony
+opossum perturbs to:
+	bosporus
+oreman perturbs to:
+	enarbor
+oriflamme perturbs to:
+	morbiferal
+osmate perturbs to:
+	boaster
+	reboast
+	sorbate
+osmetic perturbs to:
+	bisector
+osmic perturbs to:
+	sorbic
+osmin perturbs to:
+	insorb
+	sorbin
+osmose perturbs to:
+	sorbose
+otectomy perturbs to:
+	boycotter
+otherism perturbs to:
+	herborist
+outman perturbs to:
+	aburton
+outmate perturbs to:
+	obturate
+	tabouret
+outseam perturbs to:
+	saboteur
+pachynema perturbs to:
+	brachypnea
+pagedom perturbs to:
+	pegboard
+palame perturbs to:
+	parable
+palmery perturbs to:
+	palberry
+palmetto perturbs to:
+	probattle
+palmite perturbs to:
+	partible
+palmiveined perturbs to:
+	indeprivable
+	predivinable
+palmo perturbs to:
+	probal
+pantomime perturbs to:
+	proambient
+parentalism perturbs to:
+	transpirable
+paternalism perturbs to:
+	transpirable
+peatman perturbs to:
+	pantarbe
+pedimented perturbs to:
+	preindebted
+pedum perturbs to:
+	upbred
+peliom perturbs to:
+	preboil
+pelioma perturbs to:
+	pleiobar
+pelvimeter perturbs to:
+	pervertible
+pelvimetry perturbs to:
+	pervertibly
+permeator perturbs to:
+	reprobater
+permutability perturbs to:
+	perturbability
+permutable perturbs to:
+	perturbable
+permutate perturbs to:
+	perturbate
+permutation perturbs to:
+	perturbation
+permutational perturbs to:
+	perturbational
+	protuberantial
+permutator perturbs to:
+	perturbator
+permutatory perturbs to:
+	perturbatory
+permute perturbs to:
+	prebrute
+permuter perturbs to:
+	perturber
+perosmate perturbs to:
+	breastrope
+perosmic perturbs to:
+	proscribe
+petalism perturbs to:
+	periblast
+petrosum perturbs to:
+	subreport
+phaeism perturbs to:
+	bearship
+phasmid perturbs to:
+	bardship
+phasmoid perturbs to:
+	shipboard
+phemic perturbs to:
+	bechirp
+	brephic
+piecemeal perturbs to:
+	pierceable
+pietism perturbs to:
+	bespirit
+pimola perturbs to:
+	bipolar
+	parboil
+pinealism perturbs to:
+	inspirable
+playmare perturbs to:
+	reparably
+pleomazia perturbs to:
+	parabolize
+pleroma perturbs to:
+	prelabor
+plerome perturbs to:
+	prorebel
+pluma perturbs to:
+	burlap
+plumate perturbs to:
+	pubertal
+Pneumatomachian perturbs to:
+	Pneumobranchiata
+poem perturbs to:
+	probe
+	rebop
+polarimeter perturbs to:
+	irreportable
+polearm perturbs to:
+	prelabor
+polemical perturbs to:
+	plebicolar
+polyemia perturbs to:
+	operabily
+pom perturbs to:
+	prob
+pomate perturbs to:
+	probate
+pome perturbs to:
+	probe
+	rebop
+pomelo perturbs to:
+	blooper
+pommel perturbs to:
+	problem
+posticum perturbs to:
+	subtropic
+postscenium perturbs to:
+	subinspector
+potman perturbs to:
+	probant
+premutative perturbs to:
+	perturbative
+proem perturbs to:
+	prober
+proemial perturbs to:
+	perilobar
+protoma perturbs to:
+	probator
+psammite perturbs to:
+	rebaptism
+pseudomalachite perturbs to:
+	pseudocharitable
+ptomaine perturbs to:
+	preobtain
+pulmonate perturbs to:
+	unportable
+pulpamenta perturbs to:
+	untrappable
+puma perturbs to:
+	upbar
+pumiced perturbs to:
+	bridecup
+pummel perturbs to:
+	plumber
+queasom perturbs to:
+	borasque
+racemate perturbs to:
+	crabeater
+raceme perturbs to:
+	cerebra
+	rebrace
+radman perturbs to:
+	barnard
+radome perturbs to:
+	arbored
+	boarder
+	reboard
+ramage perturbs to:
+	barrage
+ramble perturbs to:
+	rabbler
+rame perturbs to:
+	barer
+	rebar
+ramed perturbs to:
+	barred
+ramet perturbs to:
+	barret
+	barter
+rami perturbs to:
+	briar
+rammel perturbs to:
+	marbler
+	rambler
+ramus perturbs to:
+	bursar
+ramuscule perturbs to:
+	subcrureal
+randem perturbs to:
+	brander
+	rebrand
+raspatorium perturbs to:
+	supraorbitar
+ratement perturbs to:
+	terebrant
+realm perturbs to:
+	barrel
+ream perturbs to:
+	barer
+	rebar
+reamy perturbs to:
+	brayer
+rearm perturbs to:
+	barrer
+redeem perturbs to:
+	breeder
+	rebreed
+redoom perturbs to:
+	brooder
+reetam perturbs to:
+	rebater
+	terebra
+regma perturbs to:
+	barger
+reim perturbs to:
+	berri
+	brier
+relatum perturbs to:
+	barrulet
+remade perturbs to:
+	bearder
+remain perturbs to:
+	brainer
+remake perturbs to:
+	breaker
+reman perturbs to:
+	barren
+remand perturbs to:
+	brander
+	rebrand
+remanet perturbs to:
+	banterer
+remass perturbs to:
+	brasser
+remeant perturbs to:
+	banterer
+remede perturbs to:
+	breeder
+	rebreed
+remediless perturbs to:
+	redressible
+remetal perturbs to:
+	barrelet
+	terebral
+remicate perturbs to:
+	cabrerite
+remigial perturbs to:
+	irrigable
+reminisce perturbs to:
+	reinscribe
+remolade perturbs to:
+	orderable
+remop perturbs to:
+	prober
+remount perturbs to:
+	trueborn
+removed perturbs to:
+	overbred
+replacement perturbs to:
+	precelebrant
+retame perturbs to:
+	rebater
+	terebra
+retem perturbs to:
+	berret
+rhumba perturbs to:
+	rhubarb
+rhythmopoeia perturbs to:
+	erythrophobia
+riem perturbs to:
+	berri
+	brier
+rignum perturbs to:
+	burring
+rim perturbs to:
+	birr
+rima perturbs to:
+	briar
+rimate perturbs to:
+	arbiter
+	rarebit
+rime perturbs to:
+	berri
+	brier
+ringmaker perturbs to:
+	ringbarker
+roam perturbs to:
+	arbor
+romance perturbs to:
+	recarbon
+romantic perturbs to:
+	tricarbon
+roomed perturbs to:
+	brooder
+rum perturbs to:
+	burr
+rumble perturbs to:
+	burbler
+	rubbler
+rumen perturbs to:
+	burner
+	reburn
+rumly perturbs to:
+	blurry
+rusma perturbs to:
+	bursar
+ryme perturbs to:
+	berry
+sacellum perturbs to:
+	subcellar
+saeculum perturbs to:
+	arbuscule
+saeume perturbs to:
+	reabuse
+saim perturbs to:
+	baris
+salicetum perturbs to:
+	subarticle
+salmine perturbs to:
+	rinsable
+salometer perturbs to:
+	restorable
+Salomonic perturbs to:
+	Sorbonical
+samadh perturbs to:
+	bardash
+Samani perturbs to:
+	Sabrina
+samba perturbs to:
+	barbas
+sambo perturbs to:
+	absorb
+same perturbs to:
+	barse
+	besra
+	saber
+	serab
+samh perturbs to:
+	brash
+	shrab
+samhita perturbs to:
+	tabashir
+Samian perturbs to:
+	Sabrina
+samite perturbs to:
+	baister
+	tribase
+samlet perturbs to:
+	blaster
+	reblast
+	stabler
+sammel perturbs to:
+	marbles
+samsonite perturbs to:
+	abstersion
+sanatorium perturbs to:
+	saburration
+saum perturbs to:
+	bursa
+scam perturbs to:
+	scrab
+scamble perturbs to:
+	scabbler
+	scrabble
+scambler perturbs to:
+	scrabbler
+scoutdom perturbs to:
+	subdoctor
+scramble perturbs to:
+	scrabbler
+scrime perturbs to:
+	scriber
+scum perturbs to:
+	scrub
+scumber perturbs to:
+	scrubber
+scumboard perturbs to:
+	scrubboard
+seam perturbs to:
+	barse
+	besra
+	saber
+	serab
+seamark perturbs to:
+	baresark
+seamed perturbs to:
+	debaser
+	sabered
+seamlet perturbs to:
+	restable
+seamlike perturbs to:
+	saberlike
+sedum perturbs to:
+	surbed
+seedman perturbs to:
+	seerband
+selamin perturbs to:
+	rinsable
+semateme perturbs to:
+	beemaster
+sematrope perturbs to:
+	breastrope
+semence perturbs to:
+	bescreen
+semestrial perturbs to:
+	liberatress
+semi perturbs to:
+	birse
+semialien perturbs to:
+	inerasible
+semiape perturbs to:
+	bepraise
+semiball perturbs to:
+	saberbill
+semic perturbs to:
+	scribe
+semicretin perturbs to:
+	interscribe
+semilens perturbs to:
+	brineless
+seminal perturbs to:
+	rinsable
+seminoma perturbs to:
+	ambrosine
+semipedal perturbs to:
+	predisable
+semipupa perturbs to:
+	praepubis
+semisimple perturbs to:
+	impressible
+	permissible
+semismile perturbs to:
+	remissible
+semita perturbs to:
+	baister
+	tribase
+semitae perturbs to:
+	breastie
+semital perturbs to:
+	abristle
+semiuncial perturbs to:
+	unirascible
+semivault perturbs to:
+	vestibular
+semola perturbs to:
+	borlase
+	labrose
+septimal perturbs to:
+	periblast
+septime perturbs to:
+	bestripe
+sermo perturbs to:
+	resorb
+sermonet perturbs to:
+	resorbent
+sertum perturbs to:
+	burster
+	reburst
+sesame perturbs to:
+	bearess
+sesma perturbs to:
+	brasse
+sham perturbs to:
+	brash
+	shrab
+shama perturbs to:
+	abrash
+shimose perturbs to:
+	rhebosis
+shopmaid perturbs to:
+	shipboard
+shumac perturbs to:
+	subarch
+Siam perturbs to:
+	Sabir
+sidesman perturbs to:
+	bardiness
+	rabidness
+signum perturbs to:
+	subgrin
+sima perturbs to:
+	baris
+sime perturbs to:
+	birse
+simile perturbs to:
+	risible
+simkin perturbs to:
+	ribskin
+simling perturbs to:
+	brisling
+simmer perturbs to:
+	risberm
+simmon perturbs to:
+	misborn
+skim perturbs to:
+	brisk
+slaum perturbs to:
+	bursal
+slime perturbs to:
+	birsle
+smaltine perturbs to:
+	bisantler
+smeeth perturbs to:
+	sherbet
+smethe perturbs to:
+	sherbet
+smicket perturbs to:
+	brickset
+smile perturbs to:
+	birsle
+smilet perturbs to:
+	blister
+	bristle
+smiling perturbs to:
+	brisling
+smirtle perturbs to:
+	bristler
+smite perturbs to:
+	bestir
+	bister
+smithite perturbs to:
+	bitterish
+smoke perturbs to:
+	bosker
+smoot perturbs to:
+	brosot
+smooth perturbs to:
+	bothros
+smore perturbs to:
+	resorb
+smous perturbs to:
+	sorbus
+smout perturbs to:
+	robust
+smug perturbs to:
+	grubs
+smuse perturbs to:
+	busser
+smut perturbs to:
+	burst
+	strub
+sodamide perturbs to:
+	broadside
+	sideboard
+some perturbs to:
+	boser
+	brose
+	sober
+somewhat perturbs to:
+	waterbosh
+somewise perturbs to:
+	soberwise
+somital perturbs to:
+	laborist
+	strobila
+somite perturbs to:
+	sorbite
+somitic perturbs to:
+	sorbitic
+somma perturbs to:
+	barsom
+spermary perturbs to:
+	raspberry
+spoutman perturbs to:
+	subpatron
+spume perturbs to:
+	superb
+sputum perturbs to:
+	upburst
+squame perturbs to:
+	brasque
+squeam perturbs to:
+	brasque
+stamineal perturbs to:
+	strainable
+staumer perturbs to:
+	surbater
+steam perturbs to:
+	baster
+	bestar
+	breast
+steamer perturbs to:
+	breaster
+steaming perturbs to:
+	breasting
+steamless perturbs to:
+	breastless
+steamy perturbs to:
+	barytes
+steerman perturbs to:
+	sternebra
+stema perturbs to:
+	baster
+	bestar
+	breast
+stepmother perturbs to:
+	stepbrother
+stepmotherhood perturbs to:
+	stepbrotherhood
+stileman perturbs to:
+	bisantler
+stime perturbs to:
+	bestir
+	bister
+stimulance perturbs to:
+	inscrutable
+stimulancy perturbs to:
+	inscrutably
+stomapod perturbs to:
+	stopboard
+stomatomy perturbs to:
+	strabotomy
+stoveman perturbs to:
+	observant
+strumae perturbs to:
+	surbater
+strumose perturbs to:
+	subsorter
+stum perturbs to:
+	burst
+	strub
+stumbly perturbs to:
+	strubbly
+stumer perturbs to:
+	burster
+	reburst
+subitem perturbs to:
+	subtribe
+submontane perturbs to:
+	unabsorbent
+sudamen perturbs to:
+	unsabred
+sulphimide perturbs to:
+	shipbuilder
+summit perturbs to:
+	brutism
+summital perturbs to:
+	brutalism
+surma perturbs to:
+	bursar
+surmised perturbs to:
+	disburser
+swam perturbs to:
+	braws
+symmelia perturbs to:
+	miserably
+tablemate perturbs to:
+	batterable
+tailorman perturbs to:
+	intralobar
+taimen perturbs to:
+	atebrin
+	rabinet
+talma perturbs to:
+	trabal
+tam perturbs to:
+	brat
+tamale perturbs to:
+	latebra
+	ratable
+tamboo perturbs to:
+	babroot
+tame perturbs to:
+	abret
+	bater
+	berat
+tamein perturbs to:
+	atebrin
+	rabinet
+tamer perturbs to:
+	barret
+	barter
+tamise perturbs to:
+	baister
+	tribase
+tammie perturbs to:
+	ambrite
+tampon perturbs to:
+	probant
+tandemer perturbs to:
+	bartender
+tapeman perturbs to:
+	pantarbe
+taproom perturbs to:
+	probator
+tarmined perturbs to:
+	intrabred
+taum perturbs to:
+	tubar
+taxonomy perturbs to:
+	baroxyton
+teaism perturbs to:
+	baister
+	tribase
+team perturbs to:
+	abret
+	bater
+	berat
+teaman perturbs to:
+	taberna
+teamer perturbs to:
+	rebater
+	terebra
+tearoom perturbs to:
+	roborate
+teasement perturbs to:
+	beansetter
+tecomin perturbs to:
+	betorcin
+teem perturbs to:
+	beret
+teems perturbs to:
+	bester
+teetotum perturbs to:
+	outbetter
+tegument perturbs to:
+	begrutten
+telemeter perturbs to:
+	trebletree
+telharmony perturbs to:
+	abhorrently
+telium perturbs to:
+	rebuilt
+teman perturbs to:
+	banter
+temiak perturbs to:
+	batiker
+temporale perturbs to:
+	reportable
+temse perturbs to:
+	bester
+tenesmus perturbs to:
+	bruteness
+terma perturbs to:
+	barret
+	barter
+termatic perturbs to:
+	bratticer
+tetrammine perturbs to:
+	arbitrement
+tewsome perturbs to:
+	bestower
+	rebestow
+theism perturbs to:
+	herbist
+thelium perturbs to:
+	thurible
+them perturbs to:
+	berth
+	breth
+thema perturbs to:
+	bather
+	breath
+themer perturbs to:
+	berther
+themis perturbs to:
+	herbist
+theodrama perturbs to:
+	earthboard
+theomantic perturbs to:
+	brochantite
+theorem perturbs to:
+	botherer
+theorism perturbs to:
+	herborist
+thermae perturbs to:
+	breather
+thermo perturbs to:
+	brother
+thiamine perturbs to:
+	inhabiter
+	reinhabit
+thimble perturbs to:
+	thribble
+thingum perturbs to:
+	unbright
+tignum perturbs to:
+	bruting
+timbe perturbs to:
+	ribbet
+time perturbs to:
+	biter
+	tribe
+timed perturbs to:
+	bedirt
+timeless perturbs to:
+	tribeless
+timelessly perturbs to:
+	libertyless
+timely perturbs to:
+	liberty
+times perturbs to:
+	bestir
+	bister
+tinamine perturbs to:
+	inebriant
+tireroom perturbs to:
+	brierroot
+tmema perturbs to:
+	tamber
+toilsome perturbs to:
+	biosterol
+tomalley perturbs to:
+	tolerably
+toman perturbs to:
+	barton
+	brotan
+tomelet perturbs to:
+	rebottle
+tomial perturbs to:
+	orbital
+toolsmith perturbs to:
+	birthstool
+toom perturbs to:
+	boort
+	robot
+topman perturbs to:
+	probant
+totem perturbs to:
+	bettor
+totemism perturbs to:
+	strombite
+totum perturbs to:
+	turbot
+towmast perturbs to:
+	stabwort
+toyman perturbs to:
+	baryton
+	brotany
+toysome perturbs to:
+	botryose
+trame perturbs to:
+	barret
+	barter
+treeman perturbs to:
+	banterer
+trigamy perturbs to:
+	brigatry
+trimensual perturbs to:
+	unstirrable
+trommel perturbs to:
+	tremblor
+tsunami perturbs to:
+	urbanist
+tubeman perturbs to:
+	burnbeat
+tubesmith perturbs to:
+	bitterbush
+tum perturbs to:
+	brut
+	burt
+	trub
+	turb
+tume perturbs to:
+	brute
+	buret
+	rebut
+	tuber
+tumid perturbs to:
+	turbid
+tumidity perturbs to:
+	turbidity
+tumidly perturbs to:
+	turbidly
+tumidness perturbs to:
+	turbidness
+tummel perturbs to:
+	tumbler
+	tumbrel
+tummer perturbs to:
+	bertrum
+tumored perturbs to:
+	obtruder
+tumpline perturbs to:
+	blueprint
+tunemaker perturbs to:
+	nutbreaker
+tunesome perturbs to:
+	tenebrous
+ulmic perturbs to:
+	lubric
+ultima perturbs to:
+	tribual
+ultimate perturbs to:
+	tribulate
+ultimation perturbs to:
+	tribulation
+ultraminute perturbs to:
+	intertubular
+um perturbs to:
+	bur
+	rub
+umangite perturbs to:
+	turbinage
+umbel perturbs to:
+	burble
+	lubber
+	rubble
+umber perturbs to:
+	rubber
+umble perturbs to:
+	burble
+	lubber
+	rubble
+umbrel perturbs to:
+	burbler
+	rubbler
+ume perturbs to:
+	bure
+umlaut perturbs to:
+	tubular
+ump perturbs to:
+	burp
+unamerced perturbs to:
+	underbrace
+unample perturbs to:
+	prunable
+unamply perturbs to:
+	prunably
+unanimity perturbs to:
+	inurbanity
+unarm perturbs to:
+	rurban
+unarmed perturbs to:
+	errabund
+	unbarred
+uncome perturbs to:
+	bouncer
+uncomprised perturbs to:
+	unproscribed
+undam perturbs to:
+	undrab
+undamn perturbs to:
+	unbrand
+underbeam perturbs to:
+	unbarbered
+undermade perturbs to:
+	undebarred
+undermeal perturbs to:
+	unbarreled
+undertime perturbs to:
+	undertribe
+undisarmed perturbs to:
+	undisbarred
+undoomed perturbs to:
+	unbrooded
+undreamed perturbs to:
+	undebarred
+unempirical perturbs to:
+	irrepublican
+unfamed perturbs to:
+	faburden
+unimitated perturbs to:
+	inturbidate
+unitism perturbs to:
+	burinist
+unlame perturbs to:
+	nebular
+unlimed perturbs to:
+	unbridle
+unmad perturbs to:
+	undrab
+unmade perturbs to:
+	unbeard
+unmagic perturbs to:
+	carbungi
+unmaid perturbs to:
+	unbraid
+unmailed perturbs to:
+	indurable
+	unbrailed
+	unridable
+unmaligned perturbs to:
+	ungrindable
+unman perturbs to:
+	unbran
+unmashed perturbs to:
+	husbander
+	shabunder
+unmastered perturbs to:
+	unbestarred
+unmasterful perturbs to:
+	unfrustrable
+unmate perturbs to:
+	uberant
+unmated perturbs to:
+	breadnut
+	turbaned
+unmaturity perturbs to:
+	untributary
+unmauled perturbs to:
+	undurable
+unmaze perturbs to:
+	unbraze
+unmeated perturbs to:
+	eburnated
+	underbeat
+	unrebated
+unmenial perturbs to:
+	blennuria
+unmerited perturbs to:
+	undertribe
+unmet perturbs to:
+	brunet
+	bunter
+	burnet
+unmewed perturbs to:
+	unbrewed
+unmilled perturbs to:
+	underbill
+unmind perturbs to:
+	nunbird
+unmined perturbs to:
+	unbrined
+unmingled perturbs to:
+	blundering
+unmissed perturbs to:
+	burnsides
+	sideburns
+unmist perturbs to:
+	inburst
+unmiter perturbs to:
+	turbiner
+unmittened perturbs to:
+	underbitten
+unmodern perturbs to:
+	underborn
+unmoiled perturbs to:
+	unbroiled
+	underboil
+unmolested perturbs to:
+	unbolstered
+unmothered perturbs to:
+	unbrothered
+unmotherly perturbs to:
+	unbrotherly
+unmounded perturbs to:
+	underbound
+unmown perturbs to:
+	unbrown
+unmuted perturbs to:
+	undertub
+unmystical perturbs to:
+	inscrutably
+unomened perturbs to:
+	unenrobed
+unram perturbs to:
+	rurban
+unrealmed perturbs to:
+	unbarreled
+unremoved perturbs to:
+	overburden
+	overburned
+unseamed perturbs to:
+	unsabered
+unshamed perturbs to:
+	husbander
+	shabunder
+unsmote perturbs to:
+	rubstone
+unsome perturbs to:
+	unsober
+unsublimated perturbs to:
+	undisturbable
+untame perturbs to:
+	uberant
+untamed perturbs to:
+	breadnut
+	turbaned
+unteam perturbs to:
+	uberant
+unteamed perturbs to:
+	eburnated
+	underbeat
+	unrebated
+untimed perturbs to:
+	turbined
+	underbit
+untumid perturbs to:
+	unturbid
+upmast perturbs to:
+	subpart
+upmost perturbs to:
+	subport
+urman perturbs to:
+	rurban
+utinam perturbs to:
+	arbutin
+	tribuna
+utum perturbs to:
+	trubu
+valetism perturbs to:
+	verbalist
+venomed perturbs to:
+	overbend
+viameter perturbs to:
+	revibrate
+wadmal perturbs to:
+	bradawl
+wadmeal perturbs to:
+	drawable
+	wardable
+wame perturbs to:
+	awber
+wamel perturbs to:
+	bawler
+	brelaw
+	rebawl
+	warble
+weam perturbs to:
+	awber
+weism perturbs to:
+	brewis
+wem perturbs to:
+	brew
+wisdom perturbs to:
+	wosbird
+womble perturbs to:
+	wobbler
+yam perturbs to:
+	bray
+	yarb
+yamen perturbs to:
+	barney
+	nearby
+yardman perturbs to:
+	barnyard
+yarm perturbs to:
+	barry
+yelm perturbs to:
+	beryl
+yercum perturbs to:
+	becurry
+yom perturbs to:
+	orby
+zoonomy perturbs to:
+	bryozoon
