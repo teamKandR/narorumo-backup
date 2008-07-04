@@ -1,9 +1,10 @@
 #summary Our stuff; let us show you it.
 
-  * Scheme stuff
+  * Lindsey's stuff
     * [ReallyBigFibonacciNumbers Really big Fibonacci numbers]
     * [JoelTest Joel's "Could you have passed my freshman-year midterms?" test]
+    * [Perturbation Perturbed permutation]
   * Us
-    * [Alex Alex]
-    * [Lindsey Lindsey]
-  * [Wildebeests Wildebeests]
+    * [Alex]
+    * [Lindsey]
+  * [Wildebeests]
