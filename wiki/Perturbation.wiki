@@ -1,5 +1,5 @@
 #summary Perturbed permutation!
-#labels Perl,Perturbation,Permutation
+#labels Perl,Perturbation,Permutation,Featured
 
 [Lindsey Lindsey Kuper]
 
