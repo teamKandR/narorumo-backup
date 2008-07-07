@@ -1560,6 +1560,97 @@
                       (else (kernel (+ i 1)))))))
       (kernel 1))))
 
+;;;; 1.28
+;; ...Modify the expmod procedure to signal if it discovers a nontrivial
+;; square root of 1, and use this to implement the Miller-Rabin test with a 
+;; procedure analogous to fermat-test. Check your procedure by testing various 
+;; known primes and non-primes. Hint: One convenient way to make expmod signal 
+;; is to have it return 0.
+
+;; lindseykuper:
+
+;; "congruent mod n" means "both have the same remainder when divided by n".
+;; j and k are congruent mod n iff (j mod n) = (k mod n).
+
+;; Fermat's Little Theorem ("alternate" form):
+;; If n is prime and a is a pos. int. < n,
+;; a^(n - 1) mod n = 1 mod n.
+;; 1 mod n is always just n for positive integers, so:
+;; a^(n - 1) mod n = 1.
+
+;; I'd like to find a more elegant way of implementing this so I'm not calling
+;; /square/ twice and /expmod/ twice, but I can't seem to think of one.
+(define (miller-rabin-expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)  
+         (if (nontrivial-sqrt? (expmod base (/ exp 2) m) m)
+             0
+             (remainder (square (expmod base (/ exp 2) m)) m)))
+        (else
+         (remainder (* base (expmod base (- exp 1) m)) m))))
+
+(define nontrivial-sqrt?
+  (lambda (num n)
+    ; a number not equal to 1 or n - 1 whose square is equal to 1 modulo n.
+    (and (not (= num 1)) 
+         (not (= num (- n 1))) 
+         (= (square num) (remainder 1 n)))))
+
+(define (miller-rabin-test n)
+  (define (try-it a)
+    ;; miller-rabin-expmod returns 0 if there exists a 
+    ;; "nontrivial sqrt of 1 mod n", which would mean
+    ;; that n isn't prime.
+    (= (remainder 1 n) (miller-rabin-expmod a (- n 1) n)))
+  (try-it (+ 1 (random (- n 1)))))
+
+(define (miller-rabin-prime? n times)
+  (cond ((= times 0) true)
+        ((miller-rabin-test n) (miller-rabin-prime? n (- times 1)))
+        (else false)))
+
+(define (unary-miller-rabin-prime? n)
+  (miller-rabin-prime? n 10))
+
+;; We might need these.
+(define test-composites
+  '(4 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27 28 30 32 33 34 35 36 38 39
+      40 42 44 45 46 48 49 50 51 52 54 55 56 57 58 60 62 63 64 65 66 68 69 70
+      72 74 75 76 77 78 80 81 82 84 85 86 87 88 90 91 92 93 94 95 96 98 99 100
+      102 104 105 106 108 110 111 112 114 115 116 117 118 119 120))
+
+;; Might need this, too.  Takes two lists of equal length.
+(define pair-lists
+  (lambda (list1 list2)
+    (if (null? list1)
+        '()
+        (cons (list (car list1) (car list2)) 
+              (pair-lists (cdr list1) (cdr list2))))))
+
+;; When run like this:
+
+;(pair-lists test-composites (map miller-rabin-test
+;                                 test-composites))
+
+;; I usually get a few false positives for a few numbers in /test-composites/.
+;; But if I do the test 10 times:
+
+;(pair-lists test-composites (map unary-miller-rabin-prime?
+;                                 test-composites))
+
+;; then I get #f for everything.  I'm also getting:
+
+;> (pair-lists carmichael-numbers (map unary-miller-rabin-prime?
+;                                      carmichael-numbers))
+;((561 #f) (1105 #f) (1729 #f) (2465 #f) (2821 #f) (6601 #f))
+
+;; Yay!  Also, this might be useful sometime:
+
+(define generate-sequence
+  (lambda (start finish)
+    (if (= start (+ 1 finish))
+        ()
+        (cons start (generate-sequence (+ start 1) finish)))))
 
 ;;;; 1.29
 ;; ...Using Simpson's Rule, the integral of a function /f/ between /a/ and /b/
