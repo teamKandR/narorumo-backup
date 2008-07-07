@@ -26,14 +26,11 @@ foreach my $word (<WORDS>) {
 }
 
 foreach my $word (@orig_words) {
-	chomp $word;
-		
 	next if $word !~ /m/;
 	
 	my $rb_word = $word;
-	$rb_word =~ s/m//;
-	$rb_word = $rb_word . 'rb';
-
+	$rb_word =~ s/m/rb/;
+	
 	my $sorted_rb_word = join( '', sort( split( //, $rb_word )));
 	
 	if ( $sorted_to_unsorted{$sorted_rb_word} > 0 ) {
