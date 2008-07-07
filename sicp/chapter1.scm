@@ -1524,9 +1524,7 @@
 
 (define congruent?
   (lambda (x y n)
-    (if (= (remainder x n) (remainder y n))
-        #t
-        #f)))
+    (= (remainder x n) (remainder y n))))
 
 (define fools-fermat?
   (lambda (n)
