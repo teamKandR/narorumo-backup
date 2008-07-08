@@ -1785,8 +1785,8 @@
   (iter a 1))
 
 ;;;; 1.32a
-;; ...Write /accumulate/ and show how sum and product can both be defined as
-;; simple calls to accumulate.
+;; ...Write /accumulate/ and show how /sum/ and /product/ can both be defined
+;; as simple calls to /accumulate/.
 
 (define accumulate
   (lambda (combiner null-value term a next b)
@@ -1814,6 +1814,56 @@
         (iter (next a) (combiner (term a) result))))
     (iter a null-value)))
 
+;;; 1.33
+;; ...Write /filtered-accumulate/ as a procedure. 
+
+(define filtered-accumulate
+  (lambda (pred combiner null-value term a next b)
+    (if (> a b)
+        null-value
+        (if (pred a)
+            (combiner (term a)
+                      (filtered-accumulate 
+                       pred combiner null-value term (next a) next b))
+            (filtered-accumulate
+             pred combiner null-value term (next a) next b)))))
+
+;; And also!:
+
+(define filtered-accumulate-iter
+  (lambda (pred combiner null-value term a next b)
+    (define (iter a result)
+      (if (> a b)
+        result
+        (if (pred a)
+            (iter (next a) (combiner (term a) result))
+            (iter (next a) result))))
+    (iter a null-value)))
+
+;; Show how to express the following using /filtered-accumulate/: 
+
+;; a. the sum of the squares of the prime numbers in the interval /a/ to /b/
+;; (assuming that you have a /prime?/ predicate already written)
+
+(define sum-of-squares-of-primes
+  (lambda (a b)
+    (filtered-accumulate-iter prime? + 0 square a inc b)))
+
+;; b. the product of all the positive integers less than /n/ that are
+;; relatively prime to /n/ (i.e., all positive integers /i/ < /n/ such that
+;; GCD(/i/, /n/) = 1).
+
+(define product-of-relative-primes
+  (lambda (n)
+    (letrec ((self (lambda (n) n))
+             (relatively-prime-to-n? (lambda (i)
+                                       (= 1 (gcd i n))))
+             (gcd (lambda (a b) ;; Euclid's Algorithm from p. 49 of SICP
+                    (if (= b 0)
+                        a
+                        (gcd b (remainder a b))))))
+      (filtered-accumulate-iter relatively-prime-to-n? * 1 self 1 inc n))))
+    
 ;;;; 1.34
 ;; Suppose we define the procedure
 
