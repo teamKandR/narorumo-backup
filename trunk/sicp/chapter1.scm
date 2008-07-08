@@ -1750,7 +1750,9 @@
 ;;
 ;; pi   2 * 4 * 4 * 6 * 6 * 8 ...
 ;; -- = -------------------------
-;;  4   3 * 3 * 5 * 5 * 5 * 7 ...
+;;  4   3 * 3 * 5 * 5 * 7 * 7 ...
+
+;; lindseykuper:
 
 (define (product term a next b)
   (if (> a b)
@@ -1759,6 +1761,18 @@
          (product term (next a) next b))))
 
 (define (factorial num) (product * 1 inc num))
+
+(define approximation-to-pi
+  (lambda (accuracy)
+    (define next
+      (lambda (num)
+        (+ 2 num)))
+    (define term
+      (lambda (num)
+        (if (= num 2)
+            (/ 2 3)
+            (/ (* num num) (* (- num 1) (+ num 1))))))
+    (exact->inexact (* 4 (product term 2 next accuracy)))))
            
 ;;;; 1.31b
 ;; ...write one that generates an iterative process.
