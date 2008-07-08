@@ -1784,6 +1784,36 @@
         (iter (next a) (* (term a) result))))
   (iter a 1))
 
+;;;; 1.32a
+;; ...Write /accumulate/ and show how sum and product can both be defined as
+;; simple calls to accumulate.
+
+(define accumulate
+  (lambda (combiner null-value term a next b)
+    (if (> a b)
+        null-value
+        (combiner (term a)
+                  (accumulate combiner null-value term (next a) next b)))))
+
+(define sum-using-accumulate
+  (lambda (term a next b)
+    (accumulate + 0 term a next b)))
+
+(define product-using-accumulate
+  (lambda (term a next b)
+    (accumulate * 1 term a next b)))
+
+;;;; 1.32b
+;; ...write one that generates an iterative process.
+
+(define accumulate-iter
+  (lambda (combiner null-value term a next b)
+    (define (iter a result)
+      (if (> a b)
+        result
+        (iter (next a) (combiner (term a) result))))
+    (iter a null-value)))
+
 ;;;; 1.34
 ;; Suppose we define the procedure
 
