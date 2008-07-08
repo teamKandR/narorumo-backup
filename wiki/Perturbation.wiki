@@ -11,5 +11,4 @@ Today I issued a [http://lindseykuper.livejournal.com/265703.html challenge] to 
 
 My friends [http://lindseykuper.livejournal.com/265703.html#comments rose to the challenge], of course ([http://www.jes5199.com Jesse Wolfe] was first with his Ruby implementation; [http://soy.dyndns.org/~peter/ Peter Boothe] did it in Python).  Here's [http://code.google.com/p/narorumo/source/browse/trunk/perturbation/perturbation.pl my version in Perl].
 
-From [Alex], we've got [http://code.google.com/p/narorumo/source/browse/trunk/perturbation/perturbation.py another Python version] and a [http://code.google.com/p/narorumo/source/browse/trunk/perturbation/perturbation.scm
-Scheme version], both with a little performance optimization ("dumb hack" -- [Alex]) that clever folks should be able to spot.
+From [Alex], we've got [http://code.google.com/p/narorumo/source/browse/trunk/perturbation/perturbation.py another Python version] and a [http://code.google.com/p/narorumo/source/browse/trunk/perturbation/perturbation.scm Scheme version], both with a little performance optimization ("dumb hack" -- [Alex]) that clever folks should be able to spot.
