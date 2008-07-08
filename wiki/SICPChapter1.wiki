@@ -35,7 +35,7 @@
 || 28     || done ||
 || 29     || done ||
 || 30     || done ||
-|| 31     || partly done ||
+|| 31     || done ||
 || 32     || not started ||
 || 33     || not started ||
 || 34     || done ||
