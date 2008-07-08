@@ -5,7 +5,7 @@
 == Progress ==
 
 || number || status ||
-|| 1      || not started ||
+|| 1      || done ||
 || 2      || done ||
 || 3      || done ||
 || 4      || done ||
