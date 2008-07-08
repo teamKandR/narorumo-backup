@@ -2055,3 +2055,32 @@
 ;; Only 8 steps.  (That is, 8 times through /fixed-point/, but not necessarily
 ;; less processing.)
 
+;;;; 1.37a
+;; ...Define a procedure /cont-frac/ such that evaluating /(cont-frac n d k)/
+;; computes the value of the /k/-term finite continued fraction.  Check your
+;; procedure by approximating 1/phi using
+
+; (cont-frac (lambda (i) 1.0)
+;            (lambda (i) 1.0)
+;            k)
+
+;; for successive values of /k/.  How large must you make /k/ in order to get
+;; an approximation that is accurate to 4 decimal places?
+
+(define cont-frac
+  (lambda (n d k)
+    (define kernel
+      (lambda (i)
+        (if (= i k)
+            0
+            (/ (n i) (+ (d i) (kernel (+ i 1)))))))
+    (kernel 1)))
+
+;; If we're looking for 0.6180, we have to use /k/ = 12:
+
+; > (cont-frac (lambda (i) 1.0) (lambda (i) 1.0) 12)
+; 0.6180555555555556
+
+;;;; 1.37b
+;; ...write one that generates an iterative process.
+
