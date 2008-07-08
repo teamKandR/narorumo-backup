@@ -2084,3 +2084,28 @@
 ;;;; 1.37b
 ;; ...write one that generates an iterative process.
 
+;;;; 1.38
+;; ...Write a program that uses your /cont-frac/ procedure from exercise 1.37
+;; to approximate /e/, based on Euler's expansion.
+
+(define approximate-e
+  (lambda (accuracy)
+    (letrec ((n (lambda (i) 1.0))
+             (d (lambda (i)
+                  ;; For the /i/th term in the sequence, if (i + 1) mod 3 = 0,
+                  ;; this is one of the "special" terms.  Otherwise, it's 1.
+                  (if (= 0 (remainder (+ i 1) 3))
+                      (- i (subtrahend i))
+                      1)))
+             (subtrahend (lambda (i)
+                           ;; Assumes that its argument satisfies the equation
+                           ;; (i + 1) mod 3 = 0
+                           (if (= i 2)
+                               0
+                               (+ 1 (subtrahend (- i 3)))))))
+      (+ 2 (cont-frac n d accuracy)))))
+
+; > (approximate-e 100)
+; 2.7182818284590455
+
+;; Woot!
