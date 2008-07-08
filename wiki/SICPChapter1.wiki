@@ -40,7 +40,7 @@
 || 33     || done ||
 || 34     || done ||
 || 35     || done ||
-|| 36     || not started ||
+|| 36     || done ||
 || 37     || not started ||
 || 38     || not started ||
 || 39     || not started ||
