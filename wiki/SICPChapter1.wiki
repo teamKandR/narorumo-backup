@@ -51,7 +51,6 @@
 || 44     || not started ||
 || 45     || not started ||
 || 46     || not started ||
-|| 47     || not started ||
 
 == Considerations ==
   * Applicative-order evaluation is clearly the same as "eager evaluation", and normal-order seems to be the same as lazy evaluation -- but is this the same thing as passing a thunk? What's the relationship there?
