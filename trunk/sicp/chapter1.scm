@@ -733,8 +733,8 @@
 ;;; the denominations, and only use denominations that are less then or equal 
 ;;; to /amount/.
 
-;;; another optimization idea: if /amount/ is less than 5 and /kinds-of-coins/ is
-;;; 1, return 1.
+;;; another optimization idea: if /amount/ is less than 5 and /kinds-of-coins/
+;;; is 1, return 1.
 
 ;;;; 1.16
 ;; Design a procedure that evolves an iterative exponentiation process that 
@@ -751,10 +751,11 @@
 ;; and let b^n = b^(n/2).
 ;; n will equal 0 and b^n will equal 1 by the time we're done.
 
-;; lindseykuper: No, I take it back!  The trouble with doing a = ab^(n/2) is that,
-;; in every step, we have to calculate another exponent to a power that we don't 
-;; know yet.  So this can never be entirely iterative, because we'll keep on
-;; stacking up recursive calls to fast-expt-iter so that we can find b^(n/2).
+;; lindseykuper: No, I take it back!  The trouble with doing a = ab^(n/2) is
+;; that, in every step, we have to calculate another exponent to a power that
+;; we don't know yet.  So this can never be entirely iterative, because we'll
+;; keep on stacking up recursive calls to fast-expt-iter so that we can find
+;; b^(n/2).
 
 ;; However!  
 ;; We know that: b^n = b^(n/2) * b^(n/2) = (b^(n/2))^2 = (b^2)^(n/2).
@@ -769,8 +770,8 @@
 ;;   (fast-expt-iter (square b) (/ n 2))))
 
 ;; Well, that would be great if  /n/ were always even (i.e., if it were a power
-;; of 2 initially).  But we can't guarantee that.  So we need the state variable
-;; /a/ *just* to handle cases where n is odd.
+;; of 2 initially).  But we can't guarantee that.  So we need the state
+;; variable /a/ *just* to handle cases where n is odd.
 
 (define fast-expt-iter
   (lambda (b n)
@@ -819,17 +820,18 @@
           (else (+ b (fast-mult-kernel (- a 1) b))))))
 
 ;;;; 1.18
-;; ...devise a procedure that generates an iterative process for multiplying two
-;; integers in terms of adding, doubling, and halving and uses a logarithmic 
-;; number of steps.
+;; ...devise a procedure that generates an iterative process for multiplying
+;; two integers in terms of adding, doubling, and halving and uses a 
+;; logarithmic number of steps.
 
 ;; lindseykuper:
-;; The idea is that (a * b) is equal to ((a/2) * 2b), assuming /a/ is even.  So,
-;; test if a = 1, and if so, we're done.  Otherwise, on each iteration, test for 
-;; /a/'s evenness.  If /a/ is odd, subtract 1 from /a/ and add /b/ to the
-;; accumulator (which again only exists to deal with odd cases).  If /a/ is even, 
-;; halve /a/, double /b/, and call the procedure again with the resulting values. 
-;; The final answer will be /b/ plus whatever's accumulated in the accumulator.
+;; The idea is that (a * b) is equal to ((a/2) * 2b), assuming /a/ is even. 
+;; So, test if a = 1, and if so, we're done.  Otherwise, on each iteration, 
+;; test for /a/'s evenness.  If /a/ is odd, subtract 1 from /a/ and add /b/ to
+;; the accumulator (which again only exists to deal with odd cases).  If /a/ 
+;; is even, halve /a/, double /b/, and call the procedure again with the 
+;; resulting values.  The final answer will be /b/ plus whatever's accumulated
+;; in the accumulator.
 
 ;; lindseykuper: I decided we needed to define xor.
 (define xor 
@@ -883,9 +885,9 @@
 ;;      b -> bp^2  + bq^2 + aq^2 + 2apq
 ;; }
 ;;
-;; I think what we have to do now is figure out how what we have above fits into
-;; the T_pq mold.  That is, we have to figure out what /p/ and /q/ have to be to
-;; make the T_pq_TWICE transformation happen.
+;; I think what we have to do now is figure out how what we have above fits
+;; into the T_pq mold.  That is, we have to figure out what /p/ and /q/ have
+;; to be to make the T_pq_TWICE transformation happen.
 
 ;; bq' + aq' + ap' = 2bpq + 2apq + 2(aq^2) + bq^2 + ap^2      (1)
 ;; bp' + aq'       = bp^2  + bq^2 + aq^2 + 2apq               (2)
@@ -1043,8 +1045,8 @@
           (display "total runtime: ")
           (display (- (runtime) start-time))))))
 
-;; Use your procedure to find the three smallest primes larger than 1000; larger
-;; than 10,000; larger than 100,000; larger than 1,000,000. 
+;; Use your procedure to find the three smallest primes larger than 1000; 
+;; larger than 10,000; larger than 100,000; larger than 1,000,000. 
 
 ;; lindseykuper:
 ;; Three smallest primes larger than     1,000:    1009,    1013,    1019
@@ -1119,11 +1121,11 @@
 	(display (- (runtime) start-time)))))
 
 ;; lindseykuper:
-;; You're right.  I don't know why it would be 4th root -- that was a wild stab!
-;; Now I think that the issue is that this problem was written in 1985, and none
-;; of the tests take long enough to distinguish.  Using your test, here's how long
-;; it takes to test each of these numbers 1000 times  (I changed the number of 
-;; loops to 1000 to make the arithmetic easier):
+;; You're right.  I don't know why it would be 4th root -- that was a wild
+;; stab!  Now I think that the issue is that this problem was written in 1985,
+;; and none of the tests take long enough to distinguish.  Using your test, 
+;; here's how long it takes to test each of these numbers 1000 times  (I 
+;; changed the number of loops to 1000 to make the arithmetic easier):
 
 ;;    1009  (19 ms),     1013 (18 ms),     1019 (19 ms)  (avg:  18.67)
 ;;   10007  (59 ms),    10009 (58 ms),    10037 (59 ms)  (avg:  58.67)
@@ -1137,8 +1139,8 @@
 
 ;; > (* 18.67 (sqrt 100))
 ;; 186.7000000026119
-;; Not super-close to 256.33, but then 373 was an outlier.  This is pretty close
-;; to 199 or 197.
+;; Not super-close to 256.33, but then 373 was an outlier.  This is pretty
+;; close to 199 or 197.
 
 ;; > (* 18.67 (sqrt 1000))
 ;; 590.3973483545885
@@ -1148,14 +1150,14 @@
 ;; Well.  Whew.  Let's move on to a problem that isn't so machine-dependent!
 
 ;;;; 1.23
-;; The /smallest-divisor/ procedure shown at the start of this section does lots
-;; of needless testing: After it checks to see if the number is divisible by 2
-;; there is no point in checking to see if it is divisible by any larger even
-;; numbers. This suggests that the values used for test-divisor should not be 2,
-;; 3, 4, 5, 6, ..., but rather 2, 3, 5, 7, 9, .... To implement this change,
-;; define a procedure /next/ that returns 3 if its input is equal to 2 and
-;; otherwise returns its input plus 2. Modify the /smallest-divisor/ procedure
-;; to use (next test-divisor) instead of (+ test-divisor 1). With
+;; The /smallest-divisor/ procedure shown at the start of this section does
+;; lots of needless testing: After it checks to see if the number is divisible
+;; by 2 there is no point in checking to see if it is divisible by any larger
+;; even numbers. This suggests that the values used for test-divisor should not
+;; be 2, 3, 4, 5, 6, ..., but rather 2, 3, 5, 7, 9, .... To implement this
+;; change, define a procedure /next/ that returns 3 if its input is equal to 2
+;; and otherwise returns its input plus 2. Modify the /smallest-divisor/
+;; procedure to use (next test-divisor) instead of (+ test-divisor 1).  With
 ;; timed-prime-test incorporating this modified version of /smallest-divisor/,
 ;; run the test for each of the 12 primes found in exercise 1.22. Since this
 ;; modification halves the number of test steps, you should expect it to run
@@ -1166,24 +1168,24 @@
 ;; alexr: Alright, let's make faster-smallest-divisor and friends. It seems
 ;; like, if we were really clever, we could have some way for /next/ to just
 ;; generate the list of prime numbers. But then, if we could build the list of
-;; all the prime numbers, testing for primality would be easy -- just check if a
-;; number is in that list.
+;; all the prime numbers, testing for primality would be easy -- just check
+;; if a number is in that list.
 
 ;; By the time we call this function, we know it's not even, and > 2.
 (define (faster-smallest-divisor n)
   (faster-find-divisor n 3))
 
 ;; lindseykuper:
-;; First we tried a version with a /next/ procedure.  Here are the results of my
-;; testing that version with our 12 primes from 1.22:
+;; First we tried a version with a /next/ procedure.  Here are the results of
+;; my testing that version with our 12 primes from 1.22:
 
 ;;    1009  (16 ms),     1013 (13 ms),     1019 (12 ms)  (avg:  13.67)
 ;;   10007  (36 ms),    10009 (36 ms),    10037 (36 ms)  (avg:  36.00)
 ;;  100003 (115 ms),  100019 (119 ms),  100043 (115 ms)  (avg: 116.33)
 ;; 1000003 (371 ms), 1000033 (368 ms), 1000037 (456 ms)  (avg: 398.33)
 
-;; The average times are 73%, 61%, 45%, and 66% of the old ones respectively.  I
-;; don't think this counts as "twice as fast".
+;; The average times are 73%, 61%, 45%, and 66% of the old ones respectively.
+;; I don't think this counts as "twice as fast".
 
 ;; alexr points out that every call to /next/ includes a function call and a
 ;; conditional. Why not just always add 2 instead of asking every single time?
@@ -1194,8 +1196,8 @@
         (else (faster-find-divisor n (+ test-divisor 2)))))
 
 ;; alexr:
-;; Primality test with our new, faster functions. 2 is prime, other even numbers
-;; are not. 
+;; Primality test with our new, faster functions. 2 is prime, other even
+;; numbers are not. 
 (define (faster-prime? n)
   (cond
    ((= n 2) #t)
@@ -1264,25 +1266,28 @@
             (+ (car ls) (sum (cdr ls))))))
     (/ (sum ls) (length ls))))
 
-;> (average-list (ratios (faster-times test-primes) (slower-times test-primes)))
+;>(average-list (ratios (faster-times test-primes) 
+;                       (slower-times test-primes)))
 ;0.5070729743263689
 
 ;; Pretty damn close to "twice as fast".  Woohoo!
 
 ;;;; 1.24
-;; Modify the timed-prime-test procedure of exercise 1.22 to use fast-prime? (the
-;; Fermat method), and test each of the 12 primes you found in that exercise.
+;; Modify the timed-prime-test procedure of exercise 1.22 to use fast-prime?
+;; (the Fermat method), and test each of the 12 primes you found in that
+;; exercise.
 
-;; lindseykuper:  Well, I wanted to just take /fast-prime?/ and pass it along to 
-;; Alex's /abstract-longer-prime-test/ with our list of /test-primes/.  But 
-;; /fast-prime?/ takes two arguments.  So first I want to rewrite /fast-prime?/ as
-;; a unary function so we can use all this accursed scaffolding we had to go and 
-;; build.  :)
+;; lindseykuper:  Well, I wanted to just take /fast-prime?/ and pass it along
+;; to Alex's /abstract-longer-prime-test/ with our list of /test-primes/.  But 
+;; /fast-prime?/ takes two arguments.  So first I want to rewrite /fast-prime?/
+;; as a unary function so we can use all this accursed scaffolding we had to go
+;; and build.  :)
 
 (define (unary-fast-prime? n)
   (fast-prime? n 1)) ;; Let's just use 1 as the number of tests,
-                     ;; since the point of this exercise isn't really to test the
-                     ;; numbers for primality anyway (we know they're prime!).
+                     ;; since the point of this exercise isn't really to test
+                     ;; the numbers for primality anyway (we know they're
+                     ;; prime!).
   
 (define (times-using-fermat-method primes)
   (map (lambda (prime)
@@ -1315,12 +1320,13 @@
 ;(11 12 12 14 14 15 26 27 27 35 34 36)
 
 ;; Since the Fermat test has (log n) growth, how would you expect the time to
-;; test primes near 1,000,000 to compare with the time needed to test primes near
-;; 1000? Do your data bear this out? Can you explain any discrepancy you find?
+;; test primes near 1,000,000 to compare with the time needed to test primes
+;; near 1000? Do your data bear this out? Can you explain any discrepancy you
+;; find?
 
-;; Well, log_2(1,000) =~ 9.966, and log_2(1,000,000) =~ 19.932.  So, I guess it 
-;; should take twice as long to test primes near 1,000,000 as it does to test
-;; primes near 1000.  It's actually taking around three times as long:
+;; Well, log_2(1,000) =~ 9.966, and log_2(1,000,000) =~ 19.932.  So, I guess
+;; it should take twice as long to test primes near 1,000,000 as it does to
+;; test primes near 1000.  It's actually taking around three times as long:
 
 ;> (ratios (times-using-fermat-method '(1000003 1000033 1000037)) 
 ;          (times-using-fermat-method '(1009 1013 1019)))
@@ -1328,8 +1334,8 @@
 
 ;; Right now, I'm not really sure why...
 
-;; lindseykuper: actually, here, in case we ever need it.  The built-in /log/ is
-;; natural log, and log_2(x) = log_2(e) ln(x).
+;; lindseykuper: actually, here, in case we ever need it.  The built-in /log/
+;; is natural log, and log_2(x) = log_2(e) ln(x).
 (define log_2
   (lambda (x)
     (* 1.443 (log x))))
@@ -1342,8 +1348,8 @@
 ;(define (expmod base exp m)
 ;  (remainder (fast-expt base exp) m))
 
-;; Is she correct? Would this procedure serve as well for our fast prime tester?
-;; Explain. 
+;; Is she correct? Would this procedure serve as well for our fast prime
+;; tester?  Explain. 
 
 ;; lindseykuper: Alyssa's technique is correct and would return the same result
 ;; as our /expmod/, but the computation would be shaped differently.
@@ -1437,7 +1443,8 @@
 ;; I find that /expmod/ runs consistently faster that /alyssa-expmod/ on the 
 ;; values in /1-25-example-values/:
 
-;> (running-time-each (1-25-example-combinations 1-25-example-values expmod) 10)
+;> (running-time-each 
+;   (1-25-example-combinations 1-25-example-values expmod) 10)
 ;result: 4
 ;result: 5
 ;result: 1
@@ -1449,8 +1456,9 @@
 ;result: 1
 ;(33 3448 217)
 
-;; Using /average-list/ and /ratios/, if I'm interpreting this correctly, we see
-;; /expmod/ running in about 12% of the time of /alyssa-expmod/ on these data:
+;; Using /average-list/ and /ratios/, if I'm interpreting this correctly, we
+;; see /expmod/ running in about 12% of the time of /alyssa-expmod/ on these
+;; data:
 
 ;> (average-list
 ; (ratios
@@ -1531,9 +1539,9 @@
 ;         (remainder (* base (expmod base (- exp 1) m))
 ;                    m))))
 
-;; "I don't see what difference that could make," says Louis.  "I do," says Eva.
-;; "By writing the procedure like that, you have transformed the 0(log n) process
-;; into a 0(n) process."  Explain.
+;; "I don't see what difference that could make," says Louis.  "I do," says
+;; Eva. "By writing the procedure like that, you have transformed the 0(log n)
+;; process into a 0(n) process."  Explain.
 
 ;; lindseykuper: The expression
 
@@ -1549,13 +1557,13 @@
 ;; inefficient because it's a recursive call to /expmod/, so our procedure
 ;; generates two identical recursive processes!
 
-;; So, we know Louis' procedure is slower.  But why is it specifically O(n) now,
-;; instead of O(log n)?  Well, we're still dividing exp by 2 in every step, so
-;; it still takes (log n) steps to get to the bottom of the recursion tree.  But
-;; with Louis' version, the number of times we have to perform the same 
-;; computation increases by powers of 2 with each step down the tree!  So, the
-;; (log n) and the (n^2) "cancel out", in a sense, leaving us with O(n) for the
-;; whole thing.  Ouch.
+;; So, we know Louis' procedure is slower.  But why is it specifically O(n) 
+;; now, instead of O(log n)?  Well, we're still dividing exp by 2 in every
+;; step, so it still takes (log n) steps to get to the bottom of the recursion
+;; tree.  But with Louis' version, the number of times we have to perform the
+;; same computation increases by powers of 2 with each step down the tree!  
+;; So, the (log n) and the (n^2) "cancel out", in a sense, leaving us with 
+;; O(n) for the whole thing.  Ouch.
 
 ;;;; 1.27
 ;; Demonstrate that the Carmichael numbers listed in footnote 47 really do fool
