@@ -2195,3 +2195,53 @@
         (lambda (x) (f x))
         (compose f (repeated f (- n 1))))))
 
+;;;; 1.44
+;; ...Write a procedure /smooth/ that takes as input a procedure that computes
+;; /f/ and returns a procedure that computes the smoothed /f/.
+
+(define smooth 
+  (lambda (f)
+    (lambda (x)
+      (/ (+ (f (- x dx)) (f x) (f (+ x dx))) 3))))
+      
+;; ...Show how to generate the /n/-fold smoothed function of any given function
+;; using /smooth/ and /repeated/ from exercise 1.43.
+
+;; You can do it like:
+
+; > (((repeated smooth 2) square) 2)
+; 4.000000000133333
+; > (((repeated smooth 3) square) 2)
+; 4.0000000002
+; > (((repeated smooth 4) square) 2)
+; 4.000000000266667
+
+;; which will turn out the same as
+
+; > (((compose smooth smooth) square) 2)
+; 4.000000000133333
+; > (((compose (compose smooth smooth) smooth) square) 2)
+; 4.0000000002
+; > (((compose (compose (compose smooth smooth) smooth) smooth) square) 2)
+; 4.000000000266667
+
+;; , respectively.  We could also generalize it into a function:
+
+(define n-fold-smoothed-function
+  (lambda (f n)
+    (lambda (x)
+      (((repeated smooth n) f) x))))
+
+;; which lets us do:
+
+; > ((n-fold-smoothed-function square 2) 2)
+; 4.000000000133333
+; > ((n-fold-smoothed-function square 3) 2)
+; 4.0000000002
+; > ((n-fold-smoothed-function square 4) 2)
+; 4.000000000266667
+
+
+
+
+
