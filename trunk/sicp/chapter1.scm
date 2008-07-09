@@ -1340,6 +1340,27 @@
   (lambda (x)
     (* 1.443 (log x))))
 
+;; Later: Well, coming back to this after a while, I'm finding that I get times
+;; that seem more like what I'm expecting if DrScheme hasn't been running for 
+;; hours!  If I fire up a new instance of DrScheme, here's what I see (I did it
+;; three times for good measure:
+
+;> (ratios (times-using-fermat-method '(1000003 1000033 1000037))
+;          (times-using-fermat-method '(1009 1013 1019)))
+;(1.9759358288770053 2.5493333333333332 1.826302729528536)
+;> (ratios (times-using-fermat-method '(1000003 1000033 1000037))
+;          (times-using-fermat-method '(1009 1013 1019)))
+;(2.036111111111111 1.935309973045822 1.9573333333333334)
+;> (ratios (times-using-fermat-method '(1000003 1000033 1000037))
+;          (times-using-fermat-method '(1009 1013 1019)))
+;(2.318537859007833 1.8044554455445545 2.388739946380697)
+
+;; So, the times I'm getting now are a lot more like "twice as fast".  I think 
+;; I'm willing to let this drop at this point, since it seems so dependent on
+;; machine-specific details and things I can't control.  So, let's just say
+;; that it looks like Fermat really is O(log n) and call it good!
+
+
 ;;;; 1.25
 ;; Alyssa P. Hacker complains that we went to a lot of extra work in writing
 ;; /expmod/. After all, she says, since we already know how to compute
