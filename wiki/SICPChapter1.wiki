@@ -43,7 +43,7 @@
 || 36     || done ||
 || 37     || half done ||
 || 38     || done ||
-|| 39     || not started ||
+|| 39     || done ||
 || 40     || not started ||
 || 41     || not started ||
 || 42     || not started ||
