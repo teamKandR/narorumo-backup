@@ -2175,3 +2175,23 @@
 
 ; > (((double (double double)) inc) 5)
 ; 21
+
+;;;; 1.42
+;; ...Define a procedure /compose/ that implements composition.
+
+(define compose
+  (lambda (f g)
+    (lambda (x)
+      (f (g x)))))
+
+;;;; 1.43
+;; ...Write a procedure that takes as inputs a procedure that computes /f/ and
+;; a positive integer /n/ and returns the procedure that computes the /n/th 
+;; repeated application of /f/.
+
+(define repeated
+  (lambda (f n)
+    (if (= n 1)
+        (lambda (x) (f x))
+        (compose f (repeated f (- n 1))))))
+
