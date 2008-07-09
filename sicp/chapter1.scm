@@ -2109,3 +2109,20 @@
 ; 2.7182818284590455
 
 ;; Woot!
+
+;;;; 1.39
+;; ...Define a procedure /(tan-cf x k)/ that computes an approximation to the 
+;; tangent function based on Lambert's formula.
+
+(define tan-cf
+  (lambda (x k)
+    (let ((n (lambda (i)
+               (if (= i 1)
+                   x
+                   (- (square x)))))
+          (d (lambda (i)
+               (if (= i 1)
+                   1
+                   (- (* i 2) 1)))))
+      (exact->inexact (cont-frac n d k)))))
+
