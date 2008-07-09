@@ -2164,7 +2164,14 @@
 
 ;; They look pretty good to me.
 
+;;;; 1.41
+;; Define a procedure /double/ that takes a procedure of one argument as 
+;; argument and returns a procedure that applies the original procedure twice.
 
+(define double
+  (lambda (f)
+    (lambda (x)
+      (f (f x)))))
 
-
-
+; > (((double (double double)) inc) 5)
+; 21
