@@ -2241,7 +2241,84 @@
 ; > ((n-fold-smoothed-function square 4) 2)
 ; 4.000000000266667
 
+;;;; 1.45
+;; ...Do some experiments to determine how many average damps are required...
 
+(define (average-damp f)
+  (lambda (x) (average x (f x))))
 
+(define (cube-root x)
+  (fixed-point (average-damp (lambda (y) (/ x (square y))))
+               1.0))
 
+(define (fourth-root x)
+  (fixed-point ((repeated average-damp 2) (lambda (y) (/ x (expt y 3))))
+               1.0))
 
+(define (fifth-root x)
+  (fixed-point ((repeated average-damp 2) (lambda (y) 
+                                            (/ x (expt y 4))))
+               1.0))
+
+(define (sixth-root x)
+  (fixed-point ((repeated average-damp 2) (lambda (y) 
+                                            (/ x (expt y 5))))
+               1.0))
+
+;; It looks to me like average-damping twice is enough for fourth, fifth, and
+;; sixth roots.  For instance, for the above, I get:
+
+; > (fourth-root (expt 500 4))
+; 500.0
+; > (fifth-root (expt 500 5))
+; 500.0000007238933
+; > (sixth-root (expt 500 6))
+; 499.9999975242963
+
+;; Let's go ahead and write the /nth-root/ procedure, but with a parameter for
+;; the number of average damps...
+
+(define (nth-root x n damps)
+  (fixed-point ((repeated average-damp damps) (lambda (y)
+                                           (/ x (expt y (- n 1)))))
+               1.0))
+
+;; /(nth-root (expt 5 20) 20 2)/ and /(nth-root (expt 5 20) 20 3)/ don't
+;; converge, but:
+
+; > (nth-root (expt 5 20) 20 4)
+; 4.999998544071863
+
+;; So, 20th roots need to be damped 4 times -- interesting!  Where's the
+;; cutoff?
+
+; > (nth-root (expt 5 7) 7 2)
+; 5.000004267274231
+; > (nth-root (expt 5 8) 8 2)  ;; 8th root needs to be damped 3 times!
+; user break
+
+; ...
+
+; > (nth-root (expt 5 15) 15 3)
+; 4.999995762170965
+; > (nth-root (expt 5 16) 16 3) ;; 16th root needs to be damped 4 times!
+; user break
+
+;; And it looks like 32nd root needs to be damped 5 times, etc.
+
+;; So, for 4  <= n <= 7, twice.
+;;     for 8  <= n <= 15, three times.
+;;     for 16 <= n <= 31, four times.
+;;     for 32 ...
+
+;; It looks like the number of damps needed to compute the nth root is
+;; floor(log n).  Cool!  So we can redefine /nth-root/ this way (using our own
+;; /log_2/ from above):
+
+(define (nth-root x n)
+  (fixed-point ((repeated average-damp (floor (log_2 n))) 
+                (lambda (y) (/ x (expt y (- n 1)))))
+               1.0))
+
+; > (nth-root (expt 4999 34) 34)
+; 4999.00000009471
