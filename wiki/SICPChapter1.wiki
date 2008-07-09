@@ -46,8 +46,8 @@
 || 39     || done ||
 || 40     || done ||
 || 41     || done ||
-|| 42     || not started ||
-|| 43     || not started ||
+|| 42     || done ||
+|| 43     || done ||
 || 44     || not started ||
 || 45     || not started ||
 || 46     || not started ||
