@@ -2126,3 +2126,45 @@
                    (- (* i 2) 1)))))
       (exact->inexact (cont-frac n d k)))))
 
+;;;; 1.40
+;; Define a procedure /cubic/ that can be used together with the
+;; /newtons-method/ procedure in expressions of the form
+
+; (newtons-method (cubic a b c) 1)
+
+;; to approximate zeros of the cubic x^3 + ax^2 + bx + c.
+
+(define (deriv g)
+  (lambda (x)
+    (/ (- (g (+ x dx)) (g x))
+       dx)))
+(define dx 0.00001)
+
+(define (newton-transform g)
+  (lambda (x)
+    (- x (/ (g x) ((deriv g) x)))))
+
+(define (newtons-method g guess)
+  (fixed-point (newton-transform g) guess))
+
+(define cubic
+  (lambda (a b c)
+    ;; return another procedure which has one argument
+    (lambda (x)
+      (+ (cube x) (* a (square x)) (* b x) c))))
+
+;; If it works, then these should all come out close to 0...
+
+;> ((cubic 57 900000 12) (newtons-method (cubic 57 900000 12) 1))
+;1.7763568394002505e-15
+;> ((cubic 2 1 5) (newtons-method (cubic 2 1 5) 1))
+;2.0581758519711002e-11
+;> ((cubic 16 9 3) (newtons-method (cubic 16 9 3) 1))
+;1.1851852832478471e-11
+
+;; They look pretty good to me.
+
+
+
+
+
