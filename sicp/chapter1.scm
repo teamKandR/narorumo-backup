@@ -2322,3 +2322,40 @@
 
 ; > (nth-root (expt 4999 34) 34)
 ; 4999.00000009471
+
+;;;; 1.46
+;; ...Write a procedure /iterative-improve/ that takes two procedures as
+;; arguments: a method for telling whether a guess is good enough and a method
+;; for improving a guess.  /Iterative-improve/ should return as its value a
+;; procedure that takes a guess as argument and keeps improving the guess
+;; until it is good enough. Rewrite the /sqrt/ procedure of section 1.1.7 and
+;; the /fixed-point/ procedure of section 1.3.3 in terms of
+;; /iterative-improve/.
+
+(define iterative-improve
+  (lambda (good-enough? improve)
+    (letrec ((improver (lambda (guess)
+                         (if (good-enough? guess)
+                             guess
+                             (improver (improve guess))))))
+      (lambda (guess)
+        (improver guess)))))
+
+(define sqrt-using-iterative-improve
+  (lambda (x)
+    (define (improve guess)
+      (average guess (/ x guess)))
+    (define (good-enough? guess)
+      (< (abs (- (square guess) x)) 0.001))
+    ((iterative-improve good-enough? improve) 1.0)))
+
+(define fixed-point-using-iterative-improve
+  (lambda (f first-guess)
+    (define (next guess)
+      (f guess))
+    (define (close-enough? guess)
+      (< (abs (- guess (next guess))) tolerance))
+    ((iterative-improve close-enough? next) first-guess)))
+
+    
+
