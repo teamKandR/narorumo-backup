@@ -28,7 +28,7 @@
 || 21     || done ||
 || 22     || done ||
 || 23     || done ||
-|| 24     || mostly done ||
+|| 24     || done ||
 || 25     || done ||
 || 26     || done ||
 || 27     || done ||
