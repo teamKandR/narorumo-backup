@@ -2103,21 +2103,125 @@
         (if (= i k)
             0
             (/ (n i) (+ (d i) (kernel (+ i 1)))))))
-    (kernel 1)))
+    (kernel 0)))
 
-;; If we're looking for 0.6180, we have to use /k/ = 12:
+;; If we're looking for 0.6180, we have to use /k/ = 11:
 
-; > (cont-frac (lambda (i) 1.0) (lambda (i) 1.0) 12)
+; > (cont-frac (lambda (i) 1.0) (lambda (i) 1.0) 11)
 ; 0.6180555555555556
 
 ;;;; 1.37b
 ;; ...write one that generates an iterative process.
 
+;; All right.  I'm having a lot of trouble figuring out how to write a
+;; tail-recursive version of this.  I expect the code to be something like
+
+;(define cont-frac-iter
+;  (lambda (n d k)
+;    (define kernel
+;      (lambda (i so-far)
+;        (if (= i k)
+;            so-far
+;            (kernel (+ i 1) <??>))))
+;    (kernel 0 0)))
+
+;; but I don't know how to calculate the /so-far/ part with this continued
+;; fraction thing -- the terms don't stand by themselves!
+
+;; Let's think about this.  Suppose that all the n_i are, say, 3, and the d_i
+;; are, say, 5.If /k/ = 1, then the answer is just
+
+;; n_1
+;; ---
+;; d_1
+
+;; Pretty simple -- 3/5.  Now, suppose /k/ = 2:
+
+;;    n_1
+;; ---------
+;;       n_2
+;; d_1 + ---
+;;       d_2
+
+;; (or n_1 / ((d_1 * d_2) + n_2) * 1/d_2.)
+
+;; The first version of /cont-frac/ gives us:
+
+; > (cont-frac (lambda (i) 3.0) (lambda (i) 5.0) 2)
+; 0.5357142857142857
+
+;; This is 3 / (5 + 3/5).  So it's what we had before but with n_2/d_2 added
+;; to the denominator.  Let's go a level deeper with /k/ = 3:
+
+;;        n_1
+;; ----------------
+;;          n_2
+;; d_1 + ----------
+;;              n_3
+;;       d_2 +  ---
+;;              d_3
+
+; > (cont-frac (lambda (i) 3.0) (lambda (i) 5.0) 3)
+; 0.5419354838709678
+
+;; This time it's 3 / (5 + 3/(5 + 3/5)).
+
+;; I'm thinking that we need to calculate n_k/d_k first, and add that to
+;; /so-far/.  If k = 1, we're done.  Otherwise, we add d_(k - 1) to what's in
+;; /so-far/, divide n_(k - 1) by it, and push all that onto /so-far/, and it
+;; becomes the new denominator.  Let's try it:
+
+(define cont-frac-iter
+  (lambda (n d k)
+    (define kernel
+      (lambda (i so-far)
+        (if (= i 1)
+            so-far
+            (kernel (- i 1) (/ (n (- i 1)) (+ (d (- i 1)) so-far))))))
+    (kernel k (/ (n k) (d k)))))
+
+;; This seems to work on our test numbers:
+
+; > (cont-frac-iter (lambda (i) 3.0) (lambda (i) 5.0) 1)
+; 0.6
+; > (cont-frac-iter (lambda (i) 3.0) (lambda (i) 5.0) 2)
+; 0.5357142857142857
+
+;; It also works on the approximation of 1/phi from part a:
+
+; > (cont-frac (lambda (i) 1.0) (lambda (i) 1.0) 11)
+; 0.6180555555555556
+; > (cont-frac-iter (lambda (i) 1.0) (lambda (i) 1.0) 11)
+; 0.6180555555555556
+
+;; Yay!
+
+;; Aside: my implementation above was directly translated from English, but it
+;; might be more stylish (or less ridiculous) to do it this way:
+
+(define cont-frac-iter-alternate-version
+  (lambda (n d k)
+    (define kernel
+      (lambda (i so-far)
+        (if (= i 0)
+            so-far
+            (kernel (- i 1) (/ (n i) (+ (d i) so-far))))))
+    (kernel k 0)))
+
+;; which seems to work correctly:
+
+; > (cont-frac-iter-alternate-version (lambda (i) 3.0) (lambda (i) 5.0) 2)
+; 0.5357142857142857
+; > (cont-frac-iter-alternate-version (lambda (i) 1.0) (lambda (i) 1.0) 11)
+; 0.6180555555555556
+
+;; Okay, now I'm really done!
+
 ;;;; 1.38
 ;; ...Write a program that uses your /cont-frac/ procedure from exercise 1.37
 ;; to approximate /e/, based on Euler's expansion.
 
-(define approximate-e
+(define approximate-e-iter
   (lambda (accuracy)
     (letrec ((n (lambda (i) 1.0))
              (d (lambda (i)
@@ -2132,9 +2236,9 @@
                            (if (= i 2)
                                0
                                (+ 1 (subtrahend (- i 3)))))))
-      (+ 2 (cont-frac n d accuracy)))))
+      (+ 2 (cont-frac-iter n d accuracy)))))
 
-; > (approximate-e 100)
+; > (approximate-e-iter 100)
 ; 2.7182818284590455
 
 ;; Woot!
