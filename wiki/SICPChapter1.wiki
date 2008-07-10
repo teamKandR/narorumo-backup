@@ -46,7 +46,7 @@ On the plus side, now I'll know exactly to do if my students make this mistake:
 
 === 1.37 and 1.38 ===
 
-While writing `cont-frac-iter` for [exercise 1.37b], I realized that there was a mistake in 1.37a.  Instead of calling `(kernel 1)` in `cont-frac`, I should have been calling `(kernel 0)`.  With `(kernel 1)`, things like
+While writing `cont-frac-iter` for 1.37b, I realized that there was a mistake in 1.37a.  Instead of calling `(kernel 1)` in `cont-frac`, I should have been calling `(kernel 0)`.  With `(kernel 1)`, things like
 
 {{{
 (cont-frac (lambda (i) 3.0) (lambda (i) 5.0) 1)
