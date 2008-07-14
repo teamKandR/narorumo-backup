@@ -1,0 +1,21 @@
+Our rover has two modes, GO-HOME and EVADE [1], which are implemented as a
+stack, CURRENT-STRATEGY. The GO-HOME mode is always the bottom-most item on
+the stack. On each iteration through our main loop, the ANYTHING-WORRYING?
+predicate examines each of the objects in our view and lets us know if we
+should be concerned about any of them. It not, we happily continue toward the
+center of the map; if so, we evade the bad stuff using an extremely
+sophisticated pathfinding algorithm known as "accelerate and turn left". [2]
+
+As if there were any way in which our rover-controlling software could
+possibly be improved, we've also begun to implement a system for storing map
+data, so that later runs in a trial can benefit from information gathered
+during earlier runs. Implementation of the remaining parts of this system are
+left as an exercise for the reader.
+
+ -- Lindsey Kuper and Alex Rudnick (Team K&R)
+
+[1] Which are also our team's preferred two modes of social interaction.
+
+[2] We also find this strategy to be eminently useful at track meets, unless
+we're participating in the 100-meter dash or pole vault events.
+
