@@ -1,5 +1,7 @@
 #!/usr/bin/env python2.5
 
+import sys
+
 ## Each 1 in the matrix has five fields, left/right/up/down, column
 
 node_table = {}
@@ -22,18 +24,33 @@ class DLX(object):
       return SOLUTION
 
     current_column = self.choose_column()
+    print "I chose", current_column
 
-  def choosecolumn(self):
-    ### choosing a column object
-    ### XXX: make this work.
+    self.cover(current_column)
+
+  def choose_column(self):
     lowestsize = sys.maxint
     here = self.first_column
+    choice = None
 
     while True:
-      if here.size
+      if here.size < lowestsize:
+        choice = here
+        lowestsize = here.size
+
       here = here.right
-      if here == first:
-        break
+      if here == self.first_column: break
+
+    return choice
+
+  def cover(self, column):
+    ## Set L[R[c]] <- L[c] and R[L[c]] <- R[c]
+
+    # go down until we've looped over, and ...
+    ## go right until we've looped around, and...
+    ### take out that node from the column (unlink it from its ups and downs)
+    ### and decrement the SIZE on its column.
+    pass
 
   def printout(self):
     print "dlx printout!!"
@@ -43,8 +60,7 @@ class DLX(object):
     while True:
       print "loop:", here
       here = here.right
-      if here == first:
-        break
+      if here == first: break
     print "end dlx printout!!"
 
   def link_columns(self):
@@ -155,8 +171,7 @@ class Column(object):
     while True:
       print here
       here = here.down 
-      if here == topnode:
-        break
+      if here == topnode: break
 
 def list_columns(indices):
   """Take in a list of (row,col) pairs and produce a list of columns."""
@@ -212,7 +227,7 @@ def main():
   columns = list_columns(sparse)
   dlx = DLX(columns)
   
-  dlx.printout()
+  dlx.search(0)
 
 if __name__ == "__main__":
   main()
