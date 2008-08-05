@@ -4,11 +4,10 @@ import sys
 
 ## Each 1 in the matrix has five fields, left/right/up/down, column
 
-## Just in case we need to look up at a particular (i,j) coordinate. Keys are
-## tuples of the form (row, column).
 node_table = {}
+SOLUTION = []
 
-class SparseMatrix(object):
+class DLX(object):
   def __init__(self, columns):
     self.columns = columns
     self.first_column = columns[0]
@@ -17,6 +16,32 @@ class SparseMatrix(object):
 
     self.link_columns()
     self.link_nodes()
+
+  def search(self, position):
+    current_column = self.current_column
+    if current_column.right == current_column:
+      print SOLUTION
+      return SOLUTION
+
+    current_column = self.choose_column()
+    print "I chose", current_column
+
+    self.cover(current_column)
+
+  def choose_column(self):
+    lowestsize = sys.maxint
+    here = self.first_column
+    choice = None
+
+    while True:
+      if here.size < lowestsize:
+        choice = here
+        lowestsize = here.size
+
+      here = here.right
+      if here == self.first_column: break
+
+    return choice
 
   def cover(self, column):
     ## Set L[R[c]] <- L[c] and R[L[c]] <- R[c]
@@ -28,7 +53,7 @@ class SparseMatrix(object):
     pass
 
   def printout(self):
-    print "SparseMatrix printout."
+    print "dlx printout!!"
     first = self.first_column
     here = first
 
@@ -36,7 +61,7 @@ class SparseMatrix(object):
       print "loop:", here
       here = here.right
       if here == first: break
-    print "end SparseMatrix printout!!"
+    print "end dlx printout!!"
 
   def link_columns(self):
     prev = None
@@ -166,7 +191,7 @@ def list_columns(indices):
   
   return out
 
-def rows_to_index_pairs(rows):
+def sparseMatrix(rows):
   """Take in rows, produce a list of (row,col) indices where there is a 1."""
   ones = []
 
@@ -198,11 +223,11 @@ def main():
           [0, 1, 0, 0, 0, 0, 1],
           [0, 0, 0, 1, 1, 0, 1]]
 
-  sparse = rows_to_index_pairs(rows)
+  sparse = sparseMatrix(rows)
   columns = list_columns(sparse)
-  matrix = SparseMatrix(columns)
-
-  matrix.printout()
+  dlx = DLX(columns)
+  
+  dlx.search(0)
 
 if __name__ == "__main__":
   main()
