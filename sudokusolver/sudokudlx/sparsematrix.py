@@ -35,7 +35,11 @@ class SparseMatrix(object):
 
     colindices.sort()
 
-    self.columns = map( lambda(index): Column("col %d" % index) , colindices)
+    self.columns = map( lambda(index): Column(index) , colindices)
+    self.column_table = {}
+
+    for col in self.columns:
+      self.column_table[col.name] = col
 
   def link_columns(self):
     prev = None
@@ -50,14 +54,13 @@ class SparseMatrix(object):
       prev = column
 
     column.right = first
-    if first:
-      first.left = column
+    first.left = column
 
   def link_nodes(self):
     """Link all the nodes in the matrix together."""
 
     self.link_nodes_in_rows()
-    # self.link_nodes_in_columns()
+    self.link_nodes_in_columns()
 
   def link_nodes_in_rows(self):
     """For each row, make the circular linked-list of those nodes."""
@@ -79,32 +82,34 @@ class SparseMatrix(object):
         prev = node
 
       node.right = first
-      if first:
-        first.left = node
+      first.left = node
 
   def link_nodes_in_columns(self):
     """For each column, make the circular linked-list of those nodes, with
     column header objects in the loop."""
     colindices = self.colindices()
 
-    for r in rowindices:
-      colindices = self.colindices_for(r)
+    for c in colindices:
+      column = self.column_table[c]
+      rowindices = self.rowindices_for(c)
 
       prev = None
       first = None
-      for c in colindices:
+      for r in rowindices:
         node = self.node_table[(r,c)]
 
         if not first:
           first = node
         elif prev:
-          node.left = prev
-          prev.right = node
+          node.up = prev
+          prev.down = node
         prev = node
 
-      node.right = first
-      if first:
-        first.left = node
+      column.up = node
+      node.down = column
+
+      column.down = first
+      first.up = column
 
   def colindices(self):
     keys = self.node_table.keys()
@@ -136,6 +141,18 @@ class SparseMatrix(object):
 
     return colindices
 
+  def rowindices_for(self, c):
+    """Take a given column index and return the list of the rows with nodes on
+    that column."""
+
+    keys = self.node_table.keys()
+    
+    rowindices = [rowindex for (rowindex,colindex) in keys if colindex == c]
+    rowindices == list(set(rowindices))
+    rowindices.sort()
+
+    return rowindices
+
 class Node(object):
   def __init__(self, rowindex, colindex):
     self.left = self
@@ -161,63 +178,4 @@ class Column(object):
     return str(self)
 
   def __str__(self):
-    return self.name
-
-def list_columns(indices):
-  """Take in a list of (row,col) pairs and produce a list of columns."""
-  out = []
-
-  cols = [col for (row, col) in indices]
-  uniq_cols = list(set(cols))
-  uniq_cols.sort()
-
-  name = 0
-  for colindex in uniq_cols:
-    indices_in_column = [(row,col) for (row,col) in indices if col == colindex]
-
-    next_column = Column(indices_in_column, name)
-    out.append(next_column)
-    name += 1
-  
-  return out
-
-def rows_to_index_pairs(rows):
-  """Take in rows, produce a list of (row,col) indices where there is a 1."""
-  ones = []
-
-  rowindex = 0
-  for row in rows:
-    colindex = 0
-    for place in row:
-      if place:
-        ones.append((rowindex, colindex))
-
-      colindex += 1
-    rowindex += 1
-
-  return ones
-        
-def transpose(rows):
-  """Transpose some rows. Take in rows, return the cols of those rows"""
-  nCols = len(rows[0])
-
-  cols = [ [row[i] for row in rows] for i in xrange(nCols)]
-
-  return cols
-
-def main():
-  rows = [[0, 0, 1, 0, 1, 1, 0],
-          [1, 0, 0, 1, 0, 0, 1],
-          [0, 1, 1, 0, 0, 1, 0],
-          [1, 0, 0, 1, 0, 0, 0],
-          [0, 1, 0, 0, 0, 0, 1],
-          [0, 0, 0, 1, 1, 0, 1]]
-
-  sparse = rows_to_index_pairs(rows)
-  columns = list_columns(sparse)
-  matrix = SparseMatrix(columns)
-
-  matrix.printout()
-
-if __name__ == "__main__":
-  main()
+    return "col " + str(self.name)
