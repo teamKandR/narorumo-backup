@@ -6,37 +6,36 @@ import sys
 
 ## Just in case we need to look up at a particular (i,j) coordinate. Keys are
 ## tuples of the form (row, column).
-node_table = {}
 
 class SparseMatrix(object):
-  def __init__(self, columns):
-    self.columns = columns
-    self.first_column = columns[0]
+  """The matrix from which we'll be picking out columns to solve the set-cover
+  problem, for DLX."""
 
-    self.current_column = self.first_column
+  def __init__(self, rows):
+    """Takes a list of rows, each of which is a list of 0s and 1s."""
 
+    self.node_table = {}
+
+    cols = []
+    for r in xrange(len(rows)):
+      for c in xrange(len(rows[0])):
+        if rows[r][c]:
+          one = Node(r, c)
+          self.node_table[(r,c)] = one
+
+    self.build_columns()
     self.link_columns()
     self.link_nodes()
 
-  def cover(self, column):
-    ## Set L[R[c]] <- L[c] and R[L[c]] <- R[c]
+  def build_columns(self):
+    """Put all the columns that this matrix has into self.columns"""
+    keys = self.node_table.keys()
+    with_repeats = [colindex for (rowindex,colindex) in keys]
+    colindices = list(set(with_repeats))
 
-    # go down until we've looped over, and ...
-    ## go right until we've looped around, and...
-    ### take out that node from the column (unlink it from its ups and downs)
-    ### and decrement the SIZE on its column.
-    pass
+    colindices.sort()
 
-  def printout(self):
-    print "SparseMatrix printout."
-    first = self.first_column
-    here = first
-
-    while True:
-      print "loop:", here
-      here = here.right
-      if here == first: break
-    print "end SparseMatrix printout!!"
+    self.columns = map( lambda(index): Column("col %d" % index) , colindices)
 
   def link_columns(self):
     prev = None
@@ -55,98 +54,114 @@ class SparseMatrix(object):
       first.left = column
 
   def link_nodes(self):
-    # Find all of the rowindexes that we use, grab each node that lives at that
-    # rowindex, and link them together in a loop.
-    keys = node_table.keys()
-    rowindices = [rowindex for (rowindex,colindex) in keys]
-    rowindices = list(set(rowindices))
+    """Link all the nodes in the matrix together."""
 
-    rowindices.sort()
+    self.link_nodes_in_rows()
+    # self.link_nodes_in_columns()
 
-    for rowindex in rowindices:
-      rowkeys = [(r,c) for (r,c) in keys if r == rowindex]
-      rowkeys.sort(key=lambda(pair): pair[1])
+  def link_nodes_in_rows(self):
+    """For each row, make the circular linked-list of those nodes."""
+    rowindices = self.rowindices()
 
-      leftmost = None
+    for r in rowindices:
+      colindices = self.colindices_for(r)
+
       prev = None
-      for key in rowkeys:
-        node = node_table[key]
+      first = None
+      for c in colindices:
+        node = self.node_table[(r,c)]
 
-        if not leftmost:
-          leftmost = node
-        if prev:
+        if not first:
+          first = node
+        elif prev:
           node.left = prev
           prev.right = node
-
         prev = node
 
-      node.right = leftmost
-      if leftmost:
-        leftmost.left = node
+      node.right = first
+      if first:
+        first.left = node
 
+  def link_nodes_in_columns(self):
+    """For each column, make the circular linked-list of those nodes, with
+    column header objects in the loop."""
+    colindices = self.colindices()
+
+    for r in rowindices:
+      colindices = self.colindices_for(r)
+
+      prev = None
+      first = None
+      for c in colindices:
+        node = self.node_table[(r,c)]
+
+        if not first:
+          first = node
+        elif prev:
+          node.left = prev
+          prev.right = node
+        prev = node
+
+      node.right = first
+      if first:
+        first.left = node
+
+  def colindices(self):
+    keys = self.node_table.keys()
+    
+    colindices = [colindex for (rowindex,colindex) in keys]
+    colindices = list(set(colindices))
+    colindices.sort()
+
+    return colindices
+
+  def rowindices(self):
+    keys = self.node_table.keys()
+    
+    rowindices = [rowindex for (rowindex,colindex) in keys]
+    rowindices = list(set(rowindices))
+    rowindices.sort()
+
+    return rowindices
+
+  def colindices_for(self, r):
+    """Take a given row index and return the list of the columns with nodes on
+    that row."""
+
+    keys = self.node_table.keys()
+    
+    colindices = [colindex for (rowindex,colindex) in keys if rowindex == r]
+    colindices = list(set(colindices))
+    colindices.sort()
+
+    return colindices
 
 class Node(object):
-  def __init__(self, column, rowindex, colindex):
+  def __init__(self, rowindex, colindex):
     self.left = self
     self.right = self
     self.up = self
     self.down = self
-    self.column = column
 
     self.rowindex = rowindex
     self.colindex = colindex
-
-    node_table[(rowindex,colindex)] = self
 
   def __repr__(self):
     return ("(%d,%d)" % (self.rowindex, self.colindex))
 
 class Column(object):
-  def __init__(self, ones, name):
-    self.size = len(ones)
+  def __init__(self, name):
+    self.size = 0
     self.top = None
     self.left = None
     self.right = None
     self.name = name
 
-    self.ones = ones
-    self.link_ones()
-
   def __repr__(self):
     return str(self)
 
   def __str__(self):
-    return ("<column %d>" % self.name)
-
-  def link_ones(self):
-    prev = None
-    top = None
-
-    for one in self.ones:
-      rowindex,colindex = one
-      node = Node(self, rowindex, colindex)
-
-      if not top:
-        top = node
-      elif prev:
-        node.up = prev
-        prev.down = node
-      prev = node
-
-    node.down = top
-    if top:
-      top.up = node
-
-    self.top = top
-
-  def printout(self):
-    topnode = self.top
-    here = topnode
-
-    while True:
-      print here
-      here = here.down 
-      if here == topnode: break
+    return self.name
 
 def list_columns(indices):
   """Take in a list of (row,col) pairs and produce a list of columns."""
