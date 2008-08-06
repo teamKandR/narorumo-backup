@@ -42,6 +42,10 @@ class MatrixTests(TestCase):
     assert matrix.colindices_for(0) == [2, 4, 5]
     assert matrix.colindices_for(5) == [3, 4, 6]
 
+  def testRowIndecesFor(self):
+    assert matrix.rowindices_for(0) == [1, 3]
+    assert matrix.rowindices_for(5) == [0, 2]
+
   def testLinkNodesInRows(self):
     table = matrix.node_table
 
@@ -56,3 +60,14 @@ class MatrixTests(TestCase):
 
     # left of my right is me!
     assert table[(0,5)].right.left == table[(0,5)]
+
+  def testLinkNodesInColumns(self):
+    table = matrix.node_table
+    coltable = matrix.column_table
+
+    assert table[(0,2)].up == coltable[2]
+    assert coltable[2].down == table[(0,2)]
+
+    assert table[(2,1)].down == table[(4,1)]
+    assert table[(4,1)].up == table[(2,1)]
+    assert table[(4,1)].down== coltable[1]
