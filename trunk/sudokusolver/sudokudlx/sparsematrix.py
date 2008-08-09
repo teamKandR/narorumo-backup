@@ -37,6 +37,7 @@ class SparseMatrix(object):
 
     self.columns = map( lambda(index): Column(index) , colindices)
     self.column_table = {}
+    self.column_header = Column('h', header=1)
 
     for col in self.columns:
       self.column_table[col.name] = col
@@ -92,6 +93,7 @@ class SparseMatrix(object):
     for c in colindices:
       column = self.column_table[c]
       rowindices = self.rowindices_for(c)
+      column.size = len(rowindices)
 
       prev = None
       first = None
@@ -153,6 +155,36 @@ class SparseMatrix(object):
 
     return rowindices
 
+# cover(c):
+#   Set L[R[c]] <- L[c] and R[L[c]] <- R[c]
+#   for each i <- D[c], D[D[c]] ... while i != c:
+#     for each j <- R[i], R[R[i]] ... while j != i,
+#       set U[D[j]] <- U[j], D[U[j]] <- D[j]
+#       and decrement S[C[j]]
+  def cover(self, column):
+    "Remove a column; we can put it back in later. Parameter /column/ is the
+    actual column header object."
+
+    column.right.left = column.left
+    column.left.right = column.right
+
+    here = column.down
+    while here != column:
+      here = here.down
+    
+    pass
+
+# uncover(c)
+#   for each i <- U[c], U[U[c]] ... while i != c
+#     for each j <- L[i], L[L[i]] ... while j != i
+#       increment S[C[j]]
+#       set U[D[j]] to j, D[U[j]] <- j
+#   set L[R[c]] <- c and R[L[c]] <- c
+
+  def uncover(self, column):
+    "Put a column back in."
+    pass
+
 class Node(object):
   def __init__(self, rowindex, colindex):
     self.left = self
@@ -167,12 +199,13 @@ class Node(object):
     return ("(%d,%d)" % (self.rowindex, self.colindex))
 
 class Column(object):
-  def __init__(self, name):
+  def __init__(self, name, header=0):
     self.size = 0
     self.top = None
     self.left = None
     self.right = None
     self.name = name
+    self.isheader = header
 
   def __repr__(self):
     return str(self)

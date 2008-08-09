@@ -71,3 +71,12 @@ class MatrixTests(TestCase):
     assert table[(2,1)].down == table[(4,1)]
     assert table[(4,1)].up == table[(2,1)]
     assert table[(4,1)].down== coltable[1]
+
+  def testColumnSizes(self):
+    coltable = matrix.column_table
+
+    assert coltable[1].size == 2
+    assert coltable[6].size == 3
+
+  def testCover(self):
+    pass
