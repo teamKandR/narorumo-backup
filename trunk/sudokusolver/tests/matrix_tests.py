@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from sudokudlx.sparsematrix import SparseMatrix
+from copy import deepcopy
 
 rows1 = [[0, 0, 1, 0, 1, 1, 0],
          [1, 0, 0, 1, 0, 0, 1],
@@ -22,15 +23,14 @@ sparser = SparseMatrix(rows2)
 
 class MatrixTests(TestCase):
   def testInitMatrix(self):
-    ## every column has a 1 in it.
-    assert len(matrix.columns) == 7
+    ## every column has a 1 in it, and there's a special column header.
+    assert len(matrix.columns) == 8
     assert len(matrix.node_table) == 16
 
     ## not every column has a 1.
-    assert len(sparser.columns) == 2
+    assert len(sparser.columns) == 3
     assert len(sparser.node_table) == 5
 
-  # def testLinks(self):
   def testRowIndices(self):
     assert matrix.rowindices() == [0, 1, 2, 3, 4, 5]
 
@@ -72,6 +72,16 @@ class MatrixTests(TestCase):
     assert table[(4,1)].up == table[(2,1)]
     assert table[(4,1)].down== coltable[1]
 
+  def testLinkColumns(self):
+    coltable = matrix.column_table
+    col_header = matrix.column_header
+
+    assert coltable[0].left == col_header
+    assert col_header.right == coltable[0]
+
+    assert coltable[1].right == coltable[2]
+
+
   def testColumnSizes(self):
     coltable = matrix.column_table
 
@@ -79,4 +89,39 @@ class MatrixTests(TestCase):
     assert coltable[6].size == 3
 
   def testCover(self):
-    pass
+    """See figure 3 in the Knuth paper."""
+    mat = deepcopy(matrix)
+    coltable = mat.column_table
+    table = mat.node_table
+    col_header = mat.column_header
+
+    mat.cover(coltable[0])
+
+    assert col_header.right == coltable[1]
+    assert coltable[1].left == col_header
+
+    assert coltable[3].down == table[(5,3)]
+    assert table[(5,3)].up == coltable[3]
+
+    assert coltable[6].down == table[(4,6)]
+
+  def testUncover(self):
+    """See figure 3 in the Knuth paper."""
+
+    mat = deepcopy(matrix)
+
+    coltable = mat.column_table
+    table = mat.node_table
+    col_header = mat.column_header
+
+    mat.cover(coltable[0])
+    assert col_header.right == coltable[1]
+
+    mat.uncover(coltable[0])
+    assert coltable[1].left == coltable[0]
+    assert col_header.right == coltable[0]
+
+    assert coltable[3].down == table[(1,3)]
+    assert table[(5,3)].up == table[(3,3)]
+
+    assert coltable[6].down == table[(1,6)]
