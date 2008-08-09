@@ -1,7 +1,5 @@
 #!/usr/bin/env python2.5
 
-import sys
-
 ## Each 1 in the matrix has five fields, left/right/up/down, column
 
 ## Just in case we need to look up at a particular (i,j) coordinate. Keys are
@@ -38,6 +36,7 @@ class SparseMatrix(object):
     self.columns = map( lambda(index): Column(index) , colindices)
     self.column_table = {}
     self.column_header = Column('h', header=1)
+    self.columns.append(self.column_header)
 
     for col in self.columns:
       self.column_table[col.name] = col
@@ -99,6 +98,7 @@ class SparseMatrix(object):
       first = None
       for r in rowindices:
         node = self.node_table[(r,c)]
+        node.column = column
 
         if not first:
           first = node
@@ -162,17 +162,25 @@ class SparseMatrix(object):
 #       set U[D[j]] <- U[j], D[U[j]] <- D[j]
 #       and decrement S[C[j]]
   def cover(self, column):
-    "Remove a column; we can put it back in later. Parameter /column/ is the
-    actual column header object."
+    """Remove a column; we can put it back in later. Parameter /column/ is the
+    actual column object."""
 
     column.right.left = column.left
     column.left.right = column.right
 
-    here = column.down
-    while here != column:
-      here = here.down
-    
-    pass
+    rowstart = column.down
+    while rowstart != column:
+      
+      node = rowstart.right
+
+      while node != rowstart:
+        node.down.up = node.up
+        node.up.down = node.down
+        node.column.size -= 1
+
+        node = node.right
+
+      rowstart = rowstart.down
 
 # uncover(c)
 #   for each i <- U[c], U[U[c]] ... while i != c
@@ -182,8 +190,24 @@ class SparseMatrix(object):
 #   set L[R[c]] <- c and R[L[c]] <- c
 
   def uncover(self, column):
-    "Put a column back in."
-    pass
+    """Put a column back in. /column/ is the actual column object."""
+
+    rowstart = column.up
+    while rowstart != column:
+      
+      node = rowstart.left
+
+      while node != rowstart:
+        node.column.size += 1
+        node.down.up = node
+        node.up.down = node
+
+        node = node.left
+
+      rowstart = rowstart.up
+
+    column.right.left = column
+    column.left.right = column
 
 class Node(object):
   def __init__(self, rowindex, colindex):
@@ -191,6 +215,7 @@ class Node(object):
     self.right = self
     self.up = self
     self.down = self
+    self.column = None
 
     self.rowindex = rowindex
     self.colindex = colindex
