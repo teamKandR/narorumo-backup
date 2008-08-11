@@ -27,8 +27,8 @@ class MatrixTests(TestCase):
     assert len(matrix.columns) == 8
     assert len(matrix.node_table) == 16
 
-    ## not every column has a 1.
-    assert len(sparser.columns) == 3
+    ## not every column has a 1, but there's always a column there.
+    assert len(sparser.columns) == 8
     assert len(sparser.node_table) == 5
 
   def testRowIndices(self):
