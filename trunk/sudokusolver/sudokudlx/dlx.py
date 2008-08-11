@@ -5,57 +5,57 @@ import sys
 class DLX(object):
   def __init__(self, matrix):
     self.matrix = matrix
-    self.solution = []
+    self.solution = [None] * (len(self.matrix.columns) - 1)
+    self.header = self.matrix.column_header
   
   def choose_column(self):
+    """Pick the most-constrained column still linked in the matrix."""
     lowestsize = sys.maxint
-    here = self.first_column
+    header = self.header
+
+    here = header.right
     choice = None
 
-    while True:
+    while here != header:
       if here.size < lowestsize:
         choice = here
         lowestsize = here.size
-
       here = here.right
-      if here == self.first_column: break
 
     return choice
 
-#   search(k):
-  def search(self):
+  def search(self, k=0):
     """Find a list of rows (nodes in rows, at least) that satisfies the set
     cover problem. """
 
-#     if R[h] = h, print the current solution (see below) and return.
-#     "If we're all out of columns, win!"
+    if self.header.right == self.header:
+      return self.solution
 
-#     Otherwise, choose a column and cover it.
+    tocover = self.choose_column()
+    self.matrix.cover(tocover)
 
-#     For each r <- D[c], D[D[c]] ... while r != c
-#     "search down through the rows, until you've looped around."
+    rowstart = tocover.down
+    while rowstart != tocover:
+      self.solution[k] = rowstart
 
-#       set O[k] <- r
-#       "add this row to the partial solution"
+      here = rowstart.right
+      while here != rowstart:
+        self.matrix.cover(here.column)
+        here = here.right
 
-#       for each j <- R[r], R[R[r]] ... while j != r
+      further = self.search(k+1)
+      if further: return further
 
-#         cover column C[j]
-#         "remove this column -- we've got it handled for the partial soln".
+      ## Didn't win, backing up.
+      rowstart = self.solution[k]
+      column = here.column
 
-#       search (k+1).
-#       "Look for the next part of the solution."
+      here = rowstart.left
+      while here != rowstart:
+        self.matrix.uncover(here.column)
+        here = here.left
 
-#       set r <- O[k] and c <- C[r].
-#       "we didn't win..."
+      rowstart = rowstart.down
 
-#       for each j <- L[r], L[L[r]] ... while j != r.
-#       "for every column in the row that was in our partial soln"
-
-#         uncover column C[j] (see below)
-#         "put that column back"
-
-#     Uncover column c and return.
-#     "Didn't win with column c, back out."
-
-    pass
+    self.matrix.uncover(tocover)
+    return None

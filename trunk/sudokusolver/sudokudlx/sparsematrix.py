@@ -13,6 +13,7 @@ class SparseMatrix(object):
     """Takes a list of rows, each of which is a list of 0s and 1s."""
 
     self.node_table = {}
+    self.rows = rows
 
     cols = []
     for r in xrange(len(rows)):
@@ -26,12 +27,10 @@ class SparseMatrix(object):
     self.link_nodes()
 
   def build_columns(self):
-    """Put all the columns that this matrix has into self.columns"""
-    keys = self.node_table.keys()
-    with_repeats = [colindex for (rowindex,colindex) in keys]
-    colindices = list(set(with_repeats))
+    """Put all the columns that this matrix has into self.columns. Note that a
+    column can be empty of nodes."""
 
-    colindices.sort()
+    colindices = range(len(self.rows[0]))
 
     self.columns = map( lambda(index): Column(index) , colindices)
     self.column_table = {}
@@ -226,7 +225,8 @@ class Node(object):
 class Column(object):
   def __init__(self, name, header=0):
     self.size = 0
-    self.top = None
+    self.up = self
+    self.down = self
     self.left = None
     self.right = None
     self.name = name
