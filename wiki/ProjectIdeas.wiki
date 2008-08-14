@@ -2,6 +2,11 @@
 
 = Future project scratch space =
 
+== TEB ==
+TEB was and is my long-running electronic poetry project, originally for a class and written in Common Lisp on top of an inference engine. I should dust it off and make it awesome. At one point, I spoke with Jon Trowbridge from the Gnoetry project, and he seemed both interested in working on poetry and very busy with work. Does TEB want to use/be part of/merge with gnoetry?
+
+What TEB really really wants is to use NLTK (and probably be made of Python). Related: That horoscope remixer thing that never quite worked right.
+
 == itouched ==
 Every time you touched a file, it diffs it against the last time you touched that file and records this in a database -- so you know how many lines of code or whatever you wrote in a day, or per week, or per month! Keep stats for later! ...
 
@@ -9,22 +14,19 @@ Develop a habit: every time you edit a file, go like "itouched filename".
 Or maybe it just sits running all the time and watches for changes in your
 home directory?
 
-== TEB ==
-Make TEB awesome. Does TEB want to use/be part of/merge with gnoetry?
-What it really really wants is to use NLTK. Related: That horoscope remixer
-thing that never worked right.
-
 == Scrabblebot ==
-Scrabblebot wants to be refitted with a faster database. Look at how the other scrabblebots work to understand the problem space better. Write the scrabblebot in Scala. Learn Scala.
+I was working on a Scrabblebot for a while, and I felt like I had a promising approach for finding valid moves quickly... Scrabblebot wants to be refitted with a faster database. Look at how the other scrabblebots work to understand the problem space better. Write the scrabblebot in Scala. Learn Scala.
 
 == that online programming community for kids ==
-figure out what to do about an online community where kids can build stuff in code and share it with each other. Look over notes towards WebMOOSE. Does this want to be made of Scratch, or similar to it? Can we include proper inheritance? Make it work for the OLPC.
+Figure out what to do about an online community where kids can build stuff in code and share it with each other. Look over notes towards WebMOOSE. Does this want to be made of Scratch, or similar to it? Can we include proper inheritance? Make it work for the OLPC.
 
 == for ynniv ==
 Less ambitious. Write a MUD. Do it in Scheme.
 
 == Erdos Number calculator ==
-The Erdos Number calculator. Learn a lot about databases. Do it with postgres; sqlite is apparently not nearly as fast.
+If you've published in computer science or mathematics, or probably other fields, you likely have an Erdos number; Paul Erdos has 0, everyone else has 1 + (the lowest Erdos number of any of your co-authors).
+
+Write an Erdos Number calculator with the dblp dataset. Learn a lot about databases. Do it with postgres; sqlite is apparently not nearly as fast.
 
 == Sudoku solver in Haskell ==
 Learn Haskell well enough to solve Sudoku with it. *How do you implement Dancing Links in a purely functional language?*
@@ -33,4 +35,4 @@ Learn Haskell well enough to solve Sudoku with it. *How do you implement Dancing
 That'd be a good exercise. If you're going to overturn the world with your brilliant Go bot later, you should start out somewhere...
 
 == Strick's challenge ==
-build a language and virtual machine. Educational for me, not very useful for other people. Recommended by Strick. Building a VM at a pretty high level of abstraction might not be that hard, just think about stack frames and returning things and whatnot?  At what level do things like the Python VM work? What's the JVM like, really?  Surely there are different approaches used for this? What are they? Would it be hard to build something with multithreading in mind from the bottom up? What about a purely functional lambda-calculus implementation? Then layers of abstraction and naming on top of the LC?
+Build a language and virtual machine. Educational for me, not very useful for other people. Recommended by Strick. Building a VM at a pretty high level of abstraction might not be that hard, just think about stack frames and returning things and whatnot?  At what level do things like the Python VM work? What's the JVM like, really?  Surely there are different approaches used for this? What are they? Would it be hard to build something with multithreading in mind from the bottom up? What about a purely functional lambda-calculus implementation? Then layers of abstraction and naming on top of the LC?
