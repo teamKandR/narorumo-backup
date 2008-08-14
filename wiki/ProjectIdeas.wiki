@@ -1,6 +1,6 @@
 #summary Ideas for future projects
 
-= Alex's project ideas =
+= Future project scratch space =
 
 == itouched ==
 Every time you touched a file, it diffs it against the last time you touched that file and records this in a database -- so you know how many lines of code or whatever you wrote in a day, or per week, or per month! Keep stats for later! ...
