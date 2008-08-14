@@ -4,6 +4,8 @@
     * [ReallyBigFibonacciNumbers Really big Fibonacci numbers]
     * [JoelTest Joel's "Could you have passed my freshman-year midterms?" test]
     * [Perturbation Perturbed permutation]
+  * Alex's stuff
+    * [ProjectIdeas Scratch space for future projects]
   * Us
     * [Alex]
     * [Lindsey]
