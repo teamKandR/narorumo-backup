@@ -1,0 +1,36 @@
+#summary Ideas for future projects
+
+= Alex's project ideas =
+
+== itouched ==
+Every time you touched a file, it diffs it against the last time you touched that file and records this in a database -- so you know how many lines of code or whatever you wrote in a day, or per week, or per month! Keep stats for later! ...
+
+Develop a habit: every time you edit a file, go like "itouched filename".
+Or maybe it just sits running all the time and watches for changes in your
+home directory?
+
+== TEB ==
+Make TEB awesome. Does TEB want to use/be part of/merge with gnoetry?
+What it really really wants is to use NLTK. Related: That horoscope remixer
+thing that never worked right.
+
+== Scrabblebot ==
+Scrabblebot wants to be refitted with a faster database. Look at how the other scrabblebots work to understand the problem space better. Write the scrabblebot in Scala. Learn Scala.
+
+== that online programming community for kids ==
+figure out what to do about an online community where kids can build stuff in code and share it with each other. Look over notes towards WebMOOSE. Does this want to be made of Scratch, or similar to it? Can we include proper inheritance? Make it work for the OLPC.
+
+== for ynniv ==
+Less ambitious. Write a MUD. Do it in Scheme.
+
+== Erdos Number calculator ==
+The Erdos Number calculator. Learn a lot about databases. Do it with postgres; sqlite is apparently not nearly as fast.
+
+== Sudoku solver in Haskell ==
+Learn Haskell well enough to solve Sudoku with it. *How do you implement Dancing Links in a purely functional language?*
+
+== Checkers bot ==
+That'd be a good exercise. If you're going to overturn the world with your brilliant Go bot later, you should start out somewhere...
+
+== Strick's challenge ==
+build a language and virtual machine. Educational for me, not very useful for other people. Recommended by Strick. Building a VM at a pretty high level of abstraction might not be that hard, just think about stack frames and returning things and whatnot?  At what level do things like the Python VM work? What's the JVM like, really?  Surely there are different approaches used for this? What are they? Would it be hard to build something with multithreading in mind from the bottom up? What about a purely functional lambda-calculus implementation? Then layers of abstraction and naming on top of the LC?
