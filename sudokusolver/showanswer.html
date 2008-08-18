@@ -1,32 +1,35 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
 <LINK href="style/style.css" rel="stylesheet" type="text/css">
-<title>the app hosting engine sudoku solver</title>
+<title>sudokudlx!</title>
 </head>
 
 <body>
-<h1>python sudoku solver!</h1>
-<p><small>(by alexr, early 2008)
+<h1>sudokudlx!</h1>
+<p><small>(by Alex Rudnick)
 </small></p>
 
 {% if board %}
-  <table>
+  <table class="sudokuboard">
   {% for row in board %}
     <tr>
     {% for cell in row %}
-      <td>{{ cell }}</td>
+      <td class='cell'>{{ cell }}</td>
     {% endfor %}
     </tr>
   {% endfor %}
   </table>
 {% else %}
   <div class="fail">
-    Fail.
+    &empty;!
   </div>
+  <p class="msg">Hrm, that one doesn't seem to have a solution.</p>
+
 {% endif %}
+
+  <p><a href="/">Again!</a></p>
 
 </body>
 </html>

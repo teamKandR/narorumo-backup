@@ -1,7 +1,7 @@
 from sudokudlx.dlx import DLX
 from sudokudlx.sparsematrix import SparseMatrix
 
-def build_blank_puzzle():
+def build_blank_board():
   return [[0] * 9,
           [0] * 9,
           [0] * 9,
@@ -125,7 +125,7 @@ class SudokuPuzzle(object):
     dlx_encoded_soln = [self.dlxrows[row] for row in self.soln_rows]
     rcvs = map(dlx_row_to_rcv, dlx_encoded_soln)
 
-    out = build_blank_puzzle()
+    out = build_blank_board()
 
     for row,col,val in rcvs:
       out[row][col] = val

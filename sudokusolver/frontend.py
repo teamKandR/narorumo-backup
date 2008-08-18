@@ -1,7 +1,8 @@
 import wsgiref.handlers
 import os
-# import sudoku
-import Board
+
+from sudokudlx.sudoku import SudokuPuzzle
+from sudokudlx.sudoku import build_blank_board
 
 from google.appengine.ext.webapp import template
 from google.appengine.api import users
@@ -18,31 +19,29 @@ class MainPage(webapp.RequestHandler):
     self.response.out.write(template.render(path, template_values))
 
   def post(self):
-    constraints = inputvalues(self.request)
-    board = Board.Board()
+    board = board_from_request(self.request)
+    puzzle = SudokuPuzzle(board)
 
-    Board.set_constraints(board, constraints)
-
-    solved = board.solve()
+    solved = puzzle.solve()
     if (solved):
-      template_values = {'board': solved.as_list()}
+      template_values = {'board': solved}
     else:
       template_values = {}
 
     path = os.path.join(os.path.dirname(__file__), 'showanswer.html')
     self.response.out.write(template.render(path, template_values))
 
-def inputvalues(req):
-  out = []
+def board_from_request(req):
+  out = build_blank_board()
   for row in range(9):
     for col in range(9):
       key = ("cell%d_%d" % (row, col))
 
       val = req.get(key)
-      if (val != ''):
+      if val:
         try:
           val = int(val)
-          out.append( (row,col,val) )
+          out[row][col] = val
         except ValueError, e:
           pass
   return out

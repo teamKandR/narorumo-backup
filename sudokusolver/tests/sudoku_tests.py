@@ -7,7 +7,7 @@ from sudokudlx import sudoku
 
 from copy import deepcopy
 
-blank = sudoku.build_blank_puzzle()
+blank = sudoku.build_blank_board()
 
 class SudokuTests(TestCase):
 

@@ -1,20 +1,17 @@
 body {
-  color:#eeeeee;
-  background:#3030a0;
+  color:#666;
+  background:#aae;
 
-  margin-left: 10%; 
-  margin-right: 10%; 
-  
-  font-family: monospace;
-  font-size: 100%;
+  margin: 4em;
+  font-family: arial,sans-serif;
 }
 
 a:link {
-  color:#a0a0ff;
+  color:#33f;
 }
 
 a:visited {
-  color:#a0a0ff;
+  color:#33f;
 }
 
 table {
@@ -27,24 +24,35 @@ td {
   height: 30px;
 }
 
-td input {
-  background-color: #3030a0;
-  color:#eeeeee;
+.cell {
+  background-color:#eee;
+  color:#666;
+  text-align: center;
 }
 
-#InputTable {
+.sudokuboard, .fail {
+  border: 2px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ccc;
   margin-bottom: 1em;
-}
-
-li {
-  padding: 0.5em;
-}
-
-li.small {
-  font-size: 60%;
 }
 
 .fail {
   text-align: center;
+  font-size: 4em;
+  width: 317px;
+}
+
+.msg {
   font-size: 200%;
+}
+
+h1 {
+  display: inline;
+  padding: 0.5em;
+  border: 2px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ccc;
 }
