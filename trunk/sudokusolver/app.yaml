@@ -7,4 +7,4 @@ handlers:
 - url: /style
   static_dir: style 
 - url: /.*
-  script: sudokudlx/frontend.py
+  script: frontend.py

@@ -1,25 +1,24 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 <html>
 <head>
 <LINK href="style/style.css" rel="stylesheet" type="text/css">
-<title>the app hosting engine sudoku solver</title>
+<title>sudokudlx!</title>
 </head>
 
 <body>
-<h1>python sudoku solver!</h1>
-<p><small>(by alexr, early 2008)
+<h1>sudokudlx!</h1>
+<p><small>(by Alex Rudnick)
 </small></p>
 
   <form method="post">
     <input name="posted" type="hidden" value="foo"/>
-      <table id="InputTable">
+      <table class="sudokuboard" id="InputTable">
         {% for row in rows %}
           <tr>
           {% for col in cols %}
           <td>
-            <input type='text' size='1' name='cell{{row}}_{{col}}' />
+            <input class='cell' type='text' size='1' name='cell{{row}}_{{col}}' />
           </td>
           {% endfor %}
           </tr>
