@@ -33,7 +33,6 @@ class DlxTests(TestCase):
     dlx = DLX(matrix)
     result = dlx.search()
     assert result
-    print result
 
     mat2 = SparseMatrix(rows2)
     dlx2 = DLX(mat2)

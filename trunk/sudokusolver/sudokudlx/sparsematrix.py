@@ -220,7 +220,7 @@ class Node(object):
     self.colindex = colindex
 
   def __repr__(self):
-    return ("(%d,%d)" % (self.rowindex, self.colindex))
+    return ("[node %d,%d]" % (self.rowindex, self.colindex))
 
 class Column(object):
   def __init__(self, name, header=0):
