@@ -1,0 +1,25 @@
+#summary Alex knows very few things. Here are some that he'd like to learn
+
+So many things to learn. Here are a few things I'd like to know more about. I'll put some notes about them here, and eventually new articles may spin off.
+
+== natural language processing ==
+Get comfortable with NLTK.
+
+Read all the books on your shelf! Know enough to read random nlp research papers.
+
+== maths ==
+Linear Algebra.
+Get a good intuition for matrices, matrix operations for geometry, and using them to represent high-dimensional spaces.
+
+Stats. Be able to explain frequentist and bayesian ideas about probability.
+
+== databases ==
+What kinds are there? How do they work? What makes them faster or slower? How are they indexed? What more can I learn about the SQL language?
+
+== networking ==
+What is the OSI model? Maybe learn more about routing? How does DNS work?   
+
+== programming ==
+Also: learn idiomatic and deep Scheme, Python, JavaScript, Haskell.     
+
+Learn deep type-system things about Java and the innards of the JVM. Be able to explain "erasures".
