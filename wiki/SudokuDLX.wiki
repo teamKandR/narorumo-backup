@@ -1,0 +1,70 @@
+#summary Automatic Sudoku solving with DLX
+
+= Automatic Sudoku Solving with Dancing Links =
+
+If you've looked around on the web for information about solving puzzles
+(sudoku particularly) programmatically, you may have heard about Dancing Links,
+or DLX...
+
+My implementation of Dancing Links, and a Sudoku solver implemented on top of that, is available in the repository of this project. [http://sudokudlx.appspot.com You can also see it in action on App Engine.]
+
+== Solving Sudoku automatically ==
+First, I'd like to talk a bit about automatic sudoku-solving in general, then
+I'll get into DLX. There are two common approaches to solving sudoku
+programmatically. One of them attempts to solve the problem entirely by
+"logic", this is to say, by forward-chaining of inferences. As I understand it,
+this is something like what human sudoku afficionados.
+
+In general, published sudoku puzzles only have one valid solution
+but this approach will never solve an underconstrained puzzle. I think
+in principle, with the apropriate rules, you could forward-chain your way to
+the unique solution for any given puzzle -- although I present this without
+proof...
+
+== What is Dancing Links? ==
+
+Dancing links is an algorithm for solving a particular kind of constraint
+satisfaction problem, called "set cover". You can read about that on wikipedia!
+For our purposes here, I'll give an intuitive notion of the kind of problem
+that DLX solves.
+
+Imagine that you have a grid of 1s and 0s, and you want to find a subset of the
+rows such that for every column, there is exactly a single 1 in that column. No
+column gets doubles. If the first row were all '1's, for example, then the
+problem would be solved trivially. Here's a small example grid. A solution to
+this one is rows 1, 4, and 5.
+
+{{{
+# Grid 1 has a solution.
+row 1: 0 0 1 0 1 1 0 
+row 2: 1 0 0 1 0 0 1 
+row 3: 0 1 1 0 0 1 0 
+row 4: 1 0 0 1 0 0 0 
+row 5: 0 1 0 0 0 0 1 
+row 6: 0 0 0 1 1 0 1 
+}}}
+
+See? Just one '1' in each column.
+{{{
+# Grid 1's solution
+row 1: 0 0 1 0 1 1 0 
+row 4: 1 0 0 1 0 0 0 
+row 5: 0 1 0 0 0 0 1 
+}}}
+
+Here's another grid, and this one has no such solution:
+{{{
+# Grid 2, no solution.
+row 1: 0 0 0 0 0 1 0
+row 2: 0 1 0 1 0 0 0
+row 3: 0 0 0 0 0 1 1
+row 4: 1 1 0 1 0 0 0
+row 5: 0 0 0 1 0 0 0
+}}}
+
+You can verify this easily; some of the columns don't have any 1s in them at
+all.
+
+== How do I apply it to Sudoku? ==
+
+== How is it implemented? ==
