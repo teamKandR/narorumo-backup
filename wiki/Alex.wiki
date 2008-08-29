@@ -1,3 +1,5 @@
 #summary Alex's bio.
 
-Alex Rudnick does all sorts of interesting stuff, and he hangs out with lots of groovy kids. He very rarely flips out and stabs, but he is a mammal.
+[http://hackmode.org/~alex Alex Rudnick] does all sorts of interesting stuff, and he hangs out with lots of groovy kids. He very rarely flips out and stabs, but he is a mammal.
+
+But mostly, he just makes oblique references to Internet memes of the early 2000s.
