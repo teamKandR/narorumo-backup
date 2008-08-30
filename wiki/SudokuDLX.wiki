@@ -20,8 +20,7 @@ forward-chain your way to the unique solution for any given puzzle -- (XXX:
 prove) although I present this without proof...
 
 The other approach is what a computer scientist would call "recursive search",
-but human sudoku players call "guessing" or [http://en.wikipedia.org/...
-"Ariadne's Thread"]. In this style of play, we make an assumption ("let's say
+but human sudoku players call "guessing" or [http://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic) "Ariadne's Thread"]. In this style of play, we make an assumption ("let's say
 that this square here is a 9") and then follow along with that assumption
 (making others) until we have to abandon it -- this is to say, when we find out
 that our assumption could not possibly be true given our other assumptions.
