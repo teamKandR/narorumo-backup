@@ -34,7 +34,7 @@ plats can do that too. Go like this:
     </script>
   </head>
 }}}
-You'll get two variables set on your `window` object -- `window.plats_best_locale` and `window.plats_ordered_locales`, the latter of which is all the locales that the user would like, even if you don't support them.
+You'll get two variables set on your `window` object: `window.plats_best_locale` and `window.plats_ordered_locales`. The latter of these is the list of all locales that the user would like, even if you don't support them.
 
 == Issues ==
 plats isn't perfect yet. There's a mismatch between locale codes and the language codes as sent by `Accept-Language`; if you get more specific than just a language code, things probably won't match up; there are underbars in locale codes and dashes in the Accept-Language header. Also I need to do more research about capitalization...
