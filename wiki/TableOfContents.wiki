@@ -6,7 +6,7 @@
     * [Perturbation Perturbed permutation]
   * Alex's stuff
     * [ProjectIdeas Future project scratch space]
-    * [Plats plats helps you localize client-side webapps]
+    * [Plats plats]
   * Us
     * [Alex]
     * [Lindsey]
