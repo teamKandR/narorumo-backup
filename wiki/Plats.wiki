@@ -4,6 +4,8 @@ plats helps you localize your client-side webapp. All you have to do is include 
 
 If you tell plats it which locales your application supports, it tells you which of those locales your user would prefer.
 
+"plats" is Swedish for "locale" or "place".
+
 == You shouldn't use plats unless you trust Alex ==
 Seriously, don't let random dudes and ladies run their javascript all up in your context. Just go get the source [http://narorumo.googlecode.com/svn/trunk/plats here]. It's very simple; you can adapt it for your own use.
 
