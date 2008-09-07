@@ -1,6 +1,8 @@
 #summary Using plats
+= What is plats? =
+plats helps you localize your client-side webapp. All you have to do is put some script tags in your page.
 
-== What is plats? ==
+== Tell me more! ==
 So web users can configure which languages they prefer for content, and this information is sent in HTTP requests to web servers as the [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html Accept-Language] header. Strangely, this information doesn't seem accessible from javascript. But plats can help!
 
 plats makes this information available to your client-side webapps. In fact, if you tell it which locales your application supports, plats tells you which of those locales your user would prefer.
@@ -23,7 +25,7 @@ In your containing HTML's head tag, go like this, before you load your GWT selec
 
 NB: This is assuming your application is localized for English, Spanish, Lithuanian and Italian. Modify the `available` parameter for the locales you support.
 
-== If you want some !JavaScript variables ==
+== If you just want some !JavaScript variables ==
 plats can do that too. Go like this:
 {{{
 ...
