@@ -10,7 +10,7 @@ If you tell plats it which locales your application supports, it tells you which
 Seriously, don't let random dudes and ladies run their javascript all up in your context. Just go get the source [http://narorumo.googlecode.com/svn/trunk/plats here]. It's very simple; you can adapt it for your own use.
 
 == If you're a GWT app ==
-GWT applications can set their locale with a [http://code.google.com/p/google-web-toolkit-doc-1-5/wiki/DevGuideSpecifyingLocale special meta tag] -- you can use plats to set yours, automatically.
+GWT applications can set their locale with a [http://code.google.com/docreader/#p=google-web-toolkit-doc-1-5&s=google-web-toolkit-doc-1-5&t=DevGuideSpecifyingLocale special meta tag] -- you can use plats to set yours, automatically.
 
 In your containing HTML's head tag, go like this, before you load your GWT selection script (the ".nocache.js" file):
 
