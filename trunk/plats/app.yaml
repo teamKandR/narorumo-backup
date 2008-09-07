@@ -1,0 +1,14 @@
+application: plats
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /
+  script: welcome.py
+- url: /set_metatag.js
+  script: metatag.py
+- url: /put_variable.js
+  script: variable.py
+- url: /style
+  static_dir: style 
