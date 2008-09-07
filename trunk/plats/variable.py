@@ -17,8 +17,7 @@ class Variable(webapp.RequestHandler):
       'ordered': ordered
     }
 
-    self.response.headers.add_header("Content-Type", "application/javascript")
-
+    self.response.headers["Content-Type"] = "application/javascript"
     path = os.path.join(os.path.dirname(__file__), 'put_variable.js')
     self.response.out.write(template.render(path, template_values))
 

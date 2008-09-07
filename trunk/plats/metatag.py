@@ -15,7 +15,7 @@ class MetaTag(webapp.RequestHandler):
       'locale': best
     }
 
-    self.response.headers.add_header("Content-Type", "application/javascript")
+    self.response.headers["Content-Type"] = "application/javascript"
 
     path = os.path.join(os.path.dirname(__file__), 'set_metatag.js')
     self.response.out.write(template.render(path, template_values))
