@@ -1,17 +1,14 @@
 #summary Using plats
 = What is plats? =
-plats helps you localize your client-side webapp. All you have to do is put some script tags in your page.
+plats helps you localize your client-side webapp. All you have to do is include a script in your page, and you'll get information about the user's language preferences -- which is usually hard to get from javascript.
 
-== Tell me more! ==
-So web users can configure which languages they prefer for content, and this information is sent in HTTP requests to web servers as the [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html Accept-Language] header. Strangely, this information doesn't seem accessible from javascript. But plats can help!
-
-plats makes this information available to your client-side webapps. In fact, if you tell it which locales your application supports, plats tells you which of those locales your user would prefer.
+If you tell plats it which locales your application supports, it tells you which of those locales your user would prefer.
 
 == You shouldn't use plats unless you trust Alex ==
-Seriously, don't let random dudes and ladies run their javascript all up in your context. Just go get the source [http://narorumo.googlecode.com/svn/trunk/plats here]. It's very simple, you can adapt it for your own use.
+Seriously, don't let random dudes and ladies run their javascript all up in your context. Just go get the source [http://narorumo.googlecode.com/svn/trunk/plats here]. It's very simple; you can adapt it for your own use.
 
 == If you're a GWT app ==
-GWT applications can set their locale with a [http://code.google.com/p/google-web-toolkit-doc-1-5/wiki/DevGuideSpecifyingLocale special meta tag]. And plats will create that tag for you!
+GWT applications can set their locale with a [http://code.google.com/p/google-web-toolkit-doc-1-5/wiki/DevGuideSpecifyingLocale special meta tag] -- you can use plats to set yours, automatically.
 
 In your containing HTML's head tag, go like this, before you load your GWT selection script (the ".nocache.js" file):
 
@@ -35,6 +32,9 @@ plats can do that too. Go like this:
   </head>
 }}}
 You'll get two variables set on your `window` object: `window.plats_best_locale` and `window.plats_ordered_locales`. The latter of these is the list of all locales that the user would like, even if you don't support them.
+
+== Tell me more! ==
+So web users can configure which languages they prefer for content, and this information is sent in HTTP requests to web servers as the [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html Accept-Language] header. Strangely, this information doesn't seem accessible from javascript.
 
 == Issues ==
 plats isn't perfect yet. There's a mismatch between locale codes and the language codes as sent by `Accept-Language`; if you get more specific than just a language code, things probably won't match up; there are underbars in locale codes and dashes in the Accept-Language header. Also I need to do more research about capitalization...
