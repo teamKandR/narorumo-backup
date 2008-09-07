@@ -1,0 +1,33 @@
+body {
+  color:#666;
+  background:#aae;
+  margin: 4em;
+  font-family: arial,sans-serif;
+}
+
+a:link {
+  color:#33f;
+}
+
+a:visited {
+  color:#33f;
+}
+
+h1 {
+  display: inline;
+  padding: 0.5em;
+  border: 2px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ccc;
+}
+
+div.box {
+  margin-top: 2em;
+  padding: 0.5em;
+  border: 2px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ccc;
+}
+
