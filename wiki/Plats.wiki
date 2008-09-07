@@ -7,7 +7,7 @@ So web users can configure which languages they prefer for content, and this inf
 
 plats makes this information available to your client-side webapps. In fact, if you tell it which locales your application supports, plats tells you which of those locales your user would prefer.
 
-== You shouldn't use plats unless you trust [Alex Alex]. ==
+== You shouldn't use plats unless you trust Alex ==
 Seriously, don't let random dudes and ladies run their javascript all up in your context. Just go get the source [http://narorumo.googlecode.com/svn/trunk/plats here]. It's very simple, you can adapt it for your own use.
 
 == If you're a GWT app ==
