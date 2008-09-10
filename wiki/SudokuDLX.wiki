@@ -1,51 +1,22 @@
 #summary Automatic Sudoku solving with DLX
 = Automatic Sudoku Solving with Dancing Links =
-If you've looked around on the web for information about solving puzzles
-programmatically, you may have heard about Dancing Links, or DLX.
+If you've looked around on the web for information about solving puzzles programmatically, you may have heard about Dancing Links, or DLX.
 
-My implementation of Dancing Links, and a Sudoku solver implemented on top of
-that, is available in the repository of this project.
-[http://sudokudlx.appspot.com You can also see it in action on App Engine.]
+My implementation of Dancing Links, and a Sudoku solver implemented on top of that, is available in the repository of this project. [http://sudokudlx.appspot.com You can also see it in action on App Engine.]
 
 == Solving Sudoku automatically ==
-First, I'd like to talk a bit about automatic sudoku-solving in general, then
-I'll get into DLX. There are two common approaches to solving sudoku
-programmatically. One of them attempts to solve the problem entirely by
-"logic", this is to say, by forward-chaining of inferences. As I understand it,
-this is something like what human sudoku afficionados.
+First, I'd like to talk a bit about automatic sudoku-solving in general, then I'll get into DLX. There are two common approaches to solving sudoku programmatically. One of them attempts to solve the problem entirely by "logic", this is to say, by forward-chaining of inferences. This is something like the approach taken by human sudoku afficionados.
 
-In general, published sudoku puzzles only have one valid solution, but this
-approach will never solve an under-constrained puzzle. In principle, you could
-forward-chain your way to the unique solution for any given puzzle -- (XXX:
-prove) although I present this without proof...
+In general, published sudoku puzzles only have one valid solution, but this approach will never solve an under-constrained puzzle. In principle, you could forward-chain your way to the unique solution for any given puzzle -- (XXX: prove) although I present this without proof...
 
-The other approach is what a computer scientist would call "recursive search",
-but human sudoku players call "guessing" or [http://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic) "Ariadne's Thread"]. In this style of play, we make an assumption ("let's say
-that this square here is a 9") and then follow along with that assumption
-(making others) until we have to abandon it -- this is to say, when we find out
-that our assumption could not possibly be true given our other assumptions.
-Then we back out ("okay, that square can't be a 9") and try something else.
-With sudoku, since puzzles usually only have one answer, if your search
-algorithm tries all valid assumptions -- optionally, invalid ones too -- then
-you're guaranteed to find the answer through search. In the case of an
-underconstrained problem, one with more than one answer, you always find a
-solution; you could list out all of them, if you like.
+The other approach is what a computer scientist would call "recursive search", but human sudoku players call "guessing" or [http://en.wikipedia.org/wiki/Ariadne%27s_thread_(logic) "Ariadne's Thread"]. In this style of play, we make an assumption ("let's say that this square here is a 9") and then follow along with that assumption (making others) until we have to abandon it -- this is to say, when we find out that our assumption could not be true given our other assumptions.  Then we back out ("okay, that square can't be a 9") and try something else. With sudoku, since puzzles usually only have one answer, if your search algorithm tries all valid assumptions then you're guaranteed to find the answer through search. In the case of an underconstrained problem, one with more than one answer, you always find a solution; you could list all of them, if you like.  
 
-As an aside, this does not have to be complicated. You could imagine writing a
-solver that does the dumbest possible search, cycling through each number for
-each square and checking for a solved puzzle. And it would find an answer.
+As an aside, this does not have to be complicated. You could imagine writing a solver that does the dumbest possible search, cycling through each number for each square and checking for a solved puzzle. And it would find an answer, but it might take a while.
 
 == What is Dancing Links? ==
-Dancing links is an algorithm for solving a particular kind of constraint
-satisfaction problem, called "set cover", which maps very easily to Sudoku
-puzzles. For our purposes here, I'll give an intuitive notion of the kind of
-problem that DLX solves.
+Dancing links is an algorithm for solving a particular kind of constraint satisfaction problem, called "set cover", which maps nicely to Sudoku puzzles. For our purposes here, I'll give an intuitive notion of the kind of problem that DLX solves.
 
-Imagine that you have a grid of 1s and 0s, and you want to find a subset of the
-rows such that for every column, there is exactly a single 1 in that column. No
-column gets doubles. If the first row were all '1's, for example, then the
-problem would be solved trivially. Here's a small example grid. A solution to
-this one is rows 1, 4, and 5.
+Say you have a grid of 1s and 0s, and you want to find a subset of the rows such that for every column, there is exactly a single 1 in that column. No column gets doubles. If the first row were all '1's, for example, then the problem would be solved trivially. Here's a small example grid. A solution to this one is rows 1, 4, and 5.
 
 {{{
 # Grid 1 has a solution.
@@ -57,7 +28,7 @@ row 5: 0 1 0 0 0 0 1
 row 6: 0 0 0 1 1 0 1 
 }}}
 
-See? Just one '1' in each column.
+Note that the solution has exactly one '1' in each column.
 {{{
 # Grid 1's solution
 row 1: 0 0 1 0 1 1 0 
@@ -77,31 +48,21 @@ row 5: 0 0 0 1 0 0 0
 }}}
 
 == How do I apply it to Sudoku? ==
-So in Sudoku, there are four different kinds of constraints. Each square must
-have a number in it; each row must have each number once; each column must have
-each number once; and each box (3x3 area) must have each number once.
+So in Sudoku, there are four different kinds of constraints. Each square must have a number in it; each row must have each number once; each column must have each number once; and each box (3x3 area) must have each number once.  
 
-Simple enough! Now to describe Sudoku in these terms. We're going to build a
-Dancing Links grid of the form described in the previous section, and each
-column will represent one of these constraints, of which there are 324 total
-(81 of each of 4 types).
+Simple enough! Now to describe Sudoku in these terms. We're going to build a Dancing Links grid of the form described in the previous section. Each column will represent one of these constraints, of which there are 324 total (81 of each of 4 types).
 
-Each row in the grid represents one possible assignment, say the idea that
-there is a 3 in the fifth row, second column. This assignment "contributes"
-exactly 4 '1's to the grid, one for each of the constraints it fills.
+Each row in the grid represents one possible assignment, say the idea that there is a 3 in the fifth row, second column. This assignment "contributes" exactly 4 '1's to the grid, one for each of the constraints it fills.
 
-Take a moment to think about this: a solved sudoku puzzle has exactly 81
-assignments, one for each square, so it will have 81 rows in the DLX solution
-as well, each filling in 4 of the 324 columns. (81 * 4 = 324).
+Take a moment to consider this: a solved sudoku puzzle has exactly 81 assignments, one for each square, so it will have 81 rows in the DLX solution, each filling in 4 of the 324 columns. (81 ** 4 = 324).
 
 Now let's talk about each of the types of constraints.
 
 === Row-Column Constraints ===
-First, we describe which 
+The first 81 columns of an assignment-row describe the row and column that it fills in -- we'll call these constraints `rowR colC` where `R` and `C` are the row and column in the sudoku puzzle. So if the assignment is for row 3, column 5, then it gets a '1' for constraint `row3 col5`, and a 0 for each other row and column from 1 to 9.
 
-=== Row-Number Constraints ===
-
-=== Column-Number Constraints ===
+=== Row-Number and Column-Number Constraints ===
+In the next 81 columns of the DLX row, we'll describe on which row the assignment falls, and what number it assigns. This is done ...
 
 === Box-Number Constraints ===
 
@@ -117,13 +78,8 @@ def encode(major, minor):
 }}}
 
 === Mapping a whole sudoku puzzle into a DLX problem ===
-Now all you have to do is turn an entire sudoku board into a DLX grid. Easy
-enough! Since the DLX grid describes the set of possible assignments, just map
-what we know about each square onto one or more rows...
+Now all you have to do is turn an entire sudoku board into a DLX grid. Easy enough! Since the DLX grid describes the set of possible assignments, just map what we know about each square onto one or more rows...
 
-If the squares is already filled, it's one row. Otherwise, we'll generate the
-possibility that it's each number 1 through 9. NB: I haven't tried it, but you
-could conceivably do something more clever here and not generate /every/ row.
-This may be helpful on very large (non 9x9) puzzles...
+If the squares is already filled, it's one row. Otherwise, we'll generate the possibility that it's each number 1 through 9. NB: I haven't tried it, but you could conceivably do something more clever here and not generate /every/ row.  This may be helpful on very large (non 9x9) puzzles...
 
 == How is it implemented? ==
