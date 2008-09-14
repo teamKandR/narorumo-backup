@@ -46,7 +46,7 @@ row 5: 0 0 0 1 0 0 0
 }}}
 
 == How do I apply it to Sudoku? ==
-Now, assume you have some software that can find solutions to these "exact cover" problems -- given a bunch of rows of 0s and 1s, it finds a subset of those rows such that there's exactly one 1 in every column. Now, if we can represent a sudoku board in terms of these grids -- which we can -- then we're set!
+At first, let's assume we have some software that can find solutions to these "exact cover" problems -- given a bunch of rows of 0s and 1s, it finds a subset of those rows such that there's exactly one 1 in every column. If we can represent a sudoku board in terms of these grids -- which we can -- then we're set!
 
 In sudoku, there are four kinds of constraints: each cell must have a number in it; each row must have each number (1 through 9) once; each column must have each number once; and each box (3x3 area) must have each number once. To represent these constraints, we'll build a Dancing Links grid like the ones described in the previous section, in which each column represents one of these. There are 324 constraints total (81 of each of 4 types), so 324 columns.
 
@@ -85,7 +85,7 @@ def encode(major, minor):
   return out
 }}}
 
-Now just build those four lists and concatenate them together. And you've represented an assignment!
+Once we build these four lists and concatenate them together, we've represented a single assignment.
 
 === Mapping a whole sudoku puzzle into a DLX problem ===
 Now we have to turn a sudoku board into a DLX grid. Since the initial DLX grid describes the set of possible assignments, we map what we know about each square onto one or more rows. When you're given a sudoku board, each square is either already filled, or it's left blank. For the squares that are already filled, you generate the one row that describes that assignment. Otherwise, generate the possibility that it's each number, 1 through 9. Although I haven't tried it, I suspect you could do something more clever here and not generate _every_ row, front-loading some of your inferencing; there may be an optimization lurking here, but on the other hand, DLX may be so fast as to make trying something clever counter-productive.
@@ -118,4 +118,4 @@ def decode(lst):
 
 
 == How is it implemented? ==
-For my next trick, I'll write up my notes on how to implement DLX itself. Knuth's instructions on 
+For my next trick, I'll write up my notes on how to implement DLX itself.
