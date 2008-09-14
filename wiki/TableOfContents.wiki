@@ -5,8 +5,9 @@
     * [JoelTest Joel's "Could you have passed my freshman-year midterms?" test]
     * [Perturbation Perturbed permutation]
   * Alex's stuff
-    * [ProjectIdeas Future project scratch space]
+    * [SudokuDLX sudokudlx]
     * [Plats plats]
+    * [ProjectIdeas Future project scratch space]
   * Us
     * [Alex]
     * [Lindsey]
