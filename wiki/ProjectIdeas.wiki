@@ -2,6 +2,9 @@
 
 = Future project scratch space =
 
+== make the paip source code work with recent common lisps ==
+Norvig's Paradigms of Artificial Intelligence Programming source doesn't load right with the CL implementations I have on my Ubuntu box, sbcl and clisp. CL has had problems standardizing its loading/packaging mechanisms for a while, but there's no good reason PAIP shouldn't run nicely on recent CLs. Fix it and send Dr. Norvig a patch! Also make sure the Debian package gets updated.
+
 == Generate good sudoku puzzles ==
 So the [http://sudokudlx.appspot.com sudoku solver] seems to work pretty well. But Ross would like an automated puzzle generator. How can we go about that? You can imagine generating an empty sudoku puzzle, shuffling the internal representation and then solving that (producing a random *solved* sudoku), but what then? What's the best way to take out the squares? A naive thing to do would be randomly pick some squares to take out, and keep backing up either until some set number/proportion have been erased, or until the puzzle is about to become underspecified. But the problem with that -- how do you determine whether a sudoku puzzle is underspecified? How do you modify Dancing Links to find all possible solutions instead of just the most convenient one?
 
