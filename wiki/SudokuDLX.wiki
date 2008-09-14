@@ -1,5 +1,7 @@
 ﻿#summary Automatic Sudoku solving with DLX
 = Automatic Sudoku Solving with Dancing Links =
+[Alex Alex Rudnick]
+
 If you've done some reading about solving puzzles programmatically, you may have heard about [http://en.wikipedia.org/wiki/Dancing_links Dancing Links], or DLX -- it's a surprisingly fast constraint-satisfaction algorithm by [http://en.wikipedia.org/wiki/Donald_Knuth Donald Knuth], and it works very well for solving sudoku.
 
 My implementation of Dancing Links, and a sudoku solver implemented on top of that, is [http://code.google.com/p/narorumo/source/browse/#svn/trunk/sudokusolver available] in the repository of this project. It's also [http://sudokudlx.appspot.com running on App Engine]. Here, I intend to give a clear description of how to use DLX to solve sudoku, and in a forthcoming writeup, I'll talk about implementing Dancing Links. Knuth's [http://www-cs-faculty.stanford.edu/~knuth/preprints.html original paper] describes the algorithm in detail, but I found it pretty dense, and I think some extra discussion will be helpful.
