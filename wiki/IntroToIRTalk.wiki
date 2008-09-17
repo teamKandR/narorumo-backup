@@ -1,0 +1,39 @@
+#summary intro to information retrieval
+
+This is the notes towards a talk to be given for Spelman College's CIS313, 24 September 2008.
+
+My source material here is the excellent  Stuart Russell and Peter Norvig's
+_Artificial Intelligence: A Modern Approach_. (http://aima.cs.berkeley.edu/)
+
+Or wikipedia articles, which I'll list here too.
+
+== What's Information Retrieval? ==
+
+How do we define the task?
+
+How do you store/represent your copy of the corpus? What information do you
+want to extract about your documents?
+
+Logical connectives and your query language
+
+What are some approaches you might take?
+
+What makes it hard? How can you make it fast?
+
+Polysemy, synonyms, clustering topics...
+
+Parallelism?
+
+Russell and Norvig say:
+  After reading the previous chapter, one might suppose that an information
+  retrieval system could be built by parsing the document collection into a
+  knowledge base of logical sentences and then parsing each query and `ASK`ing
+  the knowledge base for answers. Unfortunately, no one has ever succeeded in
+  building a large-scale IR system that way. It is just too difficult to build
+  a lexicon and grammar that cover a large document collection, so all IR
+  systems use simpler language models.
+
+== Simpler language models? ==
+
+
+== Questions? ==
