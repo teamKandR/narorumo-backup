@@ -44,6 +44,10 @@ What are some problems with this?
 - Some words show up an awful lot.
 - This comes in two flavors: some words aren't helpful for this task at all. Language processing people refer to these as "stopwords", and typically you'll want to take them out immediately. More subtly, some words show up very rarely, but if they do show up, you almost certainly want to take note.
 
+One thing we could do, we could just filter out all the "stopwords".
+http://en.wikipedia.org/wiki/Stop_words
+
+Okay, but maybe we can do better than that. Look at all of this stuff about Spain and France, in the Andorra article.
 
 === tf-idf ===
 A fairly standard way to handle this is with what's called TF-IDF, Term-Frequency, Inverse Document Frequency.
