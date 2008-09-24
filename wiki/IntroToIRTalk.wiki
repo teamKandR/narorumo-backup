@@ -14,15 +14,8 @@ How do we define the task?
 How do you store/represent your copy of the corpus? What information do you
 want to extract about your documents?
 
+== first pass ==
 Logical connectives and your query language
-
-What are some approaches you might take?
-
-What makes it hard? How can you make it fast?
-
-Polysemy, synonyms, clustering topics...
-
-Parallelism?
 
 Russell and Norvig say:
   After reading the previous chapter, one might suppose that an information
@@ -33,7 +26,44 @@ Russell and Norvig say:
   a lexicon and grammar that cover a large document collection, so all IR
   systems use simpler language models.
 
-== Simpler language models? ==
+Alright, let's go for a simpler language model.
 
+=== Transition model ===
+Instead of trying to parse out and understand all the documents in the corpus, we can build a probabilistic model out of the sequences of words that we might find.
+
+We could use bigrams, or trigrams.
+
+=== Vector space model ===
+http://en.wikipedia.org/wiki/Vector_space_model
+
+You'll also hear the term "bag of words" model, where a bag is like a multiset. You just count how many times each word appears in a document. If a document contains the word "waffle", then it's probably about waffles. Sounds good!
+
+*example!*
+
+What are some problems with this?
+- Some words show up an awful lot.
+- This comes in two flavors: some words aren't helpful for this task at all. Language processing people refer to these as "stopwords", and typically you'll want to take them out immediately. More subtly, some words show up very rarely, but if they do show up, you almost certainly want to take note.
+
+
+=== tf-idf ===
+A fairly standard way to handle this is with what's called TF-IDF, Term-Frequency, Inverse Document Frequency.
+
+http://en.wikipedia.org/wiki/Tf-idf
+
+Term frequency is just the proportion of the words in the document that are this term.
+
+Inverse document frequency is more involved -- it's higher for words that occur in the whole corpus less often.
+
+- Polysemy: some words mean more than one thing. "apple" like computers, "apple" like fruit.
+- synonyms: harder, there's more than one word for a given topic! How do we make this fall out of the numbers?
+
+== How do you make it fast? ==
+Parallelism? MapReduce?
+
+== Ranking ==
+So once we've 
+
+=== PageRank ===
+PageRank!
 
 == Questions? ==
