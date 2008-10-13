@@ -144,8 +144,8 @@
 (define (sqrt-iter-new-if guess x)
   (new-if (good-enough? guess x)
           guess
-          (sqrt-iter (improve guess x)
-                     x)))
+          (sqrt-iter-new-if (improve guess x)
+                             x)))
 ;; What happens when Alyssa attempts to use this to compute square roots?
 
 ;; alexr: Eva Lu Ator has good intentions, but until we figure out how to use
@@ -2312,7 +2312,7 @@
 ;;;; 1.42
 ;; ...Define a procedure /compose/ that implements composition.
 
-(define compose
+(define my-compose
   (lambda (f g)
     (lambda (x)
       (f (g x)))))
