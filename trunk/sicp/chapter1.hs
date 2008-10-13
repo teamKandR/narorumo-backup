@@ -47,3 +47,36 @@ test x y = if (x == 0) then 0 else y
 -- alexr: In this case, Haskell's lazy evaluation just returns 0. Since x is 0,
 -- we don't need to bother finding out what the value of running p is. (it does
 -- turn out to be an infinite loop if you run it on its own)
+
+---- 1.6
+-- Alyssa P. Hacker doesn't see why /if/ needs to be provided as a special
+-- form...
+
+new_if predicate then_clause else_clause =  
+  case predicate of
+    True -> then_clause
+    False -> else_clause
+
+-- (previously defined functions, needed here)
+improve guess x = average guess (x / guess)
+
+average x y = (x + y) / 2
+
+good_enough guess x =
+  (abs ((square guess) - x)) < 0.001
+
+sqrt_new_if x = sqrt_iter_new_if 1.0 x
+
+sqrt_iter_new_if guess x =
+  new_if (good_enough guess x)
+         guess
+         (sqrt_iter_new_if (improve guess x) x)
+
+-- alexr: In Haskell, if can be just a regular function. This all works fine
+-- because of lazy evaluation. Whereas in an eager language like Scheme, both
+-- arguments to the "if" function would get evaluated (and we'd never decide
+-- that the approximation is "good enough"), in Haskell, we don't bother
+-- evaluating the "sqrt_iter_new_if" branch unless we need it.
+-- new_if does differ slightly from regular if in that its syntax doesn't have
+-- a "then" built in. How would you define that, one wonders? Are there macros
+-- for Haskell?
