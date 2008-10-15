@@ -80,3 +80,17 @@ sqrt_iter_new_if guess x =
 -- new_if does differ slightly from regular if in that its syntax doesn't have
 -- a "then" built in. How would you define that, one wonders? Are there macros
 -- for Haskell?
+
+---- 1.12
+-- ... Write a procedure that computes elements of Pascal's triangle by means
+-- of a recursive process. 
+
+pascals 0 0 = 1
+
+pascals _ 0 = 1
+
+pascals row col 
+  | (col == row) = 1
+
+pascals row col 
+  | (col <= row) = (pascals (row - 1) (col - 1)) + (pascals (row - 1) col)
