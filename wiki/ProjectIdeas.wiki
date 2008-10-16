@@ -2,6 +2,9 @@
 
 = Future project scratch space =
 
+== logo compiler ==
+Learn Logo, preferably the dialect supported by ucblogo. Compile it to javascript, gwt-style, and do turtle graphics with the canvas tag. Is there a formal grammar for ucblogo? The problem with this idea is: no repl.
+
 == make the paip source code work with recent common lisps ==
 Norvig's Paradigms of Artificial Intelligence Programming source doesn't load right with the CL implementations I have on my Ubuntu box, sbcl and clisp. CL has had problems standardizing its loading/packaging mechanisms for a while, but there's no good reason PAIP shouldn't run nicely on recent CLs. Fix it and send Dr. Norvig a patch! Also make sure the Debian package gets updated.
 
