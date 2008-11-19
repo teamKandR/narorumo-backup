@@ -1,4 +1,4 @@
-build: configure
+build:
 	runhaskell Setup.lhs build
 
 configure:
