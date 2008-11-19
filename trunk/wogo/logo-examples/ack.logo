@@ -1,0 +1,9 @@
+to ack :m :n
+  if equal? :m 0 [ output (:n + 1) ]
+
+  if (and (greater? :m 0)
+          (equal? :n 0)) [ output ack (m - 1) 1 ]
+
+  if (and (greater? :m 0)
+          (greater? :n 0)) [ output ack (m-1) (ack m (n-1)) ]
+end
