@@ -2,7 +2,7 @@
 
 = Future project scratch space =
 
-== livejournal friends birthday's iGoogle gadget ==
+== livejournal friends birthdays iGoogle gadget ==
 LJ has a gadget where they tell you which of your friends have upcoming birthdays, but you don't look at the livejournal front page very often. Build an iGoogle gadget that keeps your LJ login information, queries for your friend-birthday data, and displays it attractively. To be polite, cache things somewhere, say in an appengine app that only polls here and again?
 
 == logo compiler ==
