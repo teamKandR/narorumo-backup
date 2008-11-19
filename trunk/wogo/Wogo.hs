@@ -5,7 +5,11 @@
 
 import System.Environment
 
-main :: IO ()
-main = getArgs >>= print . haqify . head
-
 haqify s = "Haq! " ++ s
+
+-- working.
+main :: IO ()
+main = do args <- getArgs
+
+          input <- (readFile (args !! 0))
+          putStr (haqify input)
