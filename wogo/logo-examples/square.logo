@@ -1,0 +1,6 @@
+to square :size
+  fd :size rt 90
+  fd :size rt 90
+  fd :size rt 90
+  fd :size rt 90
+end

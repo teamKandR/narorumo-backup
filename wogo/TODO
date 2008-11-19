@@ -1,3 +1,19 @@
 The TODO pile grows down.
 
+- extract a grammar for ucblogo from somewhere (possibly another logo
+  implementation?)
+- sensibly process the parse tree from the logo
+
+- understand parsec well enough to add cases that sensibly accept:
+
+to square :size
+  fd :size rt 90
+  fd :size rt 90
+  fd :size rt 90
+  fd :size rt 90
+end
+
+DONE:
 - be able to create a parser, open up a file, and run the parser on that file.
+  (only -- the parser that we create is for Appel's Tiger language, from the
+  compilers book.)

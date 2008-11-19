@@ -4,12 +4,9 @@
 --
 
 import System.Environment
-
-haqify s = "Haq! " ++ s
+import WogoParser
 
 -- working.
 main :: IO ()
 main = do args <- getArgs
-
-          input <- (readFile (args !! 0))
-          putStr (haqify input)
+          prettyLogoFromFile (args !! 0)
