@@ -33,140 +33,14 @@ toExpr = do{ reserved "to"
 parameter = P.identifier lexer    
 
 -----------------------------------------------------------
--- A program is simply an expression.
+-- A program is many expressions. Actually, logo makes a distinction between
+-- expressions and statements, doesn't it? ...
 -----------------------------------------------------------
 program
     = do{ whiteSpace
-        ; e <- expr
+        ; e <- exprs
         ; return e
         }
-
-----------------------------------------------------------------
--- Declarations for types, identifiers and functions
-----------------------------------------------------------------
-decs = many dec
-    
-dec 
-    = tydec
-    <|>
-      vardec
-    <|>
-      fundec
-
-----------------------------------------------------------------
--- Type declarations
--- int and string are predefined, but not reserved.
-----------------------------------------------------------------
-tydec :: Parser Declaration
-tydec
-    = do{ reserved "type"
-	    ; tid  <- identifier
-	    ; symbol "="
-	    ; t <- ty
-	    ; return (TypeDec tid t)
-	    }
-
-ty
-    = do{ fields <- braces tyfields
-        ; return (Record fields)
-        }
-    <|>
-      do{ reserved "array"
-        ; reserved "of"
-        ; tid <- identifier
-        ; return (Array tid)
-        }
-    <|>
-      do{ id <- identifier
-        ; return (Var id) 
-        }
-          
-tyfields
-    = commaSep field
-
-noType = "*"
-voidType = "void"
-    
-field
-    = do{ id <- identifier
-        ; symbol ":"
-        ; tid <- identifier
-        ; return (TypedVar id tid)
-        }
-        
-----------------------------------------------------------------
--- identifier declarations
--- Lacks: 11, 12
-----------------------------------------------------------------
-vardec
-    = do{ reserved "var"
-        ; id <- identifier
-        ; t <- option noType (try (do{ symbol ":"
-                               ; identifier
-                               }))
-        ; symbol ":="
-        ; e <- expr
-        ; return (VarDec id t e)
-        }
-        
-----------------------------------------------------------------
--- Function declarations
-----------------------------------------------------------------
-fundec
-    = do{ reserved "function"
-        ; name <- identifier
-        ; parms <- parens tyfields
-        ; rettype <- option voidType (do{ symbol ":"
-                                        ; identifier
-                                        })
-        ; symbol "="
-        ; body <- expr
-        ; return (FunDec name parms rettype body)
-        }
-
-----------------------------------------------------------------
--- Lvalues
--- This may not be what we want. I parse lvalues as
--- a list of dot separated array indexings (where the indexing)
--- may be absent. Possibly, we'd want the . and [] 
-----------------------------------------------------------------
-
--- This combinator does ab* in a leftassociative way.
--- Applicable when you have a cfg rule with left recursion
--- which you might rewrite into EBNF X -> YZ*.
-lfact :: Parser a -> Parser (a -> a) -> Parser a
-lfact p q = do{ a <- p
-              ; fs <- many q
-              ; return (foldl  (\x f -> f x) a fs)
-              }              
-{-
-chainl op expr = lfact expr (do { o <- op
-                                ; e <- expr
-                                ; return (`o` e)
-                                })
-  -}                              
-lvalue = lfact variable (recordref <|> subscripted)
-
-recordref = do{ symbol "."
-              ; id <- variable
-              ; return (\x -> Dot x id)
-              }
-subscripted = do{ indexexpr <- brackets expr
-                ; return (\x -> Sub x indexexpr)
-                }
-        
-{-  Alternatively (an lvalue is then a sequence of, possibly (mutli-)indexed, identifiers separated by dots)
-lvalue :: Parser Expr
-lvalue = do{ flds <- sepBy1 subscripted (symbol ".")
-           ; return (if length flds < 2 then head flds else Dots flds)
-           }
-subscripted :: Parser Expr
-subscripted = do{ id <- identifier
-                ; indexes <- many (brackets expr)
-                ; return (if null indexes then Ident id 
-                                          else Subscripted id indexes)
-                }
--}
 
 ----------------------------------------------------------------
 -- All types of expression(s)
@@ -183,10 +57,7 @@ expr = choice
        , ifExpr
        , whileExpr
        , forExpr
-       , letExpr 
        , sequenceExpr       
-       , infixExpr
---       , sequenceExpr   -- I am not sure about this one.       
        ]
 
 recordExpr :: Parser Expr
@@ -211,13 +82,6 @@ arrayExpr = do{ tid <- identifier
               ; initvalue <- expr
               ; return (ArrayVal tid size initvalue)
               }
-               
-assignExpr :: Parser Expr
-assignExpr = do{ lv <- lvalue 
-               ; symbol ":="
-               ; e <- expr
-               ; return (Assign lv e)
-               }
 
 ifExpr :: Parser Expr
 ifExpr = do{ reserved "if"
@@ -248,23 +112,10 @@ forExpr = do{ reserved "for"
             ; return (For id lowerbound upperbound body)
             }
            
-
-letExpr :: Parser Expr
-letExpr = do{ reserved "let"
-            ; ds <- decs
-            ; reserved "in"
-            ; es <- semiSep expr
-            ; reserved "end"
-            ; return (Let ds es)
-            }
-
 sequenceExpr :: Parser Expr
 sequenceExpr = do{ exps <- parens (semiSep1 expr)
                  ; return (if length exps < 2 then head exps else Seq exps)
                  }
-
-infixExpr :: Parser Expr                 
-infixExpr = buildExpressionParser operators simpleExpr
 
 operators =
     [ [ prefix "-"]
@@ -283,18 +134,6 @@ operators =
       prefix name     = Prefix  (do{ reservedOp name
                                   ; return (\x -> UnOp name x)
                                   })                                  
-
-simpleExpr = choice [ do{ reserved "nil"
-                        ; return Nil
-                        }
-                    , intLiteral
-                    , strLiteral
-                    , parens expr
-                    , try funCallExpr
-                    , try recordExpr
-                    , try arrayExpr
-                    , lvalue
-                    ]
 
 funCallExpr = do{ id <- identifier
                  ; parms <- parens (commaSep expr)

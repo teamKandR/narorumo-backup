@@ -2,6 +2,9 @@ The TODO pile grows down.
 
 - extract a grammar for ucblogo from somewhere (possibly another logo
   implementation?)
+  It may be that logo syntax doesn't yield to being expressed with a cfg very
+  easily. In that case, what are we going to do?
+
 - sensibly process the parse tree from the logo
 
 - understand parsec well enough to add cases that sensibly accept:
