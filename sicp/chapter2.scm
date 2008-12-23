@@ -1,3 +1,15 @@
+(define-syntax test
+  (syntax-rules ()
+    ((_ title tested-expression expected-result)
+     (let* ((expected expected-result)
+            (produced tested-expression))
+       (if (equal? expected produced)
+           (printf "~s works!\n" title)
+           (error
+            'test
+            "Failed ~s: ~a\nExpected: ~a\nComputed: ~a"
+            title 'tested-expression expected produced))))))
+
 ;; Structure and Interpretation of Computer Programs Exercises
 ;; Chapter 2
 ;; Lindsey Kuper and Alex Rudnick
@@ -175,7 +187,25 @@
           [d (y-point (rect-tr rect))])
       (* 2 (+ (- d b) (- c a))))))
 
-;; todo: tests and alternate representation.
+;; Some tests
+
+(test "alex's rectangle's perimeter"
+  (rect-perim (make-rectangle (make-point 0 0) (make-point 20 30)))
+  100)
+
+(test "alex's rectangle's area"
+  (rect-area (make-rectangle (make-point 0 0) (make-point 20 30)))
+  600)
+
+(test "neg-rect-perim"
+  (rect-perim (make-rectangle (make-point -9 -17) (make-point -2 6)))
+  60)
+
+(test "neg-rect-area"
+  (rect-area (make-rectangle (make-point -9 -17) (make-point -2 6)))
+  161)
+
+;; todo: alternate representation.
 
 ;;;; 2.32
 ;; We can represent a set as a list of distinct elements, and we can
