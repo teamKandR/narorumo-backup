@@ -1,0 +1,464 @@
+Your *continued donations*
+<http://wikimediafoundation.org/wiki/Fundraising?source=enwiki_00> keep
+Wikipedia running!
+
+
+  Larry Page
+
+
+      From Wikipedia, the free encyclopedia
+
+Jump to: navigation <#column-one>, search <#searchInput>
+For the music producer/manager, see Larry Page (British singer and
+manager) </wiki/Larry_Page_(British_singer_and_manager)>.
+*Larry Page*
+</wiki/Image:Larry_Page.jpg>
+Lawrence Page
+Born 	March 26, 1973 (1973-03-26) (age 35)
+Lansing, Michigan </wiki/Lansing,_Michigan>
+Occupation 	Co-Founder & President of Products of Google Inc.
+</wiki/Google_Inc.>
+Salary 	$1 USD </wiki/USD> (2008)^[1] <#cite_note-0> ^[2]
+<#cite_note-myDanwei-1>
+Net worth 	▼ *$18.6 billion* USD </wiki/United_States_dollar> (2008)^[3]
+<#cite_note-forbes-2>
+Spouse(s) 	Lucinda Southworth </wiki/Lucinda_Southworth>
+
+*Lawrence Edward "Larry" Page* (born March 26, 1973) is an American
+</wiki/United_States> entrepreneur </wiki/Entrepreneur> who co-founded
+the Google </wiki/Google_search> web search engine
+</wiki/Web_search_engine>, now Google Inc. </wiki/Google>, with Sergey
+Brin </wiki/Sergey_Brin>.^[4] <#cite_note-3>
+
+
+    Contents
+
+[hide <javascript:toggleToc()>]
+
+    * 1 Biography <#Biography>
+          o 1.1 Early life and education <#Early_life_and_education>
+          o 1.2 Research <#Research>
+          o 1.3 Business <#Business>
+    * 2 Miscellaneous <#Miscellaneous>
+    * 3 References and notes <#References_and_notes>
+    * 4 External links <#External_links>
+
+
+    [edit </w/index.php?title=Larry_Page&action=edit&section=1>] Biography
+
+
+      [edit </w/index.php?title=Larry_Page&action=edit&section=2>] Early
+      life and education
+
+Larry Page is the son of the late Dr. Carl Victor Page, a professor of
+computer science and artificial intelligence
+</wiki/Artificial_intelligence> at Michigan State University
+</wiki/Michigan_State_University> and one of the University of Michigan
+</wiki/University_of_Michigan>'s first computer science Ph.D graduates,
+and Gloria Page, a computer programming teacher at Michigan State
+University </wiki/Michigan_State_University>. Despite his mother being
+Jewish </wiki/Jewish>, Page was raised similarly to his father: without
+a religion.^[5] <#cite_note-4> ^[6] <#cite_note-5> He is also the
+brother of Carl Victor Page, Jr.,^[7] <#cite_note-6> a co-founder of
+eGroups </wiki/EGroups>, later sold to Yahoo! </wiki/Yahoo!> for
+approximately half a billion dollars.
+
+Page attended a Montessori </wiki/Montessori> school in Lansing,
+Michigan </wiki/Lansing,_Michigan>, and graduated from East Lansing High
+School </wiki/East_Lansing_High_School>. Page holds a Bachelor of
+Science </wiki/Bachelor_of_Science> degree </wiki/Academic_degree> in
+computer engineering </wiki/Computer_engineering> from the University of
+Michigan </wiki/University_of_Michigan> with honors and a Masters degree
+</wiki/Masters_degree> in Computer Science </wiki/Computer_Science> from
+Stanford University </wiki/Stanford_University>. While at the University
+of Michigan, "Page created an inkjet printer </wiki/Inkjet_printer>,
+made of Lego </wiki/Lego> bricks"^[8] <#cite_note-corpexecs-7> , was a
+member of the solar car team
+</wiki/1993_%22Maize_%26_Blue%22_University_of_Michigan_Solar_Car_Team>
+and served as the president of the HKN </wiki/HKN>.^[9] <#cite_note-8>
+
+
+      [edit </w/index.php?title=Larry_Page&action=edit&section=3>] Research
+
+After enrolling for a Ph.D </wiki/Ph.D>. program in computer science at
+Stanford University </wiki/Stanford_University>, Page was in search for
+a dissertation theme and considered - among other things - exploring the
+mathematical properties of the World Wide Web </wiki/World_Wide_Web>,
+understanding its link structure as a huge graph
+</wiki/Graph_(mathematics)>.^[10] <#cite_note-wiredbirth-9> His
+supervisor Terry Winograd </wiki/Terry_Winograd> encouraged him to
+pursue this idea (which Page later recalled as "the best advice I ever
+got"^[11] <#cite_note-10> ) and Page focused on the problem of finding
+out which web pages link to a given page, considering the number and
+nature of such backlinks </wiki/Backlink> to be valuable information
+</wiki/Information> about that page (with the role of citations
+</wiki/Citation> in academic publishing </wiki/Academic_publishing> in
+mind).^[10] <#cite_note-wiredbirth-9> In his research project, nicknamed
+"BackRub," he was soon joined by Sergey Brin </wiki/Sergey_Brin>, a
+fellow Stanford Ph.D. student and close friend, whom he had first met in
+the summer of 1995 in a group of potential new students which Brin had
+volunteered to show around the campus.^[10] <#cite_note-wiredbirth-9> To
+convert the backlink data gathered by BackRub's web crawler
+</wiki/Web_crawler> into a measure of importance for a given web page,
+Brin and Page developed the PageRank </wiki/PageRank> algorithm, and
+realized that it could be used to build a search engine
+</wiki/Search_engine_(computing)> far superior to existing ones.^[10]
+<#cite_note-wiredbirth-9> In August 1996 the initial version of Google
+was made available, still on the Stanford University Web site.^[10]
+<#cite_note-wiredbirth-9>
+
+
+      [edit </w/index.php?title=Larry_Page&action=edit&section=4>] Business
+
+In 1998, Brin and Page founded Google, Inc. Page is still "on leave"
+from the Ph.D. program.^[12] <#cite_note-11>
+
+Page ran Google as co-president with Brin until 2001 when they hired
+Eric Schmidt </wiki/Eric_E._Schmidt> to become Chairman and CEO of Google.
+
+According to the 2007 edition of Forbes </wiki/Forbes>, Page had an
+estimated net worth of $ </wiki/United_States_dollar>16.6 Billion,
+placing him at rank 26 on Forbes's list of the richest persons in the
+world, together with Brin.^[13] <#cite_note-12> Page and Brin
+</wiki/Sergey_Brin> recently purchased a pre-owned Qantas Boeing 767
+</wiki/Boeing_767> airliner for their business and personal needs.
+
+In 2007, Page was cited by PC World </wiki/PC_World_(magazine)> as #1 on
+the list of the 50 most important people on the web, along with Brin and
+Schmidt.^[14] <#cite_note-13>
+
+Page is also an investor in Tesla Motors </wiki/Tesla_Motors>, which
+developed the Tesla Roadster </wiki/Tesla_Roadster>, a 220-mile (350 km)
+range battery electric vehicle </wiki/Battery_electric_vehicle>.^[15]
+<#cite_note-14>
+
+
+    [edit </w/index.php?title=Larry_Page&action=edit&section=5>]
+    Miscellaneous
+
+The World Economic Forum </wiki/World_Economic_Forum> named Page as a
+Global Leader for Tomorrow. The X PRIZE </wiki/X_PRIZE> chose Page as a
+trustee for their board.^[8] <#cite_note-corpexecs-7> Page married
+Lucinda Southworth </wiki/Lucinda_Southworth> at Richard Branson
+</wiki/Richard_Branson>'s Caribbean island, Necker Island
+</wiki/Necker_Island_(British_Virgin_Islands)>, on December 8,
+2007.^[16] <#cite_note-15> ^[17] <#cite_note-16>
+
+
+    [edit </w/index.php?title=Larry_Page&action=edit&section=6>]
+    References and notes
+
+   1. *^ <#cite_ref-0>* 2005 compensations from Google: $1 in salary,
+      $1,630 in bonus, $33,411 other annual compensation, $3 all other
+      compensation. Source: SEC
+      </wiki/United_States_Securities_and_Exchange_Commission>. Google
+      form 14A
+      <http://www.sec.gov/Archives/edgar/data/1288776/000119312506070406/ddef14a.htm>.
+      Filed March 31, 2006.
+   2. *^ <#cite_ref-myDanwei_1-0>* Google Executives Compensation
+      <http://www.mydanwei.com/detail.php?org_oid=49f9f04e17e64d2652dc06384adf3d83&type=org&tab=1>
+   3. *^ <#cite_ref-forbes_2-0>* Net Worth from Forbes: The World's
+      Richest People
+      <http://www.forbes.com/lists/2007/10/07billionaires_Larry-Page_XFXI.html>,
+      dated March 8, 2007.
+   4. *^ <#cite_ref-3>* PAGE Lawrence (Larry) E.
+      <http://www.worldwhoswho.com/views/entry.html?id=sl855550>
+      International Who's Who. accessed September 1, 2006.
+   5. *^ <#cite_ref-4>* The Searchmeisters
+      <http://web.archive.org/web/20070826180524/http://bnaibrith.org/pubs/bnaibrith/spring2006bbm/searchmeisters.cfm>
+   6. *^ <#cite_ref-5>* http://www.nndb.com/people/830/000044698/
+   7. *^ <#cite_ref-6>* The Searchmeisters
+      <http://web.archive.org/web/20070826180524/http://bnaibrith.org/pubs/bnaibrith/spring2006bbm/searchmeisters.cfm>
+   8. ^ ^/*a*/ <#cite_ref-corpexecs_7-0> ^/*b*/
+      <#cite_ref-corpexecs_7-1> Google Corporate Information:
+      Management: Larry Page
+      <http://www.google.com/corporate/execs.html#larry>
+   9. *^ <#cite_ref-8>* "HKN College Chapter Directory
+      <http://www.hkn.org/admin/chapters/beta_epsilon.html>". Eta Kappa
+      Nu (2007 </wiki/2007>-01-15 </wiki/January_15>).
+  10. ^ ^/*a*/ <#cite_ref-wiredbirth_9-0> ^/*b*/
+      <#cite_ref-wiredbirth_9-1> ^/*c*/ <#cite_ref-wiredbirth_9-2>
+      ^/*d*/ <#cite_ref-wiredbirth_9-3> ^/*e*/
+      <#cite_ref-wiredbirth_9-4> Battelle, John </wiki/John_Battelle>.
+      "The Birth of Google
+      <http://www.wired.com/wired/archive/13.08/battelle.html?tw=wn_tophead_4>."
+      /Wired Magazine </wiki/Wired_Magazine>./ August 2005.
+  11. *^ <#cite_ref-10>* The best advice I ever got
+      <http://money.cnn.com/galleries/2008/fortune/0804/gallery.bestadvice.fortune/2.html>
+      (Fortune, April 2008)
+  12. *^ <#cite_ref-11>* "Larry Page Profile
+      <http://www.google.com/corporate/execs.html#larry>". Google.
+  13. *^ <#cite_ref-12>* "The World's Billionaires
+      <http://www.forbes.com/lists/2007/10/07billionaires_The-Worlds-Billionaires_Rank_2.html>".
+      Forbes (2007 </wiki/2007>-03-08 </wiki/March_8>).
+  14. *^ <#cite_ref-13>* Null, Christopher (March 5, 2007). "The 50 Most
+      Important People on the Web
+      <http://www.pcworld.com/article/id,129301-page,1/article.html#>".
+      PC World </wiki/PC_World_(magazine)>. Retrieved on 2007
+      </wiki/2007>-10-20 </wiki/October_20>.
+  15. *^ <#cite_ref-14>* SiliconBeat: Tesla Motors, new electric sports
+      car company raises $40M from Google guys, others
+      <http://www.siliconbeat.com/entries/2006/06/01/tesla_motors_new_electric_sportscar_company_raises_40m_from_google_guys_others.html>
+  16. *^ <#cite_ref-15>* Google founder Larry Page to marry
+      <http://www.reuters.com/article/mediaNews/idUSN1360879220071114>,
+      Reuters.
+  17. *^ <#cite_ref-16>* Google Co-Founder Page to Wed
+      <http://ap.google.com/article/ALeqM5hsrCJztj9j0xezqYCWBi8Dg2ifbQD8ST2SL82>,
+      The Associated Press.
+
+
+    [edit </w/index.php?title=Larry_Page&action=edit&section=7>]
+    External links
+
+    * Google Corporate Information: Management
+      <http://www.google.com/corporate/execs.html>
+    * Larry Page's Alumni Profile Detailed
+      <http://www.engin.umich.edu/alumni/engineer/01SS/profiles.html>
+    * America's Best Leaders
+      <http://www.usnews.com/usnews/news/articles/051031/31google.htm>
+    * Larry Page's Alumni Profile Composite
+      <http://www.engin.umich.edu/alumni/engineer/04SS/achievements/advances.html>
+    * Channel 4 News: "Google's Vision
+      <http://www.channel4.com/news/special-reports/special-reports-storypage.jsp?id=2419>",
+      May 23, 2006
+    * "The Searchmeisters"
+      <http://bnaibrith.org/pubs/bnaibrith/spring2006bbm/searchmeisters.cfm>
+      -- profile on Page and Brin from the /B'nai B'rith
+      </wiki/B%27nai_B%27rith> Magazine/ (Spring 2006)
+    * Video: Google Founders - Charlie Rose interview from 2001 (14 min)
+      <http://video.google.com/videoplay?docid=6958201596441974119#0h37m34s>
+    * On the Origins of Google
+      <http://www.nsf.gov/discoveries/disc_summ.jsp?cntn_id=100660&org=NSF>
+    * Why you should ignore VCs
+      <http://edcorner.stanford.edu/authorMaterialInfo.html?mid=1076&author=149>,
+      Larry Page speaks at Stanford
+
+[hide <javascript:collapseTable(0);>]
+v </wiki/Template:Google_Inc.> • d </wiki/Template_talk:Google_Inc.> • e
+<http://en.wikipedia.org/w/index.php?title=Template:Google_Inc.&action=edit>
+Google Inc. </wiki/Google>
+*Chairman/CEO*: Eric E. Schmidt </wiki/Eric_E._Schmidt> *·*
+*Director/Technology President*: Sergey Brin </wiki/Sergey_Brin> *·*
+*Director/Products President*: *Larry Page* *·* *CFO*: Patrick Pichette
+</w/index.php?title=Patrick_Pichette&action=edit&redlink=1>
+*Other Directors*: John Doerr </wiki/John_Doerr> *·* John L. Hennessy
+</wiki/John_L._Hennessy> *·* Arthur D. Levinson
+</wiki/Arthur_D._Levinson> *·* Ann Mather </wiki/Ann_Mather> *·* Paul
+Otellini </wiki/Paul_Otellini> *·* Ram Shriram </wiki/Ram_Shriram> *·*
+Shirley M. Tilghman </wiki/Shirley_M._Tilghman> *·* *Senior Advisor*: Al
+Gore </wiki/Al_Gore>
+Advertising 	
+AdSense </wiki/AdSense> · Advertising Professionals
+</wiki/Google_Advertising_Professionals> · AdWords </wiki/AdWords> ·
+Analytics </wiki/Google_Analytics> · Base </wiki/Google_Base> · Checkout
+</wiki/Google_Checkout> · Click-to-Call </wiki/AdWords#Click-to-Call> ·
+DoubleClick </wiki/DoubleClick> · Insights for Search
+</wiki/Google_Insights_for_Search> · Trends </wiki/Google_Trends>
+Communication 	
+Answers </wiki/Google_Answers> · Apps </wiki/Google_Apps> · Calendar
+</wiki/Google_Calendar> · Dodgeball </wiki/Dodgeball_(service)> · Friend
+Connect </wiki/Google_Friend_Connect> · Gmail </wiki/Gmail> ·
+GrandCentral </wiki/GrandCentral> · Groups </wiki/Google_Groups> · Gtalk
+</wiki/Google_Talk> · Joga Bonito </wiki/Joga_Bonito> · Orkut
+</wiki/Orkut> · Picasa Web Albums </wiki/Picasa#Picasa_Web_Albums> ·
+Reader </wiki/Google_Reader> · Translate </wiki/Google_Translate> ·
+Panoramio </wiki/Panoramio>
+Software 	
+Android </wiki/Android_(mobile_device_platform)> · Browser Sync
+</wiki/Google_Browser_Sync> · Chrome </wiki/Google_Chrome> · Code
+</wiki/Google_Code> · Co-op </wiki/Google_Co-op> · Desktop
+</wiki/Google_Desktop> · Earth </wiki/Google_Earth> · Gears
+</wiki/Gears_(software)> · Gmail Mobile </wiki/Gmail_Mobile> · KML
+</wiki/Keyhole_Markup_Language> · Lively </wiki/Google_Lively> ·
+OpenSocial </wiki/OpenSocial> · Pack </wiki/Google_Pack> · Picasa
+</wiki/Picasa> · Pinyin </wiki/Google_Pinyin> · SketchUp
+</wiki/SketchUp> · Talk </wiki/Google_Talk> · Toolbar
+</wiki/Google_Toolbar> · Updater </wiki/Google_Pack#Google_Updater> ·
+Web Accelerator </wiki/Google_Web_Accelerator>
+Publishing 	
+Alerts </wiki/Google_Alerts> · App Engine </wiki/Google_App_Engine> ·
+Bookmarks </wiki/Google_Bookmarks> · Blogger </wiki/Blogger_(service)> ·
+Docs </wiki/Google_Docs> · FeedBurner </wiki/FeedBurner> · iGoogle
+</wiki/IGoogle> · Jaiku </wiki/Jaiku> · Knol </wiki/Knol> · Library
+Project </wiki/Google_Books_Library_Project> · Map Maker
+</wiki/Google_Map_Maker> · Mashup Editor </wiki/Google_Mashup_Editor> ·
+Notebook </wiki/Google_Notebook> · Page Creator
+</wiki/Google_Page_Creator> · Sites </wiki/Google_Sites> · YouTube
+</wiki/YouTube>
+Search
+(PageRank </wiki/PageRank>, Sitemaps </wiki/Sitemaps>) 	
+Books </wiki/Google_Book_Search> · Code </wiki/Google_Code_Search> ·
+Desktop </wiki/Google_Desktop> · Finance </wiki/Google_Finance> ·
+GOOG-411 </wiki/GOOG-411> · Images </wiki/Google_Image_Search> · Maps
+</wiki/Google_Maps> · Moon </wiki/Google_Moon> · News
+</wiki/Google_News> · Patents </wiki/Google_Patents> · Products
+</wiki/Google_Product_Search> · Scholar </wiki/Google_Scholar> · Street
+View </wiki/Google_Street_View> · Usenet </wiki/Google_Groups> · Video
+</wiki/Google_Video> · Web </wiki/Google_search>
+See also 	
+Acquisitions </wiki/List_of_acquisitions_made_by_Google> · Bomb
+</wiki/Google_bomb> · Censorship </wiki/Censorship_by_Google> ·
+Criticism </wiki/Criticism_of_Google> · Google China
+</wiki/Google_China> · Google.org </wiki/Google.org> · Googleplex
+</wiki/Googleplex> · Foundation </wiki/Google.org#Google_Foundation> ·
+Health </wiki/Google_Health> · History </wiki/History_of_Google> ·
+Hoaxes </wiki/Google%27s_hoaxes> · I'm Feeling Lucky
+</wiki/I%27m_Feeling_Lucky> · Labs </wiki/Google_Labs> · Logo
+</wiki/Google_logo> · Platform </wiki/Google_platform> · Products
+</wiki/List_of_Google_products> · Summer of Code
+</wiki/Google_Summer_of_Code> · WiFi </wiki/Google_WiFi>
+*Annual Revenue*: US$ </wiki/United_States_dollar>16.59 billion (▲56% FY
+</wiki/Fiscal_year> 2007) *·* *Employees*: 19,604 full-time (June 30
+</wiki/June_30>, 2008 </wiki/2008>) *·* *Stock Symbol*: (NASDAQ
+</wiki/NASDAQ>: GOOG
+<http://quotes.nasdaq.com/asp/SummaryQuote.asp?symbol=GOOG&selected=GOOG>,
+LSE </wiki/London_Stock_Exchange>: GGEA
+<http://www.londonstockexchange.com/en-gb/pricesnews/prices/Trigger/genericsearch.htm?bsg=true&ns=GGEA>) *·*
+*Motto*: Don't be evil </wiki/Don%27t_be_evil> *·* *Website*:
+www.google.com <http://www.google.com/>
+
+Persondata </wiki/Wikipedia:Persondata>
+NAME 	Page, Larry
+ALTERNATIVE NAMES 	Paga, Lawrence
+SHORT DESCRIPTION 	Co-Founder & President of Products of Google Inc.
+</wiki/Google_Inc.>
+DATE OF BIRTH 	March 26, 1973
+PLACE OF BIRTH 	Lansing, Michigan </wiki/Lansing,_Michigan>
+DATE OF DEATH 	
+PLACE OF DEATH 	
+
+Retrieved from "http://en.wikipedia.org/wiki/Larry_Page"
+Categories </wiki/Special:Categories>: 1973 births
+</wiki/Category:1973_births> | Living people
+</wiki/Category:Living_people> | Google employees
+</wiki/Category:Google_employees> | Businesspeople in software
+</wiki/Category:Businesspeople_in_software> | Stanford University alumni
+</wiki/Category:Stanford_University_alumni> | American billionaires
+</wiki/Category:American_billionaires> | American businesspeople
+</wiki/Category:American_businesspeople> | Silicon Valley people
+</wiki/Category:Silicon_Valley_people> | University of Michigan alumni
+</wiki/Category:University_of_Michigan_alumni> | American Jews
+</wiki/Category:American_Jews> | People from Lansing, Michigan
+</wiki/Category:People_from_Lansing,_Michigan>
+
+
+          Views
+
+    * Article </wiki/Larry_Page>
+    * Discussion </wiki/Talk:Larry_Page>
+    * Edit this page </w/index.php?title=Larry_Page&action=edit>
+    * History </w/index.php?title=Larry_Page&action=history>
+
+
+          Personal tools
+
+    * Log in / create account
+      </w/index.php?title=Special:UserLogin&returnto=Larry_Page>
+
+</wiki/Main_Page>
+
+
+          Navigation
+
+    * Main page </wiki/Main_Page>
+    * Contents </wiki/Portal:Contents>
+    * Featured content </wiki/Portal:Featured_content>
+    * Current events </wiki/Portal:Current_events>
+    * Random article </wiki/Special:Random>
+
+
+          Search
+
+ 
+
+
+          Interaction
+
+    * About Wikipedia </wiki/Wikipedia:About>
+    * Community portal </wiki/Wikipedia:Community_portal>
+    * Recent changes </wiki/Special:RecentChanges>
+    * Contact Wikipedia </wiki/Wikipedia:Contact_us>
+    * Donate to Wikipedia <http://wikimediafoundation.org/wiki/Donate>
+    * Help </wiki/Help:Contents>
+
+
+          Toolbox
+
+    * What links here </wiki/Special:WhatLinksHere/Larry_Page>
+    * Related changes </wiki/Special:RecentChangesLinked/Larry_Page>
+    * Upload file </wiki/Wikipedia:Upload>
+    * Special pages </wiki/Special:SpecialPages>
+    * Printable version </w/index.php?title=Larry_Page&printable=yes>
+    * Permanent link </w/index.php?title=Larry_Page&oldid=240486230>
+    * Cite this page
+      </w/index.php?title=Special:Cite&page=Larry_Page&id=240486230>
+
+
+          Languages
+
+    * العربية
+      <http://ar.wikipedia.org/wiki/%D9%84%D8%A7%D8%B1%D9%8A_%D8%A8%D8%A7%D9%8A%D8%AC>
+    * Česky <http://cs.wikipedia.org/wiki/Larry_Page>
+    * Dansk <http://da.wikipedia.org/wiki/Larry_Page>
+    * Deutsch <http://de.wikipedia.org/wiki/Larry_Page>
+    * Ελληνικά
+      <http://el.wikipedia.org/wiki/%CE%9B%CE%AC%CF%81%CF%81%CF%85_%CE%A0%CE%AD%CE%B9%CF%84%CE%B6>
+    * Español <http://es.wikipedia.org/wiki/Larry_Page>
+    * Esperanto <http://eo.wikipedia.org/wiki/Larry_Page>
+    * Euskara <http://eu.wikipedia.org/wiki/Larry_Page>
+    * فارسی
+      <http://fa.wikipedia.org/wiki/%D9%84%D8%B1%DB%8C_%D9%BE%DB%8C%D8%AC>
+    * Français <http://fr.wikipedia.org/wiki/Lawrence_E._Page>
+    * Bahasa Indonesia <http://id.wikipedia.org/wiki/Larry_Page>
+    * Íslenska <http://is.wikipedia.org/wiki/Larry_Page>
+    * Italiano <http://it.wikipedia.org/wiki/Lawrence_E._Page>
+    * עברית
+      <http://he.wikipedia.org/wiki/%D7%9C%D7%90%D7%A8%D7%99_%D7%A4%D7%99%D7%99%D7%92%27>
+    * Magyar <http://hu.wikipedia.org/wiki/Larry_Page>
+    * മലയാളം
+      <http://ml.wikipedia.org/wiki/%E0%B4%B2%E0%B4%BE%E0%B4%B1%E0%B4%BF_%E0%B4%AA%E0%B5%87%E0%B4%9C%E0%B5%8D>
+    * Nederlands <http://nl.wikipedia.org/wiki/Larry_Page>
+    * 日本語
+      <http://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%9A%E3%82%A4%E3%82%B8>
+    * ‪Norsk (bokmål)‬ <http://no.wikipedia.org/wiki/Larry_Page>
+    * Polski <http://pl.wikipedia.org/wiki/Larry_Page>
+    * Português <http://pt.wikipedia.org/wiki/Larry_Page>
+    * Română <http://ro.wikipedia.org/wiki/Larry_Page>
+    * Русский
+      <http://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D0%B9%D0%B4%D0%B6,_%D0%9B%D1%8D%D1%80%D1%80%D0%B8>
+    * Slovenčina <http://sk.wikipedia.org/wiki/Larry_Page>
+    * Slovenščina <http://sl.wikipedia.org/wiki/Larry_Page>
+    * Suomi <http://fi.wikipedia.org/wiki/Larry_Page>
+    * Svenska <http://sv.wikipedia.org/wiki/Larry_Page>
+    * தமிழ்
+      <http://ta.wikipedia.org/wiki/%E0%AE%B2%E0%AE%BE%E0%AE%B0%E0%AE%BF_%E0%AE%AA%E0%AF%87%E0%AE%9C%E0%AF%8D>
+    * ไทย
+      <http://th.wikipedia.org/wiki/%E0%B9%81%E0%B8%A5%E0%B8%A3%E0%B9%8C%E0%B8%A3%E0%B8%B5_%E0%B9%80%E0%B8%9E%E0%B8%88>
+    * Türkçe <http://tr.wikipedia.org/wiki/Larry_Page>
+    * Українська
+      <http://uk.wikipedia.org/wiki/%D0%9B%D0%B5%D1%80%D1%80%D1%96_%D0%9F%D0%B5%D0%B9%D0%B4%D0%B6>
+    * Tiếng Việt <http://vi.wikipedia.org/wiki/Larry_Page>
+    * 中文
+      <http://zh.wikipedia.org/wiki/%E6%8B%89%E9%87%8C%C2%B7%E4%BD%A9%E5%A5%87>
+
+Powered by MediaWiki <http://www.mediawiki.org/>
+Wikimedia Foundation <http://wikimediafoundation.org/>
+
+    * This page was last modified on 23 September 2008, at 17:43.
+    * All text is available under the terms of the GNU Free
+      Documentation License
+      <http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License>.
+      (See *Copyrights
+      <http://en.wikipedia.org/wiki/Wikipedia:Copyrights>* for details.)
+      Wikipedia® is a registered trademark of the Wikimedia Foundation,
+      Inc <http://www.wikimediafoundation.org>., a U.S. registered
+      501(c)(3)
+      <http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29>
+      tax-deductible
+      <http://wikimediafoundation.org/wiki/Deductibility_of_donations>
+      nonprofit <http://en.wikipedia.org/wiki/Non-profit_organization>
+      charity <http://en.wikipedia.org/wiki/Charitable_organization>.
+    * Privacy policy <http://wikimediafoundation.org/wiki/Privacy_policy>
+    * About Wikipedia </wiki/Wikipedia:About>
+    * Disclaimers </wiki/Wikipedia:General_disclaimer>
+

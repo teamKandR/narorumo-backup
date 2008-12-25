@@ -1,0 +1,12 @@
+On 24 September 2008, Alex gave a talk at Spelman College for an algorithms
+class. Asked to present on the sort of algorithms used at Google, he opted to
+speak briefly about information retrieval.
+
+This was prepared in an off-the-cuff sort of way, from publicly available
+materials. Alex doesn't personally work on search, or even know much more
+about it than the average programmer with an armchair interest.
+
+This is his sample code, whipped up the evening before and demo'd during the
+class period.
+
+http://code.google.com/p/narorumo/wiki/IntroToIRTalk
