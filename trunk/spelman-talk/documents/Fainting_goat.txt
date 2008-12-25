@@ -1,0 +1,264 @@
+Ten things you may not know about Wikipedia.
+<http://en.wikipedia.org/wiki/Wikipedia:Ten_things_you_may_not_know_about_Wikipedia>
+
+
+  Fainting goat
+
+
+      From Wikipedia, the free encyclopedia
+
+Jump to: navigation <#column-one>, search <#searchInput>
+A young fainting goat in the midst of a myotonic "fainting" spell.
+</wiki/Image:Fainted.jpg>
+</wiki/Image:Fainted.jpg>
+A young fainting goat in the midst of a myotonic "fainting" spell.
+
+A *fainting goat* is a breed of domestic goat </wiki/Domestic_goat>
+whose muscles freeze for roughly 10 seconds when the goat is startled.
+Though painless, this generally results in the animal collapsing on its
+side. The characteristic is caused by a hereditary genetic disorder
+</wiki/Genetic_disorder> called myotonia congenita
+</wiki/Myotonia_congenita>. When startled, younger goats will stiffen
+and fall over. Older goats learn to spread their legs or lean against
+something when startled, and often they continue to run about in an
+awkward, stiff-legged shuffle.
+
+Slightly smaller than standard breeds of goat, fainting goats are
+generally 43 to 64 centimeters </wiki/Centimeter> (17 to 25 in) tall and
+can weigh anywhere from 27 to 75 kilograms </wiki/Kilogram> (50 to
+165 lb </wiki/Pound_(mass)>). They have large, prominent eyes in high
+sockets, and exist in as many colors as standard breeds do. Hair can be
+short or long, with certain individuals producing a great deal of
+cashmere </wiki/Cashmere_wool> during colder months. There appears to be
+no angora </wiki/Angora_goat> strain of the fainting goat. Common coat
+colors are black and white, however, most possible coat colors are found
+in this breed. Their life expectancy is 12 to 15 years.^[1] <#cite_note-0>
+
+The origin of the fainting goat is peculiar. The goats appear to have
+arrived in Marshall County </wiki/Marshall_County,_Tennessee>, Tennessee
+</wiki/Tennessee> in the early 1800s, courtesy of a reclusive farm
+worker named Jon Tinsley who was most likely from Nova Scotia
+</wiki/Nova_Scotia>. Before he left the area, he sold his goats — three
+does and a buck — to Dr. H.H. Mayberry, who bred them.
+
+Fainting goats have many other names, including Tennessee (Meat) Goats,
+Nervous Goats, Stiff-leg Goats, Wooden-leg Goats, and Tennessee Scare
+Goats. They are smaller and somewhat easier to care for and maintain
+than larger meat goat breeds, which makes the fainting goat desirable
+for smaller farms </wiki/Farm>. They are also raised as pet or show
+animals as they can be friendly, intelligent, easy to keep, and amusing.
+
+
+    Contents
+
+[hide <javascript:toggleToc()>]
+
+    * 1 Classification <#Classification>
+    * 2 Molecular basis for myotonia in the goats
+      <#Molecular_basis_for_myotonia_in_the_goats>
+    * 3 Fainting Goat Festival <#Fainting_Goat_Festival>
+    * 4 References <#References>
+    * 5 External links <#External_links>
+
+
+    [edit </w/index.php?title=Fainting_goat&action=edit&section=1>]
+    Classification
+
+Classified as a meat goat, as opposed to a dairy goat
+</wiki/Dairy_goat>, it can be raised for /chevon/ (goat meat). This
+breed is listed as threatened by the American Livestock Breeds
+Conservancy </wiki/American_Livestock_Breeds_Conservancy> so the
+fainting goat is not used as often for chevon as other meat goat breeds;
+its rarity makes the live goat more valuable.^[2] <#cite_note-1> The
+fainting goat is specifically specialized for smaller production
+operations as they are unable to challenge fences as vigorously as
+larger meat goat breeds, due in part to smaller size and also because of
+the myotonia. They are a medium sized breed, with typical weights from
+60-175 pounds, and this size makes them easier to care for chores such
+as foot trimming and administering medications. Fainting goats are also
+kept as pets, with the smaller specimens more frequently used to this end.
+
+Besides the myotonia, other distinguishing features of the fainting goat
+are prominently set eyes, where the eye protrudes from the eye socket,
+as opposed to recessed eyes seen in other breeds. The profile is
+straight as opposed to convex or "roman" profile.
+
+In the past they were used for protecting livestock such as sheep by
+involuntarily "sacrificing themselves" to predators, allowing the sheep
+to escape.^[3] <#cite_note-2>
+
+
+    [edit </w/index.php?title=Fainting_goat&action=edit&section=2>]
+    Molecular basis for myotonia in the goats
+
+A molecular basis for the defect in myotonic goats was studied by Beck
+/et al./, who found a decrease in muscle chloride conductance due to
+rabies </wiki/Rabies>. By using single-strand conformational analysis
+they found that there were two mutations </wiki/Mutation> in the gene
+</wiki/Gene> that encodes the skeletal muscle </wiki/Skeletal_muscle>
+chloride channel </wiki/Chloride_channel> (ClC-1), one silent mutation
+</wiki/Silent_mutation> which does not call for another amino acid
+</wiki/Amino_acid> and then a missense mutation
+</wiki/Missense_mutation> that calls a proline </wiki/Proline> instead
+of an alanine </wiki/Alanine>. The mutation created a new MboII
+restriction site </wiki/Restriction_site>, so they performed an allele
+</wiki/Allele>-specific assay and found that all the myotonic goats had
+the mutation, reinforcing its role of the missense mutation in the
+disease.^[4] <#cite_note-3>
+
+Physiologically, what is happening in these goats is the inability of
+chloride ions </wiki/Chloride_ion> to act as a buffer to the action
+potentials </wiki/Action_potential> as it does in normal animals.
+Chloride is a negative ion found on the outside of cells in a much
+higher concentration than on the inside, with an equilibrium potential
+close to, or more negative, than the resting potential
+</wiki/Resting_potential> to the cell. Normally, if there is a slight
+depolarization </wiki/Depolarization> the influx of chloride will
+counteract it acting as a buffer. It can be assumed then, with a lower
+permeability to chloride it would take less of a depolarization to cause
+an action potential, increasing the chance for erratic action
+potentials. After an action potential there is a small rise in the
+extracellular potassium </wiki/Potassium> levels that normally does not
+affect the membrane potential much since it can be buffered by the
+influx of the chloride ion. With myotonia the chloride ion cannot buffer
+the increase in extracellular potassium which causes a 10-fold increase
+in the effect of the potassium. If enough of these depolarizations
+happen they can reach the threshold and cause spontaneous contractions
+</wiki/Muscle_contraction>. Additionally, when the goats are startled,
+there is a decrease in the threshold for an action potential due to
+their increased arousal. It is easy to understand then, how when they
+attempt to run away from someone scaring them, their lack of buffering
+capability and their high arousal level can cause them to go into a
+sustained contraction.
+
+
+    [edit </w/index.php?title=Fainting_goat&action=edit&section=3>]
+    Fainting Goat Festival
+
+Every year in October, fainting goats are honored in Marshall County,
+Tennessee. The festival </wiki/Festival> is centered on goats, but also
+has activities including music, an arts and crafts show, food vendors,
+and children's activities.^[5] <#cite_note-4>
+
+
+    [edit </w/index.php?title=Fainting_goat&action=edit&section=4>]
+    References
+
+   1. *^ <#cite_ref-0>* "Tennessee Fainting Goats
+      <http://www.rfaintingfarm.com/description.htm>". Retrieved on 2007
+      </wiki/2007>-04-23 </wiki/April_23>.
+   2. *^ <#cite_ref-1>* "American Livestock Breeds Conservancy Watchlist
+      <http://www.albc-usa.org/cpl/wtchlist.html#goats>" (2007
+      </wiki/2007>-12-12 </wiki/December_12>). Retrieved on 2006
+      </wiki/2006>-07-11 </wiki/July_11>.
+   3. *^ <#cite_ref-2>* "Fainting Goat
+      <http://www.webworksltd.com/webpub/goats/faintinggoat.html>".
+   4. *^ <#cite_ref-3>* Beck CL, Fahlke C, George AL Jr. 1996. Molecular
+      basis for decreased muscle chloride conductance in the myotonic
+      goat. Proc Natl Acad Sci U S A. 93(20):11248-52
+   5. *^ <#cite_ref-4>* "www.goatsmusicandmore.com/
+      <http://www.goatsmusicandmore.com/>".
+
+
+    [edit </w/index.php?title=Fainting_goat&action=edit&section=5>]
+    External links
+
+    * Myotonic Goat
+      <http://www.dmoz.org/Business/Agriculture_and_Forestry/Livestock/Goats/Breeds/Myotonic//>
+      at the Open Directory Project </wiki/Open_Directory_Project>
+    * MGR - Myotonic Goat Registry - Registry
+      <http://www.myotonicgoatregistry.net>
+    * IFGA - International Fainting Goat Association - Registry
+      <http://www.faintinggoat.com>
+    * YouTube video of fainting goats
+      <http://www.youtube.com/watch?v=we9_CdNPuJg>
+
+Retrieved from "http://en.wikipedia.org/wiki/Fainting_goat"
+Categories </wiki/Special:Categories>: Goat breeds
+</wiki/Category:Goat_breeds> | ALBC Conservation Priority Breeds
+</wiki/Category:ALBC_Conservation_Priority_Breeds> | Goats
+</wiki/Category:Goats> | Marshall County, Tennessee
+</wiki/Category:Marshall_County,_Tennessee>
+
+
+          Views
+
+    * Article </wiki/Fainting_goat>
+    * Discussion </wiki/Talk:Fainting_goat>
+    * Edit this page </w/index.php?title=Fainting_goat&action=edit>
+    * History </w/index.php?title=Fainting_goat&action=history>
+
+
+          Personal tools
+
+    * Log in / create account
+      </w/index.php?title=Special:UserLogin&returnto=Fainting_goat>
+
+</wiki/Main_Page>
+
+
+          Navigation
+
+    * Main page </wiki/Main_Page>
+    * Contents </wiki/Portal:Contents>
+    * Featured content </wiki/Portal:Featured_content>
+    * Current events </wiki/Portal:Current_events>
+    * Random article </wiki/Special:Random>
+
+
+          Search
+
+ 
+
+
+          Interaction
+
+    * About Wikipedia </wiki/Wikipedia:About>
+    * Community portal </wiki/Wikipedia:Community_portal>
+    * Recent changes </wiki/Special:RecentChanges>
+    * Contact Wikipedia </wiki/Wikipedia:Contact_us>
+    * Donate to Wikipedia <http://wikimediafoundation.org/wiki/Donate>
+    * Help </wiki/Help:Contents>
+
+
+          Toolbox
+
+    * What links here </wiki/Special:WhatLinksHere/Fainting_goat>
+    * Related changes </wiki/Special:RecentChangesLinked/Fainting_goat>
+    * Upload file </wiki/Wikipedia:Upload>
+    * Special pages </wiki/Special:SpecialPages>
+    * Printable version </w/index.php?title=Fainting_goat&printable=yes>
+    * Permanent link </w/index.php?title=Fainting_goat&oldid=239200892>
+    * Cite this page
+      </w/index.php?title=Special:Cite&page=Fainting_goat&id=239200892>
+
+
+          Languages
+
+    * Bosanski <http://bs.wikipedia.org/wiki/Padaju%C4%87a_koza>
+    * Ελληνικά
+      <http://el.wikipedia.org/wiki/%CE%9C%CF%85%CE%BF%CF%84%CE%BF%CE%BD%CE%B9%CE%BA%CE%AE_%CE%BA%CE%B1%CF%84%CF%83%CE%AF%CE%BA%CE%B1>
+    * עברית
+      <http://he.wikipedia.org/wiki/%D7%A2%D7%96_%D7%9E%D7%AA%D7%A2%D7%9C%D7%A4%D7%AA>
+
+Powered by MediaWiki <http://www.mediawiki.org/>
+Wikimedia Foundation <http://wikimediafoundation.org/>
+
+    * This page was last modified on 18 September 2008, at 05:34.
+    * All text is available under the terms of the GNU Free
+      Documentation License
+      <http://en.wikipedia.org/wiki/Wikipedia:Text_of_the_GNU_Free_Documentation_License>.
+      (See *Copyrights
+      <http://en.wikipedia.org/wiki/Wikipedia:Copyrights>* for details.)
+      Wikipedia® is a registered trademark of the Wikimedia Foundation,
+      Inc <http://www.wikimediafoundation.org>., a U.S. registered
+      501(c)(3)
+      <http://en.wikipedia.org/wiki/501%28c%29#501.28c.29.283.29>
+      tax-deductible
+      <http://wikimediafoundation.org/wiki/Deductibility_of_donations>
+      nonprofit <http://en.wikipedia.org/wiki/Non-profit_organization>
+      charity <http://en.wikipedia.org/wiki/Charitable_organization>.
+    * Privacy policy <http://wikimediafoundation.org/wiki/Privacy_policy>
+    * About Wikipedia </wiki/Wikipedia:About>
+    * Disclaimers </wiki/Wikipedia:General_disclaimer>
+
