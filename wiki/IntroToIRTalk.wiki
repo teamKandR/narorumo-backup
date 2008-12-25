@@ -1,6 +1,8 @@
 #summary intro to information retrieval
 
-This is the notes towards a talk to be given for Spelman College's CIS313, 24 September 2008.
+This is the notes towards a talk that [[Alex Alex]] gave for Spelman College's CIS313 on 24 September 2008. This is pretty much what he said.
+
+[http://docs.google.com/Presentation?docid=dg2jdd7c_10w427ppgf&hl=en Slides are here.]
 
 My source material here is the excellent  Stuart Russell and Peter Norvig's
 _Artificial Intelligence: A Modern Approach_. (http://aima.cs.berkeley.edu/)
@@ -102,13 +104,11 @@ From the "Google Technology" page:
 "PageRank also considers the importance of each page that casts a vote, as votes from some pages are considered to have greater value, thus giving the linked page greater value. We have always taken a pragmatic approach to help improve search quality and create useful products, and our technology uses the collective intelligence of the web to determine a page's importance."
 
 
-
-
 == hard problems ==
-- Polysemy: some words mean more than one thing. "apple" like computers, "apple" like fruit.
-- synonyms: there's more than one word for a given topic! How do we make this fall out of the numbers? LSI?
-- There are a bunch of anguages in the world. Russell and Norvig give the amazing example of the German word "Lebensverischerungsgesellschaftsangestellter" which means "life insurance company employee". Well, if you see that word, you're probably looking at a document about life insurance companies.
-- The reverse problem happens in English, because we don't always make our compound words one compound word! "life insurance" is different from "life" and "insurance".
+  * Polysemy: some words mean more than one thing. "apple" like computers, "apple" like fruit.
+  * synonyms: there's more than one word for a given topic! How do we make this fall out of the numbers? LSI?
+  * There are a bunch of languages in the world. Russell and Norvig give the amazing example of the German word "Lebensverischerungsgesellschaftsangestellter" which means "life insurance company employee". Well, if you see that word, you're probably looking at a document about life insurance companies.
+  * The reverse problem happens in English, because we don't always make our compound words one compound word! "life insurance" is different from "life" and "insurance".
 
 == How do you make it fast? ==
 ... ?
