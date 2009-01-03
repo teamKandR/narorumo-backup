@@ -141,8 +141,45 @@ data Direction = DirLeft | DirRight | DirStraight
 -- returns a Direction.
 
 data Point = Point Double Double
+  deriving (Show)
 
--- turnDirection :: Point -> Point -> Point -> Direction
+turnDirection :: Point -> Point -> Point -> Direction
 
--- turnDirection (Point ax ay) (Point bx by) (Point cx cy)
---   | (slope ab) > (slope bc) = 
+data Segment = Segment Point Point
+  deriving (Show)
+
+-- So all turns go right, left, up or down.
+-- For right, if the slope increases, it's a left turn.
+-- For left, if the slope increases, it's a left turn.
+-- For up (b is directly above a), c.x > b.x => right turn
+-- For down (b is below a), c.x < b.x => right turn
+turnDirection (Point ax ay) (Point bx by) (Point cx cy)
+  | (up ab) = upanswer bx cx
+  | (down ab) = downanswer bx cx
+  | (slope bc) > (slope ab) = DirLeft
+  | (slope bc) == (slope ab) = DirStraight
+  | (slope bc) < (slope ab) = DirRight
+  where
+    upanswer bx cx
+      | cx > bx = DirRight
+      | cx == bx = DirStraight
+      | cx < bx = DirLeft
+    downanswer bx cx
+      | cx > bx = DirLeft
+      | cx == bx = DirStraight
+    bc = Segment (Point bx by) (Point cx cy)
+    ab = Segment (Point ax ay) (Point bx by)
+
+up (Segment (Point ax ay) (Point bx by)) =
+  ax == bx && ay < by
+
+down (Segment (Point ax ay) (Point bx by)) =
+  ax == bx && ay >= by
+
+slope (Segment (Point ax ay) (Point bx by)) =
+  (gy - ly) / (gx - lx)
+  where
+    gy = (max ay by)
+    ly = (min ay by)
+    gx = (max ax bx)
+    lx = (min ax bx)
