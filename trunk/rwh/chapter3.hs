@@ -4,6 +4,7 @@
 
 -- so we can use Maybe.
 import Prelude
+import Data.List hiding (intersperse)
 
 -- 1) Write the converse of fromList for the List type: a function that takes a
 -- List a and generates a [a].
@@ -50,10 +51,10 @@ uniHeight (UNode _ (Just left) (Just right)) = 1 + (max leftheight rightheight)
 
 myLength :: (Num t1) => [t] -> t1
 myLength [] = 0
-myLength (x:xs) = 1 + myLength xs
+myLength (_:xs) = 1 + myLength xs
 
 -- Now with map/reduce?
-mrLength lst = foldr (+) 0 (map (\x -> 1) lst)
+mrLength lst = foldr (+) 0 (map (\_ -> 1) lst)
 
 -- Other 2) Add a type signature for your function to your source file. To test
 -- it, load the source file into ghci again.
@@ -135,38 +136,41 @@ height (Node _ left right) = 1 + (max leftheight rightheight)
 -- Direction data type that lets you represent these possibilities
 
 data Direction = DirLeft | DirRight | DirStraight
-  deriving (Show)
+  deriving (Show, Eq)
 
 -- 10) Write a function that calculates the turn made by three 2D points and
 -- returns a Direction.
 
-data Point = Point Double Double
-  deriving (Show)
+data Point = Point {
+               x :: Double,
+	       y :: Double} deriving (Show, Eq)
 
-turnDirection :: Point -> Point -> Point -> Direction
+myTurnDirection :: Point -> Point -> Point -> Direction
 
 data Segment = Segment Point Point
-  deriving (Show)
+  deriving (Show, Eq)
 
 -- So all turns go right, left, up or down.
 -- For right, if the slope increases, it's a left turn.
 -- For left, if the slope increases, it's a left turn.
 -- For up (b is directly above a), c.x > b.x => right turn
 -- For down (b is below a), c.x < b.x => right turn
-turnDirection (Point ax ay) (Point bx by) (Point cx cy)
+myTurnDirection (Point ax ay) (Point bx by) (Point cx cy)
   | (up ab) = upanswer bx cx
   | (down ab) = downanswer bx cx
   | (slope bc) > (slope ab) = DirLeft
   | (slope bc) == (slope ab) = DirStraight
   | (slope bc) < (slope ab) = DirRight
+  | otherwise = error "this shouldn't happen!"
   where
     upanswer bx cx
       | cx > bx = DirRight
-      | cx == bx = DirStraight
       | cx < bx = DirLeft
+      | otherwise = DirStraight
     downanswer bx cx
       | cx > bx = DirLeft
-      | cx == bx = DirStraight
+      | cx < bx = DirRight
+      | otherwise = DirStraight
     bc = Segment (Point bx by) (Point cx cy)
     ab = Segment (Point ax ay) (Point bx by)
 
@@ -183,3 +187,107 @@ slope (Segment (Point ax ay) (Point bx by)) =
     ly = (min ay by)
     gx = (max ax bx)
     lx = (min ax bx)
+
+
+-- Okay, here's the much simpler version of the function, based on the
+-- description of Graham Scan, from wikipedia.
+crossProduct p1 p2 p3 = 
+  ((x p2) - (x p1)) * ((y p3) - (y p1)) - ((x p3) - (x p1)) * ((y p2) - (y p1))
+
+turnDirection p1 p2 p3
+  | (cross == 0) = DirStraight
+  | (cross > 0) = DirLeft
+  | otherwise = DirRight
+  where cross = (crossProduct p1 p2 p3)
+
+-- 11) Define a function that takes a list of 2D points and computes the
+-- direction of each successive triple. Given a list of points [a,b,c,d,e], it
+-- should begin by computing the turn made by [a,b,c], then the turn made by
+-- [b,c,d], then [c,d,e]. Your function should return a list of Direction.
+
+turnDirections :: [Point] -> [Direction]
+
+turnDirections (a:b:c:ps) = (turnDirection a b c) : (turnDirections (b:c:ps))
+turnDirections _ = []
+
+testPoints = [(Point 0 0),(Point 1 0),(Point 1 1),
+              (Point 2 1),(Point 2 2),(Point 2 3)]
+testTurns = [DirLeft, DirRight, DirLeft, DirStraight]
+
+-- 12) Using the code from the preceding three exercises, implement Graham's
+-- scan algorithm for the convex hull of a set of 2D points. You can find good
+-- description of what a convex hull is, and how the Graham scan algorithm
+-- should work, on Wikipedia.
+
+{- "The first step in this algorithm is to find the point with the lowest
+y-coordinate. If there is a tie, the point with the lowest x-coordinate out of
+the tie breaking candidates should be chosen." -}
+
+graham_pivot points = foldr better_pivot (head points) points
+  where 
+    better_pivot p1 p2
+      | y p1 < y p2 = p1
+      | y p2 < y p1 = p2
+      | x p1 < x p2 = p1
+      | x p2 < x p1 = p2
+      | otherwise = p1
+
+{- Next, the set of points must be sorted in increasing order of the angle they
+and the point P make with the x-axis. ... In order to speed up the
+calculations, it is not actually necessary to calculate the actual angle these
+points make with the x-axis; instead, it suffices to calculate the tangent of
+this angle, which can be done with simple arithmetic. -}
+
+angle_sort :: [Point] -> [Point]
+angle_sort points = sortBy compare_tangent points
+  where
+    compare_tangent p1 p2
+      | p1_tan > p2_tan = GT
+      | p1_tan < p2_tan = LT
+      | otherwise = (compare (pivotdist p1) (pivotdist p2))
+      where
+	p1_tan = tan_with_x p1
+	p2_tan = tan_with_x p2
+	tan_with_x p = (y p) / (x p)
+	pivotdist p = (xdiff p pivot)^2 + (ydiff p pivot)^2 
+        xdiff a b = (x a) - (x b)
+        ydiff a b = (y a) - (y b)
+	pivot = graham_pivot points
+
+gh (top:second:stack) (p:ps)
+  | (turnDirection second top p) /= DirLeft = gh (second:stack) (p:ps)
+
+gh stack (p:ps) = gh (p:stack) ps
+gh stack [] = stack
+
+graham points 
+  | (length points) < 3 = points
+  | otherwise = gh ((sorted !! 1):(sorted !! 0):[]) (drop 2 sorted)
+  where
+    sorted = angle_sort points
+
+{-
+Find pivot P;
+Sort Points by angle
+(with points with equal angle further sorted by distance from P);
+
+# Points[1] is the pivot
+Stack.push(Points[1]);
+Stack.push(Points[2]);
+FOR i = 3 TO Points.length
+        WHILE (Stack.length >= 2) and (Cross_product(Stack.second, Stack.top, Points[i]) <= 0)
+                Stack.pop;
+        ENDWHILE
+        Stack.push(Points[i]);
+NEXT i
+-}
+gtc = [Point (-5) (-5), Point 5 (-5), Point 5 5, Point (-5) 5, Point 0 0]
+
+atc = map (\y -> (Point 10 y)) (reverse [0..10])
+
+grahamTestCase = [Point 1 1, Point (-1) 1, Point (-1) (-1), Point 1 (-1),
+                  Point (-0.5) 0, Point 0 0, Point (-2) 0]
+grahamTestAnswer = [Point (-1.0) (-1.0),Point 1.0 (-1.0),Point 1.0 1.0,
+                    Point (-1.0) 1.0,Point (-2.0) 0.0]
+testGraham :: Bool
+testGraham = (graham grahamTestCase) == grahamTestAnswer
