@@ -9,6 +9,7 @@ class Game:
         initialize a game, we make 52 CardPiles with one Card each, 
         which we receive as a list of two-character strings."""
         self.piles = []
+        self.current_pile = -1
         for str in deck:
             pile = CardPile()
             card = Card(str)
@@ -39,7 +40,6 @@ class Game:
         """Returns this whole Game as a human-readable list."""
         return [pile.show_pile() for pile in self.piles]
     def play(self):
-        self.current_pile = -1
         while self.current_pile < (self.count_piles() - 1):
             self.increment_current_pile()
             self.play_step()
@@ -65,8 +65,7 @@ class Game:
         current = self.get_current_pile()
         current_card = current.peek_card()
         # If it matches the top card on the pile three to the left, 
-        # move it to the top of that pile, reset the current pile to 0,
-        # and return to the beginning of the algorithm. 
+        # move it to the top of that pile and reset current_pile.
         if self.current_pile >= 3:
             left_3 = self.pile_to_left(3)
             left_3_card = left_3.peek_card()
@@ -116,14 +115,14 @@ class GameSet:
     def __init__(self, filehandle):
         self.games = []
         
-        # read in all the cards
+        # Read in all the cards.
         cards = []
         for line in open(filehandle):
             if '#' not in line:
                 line = line.strip()
                 cards.extend(line.split(" "))
         
-        # divide up games
+        # Divide into games of 52 cards each.
         for i in range(len(cards)/52):
             game = Game(cards[i * 52:(i + 1) * 52])
             self.games.append(game)
