@@ -32,7 +32,7 @@ data UniTree a = UNode a (Maybe (UniTree a)) (Maybe (UniTree a))
 -- Looks like this'll work! Let's try it out?
 mytree = UNode "a" (Just (UNode "b" Nothing
                                   (Just (UNode "c" Nothing Nothing))))
-		  Nothing
+                   Nothing
 
 -- We can try calculating the height of a tree. How about that?
 uniHeight (UNode _ Nothing Nothing) = 1
@@ -143,7 +143,7 @@ data Direction = DirLeft | DirRight | DirStraight
 
 data Point = Point {
                x :: Double,
-	       y :: Double} deriving (Show, Eq)
+               y :: Double} deriving (Show, Eq)
 
 myTurnDirection :: Point -> Point -> Point -> Direction
 
@@ -223,7 +223,7 @@ testTurns = [DirLeft, DirRight, DirLeft, DirStraight]
 y-coordinate. If there is a tie, the point with the lowest x-coordinate out of
 the tie breaking candidates should be chosen." -}
 
-graham_pivot points = foldr better_pivot (head points) points
+gpivot points = foldr better_pivot (head points) points
   where 
     better_pivot p1 p2
       | y p1 < y p2 = p1
@@ -238,21 +238,32 @@ calculations, it is not actually necessary to calculate the actual angle these
 points make with the x-axis; instead, it suffices to calculate the tangent of
 this angle, which can be done with simple arithmetic. -}
 
-angle_sort :: [Point] -> [Point]
-angle_sort points = sortBy compare_tangent points
+pivotSort ps = pivot:(sortBy cmp ps') 
+  where cmp p1 p2 = compare a1 a2 
+          where
+            a1 = atan2 ( (y p1) - py) ( (x p1) - px) 
+            a2 = atan2 ( (y p2) - py) ( (x p2) - px)
+            py = (y pivot)
+            px = (x pivot)
+        ps' = filter ((/=)pivot) ps
+        pivot = gpivot ps
+
+{- My original version of sort-by-angle. Kind of clunky -}
+angleSort :: [Point] -> [Point]
+angleSort points = sortBy compare_tangent points
   where
     compare_tangent p1 p2
       | p1_tan > p2_tan = GT
       | p1_tan < p2_tan = LT
       | otherwise = (compare (pivotdist p1) (pivotdist p2))
       where
-	p1_tan = tan_with_x p1
-	p2_tan = tan_with_x p2
-	tan_with_x p = (y p) / (x p)
-	pivotdist p = (xdiff p pivot)^2 + (ydiff p pivot)^2 
+        p1_tan = tan_with_x p1
+        p2_tan = tan_with_x p2
+        tan_with_x p = (y p) / (x p)
+        pivotdist p = (xdiff p pivot)^2 + (ydiff p pivot)^2 
         xdiff a b = (x a) - (x b)
         ydiff a b = (y a) - (y b)
-	pivot = graham_pivot points
+        pivot = gpivot points
 
 gh (top:second:stack) (p:ps)
   | (turnDirection second top p) /= DirLeft = gh (second:stack) (p:ps)
@@ -264,7 +275,7 @@ graham points
   | (length points) < 3 = points
   | otherwise = gh ((sorted !! 1):(sorted !! 0):[]) (drop 2 sorted)
   where
-    sorted = angle_sort points
+    sorted = pivotSort points
 
 {-
 Find pivot P;
@@ -281,13 +292,19 @@ FOR i = 3 TO Points.length
         Stack.push(Points[i]);
 NEXT i
 -}
-gtc = [Point (-5) (-5), Point 5 (-5), Point 5 5, Point (-5) 5, Point 0 0]
+gtc1 = [Point 0 0, Point 4 0, Point 2 4, Point 2 2]
+gtc1_out = [Point 2 4, Point 4 0, Point 0 0]
 
-atc = map (\y -> (Point 10 y)) (reverse [0..10])
+gtc2 = [Point 1 1, Point (-1) 1, Point (-1) (-1), Point 1 (-1),
+        Point (-0.5) 0, Point 0 0, Point (-2) 0]
+gtc2_out = [Point (-2.0) 0.0, Point (-1.0) 1.0, Point 1.0 1.0,
+            Point 1.0 (-1.0), Point (-1.0) (-1.0)]
 
-grahamTestCase = [Point 1 1, Point (-1) 1, Point (-1) (-1), Point 1 (-1),
-                  Point (-0.5) 0, Point 0 0, Point (-2) 0]
-grahamTestAnswer = [Point (-1.0) (-1.0),Point 1.0 (-1.0),Point 1.0 1.0,
-                    Point (-1.0) 1.0,Point (-2.0) 0.0]
+grahamTestCases = [gtc1, gtc2]
+grahamTestCaseAnswers = [gtc1_out, gtc2_out]
+
 testGraham :: Bool
-testGraham = (graham grahamTestCase) == grahamTestAnswer
+testGraham = foldr (&&) True (map testPasses pairs)
+  where
+    pairs = zip grahamTestCases grahamTestCaseAnswers
+    testPasses (gtc, out) = (graham gtc) == out
