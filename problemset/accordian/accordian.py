@@ -45,7 +45,7 @@ class CardPile:
         self.pile = []
     def peek_card(self):
         """Returns the top Card of the pile without popping it.  For a
-        human-readable string, use peek_card()."""
+        human-readable string, use peek_card().name."""
         return self.pile[(len(self.pile) - 1)]
     def add_card(self, card):
         self.pile.append(card)
