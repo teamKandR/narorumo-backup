@@ -14,30 +14,24 @@ class Game:
             card = Card(str)
             pile.add_card(card)
             self.piles.append(pile)
-        self.current_pile = 0
     def consolidate_piles(self):
         """Removes all the empty CardPiles from this Game."""
         self.piles = filter(len, self.piles)
     def count_piles(self):
         """Returns the number of CardPiles in this Game."""
         return len(self.piles)
-    def leftmost_pile(self):
-        return self.piles[0]
-    def rightmost_pile(self):
-        return self.piles[(len(self.piles) - 1)]
     def get_current_pile(self):
         return self.piles[self.current_pile]
     def increment_current_pile(self):
-        if self.current_pile == self.rightmost_pile():
+        if self.current_pile == (self.count_piles() - 1):
             raise IndexError("You're already at the rightmost pile.")
         else:
             self.current_pile += 1
-        return self.current_pile
     def reset_current_pile(self):
         self.current_pile = 0
     def pile_to_left(self, n):
         """Returns the pile n places to the left of the current pile."""
-        if self.current_pile <= n - 1:
+        if self.current_pile <= (n - 1):
             raise IndexError("You can't move that far to the left.")
         else:
             return self.piles[self.current_pile - n]
@@ -45,42 +39,51 @@ class Game:
         """Returns this whole Game as a human-readable list."""
         return [pile.show_pile() for pile in self.piles]
     def play(self):
-        print self.show_game()
-        print "Current pile:", self.current_pile
-        print "Number of piles:", self.count_piles()
-        # Consolidate any empty piles.
-        self.consolidate_piles()
+        self.current_pile = -1
+        while self.current_pile < (self.count_piles() - 1):
+            self.increment_current_pile()
+            self.play_step()
+        else:
+            count = self.count_piles();
+            if count == 1:
+                print "1 pile remaining: 52"
+            else:
+                print count, "piles remaining:",
+                for pile in self.piles:
+                    print len(pile),
+                print
+    def play_step(self, verbose=0):
+        """Simulates one step of the game."""
+        
+        if (verbose):
+            print "--------"
+            print self.show_game()
+            print "Current pile:", self.current_pile
+            print "Number of piles:", self.count_piles()
+            
         # Look at the top card on the current pile.
         current = self.get_current_pile()
         current_card = current.peek_card()
         # If it matches the top card on the pile three to the left, 
-        # move it to the top of that pile and reset current pile to 0,
+        # move it to the top of that pile, reset the current pile to 0,
         # and return to the beginning of the algorithm. 
         if self.current_pile >= 3:
             left_3 = self.pile_to_left(3)
             left_3_card = left_3.peek_card()
             if current_card.matches(left_3_card):
-                print current_card.name, "matches", left_3_card.name
                 left_3.add_card(current.remove_card())
+                self.consolidate_piles()
                 self.reset_current_pile()
-                self.play()
+                return
         # Do the same for the top card on the pile one to the left.
-        elif self.current_pile >= 1:
+        if self.current_pile >= 1:
             left_1 = self.pile_to_left(1)
             left_1_card = left_1.peek_card()
             if current_card.matches(left_1_card):
-                print current_card.name, "matches", left_1_card.name
                 left_1.add_card(current.remove_card())
+                self.consolidate_piles()
                 self.reset_current_pile()
-                self.play()
-        # If we can't do either of those things, try incrementing the 
-        # current pile by 1.
-        elif self.current_pile < (self.count_piles() - 1):
-            self.increment_current_pile()
-            self.play()
-        # Otherwise, we're done!
-        else: 
-            print "We're done!"
+                return
 
 class Card:
     """A playing card in a standard deck."""
@@ -133,11 +136,5 @@ class GameSet:
         return len(self.games)
 
 class Main:
-    games = GameSet('input.txt')
-    
-    games[0].play()
-
-    #print "Number of piles left in game 0:", games[0].count_piles()
-    #print "Number of piles left in game 1:", games[1].count_piles()
-
+    GameSet('input.txt').play()
 
