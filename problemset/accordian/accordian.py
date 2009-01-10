@@ -64,25 +64,17 @@ class Game:
         # Look at the top card on the current pile.
         current = self.get_current_pile()
         current_card = current.peek_card()
-        # If it matches the top card on the pile three to the left, 
-        # move it to the top of that pile and reset current_pile.
-        if self.current_pile >= 3:
-            left_3 = self.pile_to_left(3)
-            left_3_card = left_3.peek_card()
-            if current_card.matches(left_3_card):
-                left_3.add_card(current.remove_card())
-                self.consolidate_piles()
-                self.reset_current_pile()
-                return
-        # Do the same for the top card on the pile one to the left.
-        if self.current_pile >= 1:
-            left_1 = self.pile_to_left(1)
-            left_1_card = left_1.peek_card()
-            if current_card.matches(left_1_card):
-                left_1.add_card(current.remove_card())
-                self.consolidate_piles()
-                self.reset_current_pile()
-                return
+        # If it matches the top card on the pile [three|one] to the 
+        # left, move it to the top of that pile and reset current_pile.
+        for offset in [3, 1]:            
+            if self.current_pile >= offset:
+                left = self.pile_to_left(offset)
+                left_card = left.peek_card()
+                if current_card.matches(left_card):
+                    left.add_card(current.remove_card())
+                    self.consolidate_piles()
+                    self.reset_current_pile()
+                    return
 
 class Card:
     """A playing card in a standard deck."""
