@@ -129,11 +129,6 @@ class GameSet:
     def play(self):
         for game in self.games:
             game.play()
-    def __getitem__(self, index):
-        return self.games[index]
-    def __len__(self):
-        return len(self.games)
 
-class Main:
-    GameSet('input.txt').play()
+GameSet('input.txt').play()
 
