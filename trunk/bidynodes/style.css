@@ -1,0 +1,115 @@
+body {
+	margin: 2em;
+	padding: 0;
+	font-size: 86%;
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	background-color: #fff;
+	color: #222;
+	line-height: 1.7em;
+}
+
+/* ----- [ Typography ] ----- */
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+}
+
+h1 {
+	font-size: 2.25em;
+}
+
+h2 {
+	font-size: 1.7em;
+}
+
+h3 {
+	font-size: 1.4em;
+}
+
+h4 {
+	font-size: 1.2em;
+}
+
+blockquote {
+	color: #555;
+	border-left: 2px solid #f0edda;
+	padding-left: 1em;
+}
+
+code, pre {
+	font: 1.1em 'Courier New', Courier, Fixed;
+}
+
+acronym, abbr, span.caps {
+	font-size: 0.9em;
+	letter-spacing: .07em;
+}
+
+a, h2 a:hover, h3 a:hover {
+	color: #28e;
+}
+
+a:hover {
+	color: #147;
+	text-decoration: underline;
+}
+
+/* ----- [ Form ] ----- */
+
+#TheForm {
+	width: 50%;
+	margin: 0.5em;
+	padding: 1em 1em 0.5em 1em;
+	background-color: #dff2ff;
+	border: 1px solid #c8e9ff;
+}
+
+#TheForm p {
+	margin: 0;
+	padding: 0;
+}
+	
+label {
+	display: block;
+}
+
+label.checkbox {
+	display: inline;
+	width: auto;
+	vertical-align: top;
+}
+
+input {
+	padding: 3px;
+	margin-top: 0;
+	margin-bottom: 15px;
+	display: block;
+}
+
+input.checkbox {
+	margin-top: 3px;
+	margin-bottom: 15px;
+	display: inline;
+}
+
+input.hidden {
+	display: none;
+}
+
+input.loadScript, input.runScript {
+	margin-top: 5px;
+	padding: 5px;
+	background-color: #c8e9ff;
+	border: 2px outset #c8e9ff;
+	margin-bottom: 5px;
+}
+
+#LoadingIndicator {
+	display: inline;
+	visibility: hidden;
+}
+	
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Bidynodes: two-way, cross-domain communication in the &lt;script&gt; tag</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<h1>Bidynodes: two-way, cross-domain communication in the <code>&lt;script&gt;</code> tag</h1>
+<h2>First, a quick-and-dirty demo</h2>
+<div id="TheForm">	
+	<form name="theForm" method="post" target="_blank" action="http://shoeboxfulloftapes.org/sandbox/bidynodes/formprocessor.php">
+		<label for="name" class="required">Name:</label>
+		<input type="text" name="name" id="name" />
+		<label for="favorite_cheese" class="required">Favorite cheese:</label>
+		<input type="text" name="favorite_cheese" id="favorite_cheese" />
+		<p>Optional: Ticky?</p>
+		<input type="checkbox" name="ticky" id="ticky" class="checkbox" value="Oh yeah." />
+		<label for="ticky" class="checkbox">Oh yeah.</label>
+		<input type="hidden" name="token_hidden_element" id="token_hidden_element" value="Foo." class="hidden" />
+		<input type="button" value="Send" class="loadScript" />
+		<div id="LoadingIndicator"><img src="indicator.gif" alt="Indicator" /></div>
+	</form>
+</div>
+<h2>Just the code, ma'am</h2>
+<p>It's here: <a href="bidynodes.js">bidynodes.js</a> and <a href="http://shoeboxfulloftapes.org/sandbox/bidynodes/formprocessor.php.txt">formprocessor.php</a>.</p>
+<h2>Do what now?</h2>
+<p>If you've tried doing any cross-domain <a href="http://en.wikipedia.org/wiki/Ajax_(programming)">Ajax</a> programming, you'll have noticed by now that <code>XMLHttpRequest</code> <a href="http://www.xml.com/pub/a/2005/11/09/fixing-ajax-xmlhttprequest-considered-harmful.html">doesn't work very well across domains</a>.  The three workarounds described in that article (and also <a href="http://premshree.livejournal.com/66129.html">here</a>, in the case of the second) assume that we want something that will sit on our own server and mediate <code>XMLHttpRequest</code>s to a remote server.  But what if I'm interested in doing the opposite -- what if I want to hand off some code to someone else, with the understanding that it will live on <em>their</em> server and connect to mine? For instance, let's say that Clara Client wants to put a form on her website which will accept user input, pass it along to my server (where I can do whatever is needed with it), and then show a customized confirmation message to the user, all without a page reload on the user's part. I shouldn't have to care where Clara puts the form, and Clara shouldn't have to do any special proxy configuration on her end -- all she needs is one shrinkwrapped chunk of code which she can get from me.  It sounds like a job for <code>XMLHttpRequest</code>, except for the pesky cross-domain part.</p>
+<h2>XML HTTP request without the <code>XMLHttpRequest</code></h2>
+<p>Enter the third technique described in the article, the so-called "script tag hack", which doesn't actually use <code>XMLHttpRequest</code> at all (meaning that that's the last time I'll have to type it here...whew).  Instead, it involves dynamically creating a <code>&lt;script&gt;</code> tag via the DOM, which points to a remote file which itself is dynamically generated.  As noted in the Jason Levitt article linked above, <a href="http://www.acheron.org/darryl/?p=28">Darryl Lyons was doing something like this a year ago</a>, albeit with ColdFusion- and IE-specific code.  Over at <a href="http://www.mindsack.com">Mindsack</a>, Kent Brewster is calling the technique <a href="http://www.mindsack.com/uxe/dynodes/">Dynodes</a>, short for dynamic node creation.  Not only does his example work in more than one browser, but he's also using <a href="http://www.json.org/">JSON</a> to pass back the data (which happens to be X(HT)ML). JSON is nice for our purposes since it's so lightweight and easy to use. </p>
+<h2>I got your hypertext transfer protocol right here </h2>
+<p>In the Dynodes example, the data that comes back is dynamically generated each time, but all we're doing is getting a random number -- not, say, a random number in a range that the user gets to specify herself.  In the comments <a href="http://www.mindsack.com/?p=32#comments">here</a>, <a href="http://www.mindsack.com/?p=32#comment-320">Jeff suggests</a> that two-way communication is possible if user input can be passed to the remote server via the <code>src</code> attribute of the <code>&lt;script&gt;</code> tag (e.g., <code>src=&quot;the_user_just_typed_account_number_1234.js&quot;</code>). Passing data via the file name like that would be pretty ugly, but it would work, and it got me thinking.  First of all, there's no need for the file name to end in <code>.js</code> -- we can have it be whatever we want (<code>.php</code>, for instance) and just fake a <code>Content-Type</code> header, as is done in the <a href="http://www.xml.com/pub/a/2005/11/09/fixing-ajax-xmlhttprequest-considered-harmful.html?page=2">Levitt article</a>.  And so long as we're doing that, why not just throw in a query string too?  When the user completes the form and triggers the node creation (in this case, by hovering over the Send button), the local script (<a href="http://www.rockstargirl.org/sandbox/bidynodes/bidynodes.js">source</a>) generates a tag that looks something like <code>&lt;script type="text/javascript" src="http://shoeboxfulloftapes.org/sandbox/bidynodes/formprocessor.php?first_name=Lindsey&favorite_cheese=Mozzarella&"&gt;</code>.  (The extra <code>&amp;</code> at the end of the string could easily be stripped out, but it's not hurting anything, so I just left it there.) Hooray! Now we have <em>bidirectional</em> communication -- bidynodes, if you will. </p> 
+<p>On the remote server, the <code>formprocessor.php</code> script (<a href="http://shoeboxfulloftapes.org/sandbox/bidynodes/formprocessor.php.txt">source</a>) processes the query string and sends back a JSON object containing the data that <code>doStuffWith()</code> will need, which you can see by looking at <a href="http://shoeboxfulloftapes.org/sandbox/bidynodes/formprocessor.php?name=Lindsey&amp;favorite_cheese=Mozzarella&amp;">some example output</a>. I took a few ideas from the code in <a href="http://www.xml.com/pub/a/2005/11/09/fixing-ajax-xmlhttprequest-considered-harmful.html">the Levitt article</a>; the <code>getStuff()</code> function comes from Dynodes.</p>
+<p>The language could be anything, but I threw in some PHP-specific things (like <code>$_SERVER['SERVER_NAME']</code>) just to demonstrate that the processing does, in fact, occur on the remote server.  In a real-world application, you'd  most likely want to skip that part and put a friendlier confirmation message here instead; you'd probably also want to do something useful, like save the request data to a database or the like. </p>
+<h2>If at first you don't succeed </h2>
+<p>Brewster notes in the Dynodes article that a &quot;loading&quot; indicator would be helpful &quot;in case the remote script is on a slow server&quot;. The indicator would give visual feedback that something was happening, but by itself it's not enough; if the remote script hadn't been downloaded yet when the user clicked the element that triggered <code>getStuff()</code>, the browser would throw a &quot;getStuff is not defined&quot;
+or similar JavaScript error. The <a href="http://ajaxpatterns.org/On-Demand_Javascript">Ajax Patterns article about &quot;On-Demand Javascript</a>&quot; suggests running a check to see if the script is there yet:</p>
+<blockquote>In most cases, the test will actually fail the first time, because the download function will return before the script's been downloaded. But in this particular application, that doesn't actually matter much - the whole synchronisation sequence is run every five seconds anyway. If the upload function isn't there yet, it should be there in five seconds, and that's fine for our purposes. If desired, we could be more aggressive - for instance, the script could be downloaded as soon as an edit begins.</blockquote>
+<p>In some cases we might want to grab the remote script as soon as the user begins to complete the form. Here, though, it doesn't make sense to generate and download the script until the user is all finished and ready to submit the form, since the script needs all of the form data to do its thing anyway. I addressed the problem by wrapping <code>getStuff()</code> in a <code>tryGetStuff()</code> function. If <code>getStuff()</code> doesn't work, we just show the loading indicator, pause for a second, and then call the functions that would be called if the user were to click again. After trying lots of different techniques  (<code>setTimeout()</code>, <code>setInterval()</code>, <code>try...catch</code> blocks, recursion) for dealing with a missing <code>getStuff()</code>, I settled on this as the one that seemed to make the most browsers happy, but I'm still not sure it's the best way to go about it. Suggestions are welcome! </p>
+<h2>A note about security </h2>
+<p>It should go without saying that this technique is only appropriate if you trust the remote server to  run scripts on your page. Actually, I only intended it for situations in which you <em>are</em> the trustworthy remote server and you want to give others access to a service you're providing...but you know what they always say about good intentions. Please see Douglas Crockford's <a href="http://www.mindsack.com/uxe/dynodes/">&quot;Words of Warning&quot; in the Dynodes article</a> for more about security. </p>
+<h2>See also </h2>
+<ul>
+	<li><a href="http://www.xml.com/pub/a/2005/11/09/fixing-ajax-xmlhttprequest-considered-harmful.html">Fixing AJAX: XMLHttpRequest Considered Harmful</a> (November 9, 2005)</li>
+	<li><a href="http://premshree.livejournal.com/66129.html">Cross-domain XMLHttpRequest</a> (April 20, 2005)</li>
+	<li><a href="http://www.acheron.org/darryl/?p=28">AJAX with dynamic SCRIPT tags--revised</a> (April 18, 2005)</li>
+	<li><a href="http://www.mindsack.com/uxe/dynodes/">Dynodes: Cross-Domain Scripting using Dynamic Node Creation</a> (and <a href="http://www.mindsack.com/?p=32">here</a>) (December 2, 2005)</li>
+	<li><a href="http://ajaxpatterns.org/On-Demand_Javascript">On-Demand Javascript</a> (as of November 20, 2005)</li>
+</ul>
+<h2>The fine print</h2>
+<ul>
+	<li>Published April 24, 2006; last revised May 30, 2006. (May 30 update: I've adjusted the script to record hidden variables as well as non-hidden ones, made the form validation a little more sophisticated, tweaked the style sheet and added a cooler progress indicator.)</li>
+	<li>Comments, questions, and suggestions go <a href="http://rockstarling.livejournal.com/154247.html">here</a> (please!) </li>
+	<li>This work (article and code) is &copy; 2006 <a href="mailto:lindsey@rockstargirl.org">Lindsey Kuper</a> and licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>; if you use it, please attribute it by linking to this page (<a href="http://www.rockstargirl.org/sandbox/bidynodes">http://www.rockstargirl.org/sandbox/bidynodes</a>) and <a href="http://rockstarling.livejournal.com/154247.html">leaving a comment</a> letting me know how you're using it. Thanks!</li>
+</ul>
+<script type="text/javascript" src="bidynodes.js"></script>
+</body>
+</html>
