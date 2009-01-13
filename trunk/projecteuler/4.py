@@ -9,8 +9,8 @@ def largest_palindrome():
     for i in range (999, 99, -1):
         for j in range (999, 99, -1):
             str_prod = str(i * j);
-            ls = [x for x in reversed(str_prod)]
-            if str_prod == reduce(lambda s1, s2: s1 + s2, ls):
+            str_prod_rev = ''.join(reversed(str_prod))
+            if str_prod == str_prod_rev:
                 print i, "*", j, "produces:"
                 return str_prod
 
