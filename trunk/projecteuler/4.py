@@ -3,15 +3,17 @@
 
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
-# FIXME: returns the correct answer for (99..9), but not (999..99)!  I don't
-# know why yet.
 def largest_palindrome():
+    result = 0
     for i in range (999, 99, -1):
         for j in range (999, 99, -1):
             str_prod = str(i * j);
             str_prod_rev = ''.join(reversed(str_prod))
             if str_prod == str_prod_rev:
-                print i, "*", j, "produces:"
-                return str_prod
+                if int(str_prod) > result:
+                    print i, "*", j, "produces", str_prod
+                    result = int(str_prod)
+    return result
+
 
 print largest_palindrome()
