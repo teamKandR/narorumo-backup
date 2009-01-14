@@ -10,7 +10,7 @@
 # largest number in the list.
 
 # Okay -- first I need to learn how to do a generator, so I'm going to do a
-# few of them for proactice.
+# few of them for practice.
 
 # Generate the integers starting from 0 (thank you, Mark Luffel):
 def ints():
