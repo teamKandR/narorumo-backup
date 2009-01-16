@@ -32,11 +32,19 @@ matches (r1:s1:[]) (r2:s2:[]) = r1 == r2 || s1 == s2
 nonEmpty = filter (not . null)
 
 playGames :: String -> String
-playGames input = (show games) ++ "\n"
+playGames input = unlines shownResults
   where
+    shownResults = map showResults gameResults
     gameResults = map runGame games
     games = map toStacks joinedLines
     joinedLines = joinLines (lines input)
+
+showResults stacks
+  | length stacks == 1 = "1 pile remaining: 52"
+  | otherwise = (shownNumStacks) ++ " piles remaining: " ++ stackCounts
+  where
+    shownNumStacks = show (length stacks)
+    stackCounts = unwords (map (show . length) stacks)
 
 {- Take a line and return a list of card stacks. -}
 toStacks line = map makeStack (words line)
@@ -53,8 +61,7 @@ joinLines [] = []
 
 main = do
         args <- getArgs
-        case args of
-          [inputFile] -> do
-                       input <- readFile inputFile
-                       putStr (playGames input)
-          _ -> putStrLn "error: exactly one argument needed"
+        input <- case args of
+                  [inputFile] -> (readFile inputFile)
+                  _ -> readFile "input.txt"
+        putStr (playGames input)
