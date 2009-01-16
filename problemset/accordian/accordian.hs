@@ -6,19 +6,42 @@
 import System.Environment (getArgs)
 import Data.List
 
-type Card = (Char, Char)
+type Card = [Char]
+type Stack = [Card]
+
+runGame :: [Stack] -> [Stack]
+runGame stacks
+  | stacks == stepped = stacks
+  | otherwise = runGame stepped
+  where
+    stepped = step stacks
+
+-- a, b, c, d are the leftmost 4 stacks.
+step ((a:as):(b:bs):(c:cs):(d:ds):stacks)
+  | b `matches` a = nonEmpty ((b:a:as):bs:(c:cs):(d:ds):stacks)
+  | c `matches` b = nonEmpty ((a:as):(c:b:bs):cs:(d:ds):stacks)
+  | d `matches` a = nonEmpty ((d:a:as):(b:bs):(c:cs):ds:stacks)
+
+step ((a:as):(b:bs):stacks)
+  | a `matches` b = nonEmpty ((b:a:as):bs:stacks)
+
+step (s:stacks) = s : step stacks
+step [] = []
+
+matches (r1:s1:[]) (r2:s2:[]) = r1 == r2 || s1 == s2
+nonEmpty = filter (not . null)
 
 playGames :: String -> String
-playGames input = (show gameResults) ++ "\n"
+playGames input = (show games) ++ "\n"
   where
     gameResults = map runGame games
-    games = map stacks joinedLines
+    games = map toStacks joinedLines
     joinedLines = joinLines (lines input)
 
-{- Take a line and return a list of cards. -}
-stacks line = map makeStack (words line)
+{- Take a line and return a list of card stacks. -}
+toStacks line = map makeStack (words line)
   where
-    makeStack (r:s:[]) = [(r,s)]
+    makeStack (r:s:[]) = [r:s:[]]
 
 {- Take a list of lines, join every second line. -}
 joinLines :: [String] -> [String]
@@ -28,33 +51,10 @@ joinLines (line:lines)
   | otherwise = error "ran out of lines?"
 joinLines [] = []
 
-runGame :: [[Card]] -> [[Card]]
-runGame stacks
-  | stacks == stepped = stacks
-  | otherwise = runGame nonEmpty
-  where
-    stepped = step stacks
-    nonEmpty = filter (not . null) stepped
-
-step ((l3top:l3s):l2s:l1s:(l0top:l0s):stacks)
-  | l0top `matches` l3top = (l0top:l3top:l3s):l2s:l1s:l0s:stacks
-
-{-
-step ((l1top:l1s):(l0top:l0s):stacks)
-  | l0top `matches` l1top = (l0top:l1top:l1s):l0s:stacks
--}
-
-step (s:stacks) = s : step stacks
-step [] = []
-
-matches (r1,s1) (r2,s2) = r1 == r2 || s1 == s2
-
-interactWith function inputFile = do
-  input <- readFile inputFile
-  putStr (function input)
-
 main = do
         args <- getArgs
         case args of
-          [input] -> interactWith playGames input
+          [inputFile] -> do
+                       input <- readFile inputFile
+                       putStr (playGames input)
           _ -> putStrLn "error: exactly one argument needed"
