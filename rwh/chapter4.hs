@@ -4,6 +4,7 @@
 
 import Data.List hiding (intersperse)
 import Data.Char
+import Prelude
 
 -- 1) Write your own "safe" definitions of the standard partial list
 -- functions, but make sure that yours never fail.
@@ -85,29 +86,42 @@ transposeText = unlines . transpose . lines
 
 -- OK. See transpose-text-ch4.hs for complete program.
 
--- Other 1) Use a fold (choosing the appropriate fold will make your code much
--- simpler) to rewrite and improve upon the asInt function from the section
--- called "Explicit recursion" Extend your function to handle the following
--- kinds of exceptional conditions by calling error.
+-- Other 1-4) Use a fold (choosing the appropriate fold will make your code
+-- much simpler) to rewrite and improve upon the asInt function from the
+-- section called "Explicit recursion" Extend your function to handle the
+-- following kinds of exceptional conditions by calling error.
+-- (Also: the asInt_fold function uses error, so its callers cannot handle
+-- errors. Rewrite the function to fix this problem.)
 
 asInt_fold :: String -> Int
 
-asInt_fold ('-':str) = negate (asInt_fold str)
-asInt_fold str = foldl addplace 0 str
+asInt_fold str
+  | str == "" = error "Empty string doesn't represent an int!"
+  | str == "-" = error "Just a minus doesn't represent an int!"
+  | any (not . isDigit) str = error (str ++ " doesn't represent an integer!")
+  | otherwise = asInt_fold_help str
+
+asInt_fold_help ('-':str) = negate (asInt_fold str)
+asInt_fold_help str = foldl' addplace 0 str
   where
     addplace left right = (10 * left) + (digitToInt right)
 
--- Other 2) (let's do this one later.)
+asInt_safe :: String -> Either String Int
+asInt_safe str
+  | str == "" = Left "Empty string doesn't represent an int!"
+  | str == "-" = Left "Just a minus doesn't represent an int!"
+  | any (not . isDigit) str = Left (str ++ " doesn't represent an integer!")
+  | otherwise = Right (asInt_fold_help str)
 
--- Other 3) The Prelude function concat concatenates a list of lists into a
+-- 5 and 6) The Prelude function concat concatenates a list of lists into a
 -- single list, and has the following type. Write your own definition of concat
 -- using foldr.
 
 myconcat :: [[a]] -> [a]
 myconcat lsts = foldr (++) [] lsts
 
--- Other 4) Write your own definition of the standard takeWhile function, first
--- using explicit recursion, then foldr.
+-- 7) Write your own definition of the standard takeWhile function, first using
+-- explicit recursion, then foldr.
 
 takeWhileRecursive pred (x:xs)
   | (pred x) = x : (takeWhileRecursive pred xs)
@@ -119,9 +133,9 @@ takeWhileFold pred xs = foldr maybeCons [] xs
       | (pred x) = x : xs
       | otherwise = []
 
--- 5) The Data.List module defines a function, groupBy, which has the following
--- type. Use ghci to load the Data.List module and figure out what groupBy
--- does, then write your own implementation using a fold.
+-- 8 and 9) The Data.List module defines a function, groupBy, which has the
+-- following type. Use ghci to load the Data.List module and figure out what
+-- groupBy does, then write your own implementation using a fold.
 
 -- Break things up into sublists, such that the predicate holds true for the
 -- first element and each subsequent element of the sublist. So for the
@@ -129,7 +143,7 @@ takeWhileFold pred xs = foldr maybeCons [] xs
 -- that group is lower than it.
 
 mygroupby :: (a -> a -> Bool) -> [a] -> [[a]]
-mygroupby pred lst = foldl handleNext [] lst
+mygroupby pred lst = foldl' handleNext [] lst
   where
     handleNext lsts right
       | null lsts = [[right]]
@@ -139,13 +153,13 @@ mygroupby pred lst = foldl handleNext [] lst
         group = (last lsts)
         leader = head group
 
--- 6) How many of the following Prelude functions can you rewrite using list
+-- 10) How many of the following Prelude functions can you rewrite using list
 -- folds? (A: all of them!)
-any :: (a -> Bool) -> [a] -> Bool
-any pred lst = foldr (\left right -> (pred left) || right) False lst
+myany :: (a -> Bool) -> [a] -> Bool
+myany pred lst = foldr (\left right -> (pred left) || right) False lst
 
-cycle :: [a] -> [a]
-cycle lst = foldr (:) lst lst
+mycycle :: [a] -> [a]
+mycycle lst = foldr (:) (mycycle lst) lst
 
 mywords :: String -> [String]
 mywords str = noEmpty (foldr breakws [] str)
@@ -162,3 +176,28 @@ myunlines :: [String] -> String
 myunlines strs = foldr appendNL "" strs
   where
     appendNL left right = left ++ "\n" ++ right
+
+-- For those functions where you can use either foldl' or foldr, which is more
+-- appropriate in each case?
+
+-- any could be done with either a foldl or a foldr: lazy evaluation should
+-- keep it from doing any more computation than is necessary, scanning from
+-- left to right until we find an element that produces a "true".
+
+-- cycle really wants to be a foldr: it's very natural to have its recursive
+-- call show up as the base case on the right.
+
+-- Thinking about words a little more, I considered the possibility that it'd
+-- be more natural as a foldl' -- but if we do it as a foldl', we have to keep
+-- adding characters to the end of the last word in our accumulating answer, so
+-- that's more awkward (and inefficient) than we need. I guess we could just
+-- add them to the front and then reverse everything at the end, but that would
+-- be inefficient as well.
+
+-- unlines could totally be a foldl'. It would probably be more efficient too,
+-- because it would go through tail-recursively, accumulating the answer.
+
+unlinesLeft :: [String] -> String
+unlinesLeft strs = foldl' appendNL "" strs
+  where
+    appendNL left right = left ++ right ++ "\n"
