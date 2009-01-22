@@ -3,6 +3,7 @@
 -- Alex Rudnick
 
 import Data.List hiding (intersperse)
+import Data.Char
 
 -- 1) Write your own "safe" definitions of the standard partial list
 -- functions, but make sure that yours never fail.
@@ -84,3 +85,80 @@ transposeText = unlines . transpose . lines
 
 -- OK. See transpose-text-ch4.hs for complete program.
 
+-- Other 1) Use a fold (choosing the appropriate fold will make your code much
+-- simpler) to rewrite and improve upon the asInt function from the section
+-- called "Explicit recursion" Extend your function to handle the following
+-- kinds of exceptional conditions by calling error.
+
+asInt_fold :: String -> Int
+
+asInt_fold ('-':str) = negate (asInt_fold str)
+asInt_fold str = foldl addplace 0 str
+  where
+    addplace left right = (10 * left) + (digitToInt right)
+
+-- Other 2) (let's do this one later.)
+
+-- Other 3) The Prelude function concat concatenates a list of lists into a
+-- single list, and has the following type. Write your own definition of concat
+-- using foldr.
+
+myconcat :: [[a]] -> [a]
+myconcat lsts = foldr (++) [] lsts
+
+-- Other 4) Write your own definition of the standard takeWhile function, first
+-- using explicit recursion, then foldr.
+
+takeWhileRecursive pred (x:xs)
+  | (pred x) = x : (takeWhileRecursive pred xs)
+  | otherwise = []
+
+takeWhileFold pred xs = foldr maybeCons [] xs
+  where
+    maybeCons x xs
+      | (pred x) = x : xs
+      | otherwise = []
+
+-- 5) The Data.List module defines a function, groupBy, which has the following
+-- type. Use ghci to load the Data.List module and figure out what groupBy
+-- does, then write your own implementation using a fold.
+
+-- Break things up into sublists, such that the predicate holds true for the
+-- first element and each subsequent element of the sublist. So for the
+-- predicate (>), each sublist starts with a number where every other number in
+-- that group is lower than it.
+
+mygroupby :: (a -> a -> Bool) -> [a] -> [[a]]
+mygroupby pred lst = foldl handleNext [] lst
+  where
+    handleNext lsts right
+      | null lsts = [[right]]
+      | (pred leader right) = (init lsts) ++ [ (last lsts) ++ [right] ]
+      | otherwise = lsts ++ [[right]]
+      where
+        group = (last lsts)
+        leader = head group
+
+-- 6) How many of the following Prelude functions can you rewrite using list
+-- folds? (A: all of them!)
+any :: (a -> Bool) -> [a] -> Bool
+any pred lst = foldr (\left right -> (pred left) || right) False lst
+
+cycle :: [a] -> [a]
+cycle lst = foldr (:) lst lst
+
+mywords :: String -> [String]
+mywords str = noEmpty (foldr breakws [] str)
+  where
+    breakws c (w:ws)
+      | (isSpace c) && w == "" = w:ws
+      | isSpace c = "":(w:ws)
+      | otherwise = (c:w):ws
+    breakws c [] = [[c]]
+    noEmpty ("":words) = words
+    noEmpty words = words
+
+myunlines :: [String] -> String
+myunlines strs = foldr appendNL "" strs
+  where
+    appendNL left right = left ++ "\n" ++ right
