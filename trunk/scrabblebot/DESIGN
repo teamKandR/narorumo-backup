@@ -1,0 +1,44 @@
+Tue Apr  8 18:58:58 JST 2008
+
+Let's try this from the top down. We'll scavenge what we can from the random
+futzing, but let's build it like an engineering project.
+
+As a first pass, let's make a greedy scrabblebot that tries to maximize score
+on a given turn; this will probably not be as clever as one that does tree
+search with AB pruning.
+
+What do you need for a scrabblebot?
+
+** things in the world
+players
+the board
+tiles
+bag of tiles
+racks of tiles
+turns
+history of all the turns
+
+** process.
+
+I find out that it's my turn. What do I do?
+
+- find the best move that I can make, and make it.
+-- what are all the moves that I could make?
+--- where are all the spaces where new words could go at all?
+    You can put letters into spaces that are next to current tiles.
+
+-- what are all the words that I could construct right now?
+-- what are the scores that I would get if I made each of those moves?
+
+Most importantly (but for next version):
+-- what is the likelihood that I would win, in the end, if I make a given move?
+
+Is "what's the highest-scoring move I can make right now" going to make the
+most sense for winning? How much planning ahead does it make sense to do?
+
+** procedure: listing out places where we can move.
+
+** procedure: finding all the words that we can make, given a list of locations
+and the current board state
+
+** procedure: scoring a possible move
