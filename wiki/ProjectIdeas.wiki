@@ -56,7 +56,7 @@ Build a language and virtual machine. Educational for me, not very useful for ot
 It'd be pretty cool to have a nicer Google Gadget (for igoogle) for keeping TODO lists. There are a bunch of these already, clearly, but one that archives your old items, searches and tags, would be pretty rockin'. And good practice. And make me learn to build gadgets.
 
 == inline test cases ==
-[doctest http://docs.python.org/library/doctest.html] for Python is pretty hip. What if that was available for your other favorite language?
+[http://docs.python.org/library/doctest.html doctest] for Python is pretty hip. What if that was available for your other favorite language?
 
 There's a project going for Haskell, apparently: [http://github.com/nkchenz/hs-doctest/tree/master hs-doctest].
 
