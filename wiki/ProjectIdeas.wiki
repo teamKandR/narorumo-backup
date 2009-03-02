@@ -6,6 +6,7 @@
 LJ has a gadget where they tell you which of your friends have upcoming birthdays, but you don't look at the livejournal front page very often. Build an iGoogle gadget that keeps your LJ login information, queries for your friend-birthday data, and displays it attractively. To be polite, cache things somewhere, say in an appengine app that only polls here and again?
 
 == logo compiler ==
+([http://code.google.com/p/narorumo/source/browse/#svn/trunk/wogo in progress])
 Learn Logo, preferably the dialect supported by ucblogo. Compile it to javascript, gwt-style, and do turtle graphics with the canvas tag. Is there a formal grammar for ucblogo? The problem with this idea is: no repl.
 
 == make the paip source code work with recent common lisps ==
@@ -54,5 +55,19 @@ Build a language and virtual machine. Educational for me, not very useful for ot
 == archiving todo gadget ==
 It'd be pretty cool to have a nicer Google Gadget (for igoogle) for keeping TODO lists. There are a bunch of these already, clearly, but one that archives your old items, searches and tags, would be pretty rockin'. And good practice. And make me learn to build gadgets.
 
+== inline test cases ==
+[doctest http://docs.python.org/library/doctest.html] for Python is pretty hip. What if that was available for your other favorite language?
+
+There's a project going for Haskell, apparently: [http://github.com/nkchenz/hs-doctest/tree/master hs-doctest].
+
 == Firefox extensions ==
+=== tear off tabs to be new windows ===
 I'd like a Firefox extension that lets you take a tab and drag it out into space, causing it to become a new window. Or just context-menu the tab to do that same thing.
+
+=== browser cache browsing ===
+There should be firefox functionality that lets you see what's in your browser cache, say if you're offline. It should show cached files like the history view, as a tree, by site.
+
+Also see:
+about:cache?device=disk
+
+There's something sort of like this, CacheViewer, but the UI doesn't look great.
