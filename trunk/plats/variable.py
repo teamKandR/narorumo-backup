@@ -10,7 +10,7 @@ from plats import pick_locale, ordered_locales
 class Variable(webapp.RequestHandler):
   def get(self):
     best = pick_locale(self.request)
-    ordered = ordered_locales(self.request.headers['accept-language'])
+    ordered = ordered_locales(self.request)
 
     template_values = {
       'best': best,

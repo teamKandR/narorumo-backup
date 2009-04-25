@@ -5,7 +5,8 @@ api_version: 1
 
 handlers:
 - url: /
-  script: welcome.py
+  static_files: welcome.html
+  upload: welcome.html
 - url: /set_metatag.js
   script: metatag.py
 - url: /put_variable.js
