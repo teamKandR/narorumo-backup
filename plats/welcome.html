@@ -2,8 +2,9 @@
 
 <html>
 <head>
-<LINK href="style/style.css" rel="stylesheet" type="text/css">
-<title>plats<title>
+  <LINK href="style/style.css" rel="stylesheet" type="text/css">
+  <title>plats<title>
+  <script src="/put_variable.js?available=jp,en,es,lt,it,fr,jp"></script>
 </head>
 
 <body>
@@ -21,6 +22,10 @@
       source!</a></p>
 
     <p>"plats" is Swedish for "locale".</p>
+
+    <p><button onclick="window.alert(plats_best_locale)">Click</button> to see
+    which language Plats thinks your browser wants most, out of jp, en, es, lt,
+    it, and fr. If your language headers aren't set, this will be "jp".</p>
   </div>
 </body>
 </html>
