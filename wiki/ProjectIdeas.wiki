@@ -73,3 +73,7 @@ Also see:
 about:cache?device=disk
 
 There's something sort of like this, CacheViewer, but the UI doesn't look great.
+
+== AllRunsTogether ==
+Say you have several people who all want to go running together, and they live fairly nearby. What if you had a Google Maps mashup that could help plan a route for everybody to meet up and run together? What if some participants are stronger runners than others, and wouldn't mind going farther to get to a meetup point?
+Could some routes be circuits, where not everybody goes on all parts of the run, and people get dropped back off at their starting location later?
