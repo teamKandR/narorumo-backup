@@ -2,8 +2,7 @@
 #labels Quals
 
 = One: Threads =
-== a ==
-Which of the following items are typically considered to be unique to a process, but not unique to a thread?
+== Which of the following items are typically considered to be unique to a process, but not unique to a thread? ==
   * CPU registers
   * page table pointer
   * stack pointer
@@ -12,8 +11,7 @@ Which of the following items are typically considered to be unique to a process,
   * child processes
   * program counter
 
-== b ==
-Which of the following are true statements about user-level threads versus kernel-level threads?
+== Which of the following are true statements about user-level threads versus kernel-level threads? ==
   * Invoking any system call that might block poses an extra problem for user-level threads
   * User level threads are more vulnerable to priority inversion than kernel-level threads
   * There is less overall scheduling overhead in a user-level thread system
