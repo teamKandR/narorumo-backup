@@ -124,7 +124,7 @@ Reading or writing one block or i-node requires 1 disk access.
   * What is the minimum number of disk accesses that this sequence of instructions could possibly require? If it is not possible to give an exact value, explain why and indicate what additional information is needed.
   * What is the maximum number of disk accesses that this sequence of instructions could possibly require? If it is not possible to give an exact value, explain why and indicate what additional information is needed.
 
-= Nine =
+= Nine: System  Calls=
 To access an operating system service, a user process must make a system call. In a user program, the interface presented by a system call is a library procedure with the same name as the system call, eg, read(), which is prototyped as follows:
 {{{
 ssize_t read(int fd, void *buf, size_t count);
