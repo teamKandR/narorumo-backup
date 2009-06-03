@@ -32,14 +32,14 @@ Measurements of a certain system have shown that the average process runs for a 
 Suppose we have two threads Ta and Tb that we would like to wait for each other at a certain point in their execution
 
 === Thread Ta ===
-statement a1
-rendezvous_a()
-statement a2
+  # statement a1
+  # rendezvous_a()
+  # statement a2
 
 === Thread Tb ===
-statement b1
-rendezvous_b()
-statement b2
+  # statement b1
+  # rendezvous_b()
+  # statement b2
 
 Here, we want Ta not to execute a2 until Tb has executed b1 and we want Tb not to execute b2 until Ta has executed a1. That is, we want the threads to "rendezvous" by calling rendezvous_a() and rendezvous_b().
 
