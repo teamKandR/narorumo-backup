@@ -37,6 +37,6 @@ Now, we know that all languages that are in NP are also in P^SAT^.  So, therefor
 
 Now, consider for a second the class NP^NP^.  Reminder of what this means: it is the class of languages that are decidable in NP by an oracle TM using an oracle for a language that is in NP.  As shorthand for NP^NP^, we write NP,,2,,.
 
-And we can keep going with this shorthand.  For instance, NP,,3,, = NP^NP<sub>2</sub> -- and so on upward.  And all these classes of languages, all the NP,,k,,, are called the _polynomial time hierarchy_.
+And we can keep going with this shorthand.  For instance, NP,,3,, = NP<sup>NP<sub>2</sub></sup> -- and so on upward.  And all these classes of languages, all the NP,,k,,, are called the _polynomial time hierarchy_.
 
 Final thought: If NP equals P, then this entire hierarchy collapses.  NP,,k,, would equal NP for all k.
