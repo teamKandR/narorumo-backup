@@ -1,5 +1,5 @@
 #summary Crib notes from my "Beer and Algorithms" talk about oracle Turing machines and relativization.
-#labels Theory,Relativization,OracleTMs,BeerAndAlgorithms
+#labels Theory,Relativization,OracleTMs,BeerAndAlgorithms,Featured
 
 An _oracle_ is a black box that is capable of reporting, instantaneously (or, if you prefer, in 1 computation step), whether a string w is a member of a language L.
 
