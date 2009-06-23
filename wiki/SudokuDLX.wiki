@@ -1,4 +1,5 @@
 ﻿#summary Automatic Sudoku solving with DLX
+#labels Featured,Sudoku,DLX
 = Automatic Sudoku Solving with Dancing Links =
 [Alex Alex Rudnick]
 
