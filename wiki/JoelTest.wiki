@@ -1,5 +1,5 @@
 #summary I can has job?
-#labels Scheme,Featured
+#labels Scheme
 
 = Joel's "Could you have passed my freshman-year midterms?" test =
 
