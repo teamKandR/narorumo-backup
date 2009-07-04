@@ -2,6 +2,9 @@
 
 = Future project scratch space =
 
+== collaborative latex editor for wave ==
+Wave is pretty great at collaborative editing for text (and as a platform, pretty great at collaborative whatever) -- what if there was a LaTeX editor for wave? You could be happily editing along with your, and there could be a "typeset!" button. LaTeX itself could either be made to run on App Engine (has it been ported to Java or Python?), or alternatively, the appengine-side of the wave robot could take your text and make a call out to a "latex web services" setup somewhere else, which would send back the typeset document, for your viewing pleasure. How does the pdf preview thing work in gmail? Is this accessible from, eg, wave?
+
 == livejournal friends birthdays iGoogle gadget ==
 LJ has a gadget where they tell you which of your friends have upcoming birthdays, but you don't look at the livejournal front page very often. Build an iGoogle gadget that keeps your LJ login information, queries for your friend-birthday data, and displays it attractively. To be polite, cache things somewhere, say in an appengine app that only polls here and again?
 
