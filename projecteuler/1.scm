@@ -37,3 +37,25 @@
                          (range (- n 1))))))))
 
 (problem-1-with-reduce 1000)
+
+;; I realized yesterday (took me long enough!) that in Scheme we
+;; almost have sum already, since the + primitive is variable-arity.
+;; So we don't really need reduce (or fold-left).  And if we define
+;; range (which is easy) and make a quick alias for %, we suddenly
+;; have something that's just about as concise as the equivalent
+;; Python, and arguably more readable because we don't have to think
+;; about operator precedence!
+
+(define sum (lambda (ls) (apply + ls)))
+(define % remainder)
+(define range (lambda (n)
+                (cond
+                  [(zero? n) '()]
+                  [else (cons (- n 1) (range (- n 1)))])))
+
+(display (sum (filter (lambda (x)
+                        (or (= (% x 5) 0)
+                            (= (% x 3) 0)))
+                      (range 1000))))
+
+;; There -- now I feel better.
