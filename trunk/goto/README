@@ -1,8 +1,9 @@
-This is goto, a utility for bash that I wrote for going to a specific file,
-possibly way down in nested directories. The idea is to find a file that you
-know is somewhere around, and cd to that directory.
+This is goto, a utility for bash that I wrote for going to a specific file that
+you know is in a directory somewhere nested within the current one. goto finds
+that file in the tree of subdirectories rooted at your cwd, then cd's you to
+its location.
 
-Basically, I found myself often going like this:
+The motivation for this is that I found myself often going like:
 
 ajr@computer:~/project$ find . -name Foo.java
 ./src/com/foocorp/whatever/path/to/Foo.java
@@ -39,6 +40,11 @@ I hope you find goto helpful. Or at least non-harmful.
 If you have any ideas for improvement, feel free to submit issues (or patches)
 to the issue tracker here:
 http://code.google.com/p/narorumo/issues
+
+Just in case anybody cares: I wrote the first incarnation of this utility to
+traverse the (relatively large) source trees I was working with when I was at
+Google, from 2007 to 2009. This version is a complete rewrite, though, and more
+robust; it won't barf if it doesn't find the file specified.
 
 -- 
 -- Alex Rudnick (alex.rudnick@gmail.com)
