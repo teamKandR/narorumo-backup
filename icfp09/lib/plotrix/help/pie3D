@@ -1,0 +1,98 @@
+pie3D                package:plotrix                R Documentation
+
+_D_i_s_p_l_a_y _a _3_D _p_i_e _c_h_a_r_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a 3D pie chart with optional labels.
+
+_U_s_a_g_e:
+
+      pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
+       col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
+       sector.order=NULL,explode=0,shade=0.8,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: a numeric vector for which each value will be a sector
+
+   edges: the number of lines forming an ellipse
+
+  radius: the radius of the pie in user units
+
+  height: the height of the pie in user units
+
+   theta: The angle of viewing in radians
+
+   start: The angle at which to start drawing sectors.
+
+  border: The color of the sector border lines
+
+     col: The colors of the sectors
+
+  labels: Optional labels for each sector
+
+labelpos: Optional positions for the labels
+
+labelcol: The color of the labels
+
+labelcex: The character expansion factor for the labels
+
+sector.order: Allows the operator to specify the order in which the
+          sectors are drawn.
+
+ explode: The amount to "explode" the pie in user units
+
+   shade: If > 0 and < 1, the proportion to reduce the brightness of
+          the sector color to get a better 3D effect.
+
+     ...: graphical parameters passed to 'plot'
+
+_D_e_t_a_i_l_s:
+
+     'pie3D' scales the values in 'x' so that they total 2*pi, dropping
+     zeros and NAs. It then displays an empty plot, calculates the
+     sequence for drawing the sectors and calls 'draw.tilted.sector' to
+     draw each sector. If labels are supplied, it will call
+     'pie3D.label' to place a label for each sector. If supplied, the
+     number of labels, label  positions and sector colors must be at
+     least equal to the number of values  in 'x'. If the labels are
+     long, it may help to reduce the radius of the pie as in the
+     example below.
+
+_V_a_l_u_e:
+
+     The bisecting angle of the sectors in radians.
+
+_N_o_t_e:
+
+     Due to the somewhat primitive method used to draw sectors, a
+     sector that extends beyond both pi/2 and 3*pi/2 radians in either
+     direction may not display properly. Setting 'start' to pi/2 will
+     often fix this, but the user may have to adjust 'start' and the
+     order of sectors in extreme cases. The argument 'sector.order'
+     allows the user to specify a vector of integers that will override
+     the calculation of the order in which the sectors are drawn. This
+     is usually necessary when a very large sector that  extends past
+     3*pi/2 is overlapped by a smaller sector next to it.
+
+     While 'pie3D' can be used to display a 2D pie chart by setting
+     height=0 and theta=pi, the labels produced by 'pie3D.labels' will
+     not be well positioned. It is probably better to use
+     'floating.pie' for this, or use 'pie.labels' for the labels.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'pie3D.labels', 'draw.tilted.sector'
+
+_E_x_a_m_p_l_e_s:
+
+      pieval<-c(2,4,6,8)
+      pielabels<-
+       c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+      pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
+

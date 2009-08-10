@@ -1,0 +1,69 @@
+triax.points             package:plotrix             R Documentation
+
+_T_r_i_a_n_g_l_e _p_l_o_t _p_o_i_n_t_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display points on a triangle plot.
+
+_U_s_a_g_e:
+
+      triax.points(x,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
+      col.symbols=par("fg"),pch=par("pch"),bg.symbols=par("bg"),cc.axes=FALSE,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: Matrix or data frame where each row is three proportions or 
+          percentages that must sum to 1 or 100 respectively.
+
+show.legend: Logical - whether to display a legend.
+
+label.points: Logical - whether to call 'thigmophobe.labels' to label
+          the points.
+
+point.labels: Optional labels for the points and/or legend.
+
+col.symbols: Color of the symbols representing each value.
+
+     pch: Symbols to use in plotting values.
+
+bg.symbols: Background color for plotting symbols.
+
+ cc.axes: Clockwise or counterclockwise axes and ticks.
+
+     ...: Additional arguments passed to 'points'.
+
+_D_e_t_a_i_l_s:
+
+     In order for 'triax.points' to add points to an existing plot, the
+     argument 'no.add' in the initial call to 'triax.plot'  must be set
+     to 'FALSE'. Failing to do this will result in the points being
+     plotted in the wrong places. It is then up to the user to call
+     'par' as in the example below to restore plotting parameters
+     altered during the triangle plot.
+
+     'triax.points' displays each triplet of proportions or percentages
+     as a symbol on the triangle plot. Unless each triplet sums to 1 
+     (or 100), they will not plot properly and 'triax.points' will 
+     complain appropriately.
+
+_V_a_l_u_e:
+
+     A list of the 'x,y' positions plotted.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'triax.plot','thigmophobe.labels'
+
+_E_x_a_m_p_l_e_s:
+
+      data(soils)
+      triax.return<-triax.plot(soils[1:10,],
+       main="Adding points to a triangle plot",no.add=FALSE)
+      triax.points(soils[11:20,],col.symbols="green",pch=3)
+      par(triax.return$oldpar)
+

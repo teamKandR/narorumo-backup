@@ -1,0 +1,77 @@
+addtable2plot            package:plotrix            R Documentation
+
+_A_d_d _a _t_a_b_l_e _o_f _v_a_l_u_e_s _t_o _a _p_l_o_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a table of values at a user-specified position on an
+     existing plot
+
+_U_s_a_g_e:
+
+      addtable2plot(x,y=NULL,table,lwd=par("lwd"),bty="n",bg=par("bg"),
+       cex=1,xjust=0,yjust=1,box.col=par("fg"),text.col=par("fg"),
+       display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,title=NULL)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: Either x and y coordinates to locate the table or an
+          'xy.coords' object.
+
+   table: A data frame, matrix or similar object that will be
+          displayed.
+
+     lwd: The line width for the box and horizontal dividers.
+
+     bty: Whether to draw a box around the table ("o") or not ("n").
+
+      bg: The background color for the table.
+
+     cex: Character expansion for the table.
+
+xjust,yjust: Positioning for the table relative to 'x,y'.
+
+ box.col: The color for the box and lines.
+
+text.col: The color for the text.
+
+display.colnames: Whether to display the column names in the table.
+
+display.rownames: Whether to display the row names in the table.
+
+  hlines: Whether to draw horizontal lines between each row of the
+          table.
+
+   title: Optional title placed over the table.
+
+_D_e_t_a_i_l_s:
+
+     'addtable2plot' displays the values in 'table' at a position in
+     user coordinates specified by 'x,y'. The two justification
+     arguments, 'xjust' and 'yjust' are the same as in the 'legend'
+     function, and 'addtable2plot' has been programmed to be as similar
+     to 'legend' as possible. The defaults are those that were most
+     popular in scientific journals at the time of programming.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Original by John Kane, mods by Jim Lemon and Brian Diggs
+
+_S_e_e _A_l_s_o:
+
+     'legend'
+
+_E_x_a_m_p_l_e_s:
+
+      testdf<-data.frame(Before=c(10,7,5),During=c(8,6,2),After=c(5,3,4))
+      rownames(testdf)<-c("Red","Green","Blue")
+      barp(testdf,main="Test addtable2plot",ylab="Value",
+       names.arg=colnames(testdf),col=2:4)
+      # show most of the options
+      addtable2plot(2,8,testdf,bty="o",display.rownames=TRUE,hlines=TRUE,
+       title="The table")
+

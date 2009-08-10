@@ -1,0 +1,35 @@
+std.error              package:plotrix              R Documentation
+
+_C_a_l_c_u_l_a_t_e _s_t_a_n_d_a_r_d _e_r_r_o_r _o_f _t_h_e _m_e_a_n
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculates the standard error of the mean.
+
+_U_s_a_g_e:
+
+      std.error(x,na.rm)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A vector of numerical observations.
+
+   na.rm: Dummy argument to match other functions.
+
+_D_e_t_a_i_l_s:
+
+     'std.error' will accept a numeric vector.
+
+_V_a_l_u_e:
+
+     The conventional standard error of the mean =
+     sd(x)/sqrt(sum(!is.na(x)))
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'sd'
+

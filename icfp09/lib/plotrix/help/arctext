@@ -1,0 +1,59 @@
+arctext               package:plotrix               R Documentation
+
+_D_i_s_p_l_a_y _t_e_x_t _o_n _a _c_i_r_c_u_l_a_r _a_r_c.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'arctext' displays a string along a circular arc, rotating each
+     letter. This may not work on all devices, as not all graphic
+     devices can rotate text to arbitrary angles. The output looks best
+     on a  Postscript or similar device that can rotate text without
+     distortion. Rotated text often looks very ragged on small bitmaps.
+
+     If the user passes a value for 'start', this will override any
+     value passed to 'middle'. If the plot area is not square, see
+     'par(pty="s")', the arc will be somewhat elliptical.
+
+_U_s_a_g_e:
+
+      arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,stretch=1,cex=1,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A character string.
+
+  center: The center of the circular arc in x/y user units.
+
+  radius: The radius of the arc in user units.
+
+   start: The starting position of the string in radians.
+
+  middle: The middle position of the string in radians.
+
+ stretch: How much to stretch the string for appearance.
+
+     cex: The character expansion factor.
+
+     ...: additional arguments passed to 'text'.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon - Thanks to Suhas Parandekar for the idea.
+
+_S_e_e _A_l_s_o:
+
+     'text'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",
+       type="n")
+      arctext("bendy like spaghetti",center=c(3,3),col="blue")
+      arctext("bendy like spaghetti",center=c(3,3),radius=1.5,start=pi,cex=2)
+      arctext("bendy like spaghetti",center=c(3,3),radius=0.5,
+       start=pi/2,stretch=1.2)
+

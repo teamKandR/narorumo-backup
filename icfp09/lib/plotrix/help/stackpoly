@@ -1,0 +1,85 @@
+stackpoly              package:plotrix              R Documentation
+
+_D_i_s_p_l_a_y _t_h_e _c_o_l_u_m_n_s _o_f _a _m_a_t_r_i_x _o_r _d_a_t_a _f_r_a_m_e _a_s _s_t_a_c_k_e_d _p_o_l_y_g_o_n_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Plot one or more columns of numeric values as the top edges of
+     polygons instead of lines.
+
+_U_s_a_g_e:
+
+      stackpoly(x,y=NULL,main="",xlab="",ylab="",xat=NA,xaxlab=NA,
+       xlim=NA,ylim=NA,lty=1,border=NA,col=NA,staxx=FALSE,stack=FALSE,
+       axis4=TRUE,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A numeric data frame or matrix with the 'x' values. If 'y' is
+          NULL, these will become the 'y' values and the 'x' positions
+          will be the integers from 1 to dim(x)[1].
+
+       y: The 'y' values.
+
+    main: The title for the plot.
+
+xlab,ylab: x and y axis labels for the plot.
+
+     xat: Where to put the optional xaxlabs.
+
+  xaxlab: Optional labels for the x positions.
+
+    xlim: Optional x limits.
+
+    ylim: Optional y limits.
+
+     lty: Line type for the polygon borders.
+
+  border: Color for the polygon borders.
+
+     col: Color to fill the polygons.
+
+   staxx: Whether to call 'staxlab' to stagger the x axis labels.
+
+   stack: Whether to stack the successive values on top of each other.
+
+   axis4: Whether to display the right ordinate on the plot.
+
+     ...: Additional arguments passed to 'plot'.
+
+_D_e_t_a_i_l_s:
+
+     'stackpoly' is similar to a line plot with the area under the
+     lines filled with color(s). Ideally, each successive set of y
+     values is greater than the values in the previous set so that the
+     polygons  form a rising series of crests. If 'stack' is TRUE, this
+     is not a problem unless some values of 'x' are negative.
+
+     If 'x' or 'y' is a vector, not a matrix or list, the values will
+     be displayed as a "waterfall plot".
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon and Thomas Petzoldt (waterfall plot option)
+
+_S_e_e _A_l_s_o:
+
+     'polygon'
+
+_E_x_a_m_p_l_e_s:
+
+      testx<-matrix(abs(rnorm(100)),nrow=10)
+      stackpoly(matrix(cumsum(testx),nrow=10),main="Test Stackpoly I",
+       xaxlab=c("One","Two","Three","Four","Five",
+       "Six","Seven","Eight","Nine","Ten"),border="black",staxx=TRUE)
+      stackpoly(testx,main="Test Stackpoly II",
+       xaxlab=c("One","Two","Three","Four","Five",
+       "Six","Seven","Eight","Nine","Ten"),border="black",
+       staxx=TRUE,stack=TRUE)
+      stackpoly(rev(sort(testx-mean(testx))),main="Test Waterfall Plot",
+       col="green",border="black")
+

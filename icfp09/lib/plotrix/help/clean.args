@@ -1,0 +1,47 @@
+clean.args              package:plotrix              R Documentation
+
+_R_e_m_o_v_e _i_n_a_p_p_r_o_p_r_i_a_t_e _a_r_g_u_m_e_n_t_s _f_r_o_m _a_n _a_r_g_u_m_e_n_t _l_i_s_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Takes a list of arguments and eliminates those that are not
+     appropriate for passing to a particular function (and hence would
+     produce an error if passed).
+
+_U_s_a_g_e:
+
+      clean.args(argstr,fn,exclude.repeats=FALSE,exclude.other=NULL,dots.ok=TRUE)
+      remove.args(argstr,fn)
+
+_A_r_g_u_m_e_n_t_s:
+
+  argstr: a named list of arguments, e.g. from '...'
+
+      fn: a function
+
+exclude.repeats: (logical) remove repeated arguments?
+
+exclude.other: a character vector of names of additional arguments to
+          remove
+
+ dots.ok: should "..." be allowed in the argument list?
+
+_V_a_l_u_e:
+
+     'clean.args' returns a list which is a copy of 'argstr' with
+     arguments inappropriate for 'fn' removed; 'remove.args' removes
+     the arguments for 'fn' from the list.
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_E_x_a_m_p_l_e_s:
+
+      tststr <- list(n=2,mean=0,sd=1,foo=4,bar=6) 
+      clean.args(tststr,rnorm)
+      try(do.call("rnorm",tststr))
+      do.call("rnorm",clean.args(tststr,rnorm))
+      remove.args(tststr,rnorm)
+      ## add example of combining arg. lists?
+

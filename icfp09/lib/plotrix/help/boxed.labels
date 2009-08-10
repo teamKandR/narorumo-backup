@@ -1,0 +1,83 @@
+boxed.labels             package:plotrix             R Documentation
+
+_P_l_a_c_e _l_a_b_e_l_s _i_n _b_o_x_e_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Places labels in boxes on an existing plot
+
+_U_s_a_g_e:
+
+      boxed.labels(x,y=NA,labels,bg="white",border=TRUE,xpad=1.2,ypad=1.2,
+       srt=0,cex=1,adj=0.5,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: x and y position of the centers of the labels. 'x' can be an
+          'xy.coords' list.
+
+      bg: The fill color of the rectangles on which the labels are
+          displayed.
+
+  labels: Text strings
+
+  border: Whether to draw borders around the rectangles.
+
+xpad,ypad: The proportion of the rectangles to the extent of the text
+          within.
+
+     srt: Rotation of the labels. If 90 or 270 degrees, the box will be
+          rotated 90 degrees.
+
+     cex: Character expansion. See 'text'.
+
+     adj: left/right adjustment. If this is set outside the function,
+          the box will not be aligned properly.
+
+     ...: additional arguments passed to 'text'.
+
+_D_e_t_a_i_l_s:
+
+     The label(s) are displayed on a rectangular background. This may
+     be useful for visibility. Only right angle rotations are allowed
+     in 'boxed.labels'. Important change: 'xpad' and 'ypad' are now the
+     full proportion of the box to text, not half. The user can now
+     call 'cylindrect' or 'gradient.rect' for the background rectangle.
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     This function is best for regularly spaced labels where
+     overlapping is not a problem. See 'thigmophobe.labels' for placing
+     labels  where overlap is likely.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'spread.labels', 'thigmophobe.labels'
+
+_E_x_a_m_p_l_e_s:
+
+      x<-rnorm(10)
+      y<-rnorm(10)
+      plot(x,y,type="p")
+      nums<-c("one","two","three","four","five","six","seven","eight","nine","ten")
+      boxed.labels(x,y-0.1,nums)
+      # now label a barplot
+      xpos<-barplot(c(1,3,2,4))
+      boxed.labels(xpos,0.5,nums[1:4])
+      # perform a PCA on the "swiss" dataset and plot the first two components
+      data(swiss)
+      swiss.pca<-prcomp(swiss)
+      plot(swiss.pca$rotation[,1:2],xlim=c(-1,0.2),main="PCA of swiss dataset",
+       type="n")
+      boxed.labels(swiss.pca$rotation[1:6],swiss.pca$rotation[7:12],ypad=1.5,
+       colnames(swiss),bg=c("red","purple","blue","blue","darkgreen","red"),
+       col="white")
+

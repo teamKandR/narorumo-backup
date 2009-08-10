@@ -1,0 +1,61 @@
+sizeplot               package:plotrix               R Documentation
+
+_P_l_o_t _w_i_t_h _r_e_p_e_a_t_e_d _s_y_m_b_o_l_s _b_y _s_i_z_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Plots a set of (x,y) data with repeated points denoted by larger
+     symbol sizes
+
+_U_s_a_g_e:
+
+      sizeplot(x, y, scale=1, pow=0.5, powscale=TRUE, size=c(1,4), add=FALSE, ...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: x coordinates of data
+
+       y: y coordinates of data
+
+   scale: scaling factor for size of symbols
+
+     pow: power exponent for size of symbols
+
+powscale: (logical) use power scaling for symbol size?
+
+    size: (numeric vector) min and max size for scaling, if
+          powscale=FALSE
+
+     add: (logical) add to an existing plot?
+
+     ...: other arguments to 'plot()' or 'points()'
+
+_D_e_t_a_i_l_s:
+
+     Most useful for plotting (e.g.) discrete data, where repeats are
+     likely.  If all points are repeated equally, gives a warning.  The
+     size of a point is given by scale*n^pow, where n is the number of
+     repeats, if powscale is TRUE, or it is scaled between size[1] and
+     size[2], if powscale is FALSE.
+
+_V_a_l_u_e:
+
+     A plot is produced on the current device, or points are added to
+     the current plot if 'add=TRUE'.
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_S_e_e _A_l_s_o:
+
+     'symbols'
+
+_E_x_a_m_p_l_e_s:
+
+      x <- c(0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.3,0.3)
+      y <- c( 1,  1,  1,  1,  2,  2,  2,  3,  3,  4,  5 )
+      plot(x,y)
+      sizeplot(x,y)
+      sizeplot(x,y,pch=2)
+

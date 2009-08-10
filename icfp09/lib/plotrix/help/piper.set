@@ -1,0 +1,33 @@
+piper.set              package:plotrix              R Documentation
+
+_C_a_l_c_u_l_a_t_e _i_o_n _o_f_f_s_e_t_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculates the offsets for anions and cations in the Piper
+     diagram.
+
+_U_s_a_g_e:
+
+      piper.set(plot.sep=0.15)
+
+_A_r_g_u_m_e_n_t_s:
+
+plot.sep: The offsets of the ions in user units.
+
+_D_e_t_a_i_l_s:
+
+     'piper.set' calculates the ion offsets in the Piper diagram.
+
+_V_a_l_u_e:
+
+     The offsets.
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+
+_S_e_e _A_l_s_o:
+
+     'piper.diagram'
+

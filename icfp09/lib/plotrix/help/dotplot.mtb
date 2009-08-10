@@ -1,0 +1,73 @@
+dotplot.mtb             package:plotrix             R Documentation
+
+_M_i_n_i_t_a_b _s_t_y_l_e _d_o_t_p_l_o_t_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Create a dotplot of a data vector in the sense of ``dotplot'' as
+     used in the Minitab (copyright) package.
+
+_U_s_a_g_e:
+
+     dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
+                 pch = 19, hist = FALSE, yaxis = FALSE, mtbstyle=TRUE)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A numeric vector. 
+
+    xlim: The x limits of the plot. 
+
+    main: A title for the plot; defaults to blank.
+
+    xlab: A label for the x axis; defaults to blank.
+
+    ylab: A label for the y axis; defaults to blank.
+
+     pch: The plotting symbol for the dots in the plot; defaults to a
+          solid disc. 
+
+    hist: Logical scalar; should the plot be done ``histogram style,
+          i.e. using vertical lines rather than stacks of dots?
+
+   yaxis: Logical scalar; should a y-axis be produced? 
+
+mtbstyle: Logical scalar; should the dotplot be done in the ``Minitab''
+          style?  I.e. should the zero level be at the vertical midway
+          point? 
+
+_D_e_t_a_i_l_s:
+
+     The result of 'hist=TRUE' looks less ugly than stacks of dots for
+     very large data sets.
+
+_V_a_l_u_e:
+
+     Nothing.  A plot is produced as a side effect.
+
+_W_a_r_n_i_n_g_s:
+
+     This function does something toadally different from the
+     'dotplot()' (now 'dotchart()') function in the graphics package.
+
+     The labelling of the 'y'-axis is device dependent.
+
+_A_u_t_h_o_r(_s):
+
+     Barry Rowlingson B.Rowlingson@lancaster.ac.uk and Rolf Turner
+     r.turner@auckland.ac.nz
+
+_E_x_a_m_p_l_e_s:
+
+     ## Not run: 
+     set.seed(42)
+     x <- rpois(100,10)
+     dotplot.mtb(x,main="No y-axis.")
+     dotplot.mtb(x,yaxis=TRUE,main="With y-axis displayed.")
+     dotplot.mtb(x,hist=TRUE,main="An \"h\" style plot.")
+     dotplot.mtb(x,xlim=c(4,16),main="With the x-axis limited.")
+     dotplot.mtb(x,yaxis=TRUE,mtbstyle=FALSE,main="Non-Minitab style.")
+     dotplot.mtb(x,yaxis=TRUE,xlab="x",ylab="count",
+                 main="With x and y axis labels.")
+     ## End(Not run)
+

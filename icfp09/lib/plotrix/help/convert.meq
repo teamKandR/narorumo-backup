@@ -1,0 +1,37 @@
+convert.meq             package:plotrix             R Documentation
+
+_C_o_n_v_e_r_t _m_i_l_l_i_g_r_a_m_s/_l_i_t_e_r _t_o _m_i_l_l_i_e_q_u_i_v_a_l_e_n_t_s/_l_i_t_e_r.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Convert milligrams/liter of ions used in the Piper diagram to
+     milliequivalents/liter.
+
+_U_s_a_g_e:
+
+      convert.meq(mgpl,parameter)
+
+_A_r_g_u_m_e_n_t_s:
+
+    mgpl: A data frame containing the concentrations of ions used in
+          the Piper diagram in milligrams/liter.
+
+parameter: The names of the ions if necessary.
+
+_D_e_t_a_i_l_s:
+
+     'convert.meq' does the conversion with a lookup table of molecular
+     weights and valences.
+
+_V_a_l_u_e:
+
+     The concentration of the ions in milliequivalents.
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+
+_S_e_e _A_l_s_o:
+
+     'piper.diagram'
+

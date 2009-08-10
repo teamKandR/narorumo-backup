@@ -1,0 +1,45 @@
+pasteCols              package:plotrix              R Documentation
+
+_P_a_s_t_e _t_h_e _c_o_l_u_m_n_s _o_f _a _m_a_t_r_i_x _t_o_g_e_t_h_e_r.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Paste the columns of a matrix together to form as many "words" as
+     there are columns.
+
+_U_s_a_g_e:
+
+      pasteCols(x,sep="")
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A matrix.
+
+     sep: The separator to use in the 'paste' command.
+
+_D_e_t_a_i_l_s:
+
+     'pasteCols' pastes the columns of a matrix together to form a
+     vector in which each element is the concatenation of the elements
+     in each of the columns of the matrix. It is intended for producing
+     identifiers from a matrix returned by the 'combn' function.
+
+_V_a_l_u_e:
+
+     A vector of character strings.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'makeIntersectList'
+
+_E_x_a_m_p_l_e_s:
+
+      # create a matrix of the combinations of the first five letters of the
+      # alphabet taken two at a time.
+      alpha5<-combn(LETTERS[1:5],2,simplify=TRUE)
+      pasteCols(alpha5,sep="+")
+

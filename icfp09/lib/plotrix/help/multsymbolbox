@@ -1,0 +1,51 @@
+multsymbolbox            package:plotrix            R Documentation
+
+_D_r_a_w _b_o_x_e_s _f_i_l_l_e_d _w_i_t_h _s_y_m_b_o_l_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Draw boxes on the current figure filled with symbols representing
+     individual counts.
+
+_U_s_a_g_e:
+
+      multsymbolbox(x1,y1,x2,y2,tot,relw=0.8,fg=par("fg"),bg=par("bg"),
+       box=TRUE,debug=FALSE,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+      x1: numeric vector: left sides of boxes
+
+      y1: numeric vector: bottom sides of boxes
+
+      x2: numeric vector: right sides of boxes
+
+      y2: numeric vector: top sides of boxes
+
+     tot: numeric vector: total numbers of symbols to put in each box
+
+    relw: relative width (relative to height) of symbols
+
+      fg: foreground color(s)
+
+      bg: background color(s)
+
+     box: (logical) draw box borders?
+
+   debug: debug output?
+
+     ...: additional arguments to polygon() for drawing boxes
+
+_V_a_l_u_e:
+
+     none
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_E_x_a_m_p_l_e_s:
+
+      plot(1:10,1:10,type="n")
+      multsymbolbox(c(2,4),5,c(4,5),8,tot=c(10,8))
+

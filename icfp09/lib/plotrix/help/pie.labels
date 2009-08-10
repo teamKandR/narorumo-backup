@@ -1,0 +1,57 @@
+pie.labels              package:plotrix              R Documentation
+
+_P_l_a_c_e _l_a_b_e_l_s _o_n _a _p_i_e _c_h_a_r_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Places labels on a pie chart
+
+_U_s_a_g_e:
+
+      pie.labels(x,y,angles,labels,radius=1,bg="white",border=TRUE,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: x and y position of the center of the pie chart
+
+  angles: A numeric vector representing angles in radians. This is the
+          return value of 'floating.pie'.
+
+  labels: Text strings to label each sector.
+
+  radius: The radius at which to place the labels in user units. The
+          default is 1.
+
+      bg: The color of the rectangles on which the labels are
+          displayed.
+
+  border: Whether to draw borders around the rectangles.
+
+     ...: Arguments passed to 'boxed.labels'.
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     Remember that 'x' and 'y' specify the center of the pie chart and
+     that the label positions are specified by angles and radii from
+     that  center.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'floating.pie', 'boxed.labels'
+
+_E_x_a_m_p_l_e_s:
+
+      pieval<-c(2,4,6,8)
+      plot(1:5,type="n",axes=FALSE)
+      box()
+      bisect.angles<-floating.pie(3,3,pieval)
+      pie.labels(3,3,bisect.angles,c("two","four","six","eight"))
+

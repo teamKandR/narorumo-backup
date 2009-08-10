@@ -1,0 +1,55 @@
+emptyspace              package:plotrix              R Documentation
+
+_F_i_n_d _a_n _e_m_p_t_y _s_p_a_c_e _o_n _a _p_l_o_t.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Try to find the largest empty rectangle on a plot.
+
+_U_s_a_g_e:
+
+      emptyspace(x,y=NA,bars=FALSE)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: x and y positions of the points or centers and heights of the
+          bars
+
+    bars: Whether to add x and y points to represent the bars if the
+          plot is a barplot.
+
+_D_e_t_a_i_l_s:
+
+     'emptyspace' divides the area defined by 'par("usr")' into smaller
+     and smaller rectangles until at least one rectangle has no points
+     defined by 'x' and 'y' within it. It then tries to find the
+     largest such rectangle if more than one exists and calculates its
+     center. If the plot is very crowded, the resulting rectangle may
+     be very small.
+
+     'emptyspace' will accept a list of at least two matrices as if it
+     was returned from 'brkdn.plot', calculate the positions of the
+     ends of the dispersion bars and then try to find an empty
+     rectangle. It will also accept a list of x-y coordinates, looking
+     for the first element to have the name 'x', and set 'y' to the
+     second element.
+
+     Note that if there are any NAs in 'x' or 'y', emptyspace will
+     fail.
+
+_V_a_l_u_e:
+
+     The 'x' and 'y' coordinates of the center of the rectangle found.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_E_x_a_m_p_l_e_s:
+
+      x<-rnorm(10)
+      y<-rnorm(10)
+      plot(x,y,main="Find the empty space",xlab="X",ylab="Y")
+      es<-emptyspace(x,y)
+      boxed.labels(es,labels="Here is the\nempty space")
+

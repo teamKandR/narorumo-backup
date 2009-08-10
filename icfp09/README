@@ -1,0 +1,41 @@
+This is our entry for the 2009 ICFP Programming Contest!  
+
+Our solution uses the following language implementations:
+
+  * Petite Chez Scheme 7.4
+  * Python 2.6.1
+  * R version 2.9.1 (2009-06-26)
+
+To build a solution for, e.g., Hohmann scenario 1001, run Petite Chez
+Scheme from the 'icfp09' directory and execute the following:
+
+(load "hohmann.scm") 
+(controller 1001)
+
+Doing so will generate a file called "hohmann.trace" in the 'scratch'
+directory.  (If R does its job, it will also generate a nice PDF
+visualization of the scenario.) 
+
+To build an .osf from hohmann.trace, exit to the shell and run
+
+./pack-osf.py 1001 scratch/hohmann.trace 1001.osf
+
+from the icfp09 directory.
+
+Likewise, to build solutions for Meet and Greet scenarios, just
+replace "hohmann" with "meetandgreet" in the above instructions.
+
+Credit where credit's due: our solutions make use of Oleg Kiselyov's
+'pmatch' pattern-matching macro for Scheme, available at
+http://www.cs.indiana.edu/classes/c311/pmatch.scm (and also in the
+'lib' directory of this tarball).  Also, our visualizations use the
+free 'plotrix' library for R.
+
+Thanks for reading our README!
+
+Team K&R
+Lindsey Kuper (lindsey@rockstargirl.org)
+Alex Rudnick (alex.rudnick@gmail.com)
+
+Atlanta, Georgia
+29 June 2009

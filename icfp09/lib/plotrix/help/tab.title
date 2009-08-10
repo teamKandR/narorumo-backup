@@ -1,0 +1,59 @@
+tab.title              package:plotrix              R Documentation
+
+_D_i_s_p_l_a_y _t_h_e _t_i_t_l_e _o_f _a _p_l_o_t _a_s _a _c_o_l_o_r_e_d _t_a_b.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display the title of a plot as a colored tab.
+
+_U_s_a_g_e:
+
+      tab.title(label,text.col=par("fg"),tab.col=par("bg"),border=par("fg"),
+       lwd=par("lwd"),cex=1.5,pad.mult=1.6,radius=0)
+
+_A_r_g_u_m_e_n_t_s:
+
+   label: The title for the plot.
+
+text.col: The color for the title text.
+
+ tab.col: The color for the tab fill.
+
+  border: The color for the tab border.
+
+     lwd: The line width for the border.
+
+     cex: Character expansion for the title.
+
+pad.mult: How much higher to make the tab relative to the label.
+
+  radius: What proportion of the tab corners to round off.
+
+_D_e_t_a_i_l_s:
+
+     'tab.title' displays the plot title in a colored tab. The tab can
+     be rounded at the upper corners by specifying the proportion of
+     the tab height to be rounded as a number between 0 and 1. If the
+     tab is too high to fit on the figure region, a warning will be
+     displayed and the tab will still be shown.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'polygon'
+
+_E_x_a_m_p_l_e_s:
+
+      testx<-matrix(cumsum(rnorm(30)^2)+1,nrow=10)
+      stackpoly(testx,main="",
+       xaxlab=c("One","Two","Three","Four","Five",
+       "Six","Seven","Eight","Nine","Ten"),staxx=TRUE)
+      tab.title("Three Squiggly Lines",tab.col="yellow",radius=0.5)
+

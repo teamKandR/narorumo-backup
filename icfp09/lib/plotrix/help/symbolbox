@@ -1,0 +1,61 @@
+symbolbox              package:plotrix              R Documentation
+
+_D_r_a_w _a _b_o_x _f_i_l_l_e_d _w_i_t_h _s_y_m_b_o_l_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Draws a box on the current figure that is filled with symbols
+     representing individual counts
+
+_U_s_a_g_e:
+
+      symbolbox(x1,y1,x2,y2,tot,relw=0.5,fg=par("fg"),bg=par("bg"),box=TRUE,
+       debug = TRUE,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+      x1: left side of box
+
+      y1: bottom side of box
+
+      x2: right side of box
+
+      y2: top side of box
+
+     tot: total number of symbols to put in the box
+
+    relw: relative width (relative to height) of symbols
+
+      fg: foreground color
+
+      bg: background color
+
+     box: (logical) draw box border?
+
+   debug: debug output?
+
+     ...: additional arguments to polygon() for drawing box
+
+_D_e_t_a_i_l_s:
+
+     tries to automatically figure out appropriate scaling to fit
+     symbols into the box
+
+_V_a_l_u_e:
+
+     none; draws on the current figure
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_S_e_e _A_l_s_o:
+
+     'multsymbolbox'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(1:10,1:10,type="n")
+      symbolbox(2,5,3,7,tot=20)
+      symbolbox(6,2,10,6,tot=50,fg="blue",bg="magenta")
+

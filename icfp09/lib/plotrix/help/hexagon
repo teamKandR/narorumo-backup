@@ -1,0 +1,44 @@
+hexagon               package:plotrix               R Documentation
+
+_D_r_a_w _a _h_e_x_a_g_o_n
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Draws a hexagon on the current graphic device.
+
+_U_s_a_g_e:
+
+      hexagon(x,y,unitcell=1,col=NA,border="black")
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: x and y position of the bottom left corner of the square that
+          would pack into the same space as the hexagon.
+
+unitcell: The dimension of the side of the abovementioned square.
+
+     col: The color to fill the hexagon - default is no fill.
+
+  border: The color of the perimeter of the hexagon.
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     Draws a hexagon with the same center as a square that would pack
+     into the same dimensions as the hexagon. That is, given a grid of
+     squares with alternate rows shifted one half the length of the
+     sides, the hexagons drawn would be close packed. Its use in the
+     plotrix package is to provide an alternative unit cell for the
+     'color2D.matplot' function.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'color2D.matplot'
+

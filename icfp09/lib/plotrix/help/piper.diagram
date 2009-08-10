@@ -1,0 +1,69 @@
+piper.diagram            package:plotrix            R Documentation
+
+_D_i_s_p_l_a_y _a _P_i_p_e_r _d_i_a_g_r_a_m.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a Piper diagram.
+
+_U_s_a_g_e:
+
+      piper.diagram(ca,mg,so4,cl,ions=data.frame(ca=ca,mg=mg,so4=so4,cl=cl),
+       sites=1:NROW(ions),new=FALSE,ppm=TRUE,chull=FALSE,tcsep=0.2,pch=3,
+       main="",cex.lab=0.7,cex.tck=0.6,cex.pch=1,grid=TRUE,col=NA,ticklength=0.03,
+       lwd.frame=1,pch.lwd=0.7,lwd.grid=lwd.frame,col.box="black",col.tck=col.box,
+       col.grid="grey")
+
+_A_r_g_u_m_e_n_t_s:
+
+ca,mg,so4,cl: Concentrations of the ions.
+
+    ions: data frame containing the above values.
+
+   sites: Indices for the ions.
+
+     new: Whether this is a new diagram.
+
+     ppm: Whether the concentrations are in milligrams/liter (parts per
+          million) or milliequivalents.
+
+   chull: Whether to use the 'chull' function.
+
+   tcsep: Spacing for tick mark labels.
+
+     pch: Symbol to use for ion values.
+
+    main: Title for the diagram.
+
+ cex.lab: Expansion for the label text.
+
+ cex.tck: Expansion for the tick text.
+
+ cex.pch: Expansion for the point text.
+
+    grid: Whether to display a grid.
+
+     col: Colors for the points.
+
+ticklength: Length for the ticks.
+
+lwd.frame: Line width for the frame.
+
+ pch.lwd: Line width for the symbols.
+
+lwd.grid: Line width for the grid.
+
+ col.box: Color for the box.
+
+ col.tck: Color for the ticks.
+
+col.grid: Color for the grid.
+
+_V_a_l_u_e:
+
+     The return value from piper.points.
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+

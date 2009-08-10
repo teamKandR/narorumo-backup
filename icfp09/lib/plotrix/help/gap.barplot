@@ -1,0 +1,71 @@
+gap.barplot             package:plotrix             R Documentation
+
+_D_i_s_p_l_a_y _a _b_a_r_p_l_o_t _w_i_t_h _a _g_a_p (_m_i_s_s_i_n_g _r_a_n_g_e) _o_n _o_n_e _a_x_i_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a barplot with a missing range.
+
+_U_s_a_g_e:
+
+      gap.barplot(y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,
+       ylab=NULL,horiz=FALSE,col,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       y: data values
+
+     gap: the range of values to be left out
+
+  xaxlab: labels for the x axis ticks
+
+   xtics: position of the x axis ticks
+
+  yaxlab: labels for the y axis ticks
+
+   ytics: position of the y axis ticks
+
+    ylim: optional y limits for the plot
+
+    xlab: label for the x axis
+
+    ylab: label for the y axis
+
+   horiz: whether to have vertical or horizontal bars
+
+     col: color(s) in which to plot the values
+
+     ...: arguments passed to 'barplot'.
+
+_D_e_t_a_i_l_s:
+
+     Displays a barplot omitting a range of values on the X or Y axis.
+     Typically  used when there is a relatively large gap in the range
+     of values  represented as bar heights. See 'axis.break' for a
+     brief  discussion of plotting on discontinuous coordinates.
+
+     If the user does not ask for specific y limits, the function will
+     calculate limits based on the range of the data values. If passing
+     specific limits,  remember to subtract the gap from the upper
+     limit.
+
+_V_a_l_u_e:
+
+     The center positions of the bars.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'gap.barplot'
+
+_E_x_a_m_p_l_e_s:
+
+      twogrp<-c(rnorm(10)+4,rnorm(10)+20)
+      gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
+       ylab="Group values",main="Barplot with gap")
+      gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
+       ylab="Group values",horiz=TRUE,main="Horizontal barplot with gap")
+

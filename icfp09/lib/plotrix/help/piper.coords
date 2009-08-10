@@ -1,0 +1,30 @@
+piper.coords             package:plotrix             R Documentation
+
+_C_a_l_c_u_l_a_t_e _p_o_i_n_t _c_o_o_r_d_i_n_a_t_e_s _f_o_r _a _P_i_p_e_r _d_i_a_g_r_a_m.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculate point coordinates for a Piper diagram.
+
+_U_s_a_g_e:
+
+      piper.coords(ions,plot.sep=0.15)
+
+_A_r_g_u_m_e_n_t_s:
+
+    ions: data frame containing ion concentrations.
+
+plot.sep: The offsets for the ions.
+
+_V_a_l_u_e:
+
+     A data frame containing the coordinates of the points.
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+
+_S_e_e _A_l_s_o:
+
+     'piper.diagram'
+

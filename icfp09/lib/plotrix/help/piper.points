@@ -1,0 +1,56 @@
+piper.points             package:plotrix             R Documentation
+
+_D_i_s_p_l_a_y _t_h_e _p_o_i_n_t_s _o_n _a _P_i_p_e_r _d_i_a_g_r_a_m.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays the points for the anions and cations in the Piper
+     diagram.
+
+_U_s_a_g_e:
+
+      piper.points(ca,mg,so4,cl,ions=data.frame(ca=ca,mg=mg,so4=so4,cl=cl),sites,
+       ppm=TRUE,chull=FALSE,pch=3,main="",cex.pch=1,col=NA,pch.lwd=0.7,plot.sep=0.15)
+
+_A_r_g_u_m_e_n_t_s:
+
+ca,mg,so4,cl: Concentrations of the ions.
+
+    ions: data frame containing the above values.
+
+   sites: indices for ions.
+
+     ppm: Whether the concentrations are in milligrams/liter (parts per
+          million) or milliequivalents.
+
+   chull: Whether to display points or polygons for the concentrations.
+
+     pch: Symbol to use in plotting points.
+
+    main: title for the diagram
+
+ cex.pch: Expansion for the points.
+
+     col: Colors for the points/polygons.
+
+ pch.lwd: Line widths.
+
+plot.sep: The offsets for the ions.
+
+_D_e_t_a_i_l_s:
+
+     'piper.points' displays the points/polygons in the Piper diagram.
+
+_V_a_l_u_e:
+
+     A list containing the coordinates of the points and optionally
+     information about the indices and colors.
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+
+_S_e_e _A_l_s_o:
+
+     'piper.diagram'
+

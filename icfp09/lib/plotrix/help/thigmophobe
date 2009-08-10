@@ -1,0 +1,49 @@
+thigmophobe             package:plotrix             R Documentation
+
+_F_i_n_d _t_h_e _d_i_r_e_c_t_i_o_n _a_w_a_y _f_r_o_m _t_h_e _c_l_o_s_e_s_t _p_o_i_n_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Find the direction away from the closest point
+
+_U_s_a_g_e:
+
+      thigmophobe(x,y)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: Numeric data vectors. Typically the x/y coordinates of
+          plotted points. If arrays are passed, they will be silently
+          coerced to numeric vectors.
+
+_D_e_t_a_i_l_s:
+
+     'thigmophobe' returns the direction (as 1|2|3|4 - see pos= in 
+     'text') away from the nearest point to each of the points 
+     described by 'x' and 'y'.
+
+_V_a_l_u_e:
+
+     A vector of directions away from the point nearest to each point.
+
+_N_o_t_e:
+
+     Typically used to get the offset to automatically place labels on
+     a scatterplot or similar using 'thigmophobe.labels' to avoid 
+     overlapping labels. The name means "one who fears being touched".
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon - thanks to Gustaf Rydevik for the "names" bug fix and
+     to Steve Ellison for the suggestion about arrays.
+
+_S_e_e _A_l_s_o:
+
+     'thigmophobe.labels'
+
+_E_x_a_m_p_l_e_s:
+
+      x<-rnorm(10)
+      y<-rnorm(10)
+      thigmophobe(x,y)
+

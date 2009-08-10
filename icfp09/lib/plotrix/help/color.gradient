@@ -1,0 +1,46 @@
+color.gradient            package:plotrix            R Documentation
+
+_C_a_l_c_u_l_a_t_e _a_n _a_r_b_i_t_r_a_r_y _s_e_q_u_e_n_c_e _o_f _c_o_l_o_r_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'color.gradient' is now just a call to 'color.scale' with a vector
+     of equally spaced integers (1:nslices). The function is kept for
+     backward compatibility.
+
+_U_s_a_g_e:
+
+      color.gradient(reds,greens,blues,nslices=50)
+
+_A_r_g_u_m_e_n_t_s:
+
+reds,greens,blues: vectors of the values of the color components as 0
+          to 1.
+
+ nslices: The number of color "slices".
+
+_V_a_l_u_e:
+
+     A vector of hexadecimal color values as used by 'col'.
+
+_N_o_t_e:
+
+     The function is mainly useful for defining a set of colors to
+     represent a known number of gradations. Such a set can be used to
+     assign a grade to a small number of values (e.g. points on a
+     scatterplot - but see  'color.scale' for large numbers) and
+     display a color bar using 'gradient.rect' as a legend.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'rescale','approx','color.scale'
+
+_E_x_a_m_p_l_e_s:
+
+      # try it with red and blue endpoints and green midpoints.
+      color.gradient(c(0,1),c(1,0.6,0.4,0.3,0),c(0.1,0.6))
+

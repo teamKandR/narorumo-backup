@@ -1,0 +1,49 @@
+brkdnCrawler             package:plotrix             R Documentation
+
+_C_r_a_w_l _a _l_i_s_t _c_o_n_t_a_i_n_i_n_g _a _n_e_s_t_e_d _b_r_e_a_k_d_o_w_n _o_f _n_u_m_e_r_i_c _v_a_l_u_e_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Breaks down a numeric element of a data frame by one or more
+     categorical elements.
+
+_U_s_a_g_e:
+
+      brkdnCrawler(x,errbars=FALSE,
+       retval=list(indx=vector("numeric",0),element=NULL,value=NA,depth=0))
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: The output of 'brkdn.num'.
+
+ errbars: Whether to include the second row of 'x' (the dispersion) in
+          the calculation of the maximum value.
+
+  retval: A list containing useful information about the list.
+
+_D_e_t_a_i_l_s:
+
+     'brkdnCrawler' crawls a list produced by 'brkdn.num' and returns
+     the information needed by 'hierobarp'.
+
+_V_a_l_u_e:
+
+     A list containing the indices of the list element that is not
+     itself a list with the largest numeric value. That element should
+     be a matrix of summary results produced by 'brkdn.num'. The list
+     also contains the matrix, the above value, and the maximum depth
+     of the list.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_E_x_a_m_p_l_e_s:
+
+      test.df<-data.frame(Age=rnorm(100,25,10),
+       Sex=sample(c("M","F"),100,TRUE),
+       Marital=sample(c("M","X","S","W"),100,TRUE),
+       Employ=sample(c("FT","PT","NO"),100,TRUE))
+      test.brk<-hierobrk(formula=Age~Sex+Marital+Employ,data=test.df)
+      brkdnCrawler(test.brk)
+

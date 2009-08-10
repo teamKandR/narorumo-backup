@@ -1,0 +1,43 @@
+get.soil.texture           package:plotrix           R Documentation
+
+_E_n_t_e_r _s_o_i_l _t_e_x_t_u_r_e _d_a_t_a.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'get.soil.texture' calls 'get.triprop' to allow the user to  enter
+     soil textures as the proportions or percentages of three 
+     components, sand, silt and clay.
+
+_U_s_a_g_e:
+
+      get.soil.texture(use.percentages=FALSE,cnames=c("sand","silt","clay"))
+
+_A_r_g_u_m_e_n_t_s:
+
+use.percentages: Logical - whether to treat the entries as percentages
+          and scale to proportions.
+
+  cnames: column names for the resulting three column matrix.
+
+_V_a_l_u_e:
+
+     A matrix of the components of one or more soil samples.
+
+_A_u_t_h_o_r(_s):
+
+     Sander Oom and Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'soil.texture','get.triprop'
+
+_E_x_a_m_p_l_e_s:
+
+      if(dev.interactive()) {
+       newsp<-get.soil.texture()
+       # show the soil triangle
+       soil.texture()
+       # now plot the observations
+       show.soil.texture(newsp)
+      }
+

@@ -1,0 +1,70 @@
+color.scale             package:plotrix             R Documentation
+
+_T_u_r_n _v_a_l_u_e_s _i_n_t_o _c_o_l_o_r_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Transform numeric values into colors.
+
+_U_s_a_g_e:
+
+      color.scale(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+       extremes=NA,na.color=NA)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: a numeric vector, matrix or data frame
+
+redrange,greenrange,bluerange: color ranges into which  to scale 'x'
+
+extremes: The colors for the extreme values of 'x'.
+
+na.color: The color to use for NA values of 'x'.
+
+_D_e_t_a_i_l_s:
+
+     'color.scale' calculates a sequence of colors by a linear
+     transformation of the numeric values supplied into the ranges  for
+     red, green and blue. If only one number is supplied for a color
+     range, that color remains constant for all values of 'x'. If more
+     than two values are supplied, the 'x' values will be split into
+     equal ranges (one less than the number of colors) and  the
+     transformation carried out on each range. Values for a color range
+     must be between 0 and 1.
+
+     If 'extremes' is not NA, the ranges will be calculated from its
+     values using 'col2rgb', even if ranges are also supplied.
+     'extremes' allows the user to just pass the extreme color values
+     in any format that 'col2rgb' will accept.
+
+     The user may not want the color scheme to be continuous across
+     some critical point, often zero. In this case, color scale can be
+     called separately for the values below and above zero. See the
+     second example for 'color2D.matplot'.
+
+_V_a_l_u_e:
+
+     A vector or matrix of hexadecimal color values.
+
+_N_o_t_e:
+
+     The function is useful for highlighting a numeric dimension or
+     adding an extra "dimension" to a plot.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'rescale', 'col2rgb'
+
+_E_x_a_m_p_l_e_s:
+
+      # go from green through yellow to red with no blue
+      x<-rnorm(20)
+      y<-rnorm(20)
+      # use y for the color scale
+      plot(x,y,col=color.scale(y,c(0,1,1),c(1,1,0),0),main="Color scale plot",
+       pch=16,cex=2)
+

@@ -1,0 +1,64 @@
+cylindrect              package:plotrix              R Documentation
+
+_D_i_s_p_l_a_y _a_n _a_p_p_a_r_e_n_t _c_y_l_i_n_d_e_r
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display rectangles shaded to appear like cylinders.
+
+_U_s_a_g_e:
+
+      cylindrect(xleft,ybottom,xright,ytop,col,border=NA,gradient="x",nslices=50)
+
+_A_r_g_u_m_e_n_t_s:
+
+   xleft: The position of the left side of the rectangle(s).
+
+ ybottom: The position of the bottom of the rectangle(s).
+
+  xright: The position of the right side of the rectangle(s).
+
+    ytop: The position of the top side of the rectangle(s).
+
+     col: The base color(s) of the rectangles.
+
+  border: Whether to draw a border and what color.
+
+gradient: Whether to vary the shading horizontally ("x" - the default)
+          or vertically (anything but "x").
+
+ nslices: The number of "slices" of color for shading.
+
+_D_e_t_a_i_l_s:
+
+     'cylindrect' displays a rectangle filled with "slices" of color
+     that simulate the appearance of a cylinder. The slices are
+     calculated so that the  base color appears at the right or bottom
+     edge of the rectangle, become progressively lighter to a
+     "highlight" at two thirds of the width or height and then darken
+     toward the base color again.
+
+     The appearance is of a cylinder lit from above and to the left of
+     the viewer. The position of the apparent light source is hard
+     coded into the function.
+
+_V_a_l_u_e:
+
+     The base color(s) of the rectangle(s).
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'gradient.rect'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(0,xlim=c(0,5),ylim=c(0,5),main="Examples of pseudocylindrical rectangles",
+       xlab="",ylab="",axes=FALSE,type="n")
+      cylindrect(0,0,1,5,"red")
+      cylindrect(rep(1,3),c(0,2,4),rep(4,3),c(1,3,5),"green",gradient="y")
+      cylindrect(4,0,5,5,"#8844aa")
+
