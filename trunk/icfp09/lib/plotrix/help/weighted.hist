@@ -1,0 +1,82 @@
+weighted.hist            package:plotrix            R Documentation
+
+_D_i_s_p_l_a_y _a _w_e_i_g_h_t_e_d _h_i_s_t_o_g_r_a_m
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculate the counts of the weighted values in specified bins and 
+     optionally display either a frequency or density histogram.
+
+_U_s_a_g_e:
+
+      weighted.hist(x,w,breaks="Sturges",col=NULL,plot=TRUE,
+      freq=TRUE,ylim,ylab=NULL,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A vector of numeric values
+
+       w: A vector of weights at least as long as x.
+
+  breaks: The endpoints of the ranges into which to count the weighted
+          values.
+
+     col: An optional vector of colors for the bars of the histogram.
+
+    plot: Whether to plot a histogram.
+
+    freq: Whether to plot counts or densities.
+
+    ylim: The limits of the plot ordinate.
+
+    ylab: Label for the ordinate.
+
+     ...: Additional arguments passed to 'barplot'.
+
+_D_e_t_a_i_l_s:
+
+     'weighted.hist' calculates the weighted counts of values falling 
+     into the ranges specified by 'breaks'. Instead of counting each 
+     value as 1, it counts the corresponding value in 'w' (the weight).
+
+     'breaks' may be specified by a monotonically increasing vector  of
+     numbers that are interpreted as the endpoints of the ranges, a 
+     single number representing the number of ranges desired or the
+     name  of the function to calculate the ranges (see 'hist'). If a
+     vector of numbers is passed that does not include all values in 
+     'x', the user is warned. If the ranges are not equal, a warning 
+     will be displayed if 'freq' is TRUE or the heights of the bars 
+     will be adjusted to display areas approximately equal to the
+     counts  if 'freq' is FALSE.
+
+_V_a_l_u_e:
+
+     A list containing:
+
+     breaks - The endpoints of the intervals
+
+     counts - The weighted counts
+
+     density - The weighted counts divided by their sum.
+
+     mids - The midpoints of the intervals and the bars displayed.
+
+     xname - the name of 'x'.
+
+     equidist - Whether the intervals differ by less than the total
+     range/1000.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon and Hadley Wickham
+
+_S_e_e _A_l_s_o:
+
+     'hist'
+
+_E_x_a_m_p_l_e_s:
+
+      testx<-sample(1:10,300,TRUE)
+      testw<-seq(1,4,by=0.01)
+      weighted.hist(testx,testw,breaks=1:10,main="Test weighted histogram")
+

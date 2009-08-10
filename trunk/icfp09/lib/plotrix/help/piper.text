@@ -1,0 +1,44 @@
+piper.text              package:plotrix              R Documentation
+
+_D_i_s_p_l_a_y _a _s_t_r_i_n_g _o_n _a _P_i_p_e_r _d_i_a_g_r_a_m.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a character string on the Piper diagram.
+
+_U_s_a_g_e:
+
+      piper.text(ca,mg,so4,cl,ions=data.frame(ca=ca,mg=mg,so4=so4,cl=cl),ptext,
+       ppm=TRUE,cex=1,col=1,plot.sep=0.15,pos=4)
+
+_A_r_g_u_m_e_n_t_s:
+
+ca,mg,so4,cl: Concentrations of the ions.
+
+    ions: data frame containing the above values.
+
+   ptext: The character string.
+
+     ppm: Whether the concentrations are in milligrams/liter (parts per
+          million) or milliequivalents.
+
+     cex: Expansion for the text.
+
+     col: Colors for the text.
+
+plot.sep: The offsets.
+
+     pos: The position of the string relative to the data point.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+
+_S_e_e _A_l_s_o:
+
+     'piper.diagram'
+

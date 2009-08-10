@@ -1,0 +1,85 @@
+symbolbarplot            package:plotrix            R Documentation
+
+_b_a_r_p_l_o_t _f_i_l_l_e_d _w_i_t_h _s_y_m_b_o_l_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Produces a barplot where each piece of the barplot is filled with
+     the number of symbols equal to the size of the bar
+
+_U_s_a_g_e:
+
+      symbolbarplot(height,width=1,space=NULL,names.arg=NULL,
+       legend.text=NULL,beside=FALSE,horiz=FALSE,col=heat.colors(NR),
+       border=par("fg"),main=NULL,sub=NULL,xlab=NULL,ylab=NULL,xlim=NULL,
+       ylim=NULL,axes=TRUE,axisnames=TRUE,inside=TRUE,plot=TRUE,rel.width=0.8,
+       symbol="circles",symbbox=TRUE,debug=FALSE,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+  height: numeric vector or matrix of barplot heights
+
+   width: width of bars
+
+   space: space between bars
+
+names.arg: vector of names
+
+legend.text: vector of legend text
+
+  beside: (logical) plot bars beside each other?
+
+   horiz: (logical) horizontal barplot?
+
+     col: vector of colors
+
+  border: plot border?
+
+    main: main title
+
+     sub: subtitle
+
+    xlab: x axis label
+
+    ylab: y axis label
+
+    xlim: x limits
+
+    ylim: y limits
+
+    axes: draw axes?
+
+axisnames: label horizontal axis?
+
+  inside: draw lines dividing adjacent bars?
+
+    plot: produce plot?
+
+rel.width: relative width of symbols
+
+  symbol: which symbol to use
+
+ symbbox: draw boxes for symbol boxes?
+
+   debug: debug output?
+
+     ...: further arguments to multsymbolbox
+
+_V_a_l_u_e:
+
+     Nil
+
+_N_o_t_e:
+
+     This is a mostly a hack of barplot()
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_E_x_a_m_p_l_e_s:
+
+      set.seed(1001)
+      bvals <- matrix(rpois(12,20),nrow=3)
+      b <- symbolbarplot(bvals)
+

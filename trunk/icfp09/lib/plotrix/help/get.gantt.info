@@ -1,0 +1,43 @@
+get.gantt.info            package:plotrix            R Documentation
+
+_G_a_t_h_e_r _t_h_e _i_n_f_o_r_m_a_t_i_o_n _t_o _c_r_e_a_t_e _a _G_a_n_t_t _c_h_a_r_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Allows the user to enter the information for a Gantt chart.
+
+_U_s_a_g_e:
+
+      get.gantt.info(format="%Y/%m/%d")
+
+_A_r_g_u_m_e_n_t_s:
+
+  format: the format to be used in entering dates/times. Defaults to
+          YYYY/mm/dd. See 'strptime' for various date/time formats.
+
+_V_a_l_u_e:
+
+     The list used to create the chart. Elements are: 
+
+  labels: The task labels to be displayed at the left of the chart.
+
+starts,ends: The task starts/ends as POSIXct dates/times.
+
+priorities: Task priorities as integers in the range 1 to 10. There can
+          be less than 10 levels of priority, but if priorities do not
+          start at 1 (assumed to be the highest), the default priority
+          colors will be calculated from 1.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'gantt.chart'
+
+_E_x_a_m_p_l_e_s:
+
+      cat("Enter task times using HH:MM (hour:minute) format\n")
+      get.gantt.info("%H:%M")
+

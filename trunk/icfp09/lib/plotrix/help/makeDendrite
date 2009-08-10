@@ -1,0 +1,50 @@
+makeDendrite             package:plotrix             R Documentation
+
+_B_u_i_l_d _a _l_i_s_t _o_f _t_h_e _m_u_t_u_a_l_l_y _e_x_c_l_u_s_i_v_e _a_t_t_r_i_b_u_t_e_s _o_f _o_b_j_e_c_t_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Build a list of mutually exclusive attributes from a matrix of 
+     category indicators.
+
+_U_s_a_g_e:
+
+      makeDendrite(x)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A data frame or matrix where rows represent objects and
+          columns mutually exclusive attributes of a given class.
+
+_D_e_t_a_i_l_s:
+
+     The values in 'x' indicate which attribute of a particular class
+     is possessed by the object. For instance, the attributes dead and
+     alive are mutually exclusive. 'makeDendrite' creates a nested list
+     that contains the counts of successive combinations of the
+     attributes. The top level attributes are taken from the first
+     column, then those are combined with the attributes in the second
+     column and so on.
+
+_V_a_l_u_e:
+
+     A list of the counts of objects for each combination of the
+     attribute classes.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'plot.dendrite'
+
+_E_x_a_m_p_l_e_s:
+
+      sex<-sample(c("M","F"),100,TRUE)
+      hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)
+      eye<-sample(c("Blue","Black","Brown","Green"),100,TRUE)
+      charac<-data.frame(sex=sex,hair=hair,eye=eye)
+      characlist<-makeDendrite(charac)
+      characlist
+

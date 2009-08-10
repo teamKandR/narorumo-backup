@@ -1,0 +1,50 @@
+lengthKey              package:plotrix              R Documentation
+
+_K_e_y _f_o_r _i_n_t_e_r_p_r_e_t_i_n_g _l_e_n_g_t_h_s _i_n _a _p_l_o_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Key for interpreting lengths in a plot
+
+_U_s_a_g_e:
+
+      lengthKey(x,y,tickpos,scale)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: The position of the left end of the key in user units.
+
+ tickpos: The labels that will appear above the key.
+
+   scale: A value that will scale the length of the key.
+
+_D_e_t_a_i_l_s:
+
+     'lengthKey' displays a line with tick marks and the values in
+     'tickpos' above those tickmarks. It is useful when line segments
+     on a plot represent numeric values. Note that if the plot does not
+     have a 1:1 aspect ratio, a length key is usually misleading.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'segments', 'arrows'
+
+_E_x_a_m_p_l_e_s:
+
+      # manufacture a matrix of orientations in radians
+      o<-matrix(rep(pi*seq(0.1,0.8,by=0.1),7),ncol=8,byrow=TRUE)
+      m<-matrix(rnorm(56)+4,ncol=8,byrow=TRUE)
+      # get an empty plot of approximately 1:1 aspect ratio
+      plot(0,xlim=c(0.7,8.3),ylim=c(0.7,7.3),type="n")
+      vectorField(o,m,vecspec="rad")
+      # the scaling usually has to be worked out by trial and error
+      lengthKey(0.3,-0.5,c(0,5,10),0.24)
+

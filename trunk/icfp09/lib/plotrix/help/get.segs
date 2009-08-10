@@ -1,0 +1,44 @@
+get.segs               package:plotrix               R Documentation
+
+_C_a_l_c_u_l_a_t_e _t_h_e _m_i_d_p_o_i_n_t_s _a_n_d _l_i_m_i_t_s _f_o_r _a _c_e_n_t_i_p_e_d_e _p_l_o_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculates midpoints and limits for a list or data frame for use
+     with centipede.plot.
+
+_U_s_a_g_e:
+
+      get.segs(x,mct="mean",lower.limit="std.error",upper.limit=lower.limit)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: a list or data frame.
+
+     mct: The name of the function to calculate midpoints.
+
+lower.limit,upper.limit: The names of the function(s) to calculate 
+          lower and upper limits.
+
+_D_e_t_a_i_l_s:
+
+     'get.segs' calls the functions whose names are passed to calculate
+     midpoints and limits for each list element or data frame column.
+     The user can define special functions for the central and
+     dispersion measures if desired.
+
+_V_a_l_u_e:
+
+     A matrix with four rows and as many columns as were in the object
+     'x'. The first row contains the midpoint values, the second and
+     third the lower and upper limit values respectively and the fourth
+     row the number of valid observations in the columns.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'centipede.plot'
+

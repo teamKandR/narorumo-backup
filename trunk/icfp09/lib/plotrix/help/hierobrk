@@ -1,0 +1,59 @@
+hierobrk               package:plotrix               R Documentation
+
+_P_e_r_f_o_r_m _a _n_e_s_t_e_d _b_r_e_a_k_d_o_w_n _o_f _n_u_m_e_r_i_c _v_a_l_u_e_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Breaks down a numeric element of a data frame by one or more
+     categorical elements.
+
+_U_s_a_g_e:
+
+      hierobrk(formula,data,maxlevels=10,num.desc=c("mean","std.error","valid.n"))
+
+_A_r_g_u_m_e_n_t_s:
+
+ formula: A formula with a numeric element of a data frame on the left
+          and one or more categorical elements on the right.
+
+    data: A data frame containing the elements in 'formula'.
+
+maxlevels: The maximum number of levels in any categorical element.
+          Mainly to prevent the mess caused by breaking down by a huge
+          number of categories.
+
+num.desc: The names of the summary functions to use.
+
+_D_e_t_a_i_l_s:
+
+     'hierobrk' performs the breakdown of a numeric element of a data
+     frame by one or more categorical elements. For each category and
+     optionally subcategories, the variable on the left of the formula
+     is summarized as specified by the functions named in 'num.desc'.
+
+     The user should take care when specifying different summary
+     functions. 'hierobarp' expects a measure of central tendency as
+     the first function and a measure of dispersion as the second, if
+     "error bars" are to be displayed.
+
+_V_a_l_u_e:
+
+     A list containing the overall summary results and a matrix (if
+     only one categorical element is on the right) with the summary
+     results as rows and the categories as columns. With increasing
+     numbers of categories, this will generate deeper levels of lists.
+     This function is similar to 'brkdn' in the 'prettyR' package, but
+     is structured to be used with the 'hierobarp' function.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_E_x_a_m_p_l_e_s:
+
+      test.df<-data.frame(Age=rnorm(100,25,10),
+       Sex=sample(c("M","F"),100,TRUE),
+       Marital=sample(c("M","X","S","W"),100,TRUE),
+       Employ=sample(c("FT","PT","NO"),100,TRUE))
+      hierobrk(formula=Age~Sex+Marital+Employ,data=test.df)
+

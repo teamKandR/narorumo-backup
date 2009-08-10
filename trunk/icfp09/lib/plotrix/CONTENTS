@@ -1,0 +1,647 @@
+Entry: ablineclip
+Aliases: ablineclip
+Keywords: aplot
+Description: Add a straight line to a plot
+URL: ../../../library/plotrix/html/ablineclip.html
+
+Entry: addtable2plot
+Aliases: addtable2plot
+Keywords: misc
+Description: Add a table of values to a plot
+URL: ../../../library/plotrix/html/addtable2plot.html
+
+Entry: arctext
+Aliases: arctext
+Keywords: misc
+Description: Display text on a circular arc.
+URL: ../../../library/plotrix/html/arctext.html
+
+Entry: axis.break
+Aliases: axis.break
+Keywords: misc
+Description: Place a "break" mark on an axis
+URL: ../../../library/plotrix/html/axis.break.html
+
+Entry: axis.mult
+Aliases: axis.mult
+Keywords: misc
+Description: Display an axis with values having a multiplier
+URL: ../../../library/plotrix/html/axis.mult.html
+
+Entry: barhier
+Aliases: barhier
+Keywords: misc
+Description: Display a set of hierarchically associated variables
+URL: ../../../library/plotrix/html/barhier.html
+
+Entry: barp
+Aliases: barp
+Keywords: misc
+Description: A bar plotting routine
+URL: ../../../library/plotrix/html/barp.html
+
+Entry: bin.wind.records
+Aliases: bin.wind.records
+Keywords: misc
+Description: Classify wind direction and speed records.
+URL: ../../../library/plotrix/html/bin.wind.records.html
+
+Entry: boxed.labels
+Aliases: boxed.labels
+Keywords: misc
+Description: Place labels in boxes
+URL: ../../../library/plotrix/html/boxed.labels.html
+
+Entry: brkdn.plot
+Aliases: brkdn.plot
+Keywords: misc
+Description: A point/line plotting routine
+URL: ../../../library/plotrix/html/brkdn.plot.html
+
+Entry: brkdnCrawler
+Aliases: brkdnCrawler
+Keywords: misc
+Description: Crawl a list containing a nested breakdown of numeric values.
+URL: ../../../library/plotrix/html/brkdnCrawler.html
+
+Entry: bumpchart
+Aliases: bumpchart
+Keywords: misc
+Description: Display a "bumps" chart.
+URL: ../../../library/plotrix/html/bumpchart.html
+
+Entry: centipede.plot
+Aliases: centipede.plot
+Keywords: misc
+Description: Display a centipede plot
+URL: ../../../library/plotrix/html/centipede.plot.html
+
+Entry: clean.args
+Aliases: clean.args remove.args
+Keywords: programming
+Description: Remove inappropriate arguments from an argument list
+URL: ../../../library/plotrix/html/clean.args.html
+
+Entry: clock24.plot
+Aliases: clock24.plot
+Keywords: misc
+Description: Plot values on a 24 hour "clockface".
+URL: ../../../library/plotrix/html/clock24.plot.html
+
+Entry: clplot
+Aliases: clplot
+Keywords: misc
+Description: Plot lines with colors determined by values.
+URL: ../../../library/plotrix/html/clplot.html
+
+Entry: cluster.overplot
+Aliases: cluster.overplot
+Keywords: misc
+Description: Shift overlying points into clusters.
+URL: ../../../library/plotrix/html/cluster.overplot.html
+
+Entry: color.gradient
+Aliases: color.gradient
+Keywords: misc
+Description: Calculate an arbitrary sequence of colors.
+URL: ../../../library/plotrix/html/color.gradient.html
+
+Entry: color.id
+Aliases: color.id
+Keywords: color
+Description: Identify closest match to a color
+URL: ../../../library/plotrix/html/color.id.html
+
+Entry: color.legend
+Aliases: color.legend
+Keywords: misc
+Description: Legend matching categories or values to colors
+URL: ../../../library/plotrix/html/color.legend.html
+
+Entry: color.scale
+Aliases: color.scale
+Keywords: misc
+Description: Turn values into colors.
+URL: ../../../library/plotrix/html/color.scale.html
+
+Entry: color.scale.lines
+Aliases: color.scale.lines
+Keywords: misc
+Description: Line segments with scaled colors.
+URL: ../../../library/plotrix/html/color.scale.lines.html
+
+Entry: color2D.matplot
+Aliases: color2D.matplot
+Keywords: misc
+Description: Display a numeric matrix as color matrix
+URL: ../../../library/plotrix/html/color2D.matplot.html
+
+Entry: convert.meq
+Aliases: convert.meq
+Keywords: misc
+Description: Convert milligrams/liter to milliequivalents/liter.
+URL: ../../../library/plotrix/html/convert.meq.html
+
+Entry: corner.label
+Aliases: corner.label
+Keywords: aplot
+Description: Find corner locations and optionally display a label
+URL: ../../../library/plotrix/html/corner.label.html
+
+Entry: count.overplot
+Aliases: count.overplot
+Keywords: misc
+Description: Show overlying points as counts
+URL: ../../../library/plotrix/html/count.overplot.html
+
+Entry: cylindrect
+Aliases: cylindrect
+Keywords: misc
+Description: Display an apparent cylinder
+URL: ../../../library/plotrix/html/cylindrect.html
+
+Entry: diamondplot
+Aliases: diamondplot
+Keywords: misc
+Description: Plot multiple variables as polygons on a radial grid.
+URL: ../../../library/plotrix/html/diamondplot.html
+
+Entry: dispersion
+Aliases: dispersion dispbars
+Keywords: misc
+Description: Display a measure of dispersion
+URL: ../../../library/plotrix/html/dispersion.html
+
+Entry: dotplot.mtb
+Aliases: dotplot.mtb
+Keywords: hplot
+Description: Minitab style dotplots.
+URL: ../../../library/plotrix/html/dotplot.mtb.html
+
+Entry: draw.arc
+Aliases: draw.arc
+Keywords: misc
+Description: Draw arc
+URL: ../../../library/plotrix/html/draw.arc.html
+
+Entry: draw.circle
+Aliases: draw.circle
+Keywords: misc
+Description: Draw a circle.
+URL: ../../../library/plotrix/html/draw.circle.html
+
+Entry: draw.tilted.sector
+Aliases: draw.tilted.sector
+Keywords: misc
+Description: Display a 3D pie sector
+URL: ../../../library/plotrix/html/draw.tilted.sector.html
+
+Entry: emptyspace
+Aliases: emptyspace
+Keywords: misc
+Description: Find an empty space on a plot.
+URL: ../../../library/plotrix/html/emptyspace.html
+
+Entry: fan.plot
+Aliases: fan.plot
+Keywords: misc
+Description: Display a fan plot.
+URL: ../../../library/plotrix/html/fan.plot.html
+
+Entry: feather.plot
+Aliases: feather.plot
+Keywords: misc
+Description: Display vectors along a horizontal reference line.
+URL: ../../../library/plotrix/html/feather.plot.html
+
+Entry: floating.pie
+Aliases: floating.pie
+Keywords: misc
+Description: Display a floating pie chart
+URL: ../../../library/plotrix/html/floating.pie.html
+
+Entry: fullaxis
+Aliases: fullaxis
+Keywords: misc
+Description: Add an axis with a line to the edge of the plot
+URL: ../../../library/plotrix/html/fullaxis.html
+
+Entry: furc
+Aliases: furc
+Keywords: misc
+Description: Plot a dendrite.
+URL: ../../../library/plotrix/html/furc.html
+
+Entry: gantt.chart
+Aliases: gantt.chart
+Keywords: misc
+Description: Display a Gantt chart
+URL: ../../../library/plotrix/html/gantt.chart.html
+
+Entry: gap.barplot
+Aliases: gap.barplot
+Keywords: misc
+Description: Display a barplot with a gap (missing range) on one axis
+URL: ../../../library/plotrix/html/gap.barplot.html
+
+Entry: gap.boxplot
+Aliases: gap.boxplot
+Keywords: misc
+Description: Display a boxplot with a gap (missing range)
+URL: ../../../library/plotrix/html/gap.boxplot.html
+
+Entry: gap.plot
+Aliases: gap.plot
+Keywords: misc
+Description: Display a plot with one or two gaps (missing ranges) on one axis
+URL: ../../../library/plotrix/html/gap.plot.html
+
+Entry: get.breaks
+Aliases: get.breaks
+Keywords: misc
+Description: Get the breakpoints for a weighted histogram
+URL: ../../../library/plotrix/html/get.breaks.html
+
+Entry: get.gantt.info
+Aliases: get.gantt.info
+Keywords: misc
+Description: Gather the information to create a Gantt chart
+URL: ../../../library/plotrix/html/get.gantt.info.html
+
+Entry: get.segs
+Aliases: get.segs
+Keywords: misc
+Description: Calculate the midpoints and limits for a centipede plot
+URL: ../../../library/plotrix/html/get.segs.html
+
+Entry: get.soil.texture
+Aliases: get.soil.texture
+Keywords: misc
+Description: Enter soil texture data.
+URL: ../../../library/plotrix/html/get.soil.texture.html
+
+Entry: get.triprop
+Aliases: get.triprop
+Keywords: misc
+Description: Enter three proportion data - usually soil textures.
+URL: ../../../library/plotrix/html/get.triprop.html
+
+Entry: getIntersectList
+Aliases: getIntersectList
+Keywords: misc
+Description: Enter the information for a set intersection display
+URL: ../../../library/plotrix/html/getIntersectList.html
+
+Entry: gradient.rect
+Aliases: gradient.rect
+Keywords: misc
+Description: Display a rectangle filled with an arbitrary color gradient.
+URL: ../../../library/plotrix/html/gradient.rect.html
+
+Entry: hexagon
+Aliases: hexagon
+Keywords: misc
+Description: Draw a hexagon
+URL: ../../../library/plotrix/html/hexagon.html
+
+Entry: hierobarp
+Aliases: hierobarp
+Keywords: misc
+Description: Display a nested breakdown of numeric values.
+URL: ../../../library/plotrix/html/hierobarp.html
+
+Entry: hierobrk
+Aliases: hierobrk
+Keywords: misc
+Description: Perform a nested breakdown of numeric values.
+URL: ../../../library/plotrix/html/hierobrk.html
+
+Entry: intersectDiagram
+Aliases: intersectDiagram
+Keywords: misc
+Description: Display set intersections
+URL: ../../../library/plotrix/html/intersectDiagram.html
+
+Entry: lengthKey
+Aliases: lengthKey
+Keywords: misc
+Description: Key for interpreting lengths in a plot
+URL: ../../../library/plotrix/html/lengthKey.html
+
+Entry: listDepth
+Aliases: listDepth
+Keywords: misc
+Description: Find the maximum depth of a list.
+URL: ../../../library/plotrix/html/listDepth.html
+
+Entry: makeDendrite
+Aliases: makeDendrite
+Keywords: misc
+Description: Build a list of the mutually exclusive attributes of objects.
+URL: ../../../library/plotrix/html/makeDendrite.html
+
+Entry: makeIntersectList
+Aliases: makeIntersectList
+Keywords: misc
+Description: Count set intersections
+URL: ../../../library/plotrix/html/makeIntersectList.html
+
+Entry: multhist
+Aliases: multhist
+Keywords: hplot
+Description: Plot a multiple histogram, as a barplot
+URL: ../../../library/plotrix/html/multhist.html
+
+Entry: multsymbolbox
+Aliases: multsymbolbox
+Keywords: aplot
+Description: Draw boxes filled with symbols
+URL: ../../../library/plotrix/html/multsymbolbox.html
+
+Entry: oz.windrose
+Aliases: oz.windrose
+Keywords: misc
+Description: Display an Australian wind rose.
+URL: ../../../library/plotrix/html/oz.windrose.html
+
+Entry: oz.windrose.legend
+Aliases: oz.windrose.legend
+Keywords: misc
+Description: Display an Australian wind rose legend.
+URL: ../../../library/plotrix/html/oz.windrose.legend.html
+
+Entry: p.ions
+Aliases: p.ions
+Keywords: misc
+Description: Calculate ion/total(ion) ratios.
+URL: ../../../library/plotrix/html/p.ions.html
+
+Entry: pasteCols
+Aliases: pasteCols
+Keywords: misc
+Description: Paste the columns of a matrix together.
+URL: ../../../library/plotrix/html/pasteCols.html
+
+Entry: pie.labels
+Aliases: pie.labels
+Keywords: misc
+Description: Place labels on a pie chart
+URL: ../../../library/plotrix/html/pie.labels.html
+
+Entry: pie3D
+Aliases: pie3D
+Keywords: misc
+Description: Display a 3D pie chart
+URL: ../../../library/plotrix/html/pie3D.html
+
+Entry: pie3D.labels
+Aliases: pie3D.labels
+Keywords: misc
+Description: Display labels on a 3D pie chart
+URL: ../../../library/plotrix/html/pie3D.labels.html
+
+Entry: piper.coords
+Aliases: piper.coords
+Keywords: misc
+Description: Calculate point coordinates for a Piper diagram.
+URL: ../../../library/plotrix/html/piper.coords.html
+
+Entry: piper.diagram
+Aliases: piper.diagram
+Keywords: misc
+Description: Display a Piper diagram.
+URL: ../../../library/plotrix/html/piper.diagram.html
+
+Entry: piper.points
+Aliases: piper.points
+Keywords: misc
+Description: Display the points on a Piper diagram.
+URL: ../../../library/plotrix/html/piper.points.html
+
+Entry: piper.set
+Aliases: piper.set
+Keywords: misc
+Description: Calculate ion offsets.
+URL: ../../../library/plotrix/html/piper.set.html
+
+Entry: piper.text
+Aliases: piper.text
+Keywords: misc
+Description: Display a string on a Piper diagram.
+URL: ../../../library/plotrix/html/piper.text.html
+
+Entry: plot.dendrite
+Aliases: plot.dendrite
+Keywords: misc
+Description: Plot a dendrogram of a dendrite object.
+URL: ../../../library/plotrix/html/plot.dendrite.html
+
+Entry: plotCI
+Aliases: plotCI
+Keywords: hplot
+Description: Plot confidence intervals/error bars
+URL: ../../../library/plotrix/html/plotCI.html
+
+Entry: polar.plot
+Aliases: polar.plot
+Keywords: misc
+Description: Plot values on a circular grid of 0 to 360 degrees.
+URL: ../../../library/plotrix/html/polar.plot.html
+
+Entry: polygon.shadow
+Aliases: polygon.shadow
+Keywords: misc
+Description: Display a shadow effect for an arbitrary polygon
+URL: ../../../library/plotrix/html/polygon.shadow.html
+
+Entry: pyramid.plot
+Aliases: pyramid.plot
+Keywords: misc
+Description: Pyramid plot
+URL: ../../../library/plotrix/html/pyramid.plot.html
+
+Entry: qt.plot
+Aliases: qt.plot
+Keywords: misc
+Description: Quantity by interval plot
+URL: ../../../library/plotrix/html/qt.plot.html
+
+Entry: radial.plot
+Aliases: radial.plot
+Keywords: misc
+Description: Plot values on a circular grid of 0 to 2*pi radians.
+URL: ../../../library/plotrix/html/radial.plot.html
+
+Entry: rescale
+Aliases: rescale
+Keywords: misc
+Description: Scale numbers into a new range.
+URL: ../../../library/plotrix/html/rescale.html
+
+Entry: revaxis
+Aliases: revaxis
+Keywords: hplot
+Description: Plot with axis direction(s) reversed.
+URL: ../../../library/plotrix/html/revaxis.html
+
+Entry: sizeplot
+Aliases: sizeplot
+Keywords: hplot
+Description: Plot with repeated symbols by size
+URL: ../../../library/plotrix/html/sizeplot.html
+
+Entry: smoothColors
+Aliases: smoothColors
+Keywords: misc
+Description: Build a vector of color values.
+URL: ../../../library/plotrix/html/smoothColors.html
+
+Entry: soil.texture
+Aliases: soil.texture
+Keywords: misc
+Description: Soil texture triangle plot
+URL: ../../../library/plotrix/html/soil.texture.html
+
+Entry: soil.texture.uk
+Aliases: soil.texture.uk
+Keywords: misc
+Description: Soil texture triangle plot using UK conventions
+URL: ../../../library/plotrix/html/soil.texture.uk.html
+
+Entry: soils
+Aliases: soils
+Keywords: misc
+Description: Soil texture data from 125 soils
+URL: ../../../library/plotrix/html/soils.html
+
+Entry: spread.labels
+Aliases: spread.labels
+Keywords: misc
+Description: Spread labels for irregularly spaced values
+URL: ../../../library/plotrix/html/spread.labels.html
+
+Entry: spreadout
+Aliases: spreadout
+Keywords: misc
+Description: Spread out a vector of numbers to a minimum interval.
+URL: ../../../library/plotrix/html/spreadout.html
+
+Entry: stackpoly
+Aliases: stackpoly
+Keywords: misc
+Description: Display the columns of a matrix or data frame as stacked polygons.
+URL: ../../../library/plotrix/html/stackpoly.html
+
+Entry: staircase.plot
+Aliases: staircase.plot
+Keywords: misc
+Description: Display a staircase plot.
+URL: ../../../library/plotrix/html/staircase.plot.html
+
+Entry: staxlab
+Aliases: staxlab
+Keywords: misc
+Description: Place staggered labels on an axis
+URL: ../../../library/plotrix/html/staxlab.html
+
+Entry: std.error
+Aliases: std.error
+Keywords: misc
+Description: Calculate standard error of the mean
+URL: ../../../library/plotrix/html/std.error.html
+
+Entry: sumDendrite
+Aliases: sumDendrite
+Keywords: misc
+Description: Sum the counts in the top level of a dendrite object.
+URL: ../../../library/plotrix/html/sumDendrite.html
+
+Entry: symbolbarplot
+Aliases: symbolbarplot
+Keywords: hplot
+Description: barplot filled with symbols
+URL: ../../../library/plotrix/html/symbolbarplot.html
+
+Entry: symbolbox
+Aliases: symbolbox
+Keywords: aplot
+Description: Draw a box filled with symbols
+URL: ../../../library/plotrix/html/symbolbox.html
+
+Entry: tab.title
+Aliases: tab.title
+Keywords: misc
+Description: Display the title of a plot as a colored tab.
+URL: ../../../library/plotrix/html/tab.title.html
+
+Entry: taylor.diagram
+Aliases: taylor.diagram
+Keywords: misc
+Description: Taylor diagram
+URL: ../../../library/plotrix/html/taylor.diagram.html
+
+Entry: textbox
+Aliases: textbox
+Keywords: aplot
+Description: Add text box
+URL: ../../../library/plotrix/html/textbox.html
+
+Entry: thigmophobe
+Aliases: thigmophobe
+Keywords: misc
+Description: Find the direction away from the closest point
+URL: ../../../library/plotrix/html/thigmophobe.html
+
+Entry: thigmophobe.labels
+Aliases: thigmophobe.labels
+Keywords: misc
+Description: Place labels away from the nearest point
+URL: ../../../library/plotrix/html/thigmophobe.labels.html
+
+Entry: triax.abline
+Aliases: triax.abline
+Keywords: misc
+Description: Lines for triangle plot
+URL: ../../../library/plotrix/html/triax.abline.html
+
+Entry: triax.frame
+Aliases: triax.frame
+Keywords: misc
+Description: Triangle plot frame
+URL: ../../../library/plotrix/html/triax.frame.html
+
+Entry: triax.plot
+Aliases: triax.plot
+Keywords: misc
+Description: Triangle plot
+URL: ../../../library/plotrix/html/triax.plot.html
+
+Entry: triax.points
+Aliases: triax.points
+Keywords: misc
+Description: Triangle plot points
+URL: ../../../library/plotrix/html/triax.points.html
+
+Entry: twoord.plot
+Aliases: twoord.plot
+Keywords: misc
+Description: Plot with two ordinates
+URL: ../../../library/plotrix/html/twoord.plot.html
+
+Entry: vectorField
+Aliases: vectorField
+Keywords: misc
+Description: Display magnitude/direction vectors
+URL: ../../../library/plotrix/html/vectorField.html
+
+Entry: weighted.hist
+Aliases: weighted.hist
+Keywords: misc
+Description: Display a weighted histogram
+URL: ../../../library/plotrix/html/weighted.hist.html
+
+Entry: zoomInPlot
+Aliases: zoomInPlot
+Keywords: misc
+Description: Display a plot with a rectangular section expanded in an adjacent plot.
+URL: ../../../library/plotrix/html/zoomInPlot.html

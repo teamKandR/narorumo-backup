@@ -1,0 +1,19 @@
+soils                package:plotrix                R Documentation
+
+_S_o_i_l _t_e_x_t_u_r_e _d_a_t_a _f_r_o_m _1_2_5 _s_o_i_l_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     A set of 125 soil texture measurements from soils from various
+     parts of the world.
+
+_U_s_a_g_e:
+
+      data(soils)
+
+_S_o_u_r_c_e:
+
+     T.H. Skaggs, L.M. Arya, P.J. Shouse and B.P. Mohanty (2001)
+     Estimating Particle-Size Distribution from Limited Soil Texture
+     Data. Soil Science Society of America Journal 65:1038-1044.
+

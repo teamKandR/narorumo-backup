@@ -1,0 +1,68 @@
+triax.frame             package:plotrix             R Documentation
+
+_T_r_i_a_n_g_l_e _p_l_o_t _f_r_a_m_e
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display a three axis frame with optional grid.
+
+_U_s_a_g_e:
+
+      triax.frame(main="",at=seq(0.1,0.9,by=0.1),
+      axis.labels=NULL,tick.labels=NULL,col.axis="black",cex.axis=1,cex.ticks=1,
+      align.labels=TRUE,show.grid=FALSE,col.grid="gray",lty.grid=par("lty"),
+      cc.axes=FALSE)
+
+_A_r_g_u_m_e_n_t_s:
+
+    main: The title of the triangle plot. Defaults to nothing.
+
+      at: The tick positions on the three axes.
+
+axis.labels: Labels for the three axes in the order bottom, right left.
+          Defaults to the column names.
+
+tick.labels: The tick labels for the axes. Defaults to argument 'at'
+          (proportions).
+
+col.axis: Color of the triangular axes, ticks and labels.
+
+cex.axis: Character expansion for axis labels.
+
+cex.ticks: Character expansion for the tick labels.
+
+align.labels: Logical - whether to align axis and tick labels with the
+          axes.
+
+show.grid: Whether to display grid lines at the ticks.
+
+col.grid: Color of the grid lines. Defaults to gray.
+
+lty.grid: Type of line for the grid.
+
+ cc.axes: Whether to align the axes clockwise or counterclockwise.
+
+_D_e_t_a_i_l_s:
+
+     'triax.frame' displays a triangular plot area on which proportions
+     or percentages may be displayed. An optional grid may also be
+     displayed. If 'cc.axes' is TRUE, both the axes and axis ticks will
+     be in reverse order.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'triax.points','triax.abline'
+
+_E_x_a_m_p_l_e_s:
+
+      triax.frame(main="DEFAULT")
+      triax.frame(main="Clockwise axes",cc.axes=TRUE)
+

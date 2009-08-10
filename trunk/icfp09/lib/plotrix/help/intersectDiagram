@@ -1,0 +1,101 @@
+intersectDiagram           package:plotrix           R Documentation
+
+_D_i_s_p_l_a_y _s_e_t _i_n_t_e_r_s_e_c_t_i_o_n_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display set intersections as rows of rectangles.
+
+_U_s_a_g_e:
+
+      intersectDiagram(x,pct=FALSE,show.nulls=FALSE,xnames=NULL,namesep="-",
+       mar=c(0,0,3,0),main="Intersection Diagram",col=NULL,minspacing=0.1)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A list containing as many numeric vectors as there are sets.
+          The first vector contains the counts or percentages of the
+          elements that are only in one set, the next vector contains
+          the counts or percentages of  elements that are in two sets
+          and so on. A matrix of set membership indicators can be
+          passed - see Details.
+
+     pct: Whether to display counts (FALSE) or percentages (TRUE) of
+          the number of entities.
+
+show.nulls: Whether to display the number of original objects that were
+          not members of any set.
+
+  xnames: Optional user supplied names for the set categories (see
+          Details).
+
+ namesep: The separator to use between category names.
+
+     mar: The margins for the diagram. The margins that were in effect
+          when the function is called are restored.
+
+    main: The title for the diagram.
+
+     col: Colors for the sets (see Details).
+
+minspacing: The minimum spacing between the rectangles as a proportion.
+
+_D_e_t_a_i_l_s:
+
+     'intersectDiagram' displays rows of optionally colored rectangles.
+     The topmost row represents the elements that only belong to one
+     set, the next row down represents elements belonging to two sets,
+     and so on to the bottom row of one rectangle representing the
+     elements that belong to all the sets. More than three intersecting
+     sets generally produce a complex and difficult to interpret Venn
+     diagram, and this provides an alternative way to display the
+     intersections between larger numbers of sets. 
+
+     Each set is assigned a color if 'col' is not NA. 'rainbow' is
+     called if 'col' is NULL, otherwise the colors passed are used. For
+     each intersection, the colors representing the sets intersecting
+     are included in the rectangle.
+
+     The strings displayed on each rectangle are taken from the
+     argument 'xnames' unless that is NULL, then the 'names' of the
+     first element of the intersectList object passed as 'x' or
+     returned from the call to 'makeIntersectList' and if this is also
+     NULL, capital letters are assigned to each category in 'x'.
+
+     If there were objects in the original data set that were not
+     members of any set, any percentages calculated will reflect this.
+     By setting 'show.nulls' to TRUE, the counts or percentages of such
+     objects will be displayed below the intersections over an empty
+     rectangle scaled to the count or percentage.
+
+     If a matrix of set membership indicators is passed as 'x', it will
+     be passed to 'makeIntersectList' for conversion.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'makeIntersectList', 'getIntersectList'
+
+_E_x_a_m_p_l_e_s:
+
+      # create a matrix where each row represents an element and
+      # a 1 (or TRUE) in each column indicates that the element is a member
+      # of that set.
+      druguse<-matrix(c(sample(c(0,1),200,TRUE),
+       sample(c(0,1),200,TRUE),
+       sample(c(0,1),200,TRUE),
+       sample(c(0,1),200,TRUE)),ncol=4)
+      colnames(druguse)<-c("Alc","Tob","THC","Amp")
+      druglist<-makeIntersectList(druguse)
+      # first display it as counts
+      intersectDiagram(druglist)
+      # then as percent with non.members, passing the initial matrix
+      intersectDiagram(druguse,pct=TRUE,show.nulls=TRUE)
+

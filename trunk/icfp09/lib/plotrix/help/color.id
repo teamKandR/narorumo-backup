@@ -1,0 +1,37 @@
+color.id               package:plotrix               R Documentation
+
+_I_d_e_n_t_i_f_y _c_l_o_s_e_s_t _m_a_t_c_h _t_o _a _c_o_l_o_r
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Given a color given as a hex string, find the closest match in the
+     table of known (named) colors
+
+_U_s_a_g_e:
+
+      color.id(col)
+
+_A_r_g_u_m_e_n_t_s:
+
+     col: a color specified as a hex string
+
+_D_e_t_a_i_l_s:
+
+     finds the color with the minimum squared distance in RGB space
+
+_V_a_l_u_e:
+
+     the name of the closest match
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_S_e_e _A_l_s_o:
+
+     'col2rgb','colors'
+
+_E_x_a_m_p_l_e_s:
+
+      color.id("#cc00cc")
+

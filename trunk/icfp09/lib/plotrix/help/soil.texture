@@ -1,0 +1,119 @@
+soil.texture             package:plotrix             R Documentation
+
+_S_o_i_l _t_e_x_t_u_r_e _t_r_i_a_n_g_l_e _p_l_o_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display a USDA soil texture triangle with optional grid, labels
+     and soil texture points.
+
+_U_s_a_g_e:
+
+     soil.texture(soiltexture=NULL, main="", at=seq(0.1, 0.9, by=0.1),
+                  axis.labels=c("percent sand", "percent silt",
+                                "percent clay"),
+                  tick.labels=list(l=seq(10, 90, by=10), r=seq(10, 90, by=10),
+                                   b=seq(10, 90, by=10)),
+                  show.names=TRUE, show.lines=TRUE, col.names="gray",
+                  bg.names=par("bg"), show.grid=FALSE, col.axis="black",
+                  col.lines="gray", col.grid="gray", lty.grid=3,
+                  show.legend=FALSE, label.points=FALSE, point.labels=NULL,
+                  col.symbols="black", pch=par("pch"), ...)
+
+_A_r_g_u_m_e_n_t_s:
+
+soiltexture: Matrix of soil textures where each row is a soil sample
+          and three columns contain the proportions of the components
+          sand, silt and clay in the range 0 to 1 or percentages in the
+          range 0 to 100.
+
+    main: The title of the soil texture plot. Defaults to nothing.
+
+      at: Positions on the three axes where ticks will be drawn.
+
+axis.labels: Labels for the axes.
+
+tick.labels: The tick labels for the three axes.
+
+show.names: Logical - whether to show the names of different soil types
+          within the soil triangle.
+
+show.lines: Logical - whether to show the boundaries of the different
+          soil types within the soil triangle.
+
+col.names: Color of the soil names. Defaults to gray.
+
+bg.names: Color to use when drawing a blank patch for the names of soil
+          types.
+
+show.grid: Logical - whether to show grid lines at each 10 level of
+          each soil component.
+
+col.axis: Color of the triangular axes, ticks and labels.
+
+col.lines: Color of the boundary lines. Defaults to gray.
+
+col.grid: Color of the grid lines. Defaults to gray.
+
+lty.grid: Type of line for the grid. Defaults to dashed.
+
+show.legend: Logical - whether to display a legend.
+
+label.points: Logical - whether to call 'thigmophobe.labels' to label
+          the points.
+
+point.labels: Optional labels for the points or legend.
+
+col.symbols: Color of the symbols representing each value.
+
+     pch: Symbols to use in plotting values.
+
+     ...: Additional arguments passed to 'triax.points' and then
+          'points'.
+
+_D_e_t_a_i_l_s:
+
+     'soil.texture' displays a triangular plot area on which soil
+     textures defined as proportions of sand, silt and clay can be
+     plotted. Optional grid, vertex labels, soil type divisions and
+     names may also be displayed. If a matrix of soil textures is
+     present, these will be plotted.
+
+_V_a_l_u_e:
+
+     If 'soiltexture' was included, a list of the 'x,y' positions of
+     the soil types plotted. If not, nil.
+
+_N_o_t_e:
+
+     This is now a special case of 'triax.plot'.
+
+_A_u_t_h_o_r(_s):
+
+     Sander Oom, Jim Lemon, and Michael Toews
+
+_R_e_f_e_r_e_n_c_e_s:
+
+     U.S. Department of Agriculture, Natural Resources Conservation
+     Service, 2007. _National Soil Survey Handbook_, title 430-VI.//
+     <URL: http://soils.usda.gov/technical/handbook/>
+
+     U.S. Department of Agriculture, Natural Resources Conservation
+     Service, 2007. _Soil Texture Calculator_// <URL:
+     http://soils.usda.gov/technical/aids/investigations/texture/>
+
+_S_e_e _A_l_s_o:
+
+     'get.soil.texture', 'triax.plot'
+
+_E_x_a_m_p_l_e_s:
+
+      data(soils)
+      soil.texture(main="NO DATA")
+      soil.texture(soils, main="DEFAULT", pch=2)
+      soil.texture(soils, main="LINES AND NAMES", show.lines=TRUE,
+       show.names=TRUE, pch=3)
+      soiltex.return<-soil.texture(soils[1:6,], main="GRID AND LEGEND",
+       show.grid=TRUE, pch=4, col.symbols=1:6, show.legend=TRUE)
+      par(soiltex.return$oldpar)
+

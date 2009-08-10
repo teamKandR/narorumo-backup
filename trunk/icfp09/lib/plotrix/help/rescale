@@ -1,0 +1,45 @@
+rescale               package:plotrix               R Documentation
+
+_S_c_a_l_e _n_u_m_b_e_r_s _i_n_t_o _a _n_e_w _r_a_n_g_e.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Scale a vector or matrix of numbers into a new range.
+
+_U_s_a_g_e:
+
+      rescale(x,newrange)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A numeric vector, matrix or data frame.
+
+newrange: The minimum and maximum value of the range into which 'x'
+          will be scaled.
+
+_D_e_t_a_i_l_s:
+
+     'rescale' performs a simple linear conversion of 'x' into the
+     range specified by 'newrange'. Only numeric vectors, matrices or
+     data frames with some variation will be accepted. NAs are now
+     preserved -  formerly the function would fail.
+
+_V_a_l_u_e:
+
+     On success, the rescaled object, otherwise the original object.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_E_x_a_m_p_l_e_s:
+
+      # scale one vector into the range of another
+      normal.counts<-rnorm(100)
+      normal.tab<-tabulate(cut(normal.counts,breaks=seq(-3,3,by=1)))
+      normal.density<-rescale(dnorm(seq(-3,3,length=100)),range(normal.tab))
+      # now plot them
+      plot(c(-2.5,-1.5,-0.5,0.5,1.5,2.5),normal.tab,xlab="X values",
+       type="h",col="green")
+      lines(seq(-3,3,length=100),normal.density,col="blue")
+

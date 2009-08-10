@@ -1,0 +1,10 @@
+# Hohmann 1003 visualization data
+
+# Earth's location
+0,0,0
+
+# Target orbit radius
+0,28109333.333333332,0
+
+# Initial orbit radius
+0,8357000.000000492,0

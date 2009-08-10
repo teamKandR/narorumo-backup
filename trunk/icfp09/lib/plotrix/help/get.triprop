@@ -1,0 +1,49 @@
+get.triprop             package:plotrix             R Documentation
+
+_E_n_t_e_r _t_h_r_e_e _p_r_o_p_o_r_t_i_o_n _d_a_t_a - _u_s_u_a_l_l_y _s_o_i_l _t_e_x_t_u_r_e_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'get.triprop' allows the user to enter triplets of proportions or
+     percentages of three components such as sand, silt and clay in
+     soils.
+
+_U_s_a_g_e:
+
+      get.triprop(use.percentages=FALSE,cnames=c("1st","2nd","3rd"))
+
+_A_r_g_u_m_e_n_t_s:
+
+use.percentages: Logical - whether to treat the entries as percentages
+          and scale to proportions.
+
+  cnames: column names for the resulting three column matrix.
+
+_D_e_t_a_i_l_s:
+
+     The three proportions of each row must sum to 100 or 1 within 1%
+     or the function will warn the operator.
+
+_V_a_l_u_e:
+
+     A matrix of the components of one or more observations.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'triax.plot', 'soil.texture'
+
+_E_x_a_m_p_l_e_s:
+
+      if(dev.interactive()) {
+       # get some proportions
+       newsp<-get.triprop()
+       # show the triangle
+       triax.frame(main="Test triax.plot")
+       # now plot the observations
+       triax.points(newsp)
+      }
+

@@ -1,0 +1,57 @@
+staxlab               package:plotrix               R Documentation
+
+_P_l_a_c_e _s_t_a_g_g_e_r_e_d _l_a_b_e_l_s _o_n _a_n _a_x_i_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Places labels on an axis in a regular staggered order
+
+_U_s_a_g_e:
+
+      staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+    side: axis on which to place the labels, as in 'axis'
+
+      at: where to place the labels in user units, as in 'axis'
+
+  labels: text strings
+
+  nlines: How many lines to use to stagger the labels.
+
+top.line: Distance from the axis to place the first line of text.
+
+line.spacing: Spacing between lines of text labels.
+
+     ...: Additional arguments to be passed to 'mtext'.
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     This function is mainly useful when either long axis labels or a
+     large number of labels are to be placed without overlapping. It
+     staggers the  labels along the axis specified. The user may wish
+     to increase the space beneath the plot using 'mar' before calling
+     'staxlab'. It is probably only useful on the bottom or left side
+     of the plot.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'mtext'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(rnorm(12),axes=FALSE)
+      box()
+      months<-c("January","February","March","April","May","June",
+       "July","August","September","October","November","December")
+      staxlab(1,1:12,months)
+

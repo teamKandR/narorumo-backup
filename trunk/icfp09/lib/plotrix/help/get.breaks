@@ -1,0 +1,37 @@
+get.breaks              package:plotrix              R Documentation
+
+_G_e_t _t_h_e _b_r_e_a_k_p_o_i_n_t_s _f_o_r _a _w_e_i_g_h_t_e_d _h_i_s_t_o_g_r_a_m
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Gets the breakpoints for a weighted histogram.
+
+_U_s_a_g_e:
+
+      get.breaks(x,breaks)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A numeric vector.
+
+  breaks: Either the name of the function to calculate breakpoints, the
+          number of categories or a vector of breakpoints.
+
+_D_e_t_a_i_l_s:
+
+     'get.breaks' either calls the same functions as 'hist' to get
+     breakpoints or calculates a given number or just returns 'breaks'
+     if they are already specified.
+
+_V_a_l_u_e:
+
+     A vector of breakpoints.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'hist'
+

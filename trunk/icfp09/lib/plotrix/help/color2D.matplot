@@ -1,0 +1,128 @@
+color2D.matplot           package:plotrix           R Documentation
+
+_D_i_s_p_l_a_y _a _n_u_m_e_r_i_c _m_a_t_r_i_x _a_s _c_o_l_o_r _m_a_t_r_i_x
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display the values of a numeric 2D matrix or data frame as colored
+     rectangles or hexagons.
+
+_U_s_a_g_e:
+
+      color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+       extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
+       ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,
+       border="black",na.color=NA,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: data values
+
+redrange, greenrange, bluerange: the ranges of red, green and blue that
+          will be scaled to represent the range of numeric values
+
+extremes: The colors for the extreme values of 'x'. Takes precedence
+          over the color ranges.
+
+cellcolors: A precalculated vector of cell colors. This must have
+          exactly the same number of colors as there are values in the
+          matrix or it will be uninformative. Takes precedence over
+          both 'extremes' and color ranges.
+
+show.legend: whether to display a color legend with the extreme numeric
+          values in the lower left corner of the plot. If the default
+          is not suitable, call 'color.legend' separately.
+
+ nslices: The number of color "slices" in the legend.
+
+xlab,ylab: axis labels for the plot.
+
+  do.hex: plot packed hexagons instead of rectangles.
+
+    axes: Whether to suppress the default axis labelling.
+
+show.values: Whether to display the numeric values of 'x'. This also
+          controls the number of decimal places displayed.
+
+    vcol: The color for the value display.
+
+    vcex: The character expansion for the value display.
+
+  border: The color(s) for the borders of the cells. Pass NA if no
+          border is  wanted.
+
+na.color: The color to use for NA values of 'x'.
+
+     ...: arguments passed to 'plot'.
+
+_D_e_t_a_i_l_s:
+
+     Displays a plot with the same number of rectangular or hexagonal
+     cells as there are numeric values in the matrix or data frame.
+     Each rectangle is colored to represent its corresponding value.
+     The rectangles are arranged in the conventional display of a 2D
+     matrix with rows beginning at the top and columns at the left. The
+     color scale defaults to black for the minimum value and white for
+     the maximum.
+
+     The user will have to adjust the plot device dimensions to get
+     regular squares or hexagons, especially when the matrix is not
+     square. As the margins are not equivalent for all display devices,
+     this is currently a matter of trial and error. Drawing hexagons is
+     quite slow.
+
+     'show.values' is also used to control the number of decimal places
+     displayed if the values are shown. 'TRUE' will give one decimal
+     place, '2' two, and so on.
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     The function 'image' performs almost the same when passed a matrix
+     of values without grid positions, except that it assigns values to
+     a specified list of colors rather than calculating a color for
+     each distinct value.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon (thanks to Ashoka Polpitiya for 'axes')
+
+_S_e_e _A_l_s_o:
+
+     'color.scale', 'image'
+
+_E_x_a_m_p_l_e_s:
+
+      x<-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
+      color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
+       xlab="Columns",ylab="Rows",main="2D matrix plot")
+      # generate colors that show negative values in red and positive in green
+      cellcol<-matrix(rep("#000000",1024),nrow=32)
+      cellcol[x<0]<-color.scale(x[x<0],c(1,0.8),c(0,0.8),0)
+      cellcol[x>0]<-color.scale(x[x>0],0,c(0.8,1),c(0.8,0))
+      # now do hexagons without borders
+      color2D.matplot(x,cellcolors=cellcol,xlab="Columns",ylab="Rows",
+       do.hex=TRUE,main="2D matrix plot (hexagons)",border=NA)
+      # for this one, we have to do the color legend separately
+      # because of the two part color scaling
+      legval<-seq(min(x),max(x),length.out=6)
+      legcol<-rep("#000000",6)
+      legcol[legval<0]<-color.scale(legval[legval<0],c(1,0.8),c(0,0.8),0)
+      legcol[legval>0]<-color.scale(legval[legval>0],0,c(0.8,1),c(0.8,0))
+      color.legend(0,-5,6,-4,round(c(min(x),0,max(x)),1),rect.col=legcol)
+      # do a color only association plot
+      xt<-table(sample(1:10,100,TRUE),sample(1:10,100,TRUE))
+      observed<-xt[,rev(1:dim(xt)[2])]
+      expected<-outer(rowSums(observed),colSums(observed),"*")/sum(xt)
+      deviates<-(observed-expected)/sqrt(expected)
+      cellcol<-matrix(rep("#000000",100),nrow=10)
+      cellcol[deviates<0]<-
+       color.scale(deviates[deviates<0],c(1,0.8),c(0,0.5),0)
+      cellcol[deviates>0]<-
+       color.scale(deviates[deviates>0],0,c(0.7,0.8),c(0.5,0))
+      color2D.matplot(x=round(deviates,2),cellcolors=cellcol,
+       show.values=TRUE,main="Association plot")
+

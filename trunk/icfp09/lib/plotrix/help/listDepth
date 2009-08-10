@@ -1,0 +1,34 @@
+listDepth              package:plotrix              R Documentation
+
+_F_i_n_d _t_h_e _m_a_x_i_m_u_m _d_e_p_t_h _o_f _a _l_i_s_t.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Descend a list and find the maximum number of levels.
+
+_U_s_a_g_e:
+
+      listDepth(x) 
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A list.
+
+_D_e_t_a_i_l_s:
+
+     A possibly nested list of lists is descended to determine the
+     maximum number of levels. Currently used to set up the dimensions
+     of a dendrite plot.
+
+_V_a_l_u_e:
+
+     The maximum number of levels in the list.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'plot.dendrite'
+

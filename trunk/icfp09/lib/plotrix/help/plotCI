@@ -1,0 +1,97 @@
+plotCI                package:plotrix                R Documentation
+
+_P_l_o_t _c_o_n_f_i_d_e_n_c_e _i_n_t_e_r_v_a_l_s/_e_r_r_o_r _b_a_r_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Given a set of x and y values and upper and lower bounds, this
+     function plots the points with error bars.
+
+_U_s_a_g_e:
+
+      plotCI(x,y=NULL,uiw,liw=uiw,ui=NULL,li=NULL,err="y",
+       sfrac=0.01,gap=0,slty=par("lty"),add=FALSE,scol=NULL,pt.bg=par("bg"),...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: The x coordinates of points in the plot
+
+       y: The y coordinates of points in the plot
+
+     uiw: The width of the upper portion of the confidence region, or
+          (if 'liw' is missing) the width of both halves of the
+          confidence region
+
+     liw: The width of the lower portion of the confidence region (if
+          missing, the function assumes symmetric confidence bounds)
+
+      ui: The absolute upper limit of the confidence region
+
+      li: The absolute lower limit of the confidence region
+
+     err: The direction of error bars: "x" for horizontal, "y" for
+          vertical ("xy" would be nice but is not implemented yet;
+          don't know quite how everything would be specified.  See
+          examples for composing a plot with simultaneous horizontal
+          and vertical error bars)
+
+     gap: Size of gap in error bars around points (default 0;gap=TRUE
+          gives gap size of 0.01)
+
+   sfrac: Scaling factor for the size of the "serifs" (end bars) on the
+          confidence bars, in x-axis units
+
+     add: If FALSE (default), create a new plot; if TRUE, add error
+          bars to an existing plot.
+
+    slty: Line type of error bars
+
+    scol: Color of error bars: if 'col' is specified in the optional
+          arguments, 'scol' is set the same; otherwise it's set to
+          'par(scol)'
+
+   pt.bg: Background color of points (use pch=21, pt.bg=par("bg") to
+          get open points superimposed on error bars)
+
+     ...: Any other parameters to be passed through to 'plot.default',
+          'points', 'arrows', etc. (e.g. 'lwd', 'col', 'pch', 'axes',
+          'xlim', 'ylim').  'xlim' and 'ylim' are set by default to
+          include all of the data points and error bars.  'xlab' and
+          'ylab' are set to the names of 'x' and 'y'.  If 'pch==NA', no
+          points are drawn (e.g. leaving room for text labels instead)
+
+_V_a_l_u_e:
+
+     invisible(x,y); creates a plot on the current device.
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker (documentation and tweaking of a function provided by
+     Bill Venables, additional feature ideas from Gregory Warnes)
+
+_S_e_e _A_l_s_o:
+
+     'boxplot'
+
+_E_x_a_m_p_l_e_s:
+
+      y<-runif(10)
+      err<-runif(10)
+      plotCI(1:10,y,err)
+      plotCI(1:10,y,err,2*err,lwd=2,col="red",scol="blue")
+      err.x<-runif(10)
+      err.y<-runif(10)
+      plotCI(1:10,y,err.y,pt.bg=par("bg"),pch=21)
+      plotCI(1:10,y,err.x,pt.bg=par("bg"),pch=21,err="x",add=TRUE)
+      data(warpbreaks)
+      attach(warpbreaks)
+      wmeans<-by(breaks,tension,mean)
+      wsd<-by(breaks,tension,sd)
+      ## note that barplot() returns the midpoints of the bars, which plotCI
+      ##  uses as x-coordinates
+      plotCI(barplot(wmeans,col="gray",ylim=c(0,max(wmeans+wsd))),wmeans,wsd,add=TRUE)
+      ## using labels instead of points
+      labs<-sample(LETTERS,replace=TRUE,size=10)
+      plotCI(1:10,y,err,pch=NA,gap=0.02)
+      text(1:10,y,labs)
+

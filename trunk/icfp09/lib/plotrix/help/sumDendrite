@@ -1,0 +1,39 @@
+sumDendrite             package:plotrix             R Documentation
+
+_S_u_m _t_h_e _c_o_u_n_t_s _i_n _t_h_e _t_o_p _l_e_v_e_l _o_f _a _d_e_n_d_r_i_t_e _o_b_j_e_c_t.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Find the sum of the counts that are the first elements of each
+     list in the top level of a dendrite object.
+
+_U_s_a_g_e:
+
+      sumDendrite(x) 
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A list with a numeric value as the first element in each of
+          its toplevel elements.
+
+_D_e_t_a_i_l_s:
+
+     A 'dendrite' object is a possibly nested list of lists that
+     contain the counts and pointers to sublists in each list. Such an
+     object describes the  attributes of objects that can take on
+     mutually exclusive attributes (that is, belong to disjunct sets).
+     'sumDendrite' is a convenience function to get the total number of
+     objects that are so classified.
+
+_V_a_l_u_e:
+
+     The sum of the counts in the top level of lists.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'plot.dendrite'
+

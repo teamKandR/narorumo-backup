@@ -1,0 +1,57 @@
+draw.tilted.sector          package:plotrix          R Documentation
+
+_D_i_s_p_l_a_y _a _3_D _p_i_e _s_e_c_t_o_r
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a 3D pie sector.
+
+_U_s_a_g_e:
+
+      draw.tilted.sector(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
+       start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0,shade=0.8)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: Position of the center of the pie sector in user units
+
+   edges: Number of edges to draw a complete ellipse
+
+  radius: the radius of the pie in user units
+
+  height: the height of the pie in user units
+
+   theta: The angle of viewing in radians
+
+   start: Starting angle of the sector
+
+     end: Ending angle of the sector
+
+  border: The color of the sector border lines
+
+     col: Color of the sector
+
+ explode: How far to "explode" the sectors in user units
+
+   shade: If > 0 and < 1, the proportion to reduce the brightness of
+          the sector color to get a better 3D effect.
+
+_D_e_t_a_i_l_s:
+
+     'draw.tilted.sector' displays a single 3D pie sector. It is
+     probably only useful when called from 'pie3D'. The 'shade'
+     argument proportionately reduces the brightness of the RGB color
+     of the sector to produce a top lighted effect.
+
+_V_a_l_u_e:
+
+     The bisector of the pie sector in radians.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'pie3D'
+

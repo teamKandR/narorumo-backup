@@ -1,0 +1,96 @@
+gantt.chart         package:plotrix         R Documentation(latin1)
+
+_D_i_s_p_l_a_y _a _G_a_n_t_t _c_h_a_r_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Displays a Gantt chart with priority coloring
+
+_U_s_a_g_e:
+
+      gantt.chart(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
+       priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
+       half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: a list of task labels, start/end times and task priorities as
+          returned by 'get.gantt.info'. If this is not present,
+          'get.gantt.info' will be called.
+
+  format: the format to be used in entering dates/times (see
+          'strptime').
+
+    xlim: the horizontal limits of the plot.
+
+taskcolors: a vector of colors used to illustrate task priority.
+
+priority.legend: Whether to display a priority color legend.
+
+vgridpos: optional positions of the vertical grid lines.
+
+vgridlab: optional labels for the vertical grid lines.
+
+vgrid.format: format for the vertical grid labels.
+
+half.height: the proportion of the spacing between task bars that will
+          be filled by the bar on each side - 0.5 will leave no space.
+
+   hgrid: logical - whether to display grid lines between the bars.
+
+    main: the title of the plot - note that this is actually displayed
+          using 'mtext'.
+
+    xlab: horizontal axis label - usually suppressed.
+
+cylindrical: Whether to give the bars a cylindrical appearance.
+
+_D_e_t_a_i_l_s:
+
+     If task priority colors are not wanted, set 'taskcolors' to a
+     single value to suppress the coloring. If this is not done,
+     'rainbow' will be called to generate a different color for each
+     task.
+
+     There can now be more than one time interval for each task. If
+     there is, more than one bar will be displayed for each "task",
+     which may not be a task at all, but intervals of some attribute
+     for each entity.
+
+_V_a_l_u_e:
+
+     The list used to create the chart - see 'get.gantt.info' for
+     details. This can be saved and reused rather than manually
+     entering the  information each time the chart is displayed.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon (original by Scott Waichler - features by Ulrike
+     Gromping)
+
+_S_e_e _A_l_s_o:
+
+     'get.gantt.info'
+
+_E_x_a_m_p_l_e_s:
+
+      Ymd.format<-"%Y/%m/%d"
+      gantt.info<-list(labels=
+       c("First task","Second task","Third task","Fourth task","Fifth task"),
+       starts=
+       as.POSIXct(strptime(
+       c("2004/01/01","2004/02/02","2004/03/03","2004/05/05","2004/09/09"),
+       format=Ymd.format)),
+       ends=
+       as.POSIXct(strptime(
+       c("2004/03/03","2004/05/05","2004/05/05","2004/08/08","2004/12/12"),
+       format=Ymd.format)),
+       priorities=c(1,2,3,4,5))
+      vgridpos<-as.POSIXct(strptime(c("2004/01/01","2004/02/01","2004/03/01",
+       "2004/04/01","2004/05/01","2004/06/01","2004/07/01","2004/08/01",
+       "2004/09/01","2004/10/01","2004/11/01","2004/12/01"),format=Ymd.format))
+      vgridlab<-
+       c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+      gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
+       priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
+

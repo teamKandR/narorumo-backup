@@ -1,0 +1,54 @@
+draw.circle             package:plotrix             R Documentation
+
+_D_r_a_w _a _c_i_r_c_l_e.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Draws a circle on an existing plot.
+
+_U_s_a_g_e:
+
+      draw.circle(x,y,radius,nv=100,border=NULL,col=NA,lty=1,lwd=1)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: Coordinates of the center of the circle.
+
+  radius: Radius of the circle in user units.
+
+      nv: Number of vertices to draw the circle.
+
+  border: Color to use for drawing the circumference.
+
+     col: Color to use for filling the circle.
+
+     lty: Line type for the circumference.
+
+     lwd: Line width for the circumference.
+
+_V_a_l_u_e:
+
+     A list with the x and y coordinates of the points on the
+     circumference.
+
+_N_o_t_e:
+
+     The principal advantage of 'draw.circle' is that it adjusts for 
+     the aspect ratio of the plot.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'polygon'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(1:5,seq(1,10,length=5),type="n",xlab="",ylab="",main="Test draw.circle")
+      draw.circle(2,2,0.5,border="purple",lty=1,lwd=1)
+      draw.circle(2.5,8,0.6,border="red",lty=3,lwd=3)
+      draw.circle(4,3,0.7,border="green",lty=1,lwd=1)
+      draw.circle(3.5,7,0.8,border="blue",lty=2,lwd=2)
+

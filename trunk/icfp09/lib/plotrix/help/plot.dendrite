@@ -1,0 +1,55 @@
+plot.dendrite            package:plotrix            R Documentation
+
+_P_l_o_t _a _d_e_n_d_r_o_g_r_a_m _o_f _a _d_e_n_d_r_i_t_e _o_b_j_e_c_t.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Plot a dendrogram for two or more mutually exclusive attributes.
+
+_U_s_a_g_e:
+
+      ## S3 method for class 'dendrite':
+      plot(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A 'dendrite' object containing the counts of objects having
+          combinations of mutually exclusive attributes.
+
+ xlabels: The category labels that will be displayed beneath the
+          dendrogram.
+
+    main: The title of the plot.
+
+     mar: Margins for the plot.
+
+     cex: Character expansion for the leaves of the dendrogram.
+
+     ...: Additional arguments passed to 'plot'.
+
+_D_e_t_a_i_l_s:
+
+     'plot.dendrite' sets up a plot for a dendrogram. The actual
+     plotting of the dendrogram is done by 'furc'.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'furc'
+
+_E_x_a_m_p_l_e_s:
+
+      sex<-sample(c("M","F"),100,TRUE)
+      hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)
+      eye<-sample(c("Blue","Black","Brown","Green"),100,TRUE)
+      charac<-data.frame(sex=sex,hair=hair,eye=eye)
+      characlist<-makeDendrite(charac)
+      plot.dendrite(characlist,names(charac),main="Test dendrogram",cex=0.8)
+

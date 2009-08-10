@@ -1,0 +1,49 @@
+count.overplot            package:plotrix            R Documentation
+
+_S_h_o_w _o_v_e_r_l_y_i_n_g _p_o_i_n_t_s _a_s _c_o_u_n_t_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'count.overplot' checks for overlying points defined as points
+     separated by a maximum of 'tol', a two element numeric vector of
+     the x and y tolerance.  Defaults to 1/2 of the width of a lower
+     case  "o" in the x direction and 1/2 of the height of a lower case
+     "o" in  the y direction.
+
+_U_s_a_g_e:
+
+      count.overplot(x,y,tol=NULL,col=par("fg"),pch="1",...)
+
+_A_r_g_u_m_e_n_t_s:
+
+     x,y: Two numeric data vectors or the first two columns of a matrix
+          or data frame. Typically the x/y coordinates of points to be
+          plotted.
+
+     tol: The largest distance between points that will be considered
+          to be overlying.
+
+     col: Color(s) for the points (not the numbers).
+
+     pch: Symbol(s) to display.
+
+     ...: additional arguments passed to 'plot'.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'cluster.overplot','sizeplot'
+
+_E_x_a_m_p_l_e_s:
+
+      xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
+      count.overplot(xy.mat,main="count.overplot",
+       xlab="X values",ylab="Y values")
+

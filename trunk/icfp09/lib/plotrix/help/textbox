@@ -1,0 +1,48 @@
+textbox               package:plotrix               R Documentation
+
+_A_d_d _t_e_x_t _b_o_x
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Add text to plot, justified, in a box
+
+_U_s_a_g_e:
+
+      textbox(x,y,textlist,justify=TRUE,cex=1,leading=0.5,box=TRUE)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: x position: a vector with min. and max. x position
+
+       y: y position: location of the top of the box
+
+textlist: a vector of text strings
+
+ justify: justify text in box?
+
+     cex: character size
+
+ leading: inter-line spacing
+
+     box: draw a box around the text?
+
+_D_e_t_a_i_l_s:
+
+     Justifies text in the box by pasting the vector together,
+     splitting it into words, and then adding words to the current line
+     until the line is wide enough
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Ben Bolker
+
+_E_x_a_m_p_l_e_s:
+
+      plot.new()
+      textbox(c(0,0.2),1,c("many words","more words","why not?",
+                           "keep going",rep("and going",10)))
+

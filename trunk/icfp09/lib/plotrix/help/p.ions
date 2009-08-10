@@ -1,0 +1,38 @@
+p.ions                package:plotrix                R Documentation
+
+_C_a_l_c_u_l_a_t_e _i_o_n/_t_o_t_a_l(_i_o_n) _r_a_t_i_o_s.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculates the ion/total(ions) ratios of ions used in the Piper
+     diagram.
+
+_U_s_a_g_e:
+
+      p.ions(meq,short.output=TRUE)
+
+_A_r_g_u_m_e_n_t_s:
+
+     meq: A data frame containing the concentrations of ions used in
+          the Piper diagram in milliequivalents/liter.
+
+short.output: Whether to return the proportions of four ions (TRUE) or
+          include carbonate-bicarbonate and sodium-potassium (FALSE).
+
+_D_e_t_a_i_l_s:
+
+     'p.ions' calculates the proportions of anions or cations to total
+     anions or cations for the ions used in the Piper diagram.
+
+_V_a_l_u_e:
+
+     The proportion of the ions.
+
+_A_u_t_h_o_r(_s):
+
+     Mike Cheetham
+
+_S_e_e _A_l_s_o:
+
+     'piper.diagram'
+

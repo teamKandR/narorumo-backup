@@ -1,0 +1,61 @@
+triax.abline             package:plotrix             R Documentation
+
+_L_i_n_e_s _f_o_r _t_r_i_a_n_g_l_e _p_l_o_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Display lines on a triangle plot.
+
+_U_s_a_g_e:
+
+      triax.abline(b=NULL,r=NULL,l=NULL,col=par("col"),lty=par("lty"),
+       cc.axes=FALSE)
+
+_A_r_g_u_m_e_n_t_s:
+
+       b: Lines relating to the bottom axis.
+
+       r: Lines relating to the right axis.
+
+       l: Lines relating to the left axis.
+
+     col: Color(s) of the lines.
+
+     lty: Type(s) of the lines.
+
+ cc.axes: Clockwise/counterclockwise axes and ticks.
+
+_D_e_t_a_i_l_s:
+
+     'triax.abline' displays one or more lines on a triangle plot.
+     Lines are oriented in the conventional way, horizontal for the
+     left axis,  slanting up to the right for the right axis and up to
+     the left for the  bottom axis. If 'cc.axes' is TRUE, the
+     orientation is up-left for the left axis, horizontal for the right
+     axis and up-right for the bottom axis.
+
+     Remember to call 'triax.plot' with 'no.add=FALSE' and restore the
+     graphics parameters as in the example or the lines will not be
+     placed properly.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'triax.plot'
+
+_E_x_a_m_p_l_e_s:
+
+      triax.return<-triax.plot(data.frame(bottom=0.4,right=0.3,left=0.3),
+       main="Triax ablines",no.add=FALSE)
+      triax.abline(l=0.3,col="red")
+      triax.abline(r=0.3,col="green")
+      triax.abline(b=0.4,col="blue")
+      par(triax.return$oldpar)
+

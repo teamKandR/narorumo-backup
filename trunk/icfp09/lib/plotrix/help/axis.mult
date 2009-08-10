@@ -1,0 +1,69 @@
+axis.mult              package:plotrix              R Documentation
+
+_D_i_s_p_l_a_y _a_n _a_x_i_s _w_i_t_h _v_a_l_u_e_s _h_a_v_i_n_g _a _m_u_l_t_i_p_l_i_e_r
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     An axis is displayed on an existing plot where the tick values are
+     divided by a multiplier and the multiplier is displayed next to
+     the axis.
+
+_U_s_a_g_e:
+
+      axis.mult(side=1,at=NULL,labels,mult=1,mult.label,mult.line,
+       mult.labelpos=NULL,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+    side: which side to display
+
+      at: where to place the tick marks - defaults to 'axTicks()'
+
+  labels: tick labels - defaults to at/mult
+
+    mult: the multiplier factor
+
+mult.label: the label to show the multiplier - defaults to "x mult"
+
+mult.line: the margin line upon which to show the multiplier
+
+mult.labelpos: where to place 'mult.label' - defaults to centered and
+          outside the axis tick labels
+
+     ...: additional arguments passed to 'axis'.
+
+_D_e_t_a_i_l_s:
+
+     'axis.mult' automates the process of displaying an axis with a 
+     multiplier applied to the tick values. By default it will divide
+     the default axis tick labels by 'mult' and place 'mult.label'
+     where 'xlab' or 'ylab' would normally appear. Thus the plot call
+     should set the relevant label to an empty string in such cases. It
+     is simplest to call 'plot' with 'axes=FALSE' and then  display the
+     box and any standard axes before calling 'axis.mult'.
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     While 'axis.mult' will try to display an axis on any side, the top
+     and right margins will require adjustment using 'par' for
+     'axis.mult' to display properly.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'axis', 'mtext'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
+      box()
+      axis.mult(1,mult=0.001)
+      axis.mult(2,mult=100)
+

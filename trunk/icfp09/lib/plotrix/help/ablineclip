@@ -1,0 +1,63 @@
+ablineclip              package:plotrix              R Documentation
+
+_A_d_d _a _s_t_r_a_i_g_h_t _l_i_n_e _t_o _a _p_l_o_t
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     As 'abline', but has arguments 'x1,x2,y1,y2' as in 'clip'.
+
+_U_s_a_g_e:
+
+      ablineclip(a=NULL,b=NULL,h=NULL,v=NULL,reg=NULL,coef=NULL,untf=FALSE,
+       x1=NULL,x2=NULL,y1=NULL,y2=NULL,...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       a: Intercept.
+
+       b: Slope.
+
+       h: the x-value(s) for vertical line(s).
+
+       v: the y-value(s) for horizontal line(s).
+
+     reg: Fitted lm object. 
+
+    coef: Coefficients, typically intercept and slope.
+
+    untf: How to plot on log coordinates, see 'abline'.
+
+x1,x2,y1,y2: Clipping limits, see 'clip'.
+
+     ...: Further arguments passed to 'abline'.
+
+_D_e_t_a_i_l_s:
+
+     'ablineclip' sets a new clipping region and then calls 'abline'.
+     If any of the four clipping limits is NULL, the values from
+     'par("usr")' are substituted. After the call to 'abline', the old
+     clipping region is restored. In order to make 'clip' work, there
+     is a call to 'abline' that draws a line off the plot.
+
+_V_a_l_u_e:
+
+     None. Adds to the current plot.
+
+_A_u_t_h_o_r(_s):
+
+     Remko Duursma
+
+_S_e_e _A_l_s_o:
+
+     'abline'
+
+_E_x_a_m_p_l_e_s:
+
+      x <- rnorm(100)
+      y <- x + rnorm(100)
+      lmfit <- lm(y~x)
+      plot(x,y,xlim=c(-3.5,3.5))
+      ablineclip(lmfit,x1=-2,x2=2,lty=2)
+      ablineclip(h=0,x1=-2,x2=2,lty=3,col="red")
+      ablineclip(v=0,y1=-2.5,y2=1.5,lty=4,col="green")
+

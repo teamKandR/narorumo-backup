@@ -1,0 +1,55 @@
+revaxis               package:plotrix               R Documentation
+
+_P_l_o_t _w_i_t_h _a_x_i_s _d_i_r_e_c_t_i_o_n(_s) _r_e_v_e_r_s_e_d.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Reverses the sense of either or both the 'x' and 'y' axes.
+
+_U_s_a_g_e:
+
+     revaxis(x, y, xrev=FALSE, yrev=TRUE, xside=if (yrev) 3 else 1,
+            yside=if (xrev) 4 else 2, xlab=NULL, ylab=NULL, bty=NULL, ...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: Vector of 'x'-coordinates of the data to be plotted. 
+
+       y: Vector of 'y'-coordinates of the data to be plotted. 
+
+    xrev: Logical scalar; should the sense of the 'x'-axis be reversed?
+
+    yrev: Logical scalar; should the sense of the 'y'-axis be reversed?
+
+   xside: The side of the plot on which the 'x'-axis labels should go.
+
+   yside: The side of the plot on which the 'y'-axis labels should go.
+
+    xlab: Character string for labelling the 'x'-axis. 
+
+    ylab: Character string for labelling the 'y'-axis. 
+
+     bty: Single letter indicating the type of box to be drawn around
+          the plot. See 'par()' for the possible letters and their
+          meaning.
+
+     ...: Other arguments to be passed to plot.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Rolf Turner
+
+_S_e_e _A_l_s_o:
+
+     'plot', 'box', 'par'
+
+_E_x_a_m_p_l_e_s:
+
+     x <- runif(20)
+     y <- runif(20)
+     revaxis(x,y,yside=4)
+

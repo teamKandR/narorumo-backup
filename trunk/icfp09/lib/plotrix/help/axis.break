@@ -1,0 +1,62 @@
+axis.break              package:plotrix              R Documentation
+
+_P_l_a_c_e _a "_b_r_e_a_k" _m_a_r_k _o_n _a_n _a_x_i_s
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Places a "break" mark on an axis on an existing plot
+
+_U_s_a_g_e:
+
+      axis.break(axis=1,breakpos=NULL,bgcol="white",breakcol="black",
+       style="slash",brw=0.02)
+
+_A_r_g_u_m_e_n_t_s:
+
+    axis: which axis to break
+
+breakpos: where to place the break in user units
+
+   bgcol: the color of the plot background
+
+breakcol: the color of the "break" marker
+
+   style: Either 'gap', 'slash' or 'zigzag'
+
+     brw: break width relative to plot width
+
+_V_a_l_u_e:
+
+     nil
+
+_N_o_t_e:
+
+     There is some controversy about the propriety of using
+     discontinuous coordinates for plotting, and thus axis breaks.
+     Discontinuous coordinates allow widely separated groups of values
+     or outliers to appear without devoting too much of the plot to
+     empty space. The major objection seems  to be that the reader will
+     be misled by assuming continuous coordinates. The 'gap' style that
+     clearly separates the two sections of the plot is probably best
+     for avoiding this.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon and Ben Bolker
+
+_S_e_e _A_l_s_o:
+
+     'gap.plot'
+
+_E_x_a_m_p_l_e_s:
+
+      plot(3:10,main="Axis break test")
+      # put a break at the default axis and position
+      axis.break()
+      axis.break(2,2.9,style="zigzag")
+      twogrp<-c(rnorm(10)+4,rnorm(10)+20)
+      gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
+       main="Two separated groups with gap axis break",
+       col=c(rep(2,10),rep(3,10)),ytics=c(3,5,18,20))
+      legend(12,6,c("Low group","High group"),pch=1,col=2:3)
+

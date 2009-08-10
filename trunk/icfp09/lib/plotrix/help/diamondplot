@@ -1,0 +1,47 @@
+diamondplot             package:plotrix             R Documentation
+
+_P_l_o_t _m_u_l_t_i_p_l_e _v_a_r_i_a_b_l_e_s _a_s _p_o_l_y_g_o_n_s _o_n _a _r_a_d_i_a_l _g_r_i_d.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     'diamondplot' displays a plot of polygons on a radial grid
+     representing the relationships between one or more attributes of
+     data objects. For a slightly different style of plot, see the
+     "spiderweb plot" example in 'radial.plot'.
+
+_U_s_a_g_e:
+
+      diamondplot(x, bg=gray(0.6), col=rainbow,name="", ...)
+
+_A_r_g_u_m_e_n_t_s:
+
+       x: A data frame containing numeric values that represent
+          attributes (possibly repeated observations) of data objects.
+          See the example.
+
+      bg: The background color for the plot.
+
+     col: The colors for the polygons.
+
+    name: The title for the plot (i.e. 'main').
+
+     ...: additional arguments passed to 'plot'.
+
+_V_a_l_u_e:
+
+     nil
+
+_A_u_t_h_o_r(_s):
+
+     Elisa Biancotto
+
+_S_e_e _A_l_s_o:
+
+     'plot', 'radial.plot'
+
+_E_x_a_m_p_l_e_s:
+
+      data(mtcars)
+      mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
+      diamondplot(mysubset)
+

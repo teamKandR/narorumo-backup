@@ -1,0 +1,40 @@
+getIntersectList           package:plotrix           R Documentation
+
+_E_n_t_e_r _t_h_e _i_n_f_o_r_m_a_t_i_o_n _f_o_r _a _s_e_t _i_n_t_e_r_s_e_c_t_i_o_n _d_i_s_p_l_a_y
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Enter the information for a set intersection display.
+
+_U_s_a_g_e:
+
+      getIntersectList(nelem,xnames=NULL)
+
+_A_r_g_u_m_e_n_t_s:
+
+   nelem: The number of sets for which the intersections will be
+          displayed.
+
+  xnames: The labels for the set intersections. The function creates
+          names from combinations of the first 'nelem' capital letters
+          if none are  given.
+
+_D_e_t_a_i_l_s:
+
+     'getIntersectList' allows the user to manually enter the counts of
+     set intersections rather than build this information from a matrix
+     of data. It is probably most useful for producing an intersection
+     diagram when the counts of the intersections are already known.
+
+_V_a_l_u_e:
+
+     A list of the counts of elements in the set intersections.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+
+_S_e_e _A_l_s_o:
+
+     'makeIntersectList', 'intersectDiagram'
+
