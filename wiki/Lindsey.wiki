@@ -1,3 +1,3 @@
 #summary Lindsey's bio.
 
-Lindsey Kuper was born and raised in Iowa and is one of the world's few remaining actual farmer's daughters.  She hangs out at [http://cs.indiana.edu/~lkuper Indiana University] and writes a lot of Scheme.  When she grows up, she wants to be a rock star.
+Lindsey Kuper was born and raised in Iowa and is one of the world's few remaining actual farmer's daughters.  [http://cs.indiana.edu/~lkuper She] hangs out in limestone buildings and writes a lot of Scheme.  When she grows up, she wants to be a rock star.
