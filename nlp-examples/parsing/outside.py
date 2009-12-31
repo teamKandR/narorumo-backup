@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
 """
-Calculates the table of inside probabilities, given the grammar below, for
-the sentence "a dog ate pizza with a fork in a kitchen".
+Calculates the table of outside probabilities, given the grammar below, for
+the (somewhat uncommon) sentence "many antidotes engulf occasionally highly
+idealistic peanuts".
 
 Alex Rudnick (alex.rudnick@gmail.com)
 """

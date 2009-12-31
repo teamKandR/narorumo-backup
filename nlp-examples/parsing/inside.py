@@ -61,7 +61,7 @@ def cyk_betas(rules, words, table):
     return table
 
 def dog_pizza():
-    """The dog eating the pizza example from hw8."""
+    """The dog eating the pizza example."""
 
     rules = [
 ("S", ("NP", "VP"), 1.0),
