@@ -1,0 +1,12 @@
+This is where Alex is working on tools to do web-type things from the command
+line.
+
+So far, he's got a program to print out today's agenda (agenda.py) from Google
+Calendar.
+
+Next up are programs to print out his current gmail inbox and show URLs and
+snippets for the Google hits for a particular query.
+
+agenda.py requires the Python gdata api, which is available here:
+http://code.google.com/p/gdata-python-client/ . It was developed with version
+2.0.6, but will probably work with later ones.
