@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """
 Pull down today's agenda from Google Calendar and print it to stdout. This only
