@@ -1,0 +1,134 @@
+;;;;  Modified: everett on Mon Mar  6 13:09:00 1995
+
+;;;; LTRE -- a version of TRE which uses the LTMS
+;;; Last edited 1/29/93, by KDF
+
+;;; Copyright (c) 1989, 1990, 1991 Kenneth D. Forbus, Northwestern University,
+;;; Johan de Kleer and Xerox Corporation.
+;;; All rights reserved.
+
+;;; See the file legal.txt for a paragraph stating scope of permission
+;;; and disclaimer of warranty.  The above copyright notice and that
+;;; paragraph must be included in any separate copy of this file.
+
+(in-package :COMMON-LISP-USER)
+
+(defvar *ltre-path* "ltre")
+ 
+;; Unless the ltre is placed in its own package, unexporting won't
+;; do the trick, we have to unequivocally destroy rlet
+#+MCL (unintern 'rlet (find-package :ccl))
+
+(defparameter *ltre-files*
+  '("ltms"      ;; LTMS
+    "linter"    ;; Interface
+    "ldata"     ;; Database
+    "lrules"    ;; Rule system
+    "unify"     ;; Unifier
+    "funify"    ;; Open-coding of unification
+    "laccept"   ;; shakedown tests for ltre
+    "cwa"       ;; Closed-world assumption mechanism
+    "dds"))     ;; Dependency-directed search facility
+
+(defparameter *set-rule-file* "setrule")
+
+;;; The file setrule.lisp should also be compiled for efficiency.
+;;; It can only be compiled after an LTRE has been created.
+
+(defun bps-load-files (path file-list
+			&KEY (action :LOAD-SOURCE) (verbose t)
+			(src-ext *src-ext*) (bin-ext *bin-ext*))
+
+    (format t "in ur bps-load-files~%")
+
+  (unless verbose
+    (format t "Suppressing messages during this load of files from~% ~A~%~
+               To see messages, call bps-load-files with the keyword :verbose ~
+               set to T~%~%"
+	    path))
+  (ecase action
+	 ((:COMPILE-IF-NEWER :SOURCE-IF-NEWER :LOAD-SOURCE :LOAD-BINARY)
+	  (dolist (file file-list)
+	    (bps-load-file path file
+		       :action action
+		       :verbose verbose
+		       :src-ext src-ext
+		       :bin-ext bin-ext)))
+	 (:COMPILE
+	  (bps-load-files path file-list
+		      :action :LOAD-SOURCE
+		      :verbose verbose
+		      :src-ext src-ext
+		      :bin-ext bin-ext)
+	  (dolist (file file-list)
+	    (bps-load-file path file
+		       :action :COMPILE
+		       :verbose verbose
+		       :src-ext src-ext
+		       :bin-ext bin-ext)))))
+
+(defun bps-load-file (path file
+		       &KEY (action :LOAD-SOURCE) (verbose t)
+		       (src-ext *src-ext*) (bin-ext *bin-ext*))
+  (ecase action
+	 (:COMPILE-IF-NEWER
+	  (let* ((src (make-full-file-spec path file src-ext))
+		 (bin (make-full-file-spec path file bin-ext))
+		 (src-exists? (probe-file src))
+		 (bin-exists? (probe-file bin)))
+	    (cond ((and src-exists? bin-exists?)
+		   (cond ((>= (file-write-date bin) (file-write-date src))
+			  (load bin :verbose verbose))
+			 (t (with-compiler-chatter verbose
+                              (compile-file src) )
+                            (load bin :verbose verbose))))
+		  (bin-exists? (load bin :verbose verbose))
+		  (src-exists?
+		   (bps-load-file path file
+				  :action :LOAD-SOURCE
+				  :verbose verbose
+				  :src-ext src-ext
+				  :bin-ext bin-ext)
+		   (with-compiler-chatter verbose
+		     (compile-file src))
+                   (load bin :verbose verbose))
+		  (t (error "~%Can't find ~A or ~A~%" src bin)))))
+	 (:SOURCE-IF-NEWER
+	  (let* ((src (make-full-file-spec path file src-ext))
+		 (bin (make-full-file-spec path file bin-ext))
+		 (src-exists? (probe-file src))
+		 (bin-exists? (probe-file bin)))
+	    (cond ((and src-exists? bin-exists?)
+		   (cond ((>= (file-write-date bin) (file-write-date src))
+			  (load bin :verbose verbose))
+			 (t (load src :verbose verbose))))
+		  (bin-exists? (load bin :verbose verbose))
+		  (src-exists? (load src :verbose verbose))
+		  (t (error "~%Can't find ~A or ~A~%" src bin)))))
+	 (:COMPILE
+	  (bps-load-file path file
+			 :action :LOAD-SOURCE
+			 :verbose verbose
+			 :src-ext src-ext
+			 :bin-ext bin-ext)
+	  (with-compiler-chatter verbose
+            (compile-file (make-full-file-spec path file src-ext))))
+	 (:LOAD-SOURCE
+	  (load (make-full-file-spec path file src-ext)
+		:verbose verbose))
+	 (:LOAD-BINARY
+	  (load (make-full-file-spec path file bin-ext)
+		:verbose verbose))))
+
+(defun load-ltre (&key (action :compile-if-newer))
+  (if (eq action :compile)
+    (compile-ltre)
+    (bps-load-files *ltre-path* *ltre-files* :action action)))
+
+(defun compile-ltre ()
+  (bps-load-files *ltre-path* *ltre-files* :action :compile)
+  (unless (and (boundp '*ltre*)
+               (not (null *ltre*)))
+    (create-ltre "DUMMY"))
+  (bps-load-file (make-bps-path "ltms") *set-rule-file* :action :compile))
+

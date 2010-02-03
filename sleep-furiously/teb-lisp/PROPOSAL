@@ -1,0 +1,71 @@
+Alex Rudnick (alexr@cc)
+cs7613 fall2005, Project Proposal
+21 October 2005
+
+"...  a poem about a haircut! But lofty, nobel, tragic, timeless, full of
+love, treachery, retribution, quiet heroism in the face of certain doom!
+Six lines, cleverly rhymed, and every word beginning with the letter 's'!"
+	-- Stanislaw Lem, _The Cyberiad_ (trans. Kandel)
+
+** Description of the problem domain
+
+The TEB system ("Trurl's Electronic Bard") will take a list of words, a
+description of a poetic form, and suggestions as to which words should be
+used, and where, for thematic guidance, and produce a poem to
+specification. Coming up with words to fit in a given poetic form can be
+framed as a search problem, and we'll use a TMS and a rule engine to guide
+the search as we go.
+
+** Example representation, problem language
+
+Internally, the system will keep track of tasks left to be completed
+("complete the poem", or a given stanza, or a line) and rules will be
+framed that help the system decide what to do next. For ease of processing,
+words will be passed around as strings -- we'll need to look at letters to do
+syllable counting and rhyme checking.
+
+Problems (poetic forms) might be defined something like this, but the
+language may be expanded as I get into development:
+
+;; just in case you want senryu that rhyme
+(defstanza rhyming-haiku-stanza
+ :lines (5 A
+         7 B
+         5 A)) ;; 'A' and 'B' denote the rhyme scheme.
+
+(defpoeticform rhyming-haiku
+ :stanzas ((1 rhyming-haiku-stanza)))
+
+... and a poem might be produced like this:
+(teb-make-poem 'rhyming-haiku)
+
+Additionally, I'll have to come up with a notation for suggesting
+individual words in particular places.
+
+** Example set to be used
+
+Poetic forms encoded will include the senryu/haiku (1 stanza, 3 lines of 5,
+7 and 5 syllables), sonnet (two stanzas, one of 8 lines and one of 6,
+particular rhyme scheme, 10-syllable lines...), villanelle (5 stanzas of 3
+lines, etc.), and perhaps a few others which will be discovered by talking
+with friends more knowledgeable about poetry than I.
+
+Users will of course be able to add their own poetic forms with
+defpoeticform, described above.
+
+** Tools
+
+From the CPS tools, I plan to use the LTRE and LTMS, with the rule engine
+guiding the problem-solving process (rules will be set up to decide what to
+do next) and the TMS signalling contradictions when we produce incompatable
+chunks of poetry or a particular word not fitting in a certain slot.
+Additional tools needed will be poetry-specific, including algorithms for
+detecting rhymes (Soundex and Metaphone seem promising so far) and counting
+syllables.
+
+Time permitting, I will also employ a chart parser (already implemented for
+cs4640) to constrain the system to produce only (reasonably) valid English
+phrases and clauses -- this may be time-consuming because it will involve
+finding a way to label a large corpus of English words with appropriate
+parts-of-speech.  Alternatively, I could just find a large
+machine-processable dictionary with POS information encoded.
