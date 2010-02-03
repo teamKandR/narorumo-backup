@@ -1,0 +1,55 @@
+Here's the README from the code I wrote in 2005.
+For the license for the LTRE (Logic-based Tiny Rule Engine), please see 
+legal-n.txt -- essentially, derivative works and redistributing are permitted.
+
+LTRE comes from the book Building Problem Solvers:
+http://www.qrg.northwestern.edu/BPS/readme.html
+
+********************************************************************************
+
+TEB: Trurl's Electronic Bard
+Alex Rudnick (alexr@cc.gatech.edu)
+cs7613 project, fall 2005
+
+** compatability
+TEB has been tested with SBCL, clisp, and Allegro, so it will almost
+certainly work on your lisp system :)
+
+sbcl seems to run it the fastest, though.
+
+** sources
+- The directory ltre/ contains the ltre/ltms system developed by Forbus and
+  de Kleer, tweaked very slightly for compatability.
+
+- The rhyme calculation system (which lives in "rhymes.lisp" was
+  implemented by me, but is an implementation of an algorithm developed for
+  Bradley Buda's excellent rhyme calculation system, outlined at
+  http://www.bradleybuda.com/rhymes
+
+- Dictionaries used include the Moby Project's part-of-speech dictionary
+  (in "moby-pos.sexprs") and the CMU Pronouncing Dictionary. These are
+  available at http://www.speech.cs.cmu.edu/cgi-bin/cmudict and
+  http://www.dcs.shef.ac.uk/research/ilash/Moby/ respectively. I did some
+  tweaking on both of these for ease-of-use, compatability (removal of
+  weird characters, for example), and completeness.
+  
+  If you find yourself with a copy of mobyposi.i, you can produce something
+  like moby-pos.sexprs by running it through moby-process.c.
+
+- TEB has been fed from a variety of sources, including: 
+  - The Spam-Ku Archive: http://mit.edu/jync/www/spam/
+  - Lyrics from rappers El-P and Aesop Rock (both on Definitive Jux Records,
+    with transcriptions from the Original Hip-Hop Lyrics Archive, ohhla.com)
+  - An assortment of posts culled from livejournal.com
+  - _Zen Buddhism_ -- the writings of D.T. Suzuki, edited by William Barrett.
+  - Fyodor Dostoevsky's "Notes From The Underground"
+  - Rene Descartes' _Discourse on Method_
+  - Guy L. Steele's _Common Lisp the Language_, second edition.
+  - A.E. Housman's _A Shropshire Lad_
+
+** running TEB
+(load "load-teb.lisp")
+(load-teb)
+
+(build-poem 'haiku)
+(build-poem 'petrarchan-sonnet)

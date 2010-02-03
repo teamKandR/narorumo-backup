@@ -1,0 +1,28 @@
+\begin{thebibliography}{}
+
+\bibitem{buda}
+Buda, Bradley (2004). A System for the Automatic Identification of Rhymes in
+English Text. EECS 595 project, University of Michigan.
+\newblock \verb+http://www.bradleybuda.com/rhymes+
+
+\bibitem{cmudict}
+The CMU Pronouncing Dictionary. From the Speech at CMU group, Carnegie
+Mellon University.
+\newblock \verb+http://www.speech.cs.cmu.edu/cgi-bin/cmudict+
+
+\bibitem{dadaengine}
+Bulhak, Andrew. The Dada Engine is a system for generating random text from
+grammars, produced by the mysterious Australian programmer acb.
+\newblock \verb+http://dev.null.org/dadaengine+
+
+\bibitem{moby}
+The Moby Part-of-Speech dictionary. From The Moby Project, hosted by the
+Institute for Language Speech and Hearing, the University of Sheffield,
+originally by Grady Ward.
+\newblock \verb+http://www.dcs.shef.ac.uk/research/ilash/Moby/+
+
+\bibitem{mycode}
+Rudnick, Alex. Version 1 of the TEB system is available at
+\newblock \verb+http://www.cc.gatech.edu/alexr/cs7613/alexr-teb.tgz+
+
+\end{thebibliography}

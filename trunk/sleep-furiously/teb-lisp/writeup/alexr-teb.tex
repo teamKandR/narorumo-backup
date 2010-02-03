@@ -1,0 +1,444 @@
+\documentclass[12pt]{article}
+\bibliographystyle{mla}
+% %% Please set your language here
+\usepackage[english]{babel}
+\usepackage[left=3cm,top=2cm,bottom=2cm,right=3cm]{geometry}
+ 
+\title{TEB: an automatic poetry generator}
+\author{Alex Rudnick (alexr@cc.gatech.edu)}
+\date{Fall 2005}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In this paper, we present TEB, a new system for the automatic generation of
+poetry, discuss its implementation, and consider the lessons learned along
+the way and their implications. We conclude that a poetry production in and
+of itself may not be best served with an inference engine such as the LTRE,
+and that natural language generation is a very difficult problem that
+requires much domain-specific information about a given language's syntax.
+\end{abstract}
+
+\section{Introduction, domain and motivation}
+"...  a poem about a haircut! But lofty, nobel, tragic, timeless, full of
+love, treachery, retribution, quiet heroism in the face of certain doom!
+Six lines, cleverly rhymed, and every word beginning with the letter 's'!"
+\newline-- Stanislaw Lem, \emph{The Cyberiad} (trans. Kandel)
+
+\bigskip
+Within the space of human endeavor, there are a number of pressing problems
+that must be solved in order to guarantee our survival and the maintenance
+of our society and way of life. On a daily basis, we figure out how to feed
+and shelter ourselves, and very soon, as a civilization we must determine
+appropriate ways to meet or stem our ever-increasing energy needs in a
+long-term sustainable way. Also, poetry is very nice, and it might be
+amusing to produce it in an automated fashion by making use of what we know
+of the structure of language. The TEB project sets out to solve this latter
+problem. We intended at first to use the LTRE inference system as much as
+possible towards this enterprise, as the constraints provided by the poetry
+production problem seem like they would lend well to rule-based inferences.
+
+\bigskip
+The idea of an automatic poetry system is not a new one at all, but this
+particular implementation is inspired by and named after Trurl's Electronic
+Bard, a fictional robot from Stanislaw Lem's excellent novel \emph{The
+Cyberiad}, capable of making poetry to almost any specification --
+including rhyme scheme, meter (at one point trochaic hexameter is
+requested), theme (see the example in the quotation above), and more
+esoteric requests such as the harrowing constraint "all words must begin
+with the letter 'g'". Writing poetry is a particularly difficult
+intellectual process for human beings, involving both ridiculously large
+search spaces (hundreds of thousands of possible words and a combinatorial
+explosion of phrases), but also very specific constraints. Some poetic
+forms require specific words to be repeated in particular ways (for
+example, the sestina), and many have constraints on patterns of stressed
+and unstressed syllables, and also, famously on rhymes. The author has
+tried on several occasions to compose sonnets and villanelles particularly,
+with very limited success. It's quite difficult.
+
+\bigskip
+Even in translation, Lem and his translator Kandel manage to construct
+these bizarre poems. TEB as of yet is not quite so amazing, but it is a
+start in that direction -- it can build rudimentary, although not
+very meaningful or compelling -- sonnets in under a second.
+
+\section{Implementation}
+\subsection{Initial sketches and the current version}
+The development of TEB started with a vague sketch in which the LTRE seemed
+like a vitally important part of the poem-construction process. Great
+numbers of rules were envisioned, assumptions about which words needed to
+go where might be assumed and retracted, and vast numbers of contradictions
+might need to be handled and sorted through. The system that I ended up
+building, however, ends up making fairly light use of the LTRE -- although
+in a very important way, outlined in section \ref{generating}. Blindly
+following simple grammatical rules and checking to make sure words are not
+repeated in rhyme schemes requires much less inference than I had thought
+it might, and plans for using the LTRE to guide the search for 
+
+Ultimately, a more sophisticated take on this project would need to
+encode much more knowledge about the structure of English, and this might
+be a rich ground for clever inferencing. As it stands, there simply aren't
+that many interesting constraints to build rules about, and TEB bears a
+resemblance to the still-interesting Dada Engine\cite{dadaengine},
+although the Dada Engine's generation technique is top-down and recursive
+instead of rule-based.
+
+\subsection{Building poems: a high-level view}
+TEB builds poems in a very simple way -- a list of stanzas is produced, and
+within each stanza, a list of lines is produced. The definition of a given
+poetic form (see Section \ref{forms}) determines how many stanzas of what
+type to produce. Along the way, in the case of poetic forms intended to
+rhyme, we build up a data structure called a rhyme environment in which we
+keep track of which words have been used to fit with the rhyme scheme for a
+given label (such as the label "A" for a poem whose rhyme structure is
+denoted as "ABBA"). This means that, as best we can do, we try to make the
+lines that correspond to a given label rhyme with each other. In the case
+of "ABBA", the middle two lines rhyme, as do the first and last. The rhyme
+environment structure helps us to avoid repeating end words -- a given word
+is notoriously good at rhyming with itself, and would likely be otherwise
+chosen.
+
+\subsection{Generating grammatical structures -- using the LTRE}
+\label{generating}
+The primary use of the LTRE in TEB is in keeping track of grammatical
+structures and which ways they can fit together. We use an algorithm
+reminiscent of chart parsing -- only in reverse -- to do this. At the top
+level, TEB keeps a list of production rules, which are converted into LTRE
+clauses of the form (CAN-BE nonterminal sequence-of-labels), which
+signifies that the nonterminal named can expand out to these labels, each
+of which might represent a terminal symbol or another nonterminal.
+
+\bigskip
+The really useful part of these CAN-BE relationships is how they're used
+with the rule in Figure \ref{sequence-rule}, which allows the system to
+infer what can come next in a given situation. It is with this rule, for
+example, that we find out that if a prepositional phrase consists of a
+preposition and a noun phrase, and we have, so far, a preposition, that we
+can start working on a noun phrase. Once we're done working on the noun
+phrase, then we're done with this prepositional phrase.
+
+\begin{figure}
+\begin{center}
+\begin{verbatim}
+(rule ((:true (can-be ?target ?things) :var ?v1))
+      (loop for i from 0 below (length ?things) do
+       (rassert!
+        (:implies (:and (:eval `(working-on ,?target))
+                        (:eval `(so-far ,(subseq ?things 0 i))))
+                  (:eval `(possible-next  ,(elt ?things i)))))))
+\end{verbatim}
+\caption{Rule for sequencing grammatical elements}
+\label{sequence-rule}
+\end{center}
+\end{figure}
+
+\bigskip
+These relationships are used by TEB to produce various possible
+interpretations of the top-level symbol LINE, which is the grammatical
+structure of any line of poetry produced by TEB. In the current
+implementation, a LINE is either a prepositional phrase, a noun phrase, or
+a sentence, each of which are further defined. This information is all kept
+in the file grammar-rules.lisp.
+
+\bigskip
+One way in which I had originally planned on using the LTRE, but found it
+cumbersome for the given task, is calculating the minimum number of
+syllables that a given grammatical structure might produce. Because the
+generation algorithm starts at LINE, then randomly selects a possible way
+to generate a LINE, then recursively randomly selects ways to generate each
+constituent of each production rule, it becomes important to know when to
+stop -- this is to say, if we know that a particular grammatical structure
+can be no fewer than ten words, and we only have a nine-syllable line to
+work with, then this structure will not fit in this line. In TEB, the
+MIN-LENGTH relationships are memoized as LTRE data, but they are not
+calculated using LTRE rules as such -- this would have required using the
+LTRE to compare, pairwise, each of the possible lengths for a given
+grammatical structure and determine which of them is the smallest -- and we
+cannot guarantee order of execution for LTRE rules, so it seemed much
+simpler to do this with a recursive function. The interested reader might
+take a look at the min-length family of functions in grammar-rules.lisp for
+details.
+
+
+\begin{figure}
+\begin{center}
+\begin{verbatim}
+(defun calculate-min-length (sym &optional seen)
+  (let* ((productions (fetch `(can-be ,sym ?things)))
+         (min-len (loop for prod in productions
+                        minimize (loop for rhs-elt in (third prod)
+                                       sum (if (member rhs-elt seen)
+                                               10000
+                                            (min-length
+                                             rhs-elt
+                                             (cons rhs-elt seen)))))))
+    (record-min-length sym min-len)
+    min-len))
+\end{verbatim}
+\caption{The clever part of the minimum-length calculator for grammatical
+structures}
+\label{calculate-min-length}
+\end{center}
+\end{figure}
+
+\subsection{The rhyme system}
+\label{rhymesystem}
+The rhyming system for TEB is adapted from work done by Bradley Buda at the
+University of Michigan \cite{buda}. Buda originally built his rhyme
+calculator in C\#, but for TEB, I rewrote it in Common Lisp. The basic idea
+with the rhyming system is that given two syllables, we generate a number
+between 0 and 1 to quantify the extent to which they rhyme. Both in the
+original system and TEB, information about the sounds of English words is
+gleaned from the CMU Pronunciation Dictionary \cite{cmudict} because
+English does not use a phonetic spelling system. This calculation is done
+by combining a number of metrics: two syllables are judged to rhyme if they
+contain similar vowel sounds, if the stress on these vowel sounds is the
+same, if the preceding consonant sounds are the same, and if the following
+consonant sounds are the same. For TEB, I give the most weight to the
+similarity of vowel sounds, followed by the similarity of the proceeding
+consonant sounds.
+
+\bigskip
+To calculate the rhyme score for a pair of words, we look up the phonetic
+representation of the words in the sound dictionary, partition them into
+syllables -- with a single vowel sound per syllable -- and then find the
+rhyme score for the final syllables of the two words. In this version of
+TEB, as a result, we only consider the possibility of end-rhymes, but
+more sophisticated versions might look for rhymes internal to words, or
+value words that rhyme in several syllables more highly -- even more
+interesting would be assonance or consonance, repeating vowel or consonant
+sounds respectively, but TEB as of yet does not support any of these ideas.
+
+\subsection{Picking words}
+The process of choosing words is managed by the \verb+choose-word+ function
+in \verb+diction.lisp+, and all of the words in output lines come
+originally from a diction file, from which a very large list of words is
+read. In this version of TEB, this is just a sampling of lyrics and poetry
+and other text (see the README for exact sources), but in principle it
+could be user-supplied in order to mimic the style of some other source. In
+a web-based version of TEB, for example, the user may in the future specify
+a URL and have the system take its diction from the referenced web page.
+
+\bigskip
+The \verb+choose-word+ family of functions converts a list of
+parts-of-speech produced by the line-generator (functions around
+\verb+generate+ in \verb+generate.lisp+) to a list of words (as symbols),
+taking into account the appropriate rhyme restrictions. If it cannot do
+this in the context of the current list of parts-of-speech and with the
+specified number of syllables, TEB backs up and tries again. By this point,
+we've determined that there is some way to produce the specified
+grammatical structure (a LINE, for example) of the appropriate length, so
+it's simply a matter of letting TEB's randomized search come across one.
+This normally happens very quickly, as there's a great number of possible
+ways to produce a line, and our dictionary is large enough that suitable
+words can usually be found to fill in the required syllabic constraints.
+
+\bigskip
+The process of converting a series of parts-of-speech into a list of words
+is done with a backtracking search. At each point in the process, we look
+at the first remaining part-of-speech and replace it with an appropriate
+word (with the same POS) from our diction file -- each of which has already
+been categorized and placed in an apropriate list at load-time. We find
+each word's parts of speech by looking them up in our POS dictionary from
+the Moby Project\cite{moby}. In order to make sure that we do not overrun
+our syllable limit for the current line, we only allocate, at most, a
+number of syllables to the current word equal to the number left minus the
+number of words remaining. This assumes that every subsequent word could
+conceivably be monosyllabic, which is almost always the case for a given
+part of speech and a nontrivial dictionary. Out of the remaining possible
+words (fitting both syllable constraints), we either choose a word at
+random (in the case of unrhymed lines) or make use of our current
+rhyme-environment (described above) and the rhyming system (Section
+\ref{rhymesystem}) to pick the best rhyme.
+
+\subsection{Poetic forms}
+\label{forms}
+Poetic forms in TEB are defined using the \verb+defpoeticform+ and
+\verb+defstanza+ macros. A poetic form is a named list of types of
+stanzas, and a stanza type is a named list of line descriptions, where a
+line description is a number of syllables and an optional rhyme
+description. For example, in unrhymed poetic forms, such as haiku, line
+descriptions have no rhyme tags and thus are not lists. See Figure
+\ref{defpoeticform} for an example of the interface for defining poetic
+forms. This definition corresponds nicely TEB's representation of poems
+-- a poem is a list of stanza, and a stanza is a list of lines, which are
+in turn lists of words.
+
+\begin{figure}
+\begin{center}
+\begin{verbatim}
+(defstanza petrarchan-one
+  :lines ((10 a)
+	  (10 b)
+	  (10 b)
+	  (10 a)))
+(defstanza petrarchan-two
+  :lines ((10 c)
+	  (10 d)
+	  (10 c)))
+(defpoeticform petrarchan-sonnet
+  :stanzas (petrarchan-one
+	    petrarchan-one
+	    petrarchan-two
+	    petrarchan-two))
+
+(defstanza haiku-stanza
+  :lines (5 7 5))
+(defpoeticform haiku
+  :stanzas (haiku-stanza))
+\end{verbatim}
+\caption{Defining the poetic form of an Italian-style sonnet and a haiku}
+\label{defpoeticform}
+\end{center}
+\end{figure}
+
+\section{Evaluation}
+\subsection{Sample output}
+See Figure \ref{sampleoutput} for some sample TEB output. Some of them seem
+promising, but such is the nature of randomly generated text. Among the first
+words produced by the system were "your damn cardboard cut can feel", which
+I liked particularly.
+
+\begin{figure}
+\begin{center}
+\begin{verbatim}
+(((FOR HIS FIRST FAIR DAY)
+  (ITS WARM SNOW SO OVERFLOW)
+  (YOUR ITS STREAM THEMSELVES)))
+
+(((FROM LITTLE PINK ME)
+  (IN ITS BIG CARNAL FINGER)
+  (I WARM ONE FAIR STEP)))
+
+(((EVERYBODY BEACON THAT BLIND SINCE COME)
+  (EVERY BAD OBNOXIOUS LITERATURE)
+  (DAMN AS HIS COME SOME FIRST GET THAN REALLY)
+  (AROUND BOTH ONLY FANATICISM))
+ ((MUCH HOT TRYING CAN WARM US YET HER HEAD THEM)
+  (DAMN SINCE EVERY PERISHED REST GIVE WHILE BE)
+  (THIS TRUE INDEPENDENT ANTIPATHY)
+  (BOTH HOLISTIC CARDBOARD CRUST FAIR YET FAIR))
+ ((ON WHAT READ MEXICAN ELITISM)
+  (ANY BLUE FAT RAN EDGE MORE RETROSPECT)
+  (ENOUGH SO UNKNOWN DERMATOLOGIST))
+ ((MAN LIKE COME LIKE YOU WARM A CATALYST)
+  (SINCE HIS UNANSWERABLE ROBOTICS)
+  (ANOTHER NORTH UP ANTHROPOLOGIST)))
+
+(((DOWN THREESCORE CONCERNED ANTHROPOLOGIST)
+  (MY FUTURE GREASY ILLUMINATION)
+  (ALONG TWENTY READY MUST)
+  (BY BOTH WRITTEN THINKING COMPOSITION))
+ ((EVERY POVERTY EDGE THEMSELVES)
+  (INTO SEVENTY BAD HIGH COMPLEXION)
+  (ALONG LITTLE SUFFICIENT WHERE)
+  (BUT ENOUGH TRYING HIGH EDIFICATION)))
+\end{verbatim}
+\caption{Some sample runs of TEB: two haiku, a sonnet, and an eight-line
+poem with two stanzas of ABAB rhyme structure.}
+\label{sampleoutput}
+\end{center}
+\end{figure}
+
+\subsection{Speed}
+TEB, particularly when running on under recent versions of \verb+SBCL+ or
+Allegro Common Lisp, is very fast. Petrarchan sonnets can be generated
+in less than a second on modern hardware, and haiku generation is
+practically instantaneous. Longer serieses of stanzas would not provide
+more than a linear time increase, either -- but searching through a larger
+dictionary could slow things down considerably, as at each word choice, TEB
+considers every possible word within a given part-of-speech category. In a
+scaled-up setting, TEB would need to use a more sophisticated data
+structure to store larger selections of words -- and this would require a
+reworking of the rhyming-word selection algorithm, which simply does a
+linear search. One likely-useful candidate would be indexing by vowel
+sounds and only searching within the words with appropriate vowels. Again,
+this would complicated by the possibility of more complex rhyme
+patterns (in addition to end-of-line rhymes), but this is a matter for
+future work.
+
+\subsection{Quality?}
+TEB's poetry will likely not win any prizes soon. It occasionally produces
+interesting tidbits, and it certainly follows the set of grammatical rules
+established for it, so its output often makes a modicum of sense. But its
+poems lack any sort of thematic unity, and worst of all, simply knowing the
+POS of a given word is not enough information to produce a syntactically
+correct sentence in English. TEB is completely unaware of the rules of
+agreement in English, putting singular nouns next to plural verbs and
+vice-versa. Also very jarring is its tendency to use ungrammatical articles
+-- "a" next to a word that starts with a vowel, for example, or a numerical
+quantifier next to a singular noun -- which humans almost never do.
+
+\section{Possible improvements}
+A more robust poetry generation system would have a number of improvements,
+which mostly come down to a lot of knowledge engineering. TEB as it stands
+has no sense of much of the syntactic information carried with a particular
+word -- plurality, what sort of article it takes, ditransitive verbs (versus
+transitive or intransitive, which is actually covered both in the grammar
+and in the POS dictionary) and other niceties that human language-users
+take for granted. As lovely as the Moby Project's part of speech dictionary
+is, it was probably intended for use in language-parsing systems more than
+language production ones, and as a result doesn't contain such information.
+Alternatively, one could imagine a system that uses machine learning
+methods (such as a simple Markov chain) to inform its selection of words
+for a given circumstance, checking as it went to make sure that a given
+state fits rhyming and meter considerations, but this would be an entirely
+different sort of poetry system altogether.
+
+\bigskip
+As mentioned before, TEB could take into account many more poetic elements
+of style: rhymes internal to a given line, or similarly consonance or
+assonance; a notion of rhyming that takes into account more than just one
+syllable, and one that allows for different sorts of rhyme, including slant
+rhymes and visual rhymes; a better representation of meter -- one that
+takes into account stress patterns, for example; a representation for
+repeating patterns of words that would make more exotic poetic forms such
+as the sestina possible. TEB's current dictionary is also quite small.
+Additionally, in designing the system one might wish to consult with more
+accomplished poets.
+
+\bigskip
+One would imagine, in eventuality, that a very intelligent poetry system
+would start out in a way that humans and many natural-language generation
+or conversation systems might -- with a semantic description of a given
+situation. This would be a much more complicated process, and branches out
+into many aspects of AI -- either healthy analogical reasoning or a lot of
+knowledge engineering would be necessary to produce metaphors, for example.
+Competently understanding, processing, and producing meaningful language is
+almost certainly AI-complete.
+
+\bigskip
+To be more immediately pragmatic, however, we note that TEB often finds
+itself backed into two noticeable corners in the poetry construction
+process: it finds itself running out of slots for words with many syllables
+left for a given line -- so it picks an ill-fitting long word, often
+"dermatologist", which happens to be one of the few five-syllable nouns in
+the dictionary. Additionally, TEB doesn't take into account the upcoming
+rhyme constraints for future lines when picking parts of speech, so it may
+choose, for example, to end a line with a pronoun even though there are no
+good pronouns that rhyme with a given word. Fixes for both of these
+problems would involve a more sophisticated line-generation process that
+takes into account rhyme information and specifies that a given line must
+end with a particular part of speech, then generate the rest of the line
+with that information. This would require a reworking of the
+production-rule-based system currently in place, and would likely not be
+nearly so fast.
+
+\section{Conclusion}
+In this initial version of TEB, we ended up only using the LTRE as a means
+to inform us of what grammatical structures could possibly be sequenced in
+which order, and also as a means of memoizing possible syllable-lengths for
+grammatical structures. These are both important parts of the problem, but
+for the relatively simple poetry generation that TEB set out to do, we
+found it unnatural to try to phrase our processes in terms of rules.
+Particularly, the large amount of randomized backtracking search involved
+in TEB does not lend itself to rules -- while one could in principle have a
+rule whose body contains code to select one possibility out of many
+randomly, this seems contrived. There is an almost unbounded amount of work
+that could be done on this problem, however, and any amount of knowledge
+engineering could be used to make the system generate more sensible poetry.
+
+\newpage
+\bibliography{alexr-teb}
+\end{document}
