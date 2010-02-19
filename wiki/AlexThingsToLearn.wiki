@@ -3,9 +3,9 @@
 So many things to learn. Here are a few things I'd like to know more about. I'll put some notes about them here, and eventually new articles may spin off.
 
 == natural language processing ==
-Get comfortable with NLTK.
-
-Read all the books on your shelf! Know enough to read random nlp research papers.
+Read all the books on your shelf!
+PROGRESS: now pretty comfortable with NLTK.
+PROGRESS: Can typically read random NLP research papers!
 
 == maths ==
 Linear Algebra.
@@ -20,6 +20,8 @@ What kinds are there? How do they work? What makes them faster or slower? How ar
 What is the OSI model? Maybe learn more about routing? How does DNS work?   
 
 == programming ==
-Also: learn idiomatic and deep Scheme, Python, JavaScript, Haskell.     
+Also: learn idiomatic and deep Scheme, Python, JavaScript, Haskell.
+PROGRESS: Writing fairly Pythonic Python, these days? Could always get better.
 
 Learn deep type-system things about Java and the innards of the JVM. Be able to explain "erasures".
+Erasure in Java is when the parametrized type in the Java becomes a non-parametrized type in the JVM bytecode. Which is all the time. The JVM bytecode is indeed typed, but it doesn't make use of the parametrized types at runtime.
