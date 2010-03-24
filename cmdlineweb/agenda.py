@@ -29,6 +29,7 @@ import re
 import sys
 
 ONE_DAY = 24 * 60 * 60
+ONE_MINUTE = 60
 
 def timeofday(timestring):
     """Take a time string of the form 2010-02-01T15:45:00.000-05:00 and return
@@ -59,7 +60,7 @@ def main():
     query.sortorder="ascending"
 
     now = time.localtime()
-    tomorrow = time.localtime(time.time() + (ONE_DAY))
+    tomorrow = time.localtime(time.time() + ONE_DAY)
 
     start_date=("%4d-%02d-%02d" % (now.tm_year,now.tm_mon,now.tm_mday))
     end_date=("%4d-%02d-%02d" % (tomorrow.tm_year,
@@ -70,11 +71,18 @@ def main():
     query.start_min = start_date
     query.start_max = end_date 
     feed = cal_client.CalendarQuery(query)
+    
+    events = [event for event in feed.entry]
+    thekey = lambda ev: ev.when[0].start_time
+    events.sort(key=thekey)
 
-    for event in feed.entry:
+    for event in events:
         for when in event.when:
-            print '%s' % (timeofday(when.start_time),),
-            print 'to %s' % (timeofday(when.end_time),),
+            if "T" in when.start_time:
+                print '%s' % (timeofday(when.start_time),),
+                print 'to %s' % (timeofday(when.end_time),),
+            else:
+                print "today" + (" " * 9), 
             print event.title.text
     
 if __name__ == "__main__": main()
