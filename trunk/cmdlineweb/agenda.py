@@ -40,15 +40,38 @@ def timeofday(timestring):
     afterT = timestring[Tindex+1:]
     return afterT[:5]
 
+def dayof(timestring):
+    """Take a time string of the form 2010-02-01T15:45:00.000-05:00 and return
+    just the date as YYYY-mm-dd."""
+
+    if "T" in timestring:
+        Tindex = timestring.index("T")
+        return timestring[:Tindex]
+    else:
+        return timestring
+
 def usage():
-    print ("usage: %s username@gmail.com" % (sys.argv[0]))
+    print ("usage: %s username@gmail.com [\"timezone\"]" % (sys.argv[0]))
 
 def main():
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 3:
+        ctz = sys.argv[2]
+    else:
+        ctz = "America/New_York"
+
+    if len(sys.argv) in (2,3):
         username = sys.argv[1]
     else:
         usage()
         exit(-1)
+
+    now = time.localtime()
+    tomorrowtime = time.localtime(time.time() + ONE_DAY)
+
+    today = ("%4d-%02d-%02d" % (now.tm_year,now.tm_mon,now.tm_mday))
+    tomorrow = ("%4d-%02d-%02d" % (tomorrowtime.tm_year,
+                                 tomorrowtime.tm_mon,
+                                 tomorrowtime.tm_mday))
 
     cal_client = gdata.calendar.service.CalendarService()
     query = gdata.calendar.service.CalendarEventQuery(
@@ -58,26 +81,22 @@ def main():
 
     query.orderby="starttime"
     query.sortorder="ascending"
+    query.ctz = ctz
 
-    now = time.localtime()
-    tomorrow = time.localtime(time.time() + ONE_DAY)
-
-    start_date=("%4d-%02d-%02d" % (now.tm_year,now.tm_mon,now.tm_mday))
-    end_date=("%4d-%02d-%02d" % (tomorrow.tm_year,
-                                 tomorrow.tm_mon,
-                                 tomorrow.tm_mday))
-    print "AGENDA FOR", start_date
-
-    query.start_min = start_date
-    query.start_max = end_date 
+    query.start_min = today
+    query.start_max = tomorrow
     feed = cal_client.CalendarQuery(query)
     
     events = [event for event in feed.entry]
     thekey = lambda ev: ev.when[0].start_time
     events.sort(key=thekey)
 
+    print "AGENDA FOR", today
     for event in events:
         for when in event.when:
+            if today not in (dayof(when.start_time), dayof(when.end_time)):
+                continue
+
             if "T" in when.start_time:
                 print '%s' % (timeofday(when.start_time),),
                 print 'to %s' % (timeofday(when.end_time),),
