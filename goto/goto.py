@@ -15,31 +15,36 @@ def strictmatch(needle, haystack):
 def loosematch(needle, haystack):
   return needle.lower() in haystack.lower()
 
-def find(needle, loose=False):
-  match = strictmatch
-  if loose:
-    match = loosematch
-
+def find(needle, matcher):
+  """
+  Start at the current directory and walk down from here until we find a file
+  that matches (with the given match function) the specified needle. When we
+  find it, print its location.
+  """
   for root,dirs,files in os.walk("."):
     for dir in dirs:
-      if match(needle,dir):
+      if matcher(needle,dir):
         path = join(root, dir)
         print path
         return
 
     for file in files:
-      if match(needle,file):
+      if matcher(needle,file):
         print root
         return
-
   print "."
 
 def main():
-  loose = False
+  if len(sys.argv) < 2:
+    print "."
+    return
+
+  matcher = strictmatch
   if len(sys.argv) > 2 and sys.argv[1] == "-l":
-    loose = True
+    matcher = loosematch
+
   needle = sys.argv[-1]
-  find(needle, loose)
+  find(needle, matcher)
 
 if __name__ == '__main__':
   main()
