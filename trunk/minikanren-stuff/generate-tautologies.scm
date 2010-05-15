@@ -12,6 +12,8 @@
 ;;    (not (not 1)) (not (and _.0 0)) (and 1 (not 0))
 ;;    (and (not 0) 1))
 
+;; Discussion here: http://lindseykuper.livejournal.com/345176.html
+
 (import (minikanren vanilla))
 (load "matche.scm")
 
@@ -46,3 +48,57 @@
 (define generate-tautologies
   (lambda (n)
     (run n (q) (true-expro q))))
+
+;; We can also generate tautologies explicitly, with no unconcretized
+;; variables, by explicitly writing out each way in which (or expr1
+;; expr2) can be true and each way in which (and expr1 expr2) can be
+;; false.
+
+;; > (generate-tautologies-concretized 10)
+;; (1 (and 1 1) (or 1 0) (not 0) (or 0 1) (and 1 (and 1 1))
+;;    (and (and 1 1) 1) (or 1 1) (and 1 (or 1 0))
+;;    (or 1 (and 0 0)))
+
+(define true-expro-concretized
+  (lambda (expr)
+    (matche expr
+      [1]
+      [(and ,expr1 ,expr2)
+       (true-expro-concretized expr1)
+       (true-expro-concretized expr2)]
+      [(or ,expr1 ,expr2)
+       (true-expro-concretized expr1)
+       (false-expro-concretized expr2)]
+      [(or ,expr1 ,expr2)
+       (false-expro-concretized expr1)
+       (true-expro-concretized expr2)]
+      [(or ,expr1 ,expr2)
+       (true-expro-concretized expr1)
+       (true-expro-concretized expr2)]
+      [(not ,expr1)
+       (false-expro-concretized expr1)])))
+
+(define false-expro-concretized
+  (lambda (expr)
+    (matche expr
+      [0]
+      [(and ,expr1 ,expr2)
+       (false-expro-concretized expr1)
+       (false-expro-concretized expr2)]
+      [(and ,expr1 ,expr2)
+       (true-expro-concretized expr1)
+       (false-expro-concretized expr2)]
+      [(and ,expr1 ,expr2)
+       (false-expro-concretized expr1)
+       (true-expro-concretized expr2)]
+      [(or ,expr1 ,expr2)
+       (false-expro-concretized expr1)
+       (false-expro-concretized expr2)]
+      [(not ,expr1)
+       (true-expro-concretized expr1)])))
+
+(define generate-tautologies-concretized
+  (lambda (n)
+    (run n (q) (true-expro-concretized q))))
+
+
