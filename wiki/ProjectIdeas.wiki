@@ -4,9 +4,13 @@
 
 == ajax class search for IUB ==
 surely this has been done before. I want something like Kayak, but for finding classes.
+
 Tickyboxes for: "show grad classes", "show undergrad classes"
+
 Dropdown to let you add more departments to include. "Show CS, INFO, CSCI, COGS..."
+
 Be able to show class descriptions or hide them.
+
 Extra credit: search through all course descriptions and find out which department has the machine learning class this semester.
 
 == Sleep Furiously (formerly: TEB) ==
