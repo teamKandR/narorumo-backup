@@ -1,4 +1,5 @@
 #summary Using plats
+#labels Featured
 = What is plats? =
 plats helps you localize your client-side webapp. All you have to do is include a script in your page, and you'll get information about the user's language preferences -- which is usually hard to get from javascript.
 
