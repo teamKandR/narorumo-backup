@@ -2,6 +2,13 @@
 
 = Future project scratch space =
 
+== ajax class search for IUB ==
+surely this has been done before. I want something like Kayak, but for finding classes.
+Tickyboxes for: "show grad classes", "show undergrad classes"
+Dropdown to let you add more departments to include. "Show CS, INFO, CSCI, COGS..."
+Be able to show class descriptions or hide them.
+Extra credit: search through all course descriptions and find out which department has the machine learning class this semester.
+
 == Sleep Furiously (formerly: TEB) ==
 TEB was and is my long-running electronic poetry project, originally for a class and written in Common Lisp on top of an inference engine. I should dust it off and make it awesome. At one point, I spoke with Jon Trowbridge from the Gnoetry project, and he seemed both interested in working on poetry and very busy with work. Does TEB want to use/be part of/merge with gnoetry?
 
@@ -18,8 +25,10 @@ Wave is pretty great at collaborative editing for text (and as a platform, prett
 LJ has a gadget where they tell you which of your friends have upcoming birthdays, but you don't look at the livejournal front page very often. Build an iGoogle gadget that keeps your LJ login information, queries for your friend-birthday data, and displays it attractively. To be polite, cache things somewhere, say in an appengine app that only polls here and again?
 
 == logo compiler ==
-([http://code.google.com/p/narorumo/source/browse/#svn/trunk/wogo in progress])
+([http://code.google.com/p/narorumo/source/browse/#svn/trunk/wogo started, dropped off. should maybe start again.])
 Learn Logo, preferably the dialect supported by ucblogo. Compile it to javascript, gwt-style, and do turtle graphics with the canvas tag. Is there a formal grammar for ucblogo? The problem with this idea is: no repl.
+
+There's a beautiful online logo interpreter, though: [http://logo.twentygototen.org/ papert].
 
 == make the paip source code work with recent common lisps ==
 Norvig's Paradigms of Artificial Intelligence Programming source doesn't load right with the CL implementations I have on my Ubuntu box, sbcl and clisp. CL has had problems standardizing its loading/packaging mechanisms for a while, but there's no good reason PAIP shouldn't run nicely on recent CLs. Fix it and send Dr. Norvig a patch! Also make sure the Debian package gets updated.
