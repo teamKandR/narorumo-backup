@@ -22,7 +22,7 @@ What TEB really really wants is to use NLTK (and probably be made of Python). Re
 
 Also related: what if there was a fake microblogging service that never lets on that it's just snagging random chunks of text from user-generated content sites (people's tweets, blogs, comments (oh mans, youtube)), maybe remixing them slightly, and passing them off as tweets for fictional users? Bonus points for making it pretend that you can sign up for an account, but mysteriously diverting you away from where you can register. Authenticity/verisimilitude bonus points for keeping content persistently, serving it up as feeds.
 
-== make short papers shorter ==
+== make your papers shorter ==
   * find all the ngrams (greater than, say, n=3, and up to a large n)
   * for every ngram that happens more than once, define an acronym in the text.
   * replace all subsequent occurrences by the acronym.
