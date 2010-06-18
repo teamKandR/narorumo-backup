@@ -1,0 +1,393 @@
+Mon Jan 11 09:31:18 EST 2010
+
+"We all agree that it's the right spot!"
+
+The first five or six weeks are going to be lecture-flavored.
+
+We'll read some papers both from CL and just regular Linguistics. It's more
+like a seminar.
+
+CCG is both linguistically interesting and computationally useful.
+There's OpenCCG, etc.
+
+The course should really be called Alternative Syntactic Formalisms (or maybe
+Framework).
+
+Theory versus Formalisms:
+- a formalism describes a set of possible theories. It's the mathematical
+  machinery you allow yourself when describing grammars.
+- a theory is a particular use of that formalism, to describe language.
+
+"I'm kind of rambling at this point -- which is fine for me, but who knows what
+it means for you."
+
+MONOSTRATAL: there's no movement, it's one layer.
+(this means it's friendlier for CL)
+
+All the frameworks we're going to look at are used for computation, and they
+have this property of being MONOSTRATAL. That means that there's no deep
+structure to surface structure transformation.
+"If you have a passive sentence, it was not derived from an underlying active
+sentence."
+
+"Hopefully, it makes you semi-literate."
+
+In this course, there's a lot more emphasis on the lexicon.
+
+"We could also have what they call face-to-face communication..."
+
+There are probably hundreds of different frameworks within dependency grammar.
+
+What are RAISING and CONTROL?
+http://en.wikipedia.org/wiki/Raising_(linguistics)
+http://en.wikipedia.org/wiki/Argument_control
+
+** syntactic analysis!
+
+Vince Lombardi once said: "We need to start from the basics. This is a
+football."
+
+generative grammar: collection of words an rules with which with generate
+strings of those words. Sentences.
+Which are the correct sentences, and which ones are incorrect?
+
+Syntax attempts to capture the nature of those rules.
+COLORLESS GREEN IDEAS SLEEP FURIOUSLY.
+
+What generalizations are needed to capture the difference between grammatical
+sentences and ungrammatical sentences?
+
+We're mostly not going to work with statistical issues in this class.
+
+You can view a syntactic theory in a number of ways.
+psychological model: syntactic structures correspond to what is in the heads of
+speakers. (we want to ask, in this view, what's psychologically plausible)
+
+computational model: syntactic structures are formal objects which can be
+mathematically manipulated.
+We're more interested in the latter; it doesn't matter how people do it, we
+just want to build good models.
+
+theory: describes a set of data and makes predictions for new data.
+in this class, we will emphasize theories which are testable. (ie, can be
+verified/falsified)
+
+formalism: provides a way of defining a theory with mathematical rigor.
+(it's essentially a set of beliefs and conditions that frame how
+generalizations can be made)
+
+formalism says what kinds of things you can write down.
+a theory is a specific instantiation of a formalism.
+
+A formalism defines what kinds of things you can capture.
+
+** relative comptuational power
+HPSG people say that the formalism can be arbitrarily complex; individual
+theories should be constrained, though.
+
+** transformational tradition
+(the more Chomskyan school)
+
+Roughly speaking, TRANSFORMATIONAL SYNTAX (GB, P&P) has focused on the
+following:
+
+{observational, descriptive, explanatory} adequacy
+We're focusing on the first two.
+
+Explanatory adequacy: the data must fit with a deeper model, that of UG
+psychological: does the grammar make sense in light of what we know of how the
+mind works?
+
+universality: generalizations must be applicable to all languages
+transformations/movement: surface sentences are derived from underlying other
+sentences, eg passives aer derived from active sentences
+
+But this kind of theory often doesn't lend itself well to computational
+applications.
+
+So, it's nice if we can get something that's psychologically plausible? But
+we're OK with whatever kind of formal system we could implement with a
+computer.
+
+** "alternative assumptions"
+descriptive adequacy over explanatory adequacy
+computational effectiveness over psychological reality
+description in one language before dealing with all languages
+
+The data will always be the same, but how you handle it, as we'll see, depends
+largely upon your assumptions.
+
+For example: morphology isn't recursive in the same way that syntax is.
+Different parts of grammar do appear to behave in different ways. Maybe some
+have "underlying forms", and maybe others don't?
+
+** making it computational
+How is a grammaticla theory useful for comptuational linguistics?
+
+parsing. generation.
+Both of these are often subparts of practical applications! dialog systems, mt.
+
+** descriptive adequacy
+We want to provide a structural description for every well-formed sentence.
+Interested in broad-coverage; we want to describe all of a language.
+
+"less of a distinction between 'core' and 'periphery' phenomena"
+
+** precise encodings
+mathematical formalisms give us a specific way to generate a set of strings
+
+elementary structures and ways of combining those structures.
+Precision lets us implement these, and then we can ask questions about them.
+"Do these parts of the grammar conflict?"
+
+What's the minimum amount of mathematical overhead that we need to describe
+language?
+
+HPSG people say: our formalism is really powerful. theories can be constrained,
+but the formalism lets you say everything you need to say, and more.
+
+CCG and TAG: Minimally context sensitive.
+
+In Swiss German and Dutch, you can have crossing dependencies. Which you can't
+encode with a context-free grammar.
+It actually does an embedding there, but the ordering is something like:
+dog' cat' ran' hated'.
+
+(but this means like: "the dog that the cat hated ran")
+
+There's work that says we don't need anything more than "mildly context
+sensitive".
+
+MONOSTRATAL FRAMEWORKS: only have one (surface) syntactic level.
+Make no recourse to movement or transformations.
+
+Wed Jan 13 09:32:08 EST 2010
+
+The linguistic point here: we really do need to pay attention to the lexicon.
+This is computationally important because we can infer what we need to know out
+of examples.
+
+** the chomsky hierarchy
+Yay, the chomsky hierarchy.
+
+general-rewrite grammars require a turing machine to parse.
+
+context-sensitive grammars need an LBA: what's an LBA?
+the rules look like this:
+
+beta A gamma -> beta delta gamma
+... so you can take one nonterminal somewhere in there, and it only rewrites as
+something else /in the appropriate context/.
+
+TAG and CCG are "mildly" context sensitive. This means they're more powerful
+than CFG, but not full context-sensitive.
+
+HPSG requires, pretty much, general rewrite to do the formalism.
+
+"What five linguistic questions would you think about... [if you were stuck on
+a desert island]?"
+
+** cfgs
+"... but these rules are rather impoverished."
+
+"a tables"
+--> if you say that NP -> Det N, then this licenses things that are
+ungrammatical (to us), because they don't agree.
+
+So how do you handle that?
+
+
+
+(unrelated)
+"the one-test".
+There are all of these constituency tests
+"bar-status" for adjective phrases and adverbial phrases...
+
+"I just said a sentence, and you didn't hear it! Because it was phonologically
+null!"
+
+STRONGLY EQUIVALENT GRAMMARS: generate the same trees (possibly with different
+labels)
+
+WEAKLY EQUIVALENT GRAMMARS: license the same strings
+
+** we know that CFGs are in fact, not good enough for natural language
+They're not easily lexicalized.
+
+And they get complicated when you try to take into account agreement, verb
+subcategorization, unbounded dependency constructions, raising constructions,
+etc.
+
+So we need more refined formalisms!
+
+We could...
+- extend the basic models of CFGs with complex categories, functional
+  structures, feature structures...
+- eliminate the CFG model!
+
+here are some other frameworks we'll look at this semester
+
+** Dependency Grammar
+The way to analyze a sentence is by looking at the relations between words
+No grouping or constituency is used.
+DG is not just one framework. There are bunches.
+
+A verb and its arguments drive the analysis, which is closely related to the
+semantics of the sentence.
+Some of the other frameworks we'll investigate utilize insights from DG.
+
+"I'll tell you this joke in seven weeks! You'll think it's hilarious!"
+
+** TAG
+TAG says that you've got these trees with spots that want to be filled in. You
+have elementary structures that are trees of arbitrary height.
+
+Put trees together by substituting and adjoining them, resulting in a final
+tree that looks like a CFG-derived tree.
+
+** LFG: lexical-functional grammar
+functional structure is derived from the constituent structure.
+
+Kind of like combining dependency structure with phrase structure.
+Can express some generalizations in f-structure; some in c-structure.
+
+** HPSG: head-driven phrase-structure grammar
+The misnomer about this is that it's not really PSG.
+
+You don't have c-structures, you just have Feature Structures.
+
+And they're pretty big and involved.
+It's all a feature structure.
+
+But you might see it written out with trees of frames. You have an implicit
+tree, but it's sometimes drawn.
+
+(it seems like it'd be hard to learn from examples?)
+
+** and then there's CCG
+
+CCG derives sentences in a proof-solvign manner, maintaining a close link with
+a semantic representation.
+
+"semantics... check!"
+
+CCG handles coordination very well.
+"John gave Walt the salt and Malcolm the talcum."
+
+Now: about syntax!
+
+** subcategorizations.
+
+"I laugh."
+"I saw him."
+"I give her the book."
+"I said that she left."
+
+These all want different things. <NP S[that]>, in the last case.
+
+** government
+One element decides on the form of another element.
+
+Verbs govern the case of their nominal arguments. (and verbal arguments)
+
+Nom:
+"He left"
+* "Him left"
+* "She sees he"
+
+Some transitive verbs in German take dative (as opposed to accusative) objects.
+
+* verb forms
+"Peter will win the race."
+* "Peter will won the race."
+* "Peter will to win the race."
+
+"I think I said that differently, to indicate that it's ungrammatical."
+
+Peter seems to win the race.
+* Peter seems win the race.
+* Peter seems won the race.
+
+** agreement
+Two elements that agree in some (abstract) property.
+
+Subject-verb agreement in person and number.
+Adjective-noun agreement in case/number ...
+
+She walks.
+* She walk.
+
+That they are alive is a pleasant surprise.
+* That they are alive are a pleasant surprise.
+
+pronoun/antecedent agreement
+
+adjective/noun agreement in gender (in French or Spanish, for example).
+
+** arguments versus adjuncts
+arguments and adjuncts differ in the kind of semantic contribution they make
+
+arguments denote: participants of an event
+Sandy kissed Robin.
+individuals/entities for which a state of affairs holds
+Sandy knew the answer.
+
+(was there a "knowing" event here? it's really more of a State of Affairs.)
+
+Adjuncts denote the circumstances under which an event took place or a state of
+affairs occurred. Adjuncts refer to time or frequency?
+
+Sandy knew the answer on Monday.
+Sandy forgot her umbrella twice.
+
+Or place, manner, cause, effect or purpose.
+
+"John buttered the toast at midnight with a knife in the bathroom."
+
+* John buttered the toast the bread.
+
+So you can iterate adjuncts, but not arguments.
+Arguments of verbs, in English, are obligatory.
+
+* John buttered.
+-> "buttered" is strictly transitive
+
+These are semantically very similar?
+John fears thunderstorms.
+Thunderstorms frighten John.
+
+(you'll often get thrown off, learning these verbs in an L2.)
+
+** in languages with fixed-ish word order, you usually can't reorder arguments
+John buttered the toast with a knife in the bathroom at midnight.
+John buttered the toast in the bathroom at midnight with a knife.
+... etc.
+
+Mary gave John a book.
+* Mary gave a book John.
+
+** in English, at least certain adjuncts tend to occur after complements
+
+The authorities blamed the arson on the skydivers [without checking the facts].
+
+* The authorities blamed [without checking the facts] the arson on the
+  skydivers.
+
+
+The "did so" test for substitutability, with "ellipsis"
+Calvin saw Hobbes in the garden and Peter did so too.
+* Calvin saw Hobbes in the garden and Peter did so John in the kitchen.
+
+("did so" here can't replace just "saw" ? ...)
+
+The question here: what can "do so" replace?
+
+** from local to non-local dependencies
+
+A head generally realizes its arguments locally within its head domain: ie,
+within a local tree if an X-bar structure is assumed.
+
+Who do you think writes well about human sadness?
+Who do you think the cops are going to believe?
+
+(in the second case, "who" is the object of "believe")

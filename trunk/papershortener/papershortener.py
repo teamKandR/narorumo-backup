@@ -1,0 +1,129 @@
+#!/usr/bin/env python
+
+import sys
+import nltk
+import string
+import re
+
+# we'll want a function to decide whether the first ngram in the list has been
+# seen before.
+
+def allwords(ngram):
+    """
+    Returns True iff all the tokens in the sequence are strings that contain
+    only letters.
+    >>> allwords(("foo","bar","baz"))
+    True
+    >>> allwords(("foo",".","baz"))
+    False
+    >>> allwords((None,"baz"))
+    False
+    """
+    for token in ngram:
+        if not isinstance(token, basestring):
+           return False 
+        for c in token:
+            if c not in string.letters: return False
+    return True
+
+def make_acronym(tokens):
+    """Take a list of tokens and produce an acronym consisting of their first
+    letters.
+    """
+    return "".join( [token[0] for token in tokens] ).upper() 
+
+## so here's the plan.
+# - segment the text into sentences
+# - now for each sentence, find all the ngrams in it. Add those acronyms to the
+# big list of acronyms
+
+# Now: for each acronym we've found:
+# - build a regular expression that matches the words in that acronym
+# - iterate over the matches.
+# - on the second match and subsequent matches, output everything before that
+# second match and the acronym. Once you're out of matches, output the rest of
+# the text.
+# The input for subsequent loops is the output from previous loops.
+
+def acronym_replace(text, tokens, acronym):
+    """Replace the specified sequence of tokens (given as a tuple) with the
+    specified acronym. The first instance has the acronym appended to it; all
+    subsequent instances are just replaced with the acronym."""
+
+    out = "" 
+    pattern = r'\b' + r'\s'.join(tokens) + r'\b'
+    compiled = re.compile(pattern)
+
+    matches = compiled.findall(text)
+    if len(matches) < 2:
+        return text
+
+    matchiter  = compiled.finditer(text)
+    first = True
+    last_match_end = 0
+    times = 0
+
+    for match in matchiter:
+        start,end = match.start(), match.end()
+        out += text[last_match_end:start]
+
+        if first:
+            out += text[start:end]
+            out += " (" + acronym + ")"
+            first = False
+        else:
+            out += acronym
+        last_match_end = end
+        times += 1
+
+    out += text[last_match_end:]
+    return out
+
+def getacronyms(tokens):
+    """Take a list of tokens and produce a set of acronyms for each unique
+    ngram of length >1 in that list."""
+
+    out = {}
+    for n in xrange(2, len(tokens) + 1):
+        ngrams = nltk.util.ngrams(tokens, n)
+        for ngram in ngrams:
+            if allwords(ngram):
+                out[ngram] = make_acronym(ngram)
+    return out
+
+def main():
+    if len(sys.argv) < 2:
+        print "file to open?"
+        return
+    fn = sys.argv[1]
+    raw = open(fn).read()
+    print "opened!"
+
+    sent_segmenter=nltk.data.load('tokenizers/punkt/english.pickle')
+    print "loaded!"
+    sents = sent_segmenter.tokenize(raw)
+
+    print "segmented!"
+
+    acronym_table = {}
+    for sent in sents:
+        tokens = nltk.word_tokenize(sent)
+        newacronyms = getacronyms(tokens)
+        acronym_table.update(newacronyms)
+    print "got acronyms!"
+
+    keys = acronym_table.keys()
+    keys.sort(key = lambda(s): len(s), reverse=True)
+
+    text = raw
+    for key in keys:
+        text = acronym_replace(text, key, acronym_table[key])
+
+    print "replaced!"
+    print text
+
+def test():
+    import doctest
+    doctest.testmod()
+
+if __name__ == "__main__": main()
