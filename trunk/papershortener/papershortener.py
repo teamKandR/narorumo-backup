@@ -5,9 +5,6 @@ import nltk
 import string
 import re
 
-# we'll want a function to decide whether the first ngram in the list has been
-# seen before.
-
 def allwords(ngram):
     """
     Returns True iff all the tokens in the sequence are strings that contain
@@ -50,46 +47,59 @@ def acronym_replace(text, tokens, acronym):
     specified acronym. The first instance has the acronym appended to it; all
     subsequent instances are just replaced with the acronym."""
 
-    out = "" 
+    textchunks = []
     pattern = r'\b' + r'\s'.join(tokens) + r'\b'
     compiled = re.compile(pattern)
-
-    matches = compiled.findall(text)
-    if len(matches) < 2:
-        return text
 
     matchiter  = compiled.finditer(text)
     first = True
     last_match_end = 0
-    times = 0
 
     for match in matchiter:
         start,end = match.start(), match.end()
-        out += text[last_match_end:start]
+        textchunks.append(text[last_match_end:start])
 
         if first:
-            out += text[start:end]
-            out += " (" + acronym + ")"
+            textchunks.append(text[start:end])
+            textchunks.append(" (" + acronym + ")")
             first = False
         else:
-            out += acronym
+            textchunks.append(acronym)
         last_match_end = end
-        times += 1
 
-    out += text[last_match_end:]
-    return out
+    textchunks.append(text[last_match_end:])
+    return "".join(textchunks)
 
-def getacronyms(tokens):
-    """Take a list of tokens and produce a set of acronyms for each unique
-    ngram of length >1 in that list."""
+# each ngram we add to the table gets its own unique serial number. These will
+# be used for sorting later; ngrams that appear earlier get anagrammed earlier.
+serialnum = 0
 
-    out = {}
+def add_acronyms(tokens, table):
+    """Given a list of tokens, add the set of possible acronyms (for each
+    unique ngram of length >1 in that list) into the given acronym table."""
+
+    global serialnum
     for n in xrange(2, len(tokens) + 1):
         ngrams = nltk.util.ngrams(tokens, n)
         for ngram in ngrams:
             if allwords(ngram):
-                out[ngram] = make_acronym(ngram)
-    return out
+                if ngram in table:
+                    acronym,count,serial = table[ngram]
+                    table[ngram] = (acronym, count+1, serial)
+                else:
+                    table[ngram] = (make_acronym(ngram), 1, serialnum)
+                    serialnum += 1
+
+def cmpkeypair(pair1, pair2):
+    if len(pair1[0]) < len(pair2[0]):
+        return -1
+    if len(pair1[0]) > len(pair2[0]):
+        return 1
+    if pair1[1] < pair2[1]:
+        return -1
+    if pair1[1] > pair2[1]:
+        return 1
+    return 0
 
 def main():
     if len(sys.argv) < 2:
@@ -108,16 +118,17 @@ def main():
     acronym_table = {}
     for sent in sents:
         tokens = nltk.word_tokenize(sent)
-        newacronyms = getacronyms(tokens)
-        acronym_table.update(newacronyms)
+        add_acronyms(tokens, acronym_table)
     print "got acronyms!"
 
-    keys = acronym_table.keys()
-    keys.sort(key = lambda(s): len(s), reverse=True)
+    keypairs = [ (k,v[2]) for k,v in acronym_table.iteritems() ]
+    keypairs.sort(cmp=cmpkeypair, reverse=True)
 
     text = raw
-    for key in keys:
-        text = acronym_replace(text, key, acronym_table[key])
+    for keypair in keypairs:
+        acronym,count,serial = acronym_table[keypair[0]]
+        if count >= 2:
+            text = acronym_replace(text, keypair[0], acronym)
 
     print "replaced!"
     print text
