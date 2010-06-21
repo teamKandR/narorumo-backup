@@ -2,13 +2,15 @@
 
 <html>
 <head>
-<title>o hai</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/> 
+<title>KOMPRESSR</title>
+<LINK href="static/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <p>y hallo thar</p>
 
-  <div>
-  {{output}}
+  <div class="output">
+  {{output|escape|linebreaks}}
   </div>
 
 </body>
