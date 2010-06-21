@@ -14,9 +14,7 @@ class MainHandler(webapp.RequestHandler):
         self.response.out.write(template.render(path, template_values))
 
     def post(self):
-        text = """\
-this is the text that we will shorten
-this is the text that we will shorten"""
+        text = self.request.get("text")
         shorter = papershortener.shorten(text)
         template_values = {"output": shorter}
         path = os.path.join(os.path.dirname(__file__), 'templates/output.html')
