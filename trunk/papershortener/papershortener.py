@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import sys
+import os
 import nltk
 import string
 import re
@@ -42,6 +43,9 @@ def make_acronym(tokens):
 # the text.
 # The input for subsequent loops is the output from previous loops.
 
+MARKER = "!@#$"
+MARKERNL = "^&*()"
+
 def acronym_replace(text, tokens, acronym):
     """Replace the specified sequence of tokens (given as a tuple) with the
     specified acronym. The first instance has the acronym appended to it; all
@@ -51,7 +55,14 @@ def acronym_replace(text, tokens, acronym):
     pattern = r'\b' + r'\s'.join(tokens) + r'\b'
     compiled = re.compile(pattern)
 
-    matchiter  = compiled.finditer(text)
+    matchiter = compiled.finditer(text)
+    try:
+        matchiter.next()
+        matchiter.next()
+    except StopIteration:
+        return text
+
+    matchiter = compiled.finditer(text)
     first = True
     last_match_end = 0
 
@@ -61,6 +72,7 @@ def acronym_replace(text, tokens, acronym):
 
         if first:
             textchunks.append(text[start:end])
+                #text[start:end].replace(" ", MARKER).replace("\n", MARKERNL) )
             textchunks.append(" (" + acronym + ")")
             first = False
         else:
@@ -101,37 +113,51 @@ def cmpkeypair(pair1, pair2):
         return 1
     return 0
 
+
+## duty now for the future: be callable from a web frontend.
+
+INITIALIZED = False
+sent_segmenter = None
+
+def init():
+    global sent_segmenter
+    global INITIALIZED
+
+    if INITIALIZED: return
+    
+    path = os.path.join(os.path.dirname(__file__), 'english.pickle')
+    sent_segmenter=nltk.data.load('file:' + path)
+    INITIALIZED = True
+
+def shorten(text):
+    global sent_segmenter
+    init()
+    sents = sent_segmenter.tokenize(text)
+
+    acronym_table = {}
+    for sent in sents:
+        tokens = nltk.word_tokenize(sent)
+        add_acronyms(tokens, acronym_table)
+
+    keypairs = [ (k,v[2]) for k,v in acronym_table.iteritems() ]
+    keypairs.sort(cmp=cmpkeypair, reverse=True)
+
+    for keypair in keypairs:
+        acronym,count,serial = acronym_table[keypair[0]]
+        if count >= 2:
+            text = acronym_replace(text, keypair[0], acronym)
+
+    # return text.replace(MARKER, " ").replace(MARKERNL, "\n")
+    return text
+
 def main():
     if len(sys.argv) < 2:
         print "file to open?"
         return
     fn = sys.argv[1]
     raw = open(fn).read()
-    print "opened!"
 
-    sent_segmenter=nltk.data.load('tokenizers/punkt/english.pickle')
-    print "loaded!"
-    sents = sent_segmenter.tokenize(raw)
-
-    print "segmented!"
-
-    acronym_table = {}
-    for sent in sents:
-        tokens = nltk.word_tokenize(sent)
-        add_acronyms(tokens, acronym_table)
-    print "got acronyms!"
-
-    keypairs = [ (k,v[2]) for k,v in acronym_table.iteritems() ]
-    keypairs.sort(cmp=cmpkeypair, reverse=True)
-
-    text = raw
-    for keypair in keypairs:
-        acronym,count,serial = acronym_table[keypair[0]]
-        if count >= 2:
-            text = acronym_replace(text, keypair[0], acronym)
-
-    print "replaced!"
-    print text
+    print shorten(raw)
 
 def test():
     import doctest
