@@ -4,15 +4,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/> 
 <title>KOMPRESSR</title>
-<LINK href="static/style.css" rel="stylesheet" type="text/css">
+<link href="static/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <p>y hallo thar</p>
+  <h1><a href="/">kompressr: make text shorter harnessing the power of acronyms
+  (MTSHTPOA)</a></h1>
 
-  <form method="post"
-        action="/papershortener.dll?action=BUSINESS_LOGIC_SHORTEN">
-    <input type="submit" value="shrtn"/>
-    <textarea name="text" rows="24" cols="80" style="display:block"></textarea>
+  <form
+    method="post"
+    action="/papershortener.dll?BUSINESS_LOGIC=BUSINESS_LOGIC_SHORTEN.ACTION">
+    <input type="submit" value="Go!"/>
+    <input type="checkbox" name="plaintext"/>
+    <span>Output plaintext? (for source code, latex, etc)</span>
+    <textarea name="text" rows="24" style="display:block"></textarea>
   </form>
+
+  <div class="sourcecode">
+    <a href="http://code.google.com/p/narorumo/source/browse/#svn/trunk/papershortener ">source here!</a>
+  </div>
 </body>
 </html>

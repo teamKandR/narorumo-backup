@@ -17,12 +17,18 @@ class MainHandler(webapp.RequestHandler):
         text = self.request.get("text")
         shorter = papershortener.shorten(text)
         template_values = {"output": shorter}
-        path = os.path.join(os.path.dirname(__file__), 'templates/output.html')
-        self.response.out.write(template.render(path, template_values))
+
+        if self.request.get("plaintext"):
+            self.response.headers['Content-Type'] = 'text/plain'
+            self.response.out.write(shorter)
+        else:
+            path = os.path.join(os.path.dirname(__file__),
+                                'templates/output.html')
+            self.response.out.write(template.render(path, template_values))
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
-                                         debug=True)
+    application = webapp.WSGIApplication([('.*', MainHandler)],
+                                           debug=False)
     util.run_wsgi_app(application)
 
 if __name__ == '__main__':
