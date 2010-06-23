@@ -1,0 +1,14 @@
+When the analyzer starts, it displays the message "Starting
+emufuzzer_analyser XMLRPC server on port 55555".  It then sits in a
+tight loop, waiting for the emulator module to pass it some
+information: a machine state and an instruction to execute.  [TODO:
+Where in the code does this happen?]
+
+EmuFuzzer starts by both write-protecting and read-protecting all
+pages of memory on the real machine.  [TODO: Where in the code does
+this happen?]  The emulator sends over instructions, one at a time, to
+be run on the real machine.  When an instruction tries to read memory,
+we intercept the access via the page fault and go and get the page
+from the emulated environment (so we "lazily" grab pages from the
+emulated environment as needed).  Then we have the page in the
+physical environment, readable but still not writable.

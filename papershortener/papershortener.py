@@ -132,6 +132,8 @@ def init():
 def shorten(text):
     global sent_segmenter
     init()
+
+    text = text.replace("\r", "")
     sents = sent_segmenter.tokenize(text)
 
     acronym_table = {}
@@ -139,6 +141,8 @@ def shorten(text):
         tokens = nltk.word_tokenize(sent)
         add_acronyms(tokens, acronym_table)
 
+    # Entries in the acronym_table are keyed by individual ngrams; the values
+    # are tuples of (acronym, count, serialnumber).
     keypairs = [ (k,v[2]) for k,v in acronym_table.iteritems() ]
     keypairs.sort(cmp=cmpkeypair, reverse=True)
 
@@ -146,8 +150,6 @@ def shorten(text):
         acronym,count,serial = acronym_table[keypair[0]]
         if count >= 2:
             text = acronym_replace(text, keypair[0], acronym)
-
-    # return text.replace(MARKER, " ").replace(MARKERNL, "\n")
     return text
 
 def main():
