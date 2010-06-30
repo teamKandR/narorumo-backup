@@ -9,6 +9,9 @@ import string
 
 from nltk.corpus import cmudict
 
+# requires a fix to textanalyzer that I need to commit.
+from nltk_contrib.readability.textanalyzer import textanalyzer
+
 import utils
 
 PRONUNCIATIONS = {}
@@ -18,6 +21,9 @@ def load_pronouncing():
     PRONUNCIATIONS = cmudict.dict()
     print len(PRONUNCIATIONS)
 load_pronouncing()
+
+analyzer = textanalyzer("eng")
+print analyzer
 
 def word_to_syllables(word):
     return [ sounds_to_syllables(sounds) for sounds in PRONUNCIATIONS[word] ]
@@ -68,7 +74,12 @@ def closest_vowel_index(sounds, pos):
 def count_syllables(phonemes):
     if isinstance(phonemes,basestring): # got a word, not a list of syllables!
         word = phonemes
-        return count_syllables(PRONUNCIATIONS[words][0])
+
+        if word in PRONUNCIATIONS:
+            return count_syllables(PRONUNCIATIONS[word][0])
+        else:
+            out = analyzer.countSyllables([word])
+            return out
     else:
         return len( filter(isvowel, phonemes) )
 
@@ -122,5 +133,7 @@ def main():
     print word_to_syllables("food")
     print word_to_syllables("dude")
     print word_to_syllables("tomato")
+    print count_syllables("tomato")
+    print count_syllables("clee")
 
 if __name__ == "__main__": main()
