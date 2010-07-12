@@ -1,3 +1,16 @@
+-- Preface to the 2010 code --
+In July 2010, Alex was again faced with the possibility of giving a talk to
+some kids about information retrieval, so he polished up the code a bit, made
+it work with Python 3, and added the ability to actually do queries, which was
+previously conspicuously absent.
+
+For an interesting experiment, make sure that tf-idf and lowercasing are turned
+on, then search for "page", which you would expect should return the document
+about Larry Page. Does that not work? Why not?
+
+Most of the coding was done on the bus from Ithaca to NYC.
+
+-- Preface to the 2008 code --
 On 24 September 2008, Alex gave a talk at Spelman College for an algorithms
 class. Asked to present on the sort of algorithms used at Google, he opted to
 speak briefly about information retrieval.
