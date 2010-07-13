@@ -26,7 +26,18 @@ Segment table: This sounds like something that keeps track of allocated and avai
 
 Child processes: An individual thread can't fork a child process; it has to be done at the process level.  So, unique to a process, not a thread.
 
-So that leaves us with: page table pointer, open files, child processes.  Let's see what Tanenbaum says...
+So that leaves us with these items being unique to a process and not to a thread: page table pointer, open files, child processes.  Let's see what Tanenbaum says...
+
+OK.  On page 102 of Modern Operating Systems 3e, we have:
+
+|| Per process items           || Per thread items ||
+|| Address space               || Program counter  ||
+|| Global variables            || Registers        ||
+|| Open files                  || Stack            ||
+|| Child processes             || State            ||
+|| Pending alarms              ||                  ||
+|| Signals and signal handlers ||                  ||
+|| Accounting information      ||                  ||
 
 == Which of the following are true statements about user-level threads versus kernel-level threads? ==
   * Invoking any system call that might block poses an extra problem for user-level threads
