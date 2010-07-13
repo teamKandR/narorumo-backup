@@ -30,14 +30,20 @@ So that leaves us with these items being unique to a process and not to a thread
 
 OK.  On page 102 of Modern Operating Systems 3e, we have:
 
-|| Per process items           || Per thread items ||
-|| Address space               || Program counter  ||
-|| Global variables            || Registers        ||
-|| Open files                  || Stack            ||
-|| Child processes             || State            ||
-|| Pending alarms              ||                  ||
-|| Signals and signal handlers ||                  ||
-|| Accounting information      ||                  ||
+|| *Per process items*         || *Per thread items* ||
+|| Address space               || Program counter    ||
+|| Global variables            || Registers          ||
+|| Open files                  || Stack              ||
+|| Child processes             || State              ||
+|| Pending alarms              ||                    ||
+|| Signals and signal handlers ||                    ||
+|| Accounting information      ||                    ||
+
+So I'm right about CPU registers, stack pointer (I'm assuming that's part of "stack"), open files, child processes, and program counter.  I don't know if I'm right about page table pointer and segment table.  Let's see what those are...
+
+Hm.  The Internet suggests that I guessed wrong about segment tables and that a segment table keeps track of every segment (code, static data, heap, stack) in a particular process.  So that would be a process-wide, not unique to a thread, notion.
+
+And for the page table pointer: I guess I was confusing page table with segment table.  The Internet would also seem to to suggest that there's only one, system-wide page table (and now that I think about it, that makes sense; at the page table level there's no notion of threads).  Furthermore, I guess the page table pointer is merely a pointer to the base of that single, system-wide page table.  So it's not unique to a process or a thread; it's OS-wide.
 
 == Which of the following are true statements about user-level threads versus kernel-level threads? ==
   * Invoking any system call that might block poses an extra problem for user-level threads
