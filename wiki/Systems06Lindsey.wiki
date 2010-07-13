@@ -1,0 +1,38 @@
+#summary Lindsey studies for the systems qual.
+
+= One: Threads =
+== Which of the following items are typically considered to be unique to a process, but not unique to a thread? ==
+  * CPU registers
+  * page table pointer
+  * stack pointer
+  * open files
+  * segment table
+  * child processes
+  * program counter
+
+== Answer ==
+
+Here are my off-the-top-of-my-head answers:
+
+CPU registers: I think these are unique to a thread; they're part of the context that gets saved when we swap a thread out.
+
+Page table pointer: Every process gets its own page table, yeah?  So the page table pointer is unique to a process, but not to a thread, since threads within a process have to share the memory that's allocated to that process.
+
+Stack pointer and program counter: I think these would have to be unique to a thread.  Don't threads have to keep track of where they are in execution?
+
+Open files: I can imagine two threads in a process having the same file open for reading and writing.  Unique to a process, not a thread.
+
+Segment table: This sounds like something that keeps track of allocated and available memory?  It sounds like an OS-wide thing, not something unique to a process or a thread.
+
+Child processes: An individual thread can't fork a child process; it has to be done at the process level.  So, unique to a process, not a thread.
+
+So that leaves us with: page table pointer, open files, child processes.  Let's see what Tanenbaum says...
+
+== Which of the following are true statements about user-level threads versus kernel-level threads? ==
+  * Invoking any system call that might block poses an extra problem for user-level threads
+  * User level threads are more vulnerable to priority inversion than kernel-level threads
+  * There is less overall scheduling overhead in a user-level thread system
+  * User level threads retain advantages on symmetric multiprocessors
+  * Upcalls are necessary to implement user-level threads. (An upcall is a notification, provided by the kernel to the user-level thread run-time system, that a thread has blocked.)
+
+== Answer == 
