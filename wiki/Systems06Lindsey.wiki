@@ -53,3 +53,15 @@ And for the page table pointer: I guess I was confusing page table with segment 
   * Upcalls are necessary to implement user-level threads. (An upcall is a notification, provided by the kernel to the user-level thread run-time system, that a thread has blocked.)
 
 == Answer == 
+
+From Tanenbaum, p. 108 and thereabouts:
+
+"Invoking any system call that might block poses an extra problem for user-level threads" -- true.  If there are several user-level threads in a process and one blocks on a system call, none of them can run because as far as the kernel is concerned, the entire process is blocking.  If the kernel is aware of threads it might be able to allow those threads not blocking on the system call to run.
+
+"User level threads are more vulnerable to priority inversion than kernel-level threads" -- false.  I don't see any particular reason why this would be the case.
+
+"There is less overall scheduling overhead in a user-level thread system" -- true, because there is no need to go into the kernel when a thread is finished running in order to pick another thread to run; thread scheduling and context switching can happen without calling int the kernel. 
+
+"User level threads retain advantages on symmetric multiprocessors" -- false; I don't see any particular reason why this would be the case, either.
+
+"Upcalls are necessary to implement user-level threads." -- I would say false, that upcalls are not _required_, although they might help with scheduling.
