@@ -18,18 +18,6 @@ from __future__ import division
 import random
 import copy
 
-from beamsearch import beamsearch
-from beamsearch import Candidate
-
-words = set()
-def loadallwords():
-    global words
-    words = open("/usr/share/dict/words").read().split("\n")
-loadallwords()
-
-def getword():
-    return random.choice(words)
-
 def flatten(poem):
     return reduce(lambda sofar,line: sofar+line, poem, [])
 
@@ -40,6 +28,20 @@ def minimize_repeated_words(poem):
     flattened = flatten(poem) 
     uniquewords = set(flattened)
     return len(uniquewords) / len(flattened)
+
+import rhymes
+def last_words_rhyme(poem):
+    nlines = len(poem)
+    lastwords = [line[-1].lower() for line in poem]
+
+    for word in lastwords:
+        otherwords = lastwords[:]
+        otherwords.remove(word)
+        currhymescore = 0
+
+        for otherword in otherwords:
+            currhymescore += rhymes.best_rhyme_score(word, otherword)
+    return (currhymescore / nlines)
 
 vowels = "aeiouAEIOU"
 def maximize_vowels(poem):
@@ -60,35 +62,3 @@ def maximize_alphabeticity(poem):
         wordsinplace += sum([1 if tosort[i] == line[i] else 0
                                for i in xrange(len(line))])
     return wordsinplace / totalwords
-
-class PoemCandidate(Candidate):
-    def __repr__(self):
-        return "\n".join( [" ".join(line) for line in self.val] ) + "\n"
-
-    def scoreme(self):
-        return maximize_vowels(self.val)
-        # return (minimize_repeated_words(self.val) + 
-        #         maximize_vowels(self.val) + 
-        #         3.0 * maximize_alphabeticity(self.val))
-
-    def update(self):
-        lineindex = random.randint(0, len(self.val) - 1)
-        wordindex = random.randint(0, len(self.val[lineindex]) - 1)
-        newpoem = copy.deepcopy(self.val)
-        newpoem[lineindex][wordindex] = getword()
-        return PoemCandidate(newpoem)
-
-def naive_poem():
-    return [[getword(), getword(), getword(), getword(), getword()],
-            [getword(), getword(), getword(), getword(), getword()],
-            [getword(), getword(), getword(), getword(), getword()]]
-
-def main():
-    poems = []
-    for i in xrange(10):
-        poems.append(PoemCandidate(naive_poem()))
-    better = beamsearch(poems, 200)
-    for i in xrange(5):
-        print better[i], better[i].score
-
-if __name__ == "__main__": main()
