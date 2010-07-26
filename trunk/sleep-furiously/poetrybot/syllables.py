@@ -5,6 +5,7 @@ Routines that deal with syllables particularly.
 """
 
 from __future__ import division
+from collections import defaultdict
 import string
 
 from nltk.corpus import cmudict
@@ -14,16 +15,16 @@ from nltk_contrib.readability.textanalyzer import textanalyzer
 
 import utils
 
-PRONUNCIATIONS = {}
+PRONUNCIATIONS = defaultdict(lambda:[], {})
 def load_pronouncing():
     """Load up the CMU Pronouncing Dictionary."""
     global PRONUNCIATIONS
-    PRONUNCIATIONS = cmudict.dict()
-    print len(PRONUNCIATIONS)
+    PRONUNCIATIONS = defaultdict(lambda:[], cmudict.dict())
 load_pronouncing()
+print "Got cmudict."
 
 analyzer = textanalyzer("eng")
-print analyzer
+print "Got textanalyzer."
 
 def word_to_syllables(word):
     return [ sounds_to_syllables(sounds) for sounds in PRONUNCIATIONS[word] ]

@@ -69,7 +69,9 @@ def best_rhyme_score(word1, word2):
     for syls1 in word_to_syllables(word1):
         for syls2 in word_to_syllables(word2):
             scores.append( rhyme_score(syls1[-1], syls2[-1]) )
-    return max(scores)
+    if scores:
+        return max(scores)
+    return 0.0
 
 def best_rhyming_word(word, possibilities):
     """For the given word (as a string), and all the words in the possibilities
