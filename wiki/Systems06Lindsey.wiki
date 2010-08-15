@@ -165,4 +165,4 @@ while(sem > 0) { wait(); }
 
 where wait() is just a function that sleeps that thread for an appropriate amount of time.
 
-Off the top of my head, I don't see deadlock in this.  Neither rendezvous_ function can finish unless the other one is called, and that can't happen unless we're past the statement we cared about having happen.  One concern might be that the wait()ing doesn't allow enough time for the other thread to run, so we'd have to make sure to have the waiting period be long enough.
+Off the top of my head, I don't see deadlock in this.  Neither `rendezvous` function can finish unless the other one is called, and that can't happen unless we're past the statement we cared about having happen.  One concern might be that the `wait()`ing doesn't allow enough time for the other thread to run, so we'd have to make sure to have the waiting period be long enough.
