@@ -65,3 +65,29 @@ From Tanenbaum, p. 108 and thereabouts:
 "User level threads retain advantages on symmetric multiprocessors" -- false; I don't see any particular reason why this would be the case, either.
 
 "Upcalls are necessary to implement user-level threads." -- I would say false, that upcalls are not _required_, although they might help with scheduling.
+
+= Two: CPU Efficiency =
+Measurements of a certain system have shown that the average process runs for a time T before blocking on I/O. A process switch requires time S, which is effectively wasted (over-head). For round-robin scheduling with quantum Q, give a formula for the CPU efficiency for each of the following.
+  * Q = infinity
+  * Q > T
+  * S < Q < T
+  * Q = S
+  * Q nearly 0
+
+== Answer ==
+
+Off the top of my head:
+
+Is the "CPU efficiency" the percentage of time spent actually computing something?  Let's assume that that's the case.
+
+"round-robin scheduling with quantum Q" means that each process runs for time Q before another one is switched to.  I don't know if we should include the context switch time S in Q, or if it's in addition to Q.  Let's assume that it's included in Q.
+
+Q = infinity: If Q is infinity, then the first process to use the CPU has it forever.  It runs for T of that time, then blocks (forever?), so the CPU usage is T/Q, or 0% in the limit!
+
+Q > T: If Q is greater than T, then that means the first process to run runs for T, then nothing happens on the processor for Q-T time because the process is blocking.  Then, we switch to the next process, and the same thing happens.  This doesn't take into account S, which we have no information about.  If S is less than or equal to Q-T, then it can happen at the beginning of the next process' running time and still leave enough time for the process to run for T.  If that is the case, then the CPU usage is T/Q.  If S is more than Q-T, then the context switch time will cut into efficiency: we'll have to subtract S-(Q-T) from T.  So, (T - (S - (Q-T)))/Q.
+
+S < Q < T: We know that S is less than Q, which is less than T.  Since Q is less than T, a process can't do all of its computation before blocking in the time that's given to it.  So it will run for all of Q, so the CPU will have 100% usage for that time; then, in the next quantum, there will be a context switch, taking time S, followed by a process running for Q-S time; then the same in the next quantum, and so on.  So, Q-S / Q.
+
+Q = S: After the first process runs, the CPU won't have time to do anything but context switch, and nothing will have time during a quantum to actually start running.  So, CPU usage is 0% in the limit.
+
+Q nearly 0: Again, there will be no time even to accomplish the context switching, so CPU usage is 0% in the limit.
