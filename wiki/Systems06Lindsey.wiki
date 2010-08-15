@@ -89,7 +89,7 @@ Q = infinity: The process will have the CPU until it blocks.  So, the process wi
 
 Q > T: If the quantum is large enough that processes always block on I/O before it is over, the efficiency will be the same as in the "infinity" example: T/(T+S).
 
-S < Q < T: Here, processes don't finish running during their quantum.  We don't know how big of a difference there is between Q and T, but we know that the process will require T/Q process switches during its lifetime, and each of those will take time S, so, S `*` (T/Q) time will be needed for context switching.  In all, we will need T + (S `*` (T/Q)) time to get T work done, so: T / (T + (ST/Q)).
+S < Q < T: Here, processes don't finish running during their quantum.  We don't know how big of a difference there is between Q and T, but we know that the process will require T/Q process switches during its lifetime, and each of those will take time S, so, S `*` (T/Q) time will be needed for context switching.  In all, we will need T + (S `*` (T/Q)) time to get work done that should take time T if it were allowed to happen all at once, so the efficiency is: T / (T + (ST/Q)).
 
 Some clever people have simplified this as follows:
 
