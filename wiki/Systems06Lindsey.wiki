@@ -91,3 +91,58 @@ S < Q < T: We know that S is less than Q, which is less than T.  Since Q is less
 Q = S: After the first process runs, the CPU won't have time to do anything but context switch, and nothing will have time during a quantum to actually start running.  So, CPU usage is 0% in the limit.
 
 Q nearly 0: Again, there will be no time even to accomplish the context switching, so CPU usage is 0% in the limit.
+
+= Three: Semaphores =
+Suppose we have two threads Ta and Tb that we would like to wait for each other at a certain point in their execution
+
+=== Thread Ta ===
+{{{
+statement a1
+rendezvous_a()
+statement a2
+}}}
+=== Thread Tb ===
+{{{
+statement b1
+rendezvous_b()
+statement b2
+}}}
+
+Here, we want Ta not to execute a2 until Tb has executed b1 and we want Tb not to execute b2 until Ta has executed a1. That is, we want the threads to "rendezvous" by calling rendezvous_a() and rendezvous_b().
+
+Give a semaphore-based solution for rendezvous_a() and rendezvous_b(). Declare any variables you might need, along with their initial values. Make sure that deadlock is not possible in your solution.
+
+== Answer ==
+
+So, just to be clear, these orders of statements are OK:
+
+a1, b1, a2, b2
+b1, a1, a2, b2
+a1, b1, b2, a2
+b1, a1, b2, a2
+
+But these aren't:
+a1, a2, b1, b2
+a1, a2, b2, b1
+b1, b2, a1, a2
+b1, b2, a2, a1
+
+I think we should be able to do this:
+
+{{{
+int sem = 2;
+
+void rendezvous_a() {
+sem--;
+while(sem > 0) { wait(); }
+}
+
+void rendezvous_b() {
+sem--;
+while(sem > 0) { wait(); }
+}
+}}}
+
+where wait() is just a function that sleeps that thread for an appropriate amount of time.
+
+Off the top of my head, I don't see deadlock in this.  Neither rendezvous_* function can finish unless the other one is called, and that can't happen unless we're past the statement we cared about having happen.  One concern might be that the wait()ing doesn't allow enough time for the other thread to run, so we'd have to make sure to have the waiting period be long enough.
