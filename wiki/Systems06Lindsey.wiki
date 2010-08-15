@@ -83,7 +83,7 @@ Is the "CPU efficiency" the percentage of time spent actually computing somethin
 
 Off the top of my head, I thought that round-robin scheduling with quantum Q meant that each process got time Q, whether it needed it or not; if it finished during its quantum, the CPU would be idle until the end of the quantum.  Some googling (this question shows up [http://www.google.com/search?q=Measurement+of+a+certain+system+have+shown+that+the+average+process+runs+for+a+time+T+before+blocking+on+IO. all over]) suggests that that's not the case, and Tanenbaum (p. 154) confirms it: "Each process is assigned a time interval, called its quantum, during which it is allowed to run.  If the process is still running at the end of the quantum, the CPU is preempted and given to another process.  If the process has blocked or finished before the quantum has elapsed, the CPU switching is done when the process blocks, of course."
 
-I don't know if we should include the context switch time S in Q, or if it's in addition to Q, but let's assume that it's included in Q.
+I don't know if we should include the context switch time S in Q, or if it's in addition to Q, but let's assume that it's in addition to Q.
 
 Q = infinity: The process will have the CPU until it blocks.  So, the process will run for T; then the next process will run for T (plus the S needed for the switch), and so on.  Each process will need T+S of processor time to get T worth of work done, so the efficiency is T/(T+S).  (Pretty good for CPU efficiency, but CPU efficiency may not be the only thing we want to maximize!)
 
@@ -101,7 +101,7 @@ T + ST/Q     TQ/Q + ST/Q    (TQ + ST)/Q    T * (Q+S)/Q    (Q+S)/Q    Q+S
 
 So, Q/(Q+S).
 
-Q = S: Again, a process will need to do T/Q context switches in its lifetime, and if Q is S, that's equal to T/S.  It'll need to do that S times.  So, a total of T time spent context switching.  In all, we'll need T time to do work plus T time spent context switching, so, T /(T+T), or 50% efficiency.  (The internet agrees with this, but I don't buy it -- if Q = S, then we'll never have time to do _anything_ but context switch, so we won't get any actual work done.  Someone want to convince me otherwise?)
+Q = S: Again, a process will need to do T/Q context switches in its lifetime, and if Q is S, that's equal to T/S.  It'll need to do that S times.  So, a total of T time spent context switching.  In all, we'll need T time to do work plus T time spent context switching, so, T /(T+T), or 50% efficiency.
 
 Q = nearly 0: We won't even have time to do the context switching -- efficiency will go to 0 as Q goes to 0.
 
