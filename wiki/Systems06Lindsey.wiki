@@ -12,23 +12,29 @@
 
 == Answer ==
 
-Here are my off-the-top-of-my-head answers:
+CPU registers: These are unique to a thread; they're part of the context that gets saved when we swap a thread out.
 
-CPU registers: I think these are unique to a thread; they're part of the context that gets saved when we swap a thread out.
+Page table pointer: There is only one, OS-wide page table, so it wouldn't make sense for each thread to have a pointer into the page table; this would be a process-level notion if not an OS-level notion.
 
-Page table pointer: Every process gets its own page table, yeah?  So the page table pointer is unique to a process, but not to a thread, since threads within a process have to share the memory that's allocated to that process.
+Stack pointer and program counter: These would have to be unique to a thread; threads have to keep track of where they are in execution.
 
-Stack pointer and program counter: I think these would have to be unique to a thread.  Don't threads have to keep track of where they are in execution?
+Open files: Unique to a process, not a thread; two threads in a process might both access a file, even though only one of them opened it.
 
-Open files: I can imagine two threads in a process having the same file open for reading and writing.  Unique to a process, not a thread.
-
-Segment table: This sounds like something that keeps track of allocated and available memory?  It sounds like an OS-wide thing, not something unique to a process or a thread.
+Segment table: This keeps track of allocated and available memory in a process' address space (for instance, the information in /proc/pid/maps for a particular pid on Linux), so it's process-specific, not thread-specific.
 
 Child processes: An individual thread can't fork a child process; it has to be done at the process level.  So, unique to a process, not a thread.
 
-So that leaves us with these items being unique to a process and not to a thread: page table pointer, open files, child processes.  Let's see what Tanenbaum says...
+So, in all, we've got:
 
-OK.  On page 102 of Modern Operating Systems 3e, we have:
+  * CPU registers -- thread
+  * page table pointer -- OS
+  * stack pointer -- thread
+  * open files -- process
+  * segment table -- process
+  * child processes -- process
+  * program counter -- thread
+
+On page 102 of Modern Operating Systems 3e, we have:
 
 || *Per process items*         || *Per thread items* ||
 || Address space               || Program counter    ||
@@ -39,13 +45,10 @@ OK.  On page 102 of Modern Operating Systems 3e, we have:
 || Signals and signal handlers ||                    ||
 || Accounting information      ||                    ||
 
-So I'm right about CPU registers, stack pointer (I'm assuming that's part of "stack"), open files, child processes, and program counter.  I don't know if I'm right about page table pointer and segment table.  Let's see what those are...
-
-Hm.  The Internet suggests that I guessed wrong about segment tables and that a segment table keeps track of every segment (code, static data, heap, stack) in a particular process.  So that would be a process-wide, not unique to a thread, notion.
-
-And for the page table pointer: I guess I was confusing page table with segment table.  The Internet would also seem to to suggest that there's only one, system-wide page table (and now that I think about it, that makes sense; at the page table level there's no notion of threads).  Furthermore, I guess the page table pointer is merely a pointer to the base of that single, system-wide page table.  So it's not unique to a process or a thread; it's OS-wide.
+I'm right about open files, child processes, program counter, CPU registers, stack pointer (I assume that is part of "stack").  "Address space" could possibly count as "segment table", so that's OK too.  No word about "page table pointer" -- I still think that that's OS-wide.
 
 == Which of the following are true statements about user-level threads versus kernel-level threads? ==
+
   * Invoking any system call that might block poses an extra problem for user-level threads
   * User level threads are more vulnerable to priority inversion than kernel-level threads
   * There is less overall scheduling overhead in a user-level thread system
@@ -75,8 +78,6 @@ Measurements of a certain system have shown that the average process runs for a 
   * Q nearly 0
 
 == Answer ==
-
-Off the top of my head:
 
 Is the "CPU efficiency" the percentage of time spent actually computing something?  Let's assume that that's the case.
 
