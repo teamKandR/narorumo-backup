@@ -204,7 +204,7 @@ Here the variables lock1 and lock2 are semaphores and the P() and V() functions 
 
 == Answer == 
 
-TODO later!
+*TODO later!*
 
 = Five: Virtual Memory =
 
@@ -222,7 +222,7 @@ Then, each address has 8 bits that index into a second-level page table, so that
 
 Second, "If a page table entry is 2 bytes long, what is the size of the second-level page table?"
 
-Well, we decided that there are really 16 separate second-level tables, so let's figure out what the size of one is and then multiply it by 16.  The table has 256 rows, so 256 * 2 bytes = 512 bytes.  Then, multiplying 512 bytes by 16, we get 8192 bytes or 8KB.  Each of the 16 will probably have some constant amount of header information, though, so in reality it will be a little larger.
+Well, we decided that there are really 16 separate second-level tables, so let's figure out what the size of one is and then multiply it by 16.  The table has 256 rows, so 256 `*` 2 bytes = 512 bytes.  Then, multiplying 512 bytes by 16, we get 8192 bytes or 8KB.  Each of the 16 will probably have some constant amount of header information, though, so in reality it will be a little larger.
 
 Third, "Give reasons why the page size in a virtual memory system should neither be too large or too small."
 
@@ -244,6 +244,10 @@ Assuming no pages are in memory when the program starts, show how many page faul
   * LRU, three frames
   * FIFO, three frames
 
+== Answer == 
+
+*TODO later!*
+
 = Seven: Where's the Bottleneck? =
 While running a job, the CPU utilization ratio is 15%, the paging-disk utilization is 90%, and the network is used at 40% of its capacity. Please identify which of the following may improve the overall throughput of the program and explain why.
   * Install a faster CPU
@@ -252,6 +256,10 @@ While running a job, the CPU utilization ratio is 15%, the paging-disk utilizati
   * Double the size of the disk
   * Upgrade the paging algorithm to include pre-fetching
   * Increase the page size
+
+== Answer == 
+
+*TODO later!*
 
 = Eight: Filesystems =
 Consider a "standard" UNIX filesystem (with i-nodes, indirect blocks, etc). Assume that the file block cache is initially empty, and that the i-node cache initially contains the current working directory. Assume "bar" exists in the current working directory.
@@ -268,6 +276,10 @@ Reading or writing one block or i-node requires 1 disk access.
   * What is the minimum number of disk accesses that this sequence of instructions could possibly require? If it is not possible to give an exact value, explain why and indicate what additional information is needed.
   * What is the maximum number of disk accesses that this sequence of instructions could possibly require? If it is not possible to give an exact value, explain why and indicate what additional information is needed.
 
+== Answer == 
+
+*TODO later!*
+
 = Nine: System  Calls=
 To access an operating system service, a user process must make a system call. In a user program, the interface presented by a system call is a library procedure with the same name as the system call, eg, read(), which is prototyped as follows:
 {{{
@@ -278,3 +290,7 @@ ssize_t read(int fd, void *buf, size_t count);
   * What are the functional differences between a system call and a normal (non-system) function call? IE, what things must you do with a system call (and why) that you can't do with a normal function call?
   * What are the operational differences between a system call and a normal (non-system) function call? IE, what are some differences in how they are implemented?
   * What are the precise series of steps performed when a system call is invoked? If you like, you may illustrate your answer using the read() system call shown above (or you can use a system call of your choice).
+
+== Answer == 
+
+*TODO later!*
