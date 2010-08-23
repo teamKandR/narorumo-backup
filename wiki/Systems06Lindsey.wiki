@@ -246,7 +246,61 @@ Assuming no pages are in memory when the program starts, show how many page faul
 
 == Answer == 
 
-*TODO later!*
+From what I can tell on [http://en.wikipedia.org/wiki/Page_replacement_algorithm the Wikipedia page for "page replacement algorithm"], a frame is simply a slot in memory that can hold a page.  Working on that assumption:
+
+LRU, one frame: There's only room for one page in memory.  We'll initially get a page fault when trying to access page 1, and we'll page in page 1.  Then we'll get a page fault trying to access page 3, and page it in, and so on.  We'll get a page fault every time we try to access any page, unless it was the same as the previous one accessed.  So, for the 17 page accesses, we'll get 16 page faults (all except the repeated access of page 1).
+
+FIFO, one frame: It will be the same as above; there's never a choice of what to page out since there's only one frame, so the choice of page replacement algorithm doesn't matter.
+
+LRU, three frames: Now the choice of page replacement algorithm starts to matter.  The accesses will go like this:
+
+{{{
+1 -- page fault; page in 1.
+3 -- page fault; page in 3.
+4 -- page fault; page in 4.
+4 -- already there.
+1 -- already there.
+2 -- page fault; page out 3 since it's least recently accessed of {1, 3, 4} and page in 2.  Now memory contains {1, 4, 2}.
+6 -- page fault; page out 4 and page in 6.  Now memory contains {1, 2, 6}.
+1 -- already there.
+1 -- already there.
+3 -- page fault; page out 2 and page in 3.  Now memory contains {1, 6, 3}.
+2 -- page fault; page out 6 and page in 2.  Now memory contains {1, 3, 2}.
+4 -- page fault; page out 1 and page in 4.  Now memory contains {3, 2, 4}.
+5 -- page fault; page out 3 and page in 5.  Now memory contains {2, 4, 5}.
+4 -- already there.
+2 -- already there.
+3 -- page fault; page out 5 and page in 3.  Now memory contains {2, 4, 3}.
+2 -- already there.
+4 -- already there.
+}}}
+
+Whew.  still pretty bad, but this time we only had 10 page faults for 17 accesses.
+
+FIFO, three frames:
+
+{{{
+1 -- page fault; page in 1.
+3 -- page fault; page in 3.
+4 -- page fault; page in 4.
+4 -- already there.
+1 -- already there.
+2 -- page fault; page out 1 since it was first in and page in 2.  Memory: {3, 4, 2}.
+6 -- page fault; page out 3 and page in 6.  Memory: {4, 2, 6}.
+1 -- page fault; page out 4 and page in 1.  Memory: {2, 6, 1}.
+1 -- already there.
+3 -- page fault; page out 2 and page in 3.  Memory: {6, 1, 3}.
+2 -- page fault; page out 6 and page in 2.  Memory: {1, 3, 2}.
+4 -- page fault; page out 1 and page in 4.  Memory: {3, 2, 4}. 
+5 -- page fault; page out 3 and page in 5.  Memory: {2, 4, 5}.
+4 -- already there.
+2 -- already there.
+3 -- page fault; page out 2 and page in 3.  Memory: {4, 5, 3}.
+2 -- page fault; page out 4 and page in 2.  Memory: {5, 3, 2}.
+4 -- already there.
+}}}
+
+That time we got twelve page faults out of 17 page accesses, so, not quite as good as LRU.
 
 = Seven: Where's the Bottleneck? =
 While running a job, the CPU utilization ratio is 15%, the paging-disk utilization is 90%, and the network is used at 40% of its capacity. Please identify which of the following may improve the overall throughput of the program and explain why.
