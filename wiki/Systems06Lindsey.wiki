@@ -166,3 +166,115 @@ while(sem > 0) { wait(); }
 where wait() is just a function that sleeps that thread for an appropriate amount of time.
 
 Off the top of my head, I don't see deadlock in this.  Neither `rendezvous` function can finish unless the other one is called, and that can't happen unless we're past the statement we cared about having happen.  One concern might be that the `wait()`ing doesn't allow enough time for the other thread to run, so we'd have to make sure to have the waiting period be long enough.
+
+= Four: Deadlock =
+Consider the following program with two concurrent processes foo and bar:
+
+{{{
+int x = 0, y = 0, z = 0;
+sem lock1 = 1, lock2 = 1;
+
+process foo {
+  z = z + 2;
+  P(lock1);
+  x = x + 2;
+  P(lock2);
+  V(lock1);
+  y = y + 2;
+  V(lock2);
+}
+
+process bar {
+  P(lock2);
+  y = y + 1;
+  P(lock1);
+  x = x + 1;
+  V(lock1);
+  V(lock2);
+  z = z + 1;
+}
+}}}
+
+Here the variables lock1 and lock2 are semaphores and the P() and V() functions are the associated "down" and "up" operations, respectively.
+
+  * How might this program deadlock? You should demonstrate that the conditions you list specifically meet all of the conditions required for deadlock to occur.
+  * Can the program deadlock in more than one state?
+  * What are the possible final values of x, y, and z in the deadlock state? If the program can deadlock in more than one state, please specify which state results in the final values you give.
+  * What are the possible final values of x, y, and z if the program terminates?
+
+== Answer == 
+
+TODO later!
+
+= Five: Virtual Memory =
+
+Consider a system that uses 32-bit address and 3-level page table. Among the 32-bit virtual addresses, 4 bits are used to index into the first-level page table, 8 bits for the second-level, and another 8 bits for the third-level.
+  * What is the page size of this system?
+  * If a page table entry is 2 bytes long, what is the size of the second-level page table?
+  * Give reasons why the page size in a virtual memory system should neither be too large or too small.
+  * What is a translation lookaside buffer (TLB) and what does it do?
+
+== Answer == 
+
+First, "what is the page size of this system?"  First let's talk about how the 3-level page table works.  We have 32-bit addresses.  In a given address, we're told that 4 of those bits index into the first-level page table, which means that there can be 16 distinct values, so the first-level page table has 16 rows, each of which point us into one of 16 second-level tables.
+
+Then, each address has 8 bits that index into a second-level page table, so that's 256 values.  So the second-level table has 256 rows, each of which points us into one of 256 third-level tables.  Finally, each address has 8 bits that index into a third-level page table with 256 rows, each of which points us to a particular page.  Subtracting the 4, 8, and 8, there are 12 bits left in the virtual address, so 12 bits left to determine location on that page.  2^12 = 4096, so there are 4096 locations on the page.  If each location is a byte (that is, if memory is byte-addressable in this system), then the page size is 4KB.  If memory is word-addressable with, say, 32-bit words (aka 4-byte words), then the page size is 4 times that, 16KB.
+
+Second, "If a page table entry is 2 bytes long, what is the size of the second-level page table?"
+
+Well, we decided that there are really 16 separate second-level tables, so let's figure out what the size of one is and then multiply it by 16.  The table has 256 rows, so 256 * 2 bytes = 512 bytes.  Then, multiplying 512 bytes by 16, we get 8192 bytes or 8KB.  Each of the 16 will probably have some constant amount of header information, though, so in reality it will be a little larger.
+
+Third, "Give reasons why the page size in a virtual memory system should neither be too large or too small."
+
+The appropriate page size depends on the nature and locality of the data that needs to be brought into memory.  We can only bring data into memory in increments of a page, so if we have large pages and we only need a few bytes of data from each page we bring into memory, then all of the other space that those pages take up in memory will be wasted as far as we're concerned.  On the other hand, if we have small pages and we need lots of data that's consecutive in memory, then it would be more efficient to bring it in on large pages together and avoid the per-page overhead of having to page in lots of small pages.
+
+Fourth, "What is a translation lookaside buffer (TLB) and what does it do?"
+
+(With some help from Wikipedia:) A TLB is typically a hardware cache adjacent to the CPU that speeds the process of translating virtual addresses to physical addresses.  When an address needs to be translated, the TLB's mapping of virtual to physical addresses is searched first.  If the TLB doesn't have a mapping for a particular virtual address, we have to do a page table lookup, or page walk, of that address, which is expensive, especially in the case of a multi-level page table like this one, since we have to read several memory locations in order to compute the physical address.  After the address has been computed, it's saved in the TLB so it will be available next time it's needed.
+
+= Six: Caches =
+Consider a program that accesses pages in the following order:
+{{{
+1,3,4,1,2,6,1,1,3,2,4,5,4,2,3,2,4
+}}}
+
+Assuming no pages are in memory when the program starts, show how many page faults will occur when using the following replacement algorithms and number of frames.
+  * LRU, one frame
+  * FIFO, one frame
+  * LRU, three frames
+  * FIFO, three frames
+
+= Seven: Where's the Bottleneck? =
+While running a job, the CPU utilization ratio is 15%, the paging-disk utilization is 90%, and the network is used at 40% of its capacity. Please identify which of the following may improve the overall throughput of the program and explain why.
+  * Install a faster CPU
+  * Double the size of the memory
+  * Double the network bandwidth
+  * Double the size of the disk
+  * Upgrade the paging algorithm to include pre-fetching
+  * Increase the page size
+
+= Eight: Filesystems =
+Consider a "standard" UNIX filesystem (with i-nodes, indirect blocks, etc). Assume that the file block cache is initially empty, and that the i-node cache initially contains the current working directory. Assume "bar" exists in the current working directory.
+
+Suppose a program executes the following sequence of instructions.
+{{{
+fd = Open("bar"); // open the file
+Seek(fd,0); // seek to beginning of file
+Write(fd, "A", 1); // write one byte
+Close(fd); // close the file
+}}}
+
+Reading or writing one block or i-node requires 1 disk access.
+  * What is the minimum number of disk accesses that this sequence of instructions could possibly require? If it is not possible to give an exact value, explain why and indicate what additional information is needed.
+  * What is the maximum number of disk accesses that this sequence of instructions could possibly require? If it is not possible to give an exact value, explain why and indicate what additional information is needed.
+
+= Nine: System  Calls=
+To access an operating system service, a user process must make a system call. In a user program, the interface presented by a system call is a library procedure with the same name as the system call, eg, read(), which is prototyped as follows:
+{{{
+ssize_t read(int fd, void *buf, size_t count);
+}}}
+
+  * An operating system exists to provide a number of services and functions to users. What needs are met by having system calls?
+  * What are the functional differences between a system call and a normal (non-system) function call? IE, what things must you do with a system call (and why) that you can't do with a normal function call?
+  * What are the operational differences between a system call and a normal (non-system) function call? IE, what are some differences in how they are implemented?
+  * What are the precise series of steps performed when a system call is invoked? If you like, you may illustrate your answer using the read() system call shown above (or you can use a system call of your choice).
