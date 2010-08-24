@@ -336,7 +336,19 @@ Reading or writing one block or i-node requires 1 disk access.
 
 == Answer == 
 
-*TODO later!*
+In this "standard" Unix filesystem, we'll assume that we need one inode for every file, regardless of whether that file is a directory or a leaf file.  For a leaf file, the inode contains information about the file and a list of addresses for its data blocks.  For a directory, the inode contains its children's names and inode numbers.  Let's also assume that the library containing the Open(), Seek(), and Write() system calls is already loaded into memory.
+
+When we call `fd = Open("bar");`, the inode cache contains the inode for the current working directory, and that inode contains "bar" and its inode number, so we don't need to access the disk to find "bar"s inode number.
+
+For the `Seek(fd,0);` call, first we need to read "bar"'s inode, requiring 1 disk access, so that we can find out what the first block of "bar" is.  "bar"'s inode goes into the inode cache.
+
+For `Write(fd, "A", 1);`, we have to bring the first block of "bar" into the file block cache, requiring 1 disk access; then, after writing, we have to write that block back to the disk, requiring 1 disk access.  (Depending on the implementation, the write might not happen eagerly; it might not happen until we close the file, for instance, but either way, one disk access is necessary for the write.
+
+No disk accesses are necessary for `Close(fd);`.
+
+So, there are a minimum of three disk accesses required by this sequence of instructions.  What could cause the number to increase?  One possibility is that accessing the file block cache or the inode cache actually requires a disk access.  Another possibility is that the Write() call is writing across a block boundary (unlikely in this case, since we're only writing one byte), in which case we'd have to bring in every block that's being written to.
+
+*TODO: I can't think of any other reasons why we'd need more disk accesses...these seem weak.*
 
 = Nine: System  Calls=
 To access an operating system service, a user process must make a system call. In a user program, the interface presented by a system call is a library procedure with the same name as the system call, eg, read(), which is prototyped as follows:
@@ -366,3 +378,5 @@ A normal function call can run in user space.  A system call requires control to
 "What are the precise series of steps performed when a system call is invoked? If you like, you may illustrate your answer using the read() system call shown above (or you can use a system call of your choice)."
 
 It varies depending on the platform and architecture, but for this question, let's assume Linux and on an x86 architecture.  When read() is invoked, its arguments fd, buf, and count are saved in registers, and the system call number is saved in another register.  Control passes to the kernel by means of an interrupt instruction.  The kernel saves the contenst of all the registers, then looks at the register in which the syscallno was saved and executes the code that is associated with that system call number.  In the case of our read() system call, it will have to read from disk, which may take some time, so the scheduler runs and may schedule another process to run while this process is blocking on disk I/O.  When the system call is finished executing, it restores the contents of registers and returns control to user space.
+
+*TODO: Read about system calls; see if I'm missing anything here.*
