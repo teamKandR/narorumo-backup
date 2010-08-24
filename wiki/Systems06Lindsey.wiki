@@ -167,6 +167,8 @@ where wait() is just a function that sleeps that thread for an appropriate amoun
 
 Off the top of my head, I don't see deadlock in this.  Neither `rendezvous` function can finish unless the other one is called, and that can't happen unless we're past the statement we cared about having happen.  One concern might be that the `wait()`ing doesn't allow enough time for the other thread to run, so we'd have to make sure to have the waiting period be long enough.
 
+*TODO: read about deadlock -- see if I'm overlooking anything here.*
+
 = Four: Deadlock =
 Consider the following program with two concurrent processes foo and bar:
 
@@ -313,7 +315,9 @@ While running a job, the CPU utilization ratio is 15%, the paging-disk utilizati
 
 == Answer == 
 
-*TODO later!*
+I'm going to assume that "paging-disk utilization" is the amount of swap space that's being used.  It looks like this system is spending most of its time swapping pages in and out.  Of the suggested ideas, doubling the memory is most likely to help, because we'd have to swap less often.  Increasing the page size and upgrading the paging algorithm to use pre-fetching of pages could either hurt or help, depending on the locality of the data.
+
+Installing a faster CPU, increasing the network bandwidth, and doubling the size of the disk are not likely to help: a faster CPU might help if the CPU were pegged, but since CPU utilization is only 15%, it won't improve throughput.  Similarly, increasing the network bandwidth won't improve throughput since network utilization is only 40%.  Doubling the size of the disk might actually hurt if it makes the disk slower.
 
 = Eight: Filesystems =
 Consider a "standard" UNIX filesystem (with i-nodes, indirect blocks, etc). Assume that the file block cache is initially empty, and that the i-node cache initially contains the current working directory. Assume "bar" exists in the current working directory.
