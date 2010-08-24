@@ -122,8 +122,7 @@ Off the top of my head, I thought that round-robin scheduling with
 quantum Q meant that each process got time Q, whether it needed it or
 not; if it finished during its quantum, the CPU would be idle until
 the end of the quantum.  Some googling (this question shows up
-[http://www.google.com/search?q=Measurement+of+a+certain+system+have+shown+that+the+average+process+runs+for+a+time+T+before+blocking+on+IO. all
-over]) suggests that that's not the case, and Tanenbaum (p. 154)
+[http://www.google.com/search?q=Measurement+of+a+certain+system+have+shown+that+the+average+process+runs+for+a+time+T+before+blocking+on+IO. all over]) suggests that that's not the case, and Tanenbaum (p. 154)
 confirms it: "Each process is assigned a time interval, called its
 quantum, during which it is allowed to run.  If the process is still
 running at the end of the quantum, the CPU is preempted and given to
@@ -384,8 +383,7 @@ and number of frames.
 == Answer == 
 
 From what I can tell on
-[http://en.wikipedia.org/wiki/Page_replacement_algorithm the Wikipedia
-page for "page replacement algorithm"], a frame is simply a slot in
+[http://en.wikipedia.org/wiki/Page_replacement_algorithm the Wikipedia page for "page replacement algorithm"], a frame is simply a slot in
 memory that can hold a page.  Working on that assumption:
 
 LRU, one frame: There's only room for one page in memory.  We'll
@@ -574,8 +572,7 @@ interface by which user programs can interact with the hardware.
 normal (non-system) function call? IE, what things must you do with a
 system call (and why) that you can't do with a normal function call?"
 
-(With some help from [http://en.wikipedia.org/wiki/System_call the
-Wikipedia page for "system call"]:) We usually need system calls to:
+(With some help from [http://en.wikipedia.org/wiki/System_call the Wikipedia page for "system call"]:) We usually need system calls to:
 do device I/O (e.g., as in the above examples, or as in remote
 devices); manage processes (e.g., create them, terminate them, send
 signals to each other, have processes wait for signals, allocate
