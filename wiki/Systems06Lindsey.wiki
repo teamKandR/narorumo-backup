@@ -351,4 +351,18 @@ ssize_t read(int fd, void *buf, size_t count);
 
 == Answer == 
 
-*TODO later!*
+"What needs are met by having system calls?"  
+
+When programming at the user level, we don't have the power to directly do things like read from the disk, write to the disk, write to the screen, get input from the keyboard, and so on.  Instead, the OS has to do these things for us, and we have to ask nicely by means of system calls.  System calls provide a well-defined and safe interface by which user programs can interact with the hardware.
+
+"What are the functional differences between a system call and a normal (non-system) function call? IE, what things must you do with a system call (and why) that you can't do with a normal function call?"  
+
+(With some help from http://en.wikipedia.org/wiki/System_call:) We usually need system calls to: do device I/O (e.g., as in the above examples, or as in remote devices); manage processes (e.g., create them, terminate them, send signals to each other, have processes wait for signals, allocate memory to a process, free memory belonging to a process); manage files (e.g., create, delete, open, close); and to get information about the OS (e.g., time, date).
+
+"What are the operational differences between a system call and a normal (non-system) function call?  IE, what are some differences in how they are implemented?"
+
+A normal function call can run in user space.  A system call requires control to be transferred to the kernel, typically by means of an interrupt or trap.  The details of how the transfer of control is implemented vary depending on the platform and architecture.
+
+"What are the precise series of steps performed when a system call is invoked? If you like, you may illustrate your answer using the read() system call shown above (or you can use a system call of your choice)."
+
+It varies depending on the platform and architecture, but for this question, let's assume Linux and on an x86 architecture.  When read() is invoked, its arguments fd, buf, and count are saved in registers, and the system call number is saved in another register.  Control passes to the kernel by means of an interrupt instruction.  The kernel saves the contenst of all the registers, then looks at the register in which the syscallno was saved and executes the code that is associated with that system call number.  In the case of our read() system call, it will have to read from disk, which may take some time, so the scheduler runs and may schedule another process to run while this process is blocking on disk I/O.  When the system call is finished executing, it restores the contents of registers and returns control to user space.
