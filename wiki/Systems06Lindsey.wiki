@@ -357,7 +357,7 @@ When programming at the user level, we don't have the power to directly do thing
 
 "What are the functional differences between a system call and a normal (non-system) function call? IE, what things must you do with a system call (and why) that you can't do with a normal function call?"  
 
-(With some help from http://en.wikipedia.org/wiki/System_call:) We usually need system calls to: do device I/O (e.g., as in the above examples, or as in remote devices); manage processes (e.g., create them, terminate them, send signals to each other, have processes wait for signals, allocate memory to a process, free memory belonging to a process); manage files (e.g., create, delete, open, close); and to get information about the OS (e.g., time, date).
+(With some help from [http://en.wikipedia.org/wiki/System_call the Wikipedia page for "system call"]:) We usually need system calls to: do device I/O (e.g., as in the above examples, or as in remote devices); manage processes (e.g., create them, terminate them, send signals to each other, have processes wait for signals, allocate memory to a process, free memory belonging to a process); manage files (e.g., create, delete, open, close); and to get information about the OS (e.g., time, date).
 
 "What are the operational differences between a system call and a normal (non-system) function call?  IE, what are some differences in how they are implemented?"
 
