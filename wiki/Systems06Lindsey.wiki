@@ -170,6 +170,7 @@ Off the top of my head, I don't see deadlock in this.  Neither `rendezvous` func
 *TODO: read about deadlock -- see if I'm overlooking anything here.*
 
 = Four: Deadlock =
+
 Consider the following program with two concurrent processes foo and bar:
 
 {{{
@@ -197,12 +198,20 @@ process bar {
 }
 }}}
 
-Here the variables lock1 and lock2 are semaphores and the P() and V() functions are the associated "down" and "up" operations, respectively.
+Here the variables lock1 and lock2 are semaphores and the P() and V()
+functions are the associated "down" and "up" operations, respectively.
 
-  * How might this program deadlock? You should demonstrate that the conditions you list specifically meet all of the conditions required for deadlock to occur.
+  * How might this program deadlock? You should demonstrate that the
+    conditions you list specifically meet all of the conditions
+    required for deadlock to occur.
   * Can the program deadlock in more than one state?
-  * What are the possible final values of x, y, and z in the deadlock state? If the program can deadlock in more than one state, please specify which state results in the final values you give.
-  * What are the possible final values of x, y, and z if the program terminates?
+
+  * What are the possible final values of x, y, and z in the deadlock
+    state? If the program can deadlock in more than one state, please
+    specify which state results in the final values you give.
+
+  * What are the possible final values of x, y, and z if the program
+    terminates?
 
 == Answer == 
 
