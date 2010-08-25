@@ -292,7 +292,90 @@ functions are the associated "down" and "up" operations, respectively.
 
 == Answer == 
 
-*TODO later!*
+"How might this program deadlock? You should demonstrate that the
+conditions you list specifically meet all of the conditions required
+for deadlock to occur."
+
+For a deadlock to happen, each process has to be waiting for the other
+one to release some resource before it can proceed, causing both to be
+stuck forever.  As one example of deadlock, suppose that foo gets this
+far:
+
+  z = z + 2;
+  P(lock1);
+  x = x + 2;
+
+Meanwhile, bar gets this far:
+
+  P(lock2);
+  y = y + 1;
+
+Now bar tries to run
+
+  P(lock1);
+
+but can't because foo has the lock on lock1.  Meanwhile, foo tries to
+run
+
+  P(lock2);
+
+but can't because bar has the lock on lock2.
+
+To be a little more formal about it, let's show that this situation
+meets the four conditions that must hold for there to be a deadlock
+(Tanenbaum p. 438):
+
+Mutual exclusion: Is each resource either currently assigned to
+exactly one process or available?  Yes.  There are two resources,
+lock1 and lock2; lock1 is assigned to one process, foo; lock2 is
+assigned to one process, bar.
+
+Hold and wait: Can foo and bar request new resources?  Yes.  They're
+each trying to request the lock that the other has.
+
+No preemption: Can resources not be forcibly taken away from a
+process?  Yes.  The only way to release the locks is for the processes
+holding them to release them.
+
+Circular wait: Is there a chain of two or more processes, each waiting
+for a resource held by the next?  Yes.  foo is waiting for lock2,
+which is held by bar; bar is waiting for lock1, which is held by foo.
+
+Mnemonic: "MeRaNoPreC"
+
+"Me" = mutual exclusion = each resource is either held by exactly one
+process or available
+
+"Ra" = requests allowed = processes can request more resources even if
+they already have some
+
+"NoPre" = no preemption = there's no way to get a resource away from a
+process aside from that process explicitly releasing it
+
+"C" = circularity = there's a chain of processes waiting for each
+other
+
+"Can the program deadlock in more than one state?"
+
+*TODO*
+
+"What are the possible final values of x, y, and z if the program
+terminates?"
+
+If the program runs without deadlocking (say, if it behaves just as it
+would have if foo ran to completion, followed by bar), we'd have:
+
+x, y, and z are initialized: {x = 0, y = 0, z = 0}
+z is incremented by 2: {x = 0, y = 0, z = 2}
+x is incremented by 2: {x = 2, y = 0, z = 2}
+y is incremented by 2: {x = 2, y = 2, z = 2}
+y is incremented by 1: {x = 2, y = 3, z = 2}
+x is incremented by 1: {x = 3, y = 3, z = 2}
+z is incremented by 1: {x = 3, y = 3, z = 3}
+
+So the final values of x, y, and z are all 3.
+
+*TODO: are there other final values possible?  Not that I can see!*
 
 = Five: Virtual Memory =
 
