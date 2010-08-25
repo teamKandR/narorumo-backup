@@ -355,7 +355,9 @@ other
 
 "Can the program deadlock in more than one state?"
 
-*TODO*
+I can only see the one state that would cause deadlock, although that
+state could have been arrived at by more than one path (e.g., either
+foo or bar could have started running first).
 
 "What are the possible final values of x, y, and z if the program
 terminates?"
@@ -690,4 +692,3 @@ process is blocking on disk I/O.  When the system call is finished
 executing, it restores the contents of registers and returns control
 to user space.
 
-*TODO: Read about system calls; see if I'm missing anything here.*
