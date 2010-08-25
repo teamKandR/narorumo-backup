@@ -46,7 +46,7 @@ So, in all, we've got:
   * child processes -- process
   * program counter -- thread
 
-On page 102 of Modern Operating Systems 3e, we have:
+In Tanenbaum (p. 102), we have:
 
 || *Per process items*         || *Per thread items* ||
 || Address space               || Program counter    ||
@@ -72,7 +72,7 @@ word about "page table pointer" -- I still think that that's OS-wide.
 
 == Answer == 
 
-From Tanenbaum, p. 108 and thereabouts:
+From Tanenbaum (p. 108 and thereabouts):
 
 "Invoking any system call that might block poses an extra problem for
 user-level threads" -- true.  If there are several user-level threads
@@ -323,7 +323,7 @@ but can't because bar has the lock on lock2.
 
 To be a little more formal about it, let's show that this situation
 meets the four conditions that must hold for there to be a deadlock
-(Tanenbaum p. 438):
+(Tanenbaum, p. 438):
 
 Mutual exclusion: Is each resource either currently assigned to
 exactly one process or available?  Yes.  There are two resources,
