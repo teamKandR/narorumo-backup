@@ -373,8 +373,6 @@ z is decremented by 1: {x = 1, y = 1, z = 1}
 
 So the final values of x, y, and z are all 1.
 
-*TODO: are there other final values possible?  Not that I can see!*
-
 = Five: Virtual Memory =
 
 Consider a system that uses 32-bit address and 3-level page
@@ -597,11 +595,12 @@ Write() system calls is already loaded into memory.
 When we call `fd = Open("bar");`, the inode cache contains the inode
 for the current working directory, and that inode contains "bar" and
 its inode number, so we don't need to access the disk to find "bar"s
-inode number.
+inode number.  But then we need to read "bar"'s inode, requiring 1
+disk access, so that we can find out what its first block is.
+"bar"'s inode goes into the inode cache.
 
-For the `Seek(fd,0);` call, first we need to read "bar"'s inode,
-requiring 1 disk access, so that we can find out what the first block
-of "bar" is.  "bar"'s inode goes into the inode cache.
+For the `Seek(fd,0);` call, we probably don't have to do another disk
+access.
 
 For `Write(fd, "A", 1);`, we have to bring the first block of "bar"
 into the file block cache, requiring 1 disk access; then, after
@@ -612,15 +611,17 @@ instance, but either way, one disk access is necessary for the write.
 
 No disk accesses are necessary for `Close(fd);`.
 
-So, there are a minimum of three disk accesses required by this
-sequence of instructions.  What could cause the number to increase?
-One possibility is that accessing the file block cache or the inode
-cache actually requires a disk access.  Another possibility is that
-the Write() call is writing across a block boundary (unlikely in this
+So, there are a minimum of 2 disk accesses required by this sequence
+of instructions.  What could cause the number to increase?  One
+possibility is that accessing the file block cache or the inode cache
+actually requires a disk access.  Another possibility is that the
+Write() call is writing across a block boundary (unlikely in this
 case, since we're only writing one byte), in which case we'd have to
-bring in every block that's being written to.
-
-*TODO: I can't think of any other reasons why we'd need more disk accesses...these seem weak.*
+bring in every block that's being written to.  Another, perhaps more
+plausible reason, is that we can only do writes to the device in block
+increments, so we actually have to read from the device into a buffer,
+write our byte to the buffer, and then write back to the device,
+increasing the number of necessary disk accesses by 1.
 
 = Nine: System  Calls=
 
