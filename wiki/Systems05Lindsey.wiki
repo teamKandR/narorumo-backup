@@ -1,4 +1,4 @@
-# Lindsey studies for the systems qual some more.
+#summary Lindsey studies for the systems qual some more.
 
 =Synchronization=
 
