@@ -367,11 +367,11 @@ x, y, and z are initialized: {x = 0, y = 0, z = 0}
 z is incremented by 2: {x = 0, y = 0, z = 2}
 x is incremented by 2: {x = 2, y = 0, z = 2}
 y is incremented by 2: {x = 2, y = 2, z = 2}
-y is incremented by 1: {x = 2, y = 3, z = 2}
-x is incremented by 1: {x = 3, y = 3, z = 2}
-z is incremented by 1: {x = 3, y = 3, z = 3}
+y is decremented by 1: {x = 2, y = 1, z = 2}
+x is decremented by 1: {x = 1, y = 1, z = 2}
+z is decremented by 1: {x = 1, y = 1, z = 1}
 
-So the final values of x, y, and z are all 3.
+So the final values of x, y, and z are all 1.
 
 *TODO: are there other final values possible?  Not that I can see!*
 
