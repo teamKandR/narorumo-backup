@@ -228,15 +228,15 @@ a1 and b1 both have to finish before either a2 or b2 may run.  I think
 we should be able to do this:
 
 {{{
-int sem = 2;
+semaphore sem = 2;
 
 void rendezvous_a() {
-sem--;
+down(sem);
 while(sem > 0) { yield(); }
 }
 
 void rendezvous_b() {
-sem--;
+down(sem);
 while(sem > 0) { yield(); }
 }
 }}}
@@ -250,8 +250,6 @@ that can't happen unless we're past the statement we cared about
 having happen.  One concern might be that the `wait()`ing doesn't
 allow enough time for the other thread to run, so we'd have to make
 sure to have the waiting period be long enough.
-
-*TODO: read about deadlock -- see if I'm overlooking anything here.*
 
 = Four: Deadlock =
 
