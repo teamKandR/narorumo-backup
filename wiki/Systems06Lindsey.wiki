@@ -232,17 +232,17 @@ int sem = 2;
 
 void rendezvous_a() {
 sem--;
-while(sem > 0) { wait(); }
+while(sem > 0) { yield(); }
 }
 
 void rendezvous_b() {
 sem--;
-while(sem > 0) { wait(); }
+while(sem > 0) { yield(); }
 }
 }}}
 
-where wait() is just a function that sleeps that thread for an
-appropriate amount of time.
+where yield() is a function that causes this thread to yield in favor
+of some other thread (possibly running the scheduler).
 
 Off the top of my head, I don't see deadlock in this.  Neither
 `rendezvous` function can finish unless the other one is called, and
