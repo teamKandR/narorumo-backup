@@ -1,0 +1,15 @@
+# Lindsey studies for the systems qual some more.
+
+=Synchronization=
+
+A doctor's office consists of a waiting room with n chairs and the
+examination room containing the examination table.  If there are no
+customers to be served, the doctor goes to sleep.  If a patient enters
+the doctor's office and all waiting room chairs are occupied, then the
+patient leaves the office.  If the doctor is busy but chairs are
+available, then the patient sits in one of the free chairs.  If the
+doctor is asleep, the patient wakes up the doctor.  Write an algorithm
+that uses either POSIX threads or semaphores to coordinate the doctor
+and the patients.
+
+== Answer ==
