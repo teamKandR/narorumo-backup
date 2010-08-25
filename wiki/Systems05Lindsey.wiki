@@ -46,8 +46,6 @@ void doctor() {
 
 /* Patient process -- we'll have several of these */
 void patient() {
-  int empty_chairs;
-
   /* Critical region */
   down(&mutex);
   /* If the queue is full, don't do anything */
