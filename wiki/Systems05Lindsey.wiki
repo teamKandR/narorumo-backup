@@ -13,3 +13,54 @@ that uses either POSIX threads or semaphores to coordinate the doctor
 and the patients.
 
 == Answer ==
+
+Here's something inspired by the semaphore solution to the
+producer/consumer problem in Tanenbaum p. 130.  The wrinkle here is
+that if a patient comes in and all the chairs are full, the patient
+process doesn't just wait; that patient just goes away.  That's why
+the patient process needs the queue_not_full() check.
+
+{{{
+semaphore empty_chairs = n;
+semaphore full_chairs = 0;
+semaphore mutex = 1; /* for controlling access to the queue */
+
+/* Doctor process -- runs forever */
+void doctor() {
+  patient p;
+
+  while(1) {
+    /* If full_chairs is already 0, then this down() call will just
+       wait -- the equivalent of the doctor sleeping.  */
+    down(&full_chairs);
+    
+    /* Critical region */
+    down(&mutex);
+    p = remove_patient_from_queue();
+    up(&mutex);
+    up(&empty_chairs);
+
+    treat_patient(p);
+  }
+}
+
+/* Patient process -- we'll have several of these */
+void patient() {
+  int empty_chairs;
+
+  /* Critical region */
+  down(&mutex);
+  /* If the queue is full, don't do anything */
+  if (queue_not_full()) {
+    add_patient_to_queue();
+    
+    /* This call should never have to wait, since if we got this far,
+    we know the queue isn't full. */
+    down(&empty_chairs);
+
+    /* This will wake up the doctor if he's sleeping. */
+    up(&full_chairs);
+  }
+  up(&mutex);
+}
+}}}
