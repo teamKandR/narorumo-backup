@@ -1,0 +1,7 @@
+<div class="onesnippet">
+  <p><strong>$USERNAME</strong>: $TIMESTAMP</p>
+
+  <p>
+  $SNIP
+  </p>
+</div>

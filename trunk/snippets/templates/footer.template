@@ -1,2 +1,10 @@
+
+<div id="footer">
+<a href="viewallsnippets.cgi">(view all snippets)</a>
+<a href="http://code.google.com/p/narorumo/source/browse/#svn/trunk/snippets">
+(code for snippet system)
+</a>
+</div>
+
 </body>
 </html>
