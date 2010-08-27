@@ -32,6 +32,15 @@ div.output {
   background-color: #ccc;
 }
 
+#footer {
+  text-align: center;
+  font-size: 66%;
+}
+
+#footer a {
+  text-decoration: none;
+}
+
 h1 {
   padding: 0.5em;
   border: 2px solid black;

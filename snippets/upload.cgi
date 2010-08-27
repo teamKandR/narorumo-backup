@@ -8,8 +8,6 @@ import templates
 import savesnippet
 import snippetutils
 
-# End of problem class and functions, now on to main stuff
-    
 data = cgi.FieldStorage();
 message = "(didn't get a snippet?)"
 
@@ -20,6 +18,13 @@ if (('REQUEST_METHOD' in os.environ)
         # message = "o hai"
         escaped = cgi.escape(data["text"].value, quote=True)
         message = snippetutils.linebreaks(escaped)
+
+if "REMOTE_USER" in os.environ:
+    username = str(os.environ["REMOTE_USER"]).split('@')[0]
+else:
+    ## obviously don't do this in production.
+    username = "alexr"
+savesnippet.save(snippet=escaped, user=username)
 
 print "Content-type: text/html\n"
 
