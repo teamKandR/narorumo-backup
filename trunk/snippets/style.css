@@ -9,11 +9,11 @@ body {
 }
 
 a:link {
-  color:#33f;
+  color:#000;
 }
 
 a:visited {
-  color:#33f;
+  color:#000;
 }
 
 textarea {
@@ -29,7 +29,12 @@ textarea {
   right: 1em;
 }
 
+#topbar a {
+  text-decoration: none;
+}
+
 #footer {
+  margin-top: 1em;
   text-align: center;
   font-size: 66%;
 }

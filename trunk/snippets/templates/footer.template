@@ -1,8 +1,11 @@
 
 <div id="footer">
-<a href="http://code.google.com/p/narorumo/source/browse/#svn/trunk/snippets">
-(code for snippet system)
-</a>
+
+[<a href="subscriptions.cgi">edit subscriptions</a>]
+[<a href="viewallsnippets.cgi">view all snippets</a>]
+[<a href="viewusers.cgi">view all users</a>]
+
+[<a href="http://code.google.com/p/narorumo/source/browse/#svn/trunk/snippets">code for snippet system</a>]
 </div>
 
 </body>
