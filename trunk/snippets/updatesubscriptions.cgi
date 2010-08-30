@@ -23,11 +23,11 @@ def newsubscribees(text):
     return out
 
 data = cgi.FieldStorage();
+literaltext = ""
 if (('REQUEST_METHOD' in os.environ)
     and (os.environ["REQUEST_METHOD"] == "POST")):
     if data.has_key("text"):
         literaltext = data["text"].value
-
 
 newset = set(newsubscribees(literaltext))
 current = set(db.getsubscriptions(loggedin))
