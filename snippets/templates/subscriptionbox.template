@@ -1,0 +1,10 @@
+  <p>You're currently subscribed to these people. You can edit the list of
+  usernames and save your changes by clicking "Go!". Separate entries with
+  commas or whitespace.</p>
+
+  <form
+    method="post"
+    action="updatesubscriptions.cgi"> 
+    <input type="submit" value="Go!"/> 
+    <textarea name="text" cols="80" rows="10" style="display:block">$SUBSCRIPTIONS</textarea> 
+  </form> 

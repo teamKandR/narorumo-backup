@@ -19,13 +19,7 @@ if (('REQUEST_METHOD' in os.environ)
         literaltext = data["text"].value
         escaped = cgi.escape(data["text"].value, quote=True)
         message = snippetutils.linebreaks(escaped)
-
-if "REMOTE_USER" in os.environ:
-    username = str(os.environ["REMOTE_USER"]).split('@')[0]
-else:
-    ## obviously don't do this in production.
-    username = "nobody"
-db.savesnippet(snippet=literaltext, user=username)
+        db.savesnippet(snippet=literaltext, user=username)
 
 print "Content-type: text/html\n"
 
