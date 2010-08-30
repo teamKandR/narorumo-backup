@@ -33,18 +33,18 @@ newset = set(newsubscribees(literaltext))
 current = set(db.getsubscriptions(loggedin))
 
 to_add = list(newset - current)
-to_remove = list(current - newset)
 for username in to_add:
     db.savesubscription(loggedin, username)
 
-for username in to_add:
+to_remove = list(current - newset)
+for username in to_remove:
     db.removesubscription(loggedin, username)
 
 print "Content-type: text/html\n"
 templates.printheader(loggedin)
-print "OK!"
+print "<p>OK!</p>"
 
-print "<p>added: ", str(to_add) ,"</p>"
-print "<p>removed: ", str(to_remove) ,"</p>"
+if to_add: print "<p>added: ", snippetutils.listout(to_add) ,"</p>"
+if to_remove: print "<p>removed: ", snippetutils.listout(to_remove) ,"</p>"
 
 templates.printfooter(loggedin)
