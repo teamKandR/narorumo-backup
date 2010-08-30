@@ -19,3 +19,7 @@ def get_logged_in_user():
     else:
         username = "nobody"
     return username
+
+username_pat = re.compile(r'^[a-z][a-z0-9]{2,7}$')
+def valid_username(username):
+    return username_pat.match(username) is not None
