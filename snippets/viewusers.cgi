@@ -16,6 +16,7 @@ usernames = db.getallusers()
 print "Content-type: text/html\n"
 
 templates.printheader(loggedin)
+print "<p>All users who have entered snippets:</p>"
 
 template = templates.loadtemplate("userlink")
 for username in usernames:
