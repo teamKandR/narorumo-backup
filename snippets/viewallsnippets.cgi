@@ -6,7 +6,7 @@ import os
 import sqlite3
 
 import templates
-import savesnippet
+import db
 import snippetutils
 
 print "Content-type: text/html\n"
@@ -14,10 +14,7 @@ print "Content-type: text/html\n"
 loggedin = snippetutils.get_logged_in_user()
 templates.printheader(loggedin)
 
-conn = sqlite3.connect("db/snippetdb")
-conn.row_factory = sqlite3.Row
-c = conn.cursor()
-rows = c.execute("select * from snippets order by time desc").fetchall()
+rows = db.getallsnippets()
 
 for row in rows:
     username = cgi.escape(row["username"])

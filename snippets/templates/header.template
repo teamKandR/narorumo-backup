@@ -11,9 +11,10 @@
 
 <body>
   <div id="topbar">
-<a href="viewsnippets.cgi">(view my snippets)</a>
-<a href="subscriptions.cgi">(edit my subscriptions)</a>
-<a href="viewallsnippets.cgi">(view all snippets)</a>
+<a href="viewsnippets.cgi">(my snippets)</a>
+<a href="subscriptions.cgi">(edit subscriptions)</a>
+<a href="viewallsnippets.cgi">(all snippets)</a>
+<a href="viewusers.cgi">(all users)</a>
 
   Hello $LOGGEDIN.
 

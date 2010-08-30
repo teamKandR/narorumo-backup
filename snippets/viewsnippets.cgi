@@ -6,7 +6,7 @@ import os
 import sqlite3
 
 import templates
-import savesnippet
+import db
 import snippetutils
 
 print "Content-type: text/html\n"
@@ -21,13 +21,7 @@ if data.has_key("username"):
 else:
     username = loggedin
 
-conn = sqlite3.connect("db/snippetdb")
-conn.row_factory = sqlite3.Row
-c = conn.cursor()
-rows = c.execute("select * from snippets "
-                 + "where username = ? "
-                 + "order by time desc "
-                 , (username,)).fetchall()
+rows = db.getsnippetsfor(username)
 
 templates.printheader(loggedin)
 for row in rows:

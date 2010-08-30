@@ -5,7 +5,7 @@ import cgitb
 import os
 
 import templates
-import savesnippet
+import db
 import snippetutils
 
 loggedin = snippetutils.get_logged_in_user()
@@ -25,7 +25,7 @@ if "REMOTE_USER" in os.environ:
 else:
     ## obviously don't do this in production.
     username = "nobody"
-savesnippet.save(snippet=literaltext, user=username)
+db.savesnippet(snippet=literaltext, user=username)
 
 print "Content-type: text/html\n"
 
