@@ -9,12 +9,9 @@ import templates
 import snippetutils
 import db
 
-def showsubscriptions(usernames):
-    return ", ".join(usernames)
-
 loggedin = snippetutils.get_logged_in_user()
 usernames = db.getsubscriptions(loggedin)
-subscriptions = showsubscriptions(usernames)
+subscriptions = snippetutils.listout(usernames)
 
 print "Content-type: text/html\n"
 templates.printheader(loggedin)
