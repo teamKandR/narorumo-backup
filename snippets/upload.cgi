@@ -19,7 +19,7 @@ if (('REQUEST_METHOD' in os.environ)
         literaltext = data["text"].value
         escaped = cgi.escape(data["text"].value, quote=True)
         message = snippetutils.linebreaks(escaped)
-        db.savesnippet(snippet=literaltext, user=username)
+        db.savesnippet(snippet=literaltext, user=loggedin)
 
 print "Content-type: text/html\n"
 
