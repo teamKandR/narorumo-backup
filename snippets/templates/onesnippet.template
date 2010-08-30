@@ -1,5 +1,5 @@
 <div class="onesnippet">
-  <p><strong>$USERNAME</strong>: $TIMESTAMP</p>
+  <p class="header">$USERNAME: $TIMESTAMP</p>
 
   <p>
   $SNIP

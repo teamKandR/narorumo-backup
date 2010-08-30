@@ -43,6 +43,11 @@ textarea {
   text-decoration: none;
 }
 
+.onesnippet .header {
+  color: #000;
+  font-weight: bold;
+}
+
 h1 {
   padding: 0.5em;
   padding-top: 0.3em;
