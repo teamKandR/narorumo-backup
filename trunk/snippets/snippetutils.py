@@ -1,4 +1,5 @@
 import re
+import os
 
 ## linebreaks simplified from Django's awesome html filters.
 ## http://code.djangoproject.com/browser/django/trunk/django/utils/html.py
@@ -9,3 +10,12 @@ def linebreaks(value):
     paras = re.split('\n{2,}', value)
     paras = [u'<p>%s</p>' % p.replace('\n', '<br />') for p in paras]
     return u'\n\n'.join(paras)
+
+
+def get_logged_in_user():
+    ## get username: by default it's the logged-in person.
+    if "REMOTE_USER" in os.environ:
+        username = str(os.environ["REMOTE_USER"]).split('@')[0]
+    else:
+        username = "nobody"
+    return username

@@ -8,6 +8,7 @@ import templates
 import savesnippet
 import snippetutils
 
+loggedin = snippetutils.get_logged_in_user()
 data = cgi.FieldStorage();
 message = "(didn't get a snippet?)"
 
@@ -23,12 +24,12 @@ if "REMOTE_USER" in os.environ:
     username = str(os.environ["REMOTE_USER"]).split('@')[0]
 else:
     ## obviously don't do this in production.
-    username = "alexr"
+    username = "nobody"
 savesnippet.save(snippet=literaltext, user=username)
 
 print "Content-type: text/html\n"
 
-templates.printheader()
+templates.printheader(loggedin)
 template = templates.loadtemplate("upload")
 print template.substitute(MESSAGE=message)
-templates.printfooter()
+templates.printfooter(loggedin)

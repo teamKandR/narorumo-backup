@@ -1,0 +1,8 @@
+  <p>What did you do last week? What do you plan to do this week?</p>
+
+  <form
+    method="post"
+    action="upload.cgi"> 
+    <input type="submit" value="Go!"/> 
+    <textarea name="text" cols="80" rows="10" style="display:block"></textarea> 
+  </form> 
