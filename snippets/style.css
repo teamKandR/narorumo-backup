@@ -4,6 +4,7 @@ body {
 
   margin-left: 4em;
   margin-right: 4em;
+  margin-top: 2em;
   font-family: arial,sans-serif;
 }
 
@@ -15,21 +16,17 @@ a:visited {
   color:#33f;
 }
 
-div.sourcecode {
-  text-align:right;
-}
-
 textarea {
   font-family: 'Droid Sans Mono', arial, serif;
   width: 100%;
 }
 
-div.output {
-  padding: 0.5em;
-  border: 2px solid black;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  background-color: #ccc;
+#topbar {
+  position: absolute;
+  font-size: 66%;
+  align: right;
+  top: 0.5em;
+  right: 1em;
 }
 
 #footer {
@@ -43,6 +40,7 @@ div.output {
 
 h1 {
   padding: 0.5em;
+  padding-top: 0.3em;
   border: 2px solid black;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;

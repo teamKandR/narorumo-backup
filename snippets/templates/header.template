@@ -10,5 +10,13 @@
 </head>
 
 <body>
+  <div id="topbar">
+<a href="viewsnippets.cgi">(view my snippets)</a>
+<a href="subscriptions.cgi">(edit my subscriptions)</a>
+<a href="viewallsnippets.cgi">(view all snippets)</a>
+
+  Hello $LOGGEDIN.
+
+  </div>
 
   <h1>snippets</h1>
