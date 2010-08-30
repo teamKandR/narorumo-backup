@@ -20,10 +20,10 @@ def loadtemplate(name):
     except:
         return string.Template("(template didn't load)")
 
-def printheader():
+def printheader(loggedin):
     template = loadtemplate("header")
-    print template.substitute()
+    print template.substitute(LOGGEDIN=loggedin)
 
-def printfooter():
+def printfooter(loggedin):
     template = loadtemplate("footer")
-    print template.substitute()
+    print template.substitute(LOGGEDIN=loggedin)
