@@ -86,6 +86,17 @@ def getsubscriptions(username):
     out.sort()
     return out
 
+def getsubscribedsnippets(subscriber):
+    conn = sqlite3.connect(THEDB)
+    conn.row_factory = sqlite3.Row
+    c = conn.cursor()
+    rows = c.execute("select username,snip,time from snippets,subscriptions "
+                     + "where subscriptions.subscriber = ? "
+                     + "and subscriptions.subscribee = snippets.username "
+                     + "order by time desc "
+                     , (subscriber,)).fetchall()
+    return rows
+
 def main():
     """Initialize tables that we'll need if they're not already created and
     print out all the db contents, just to see what we have."""
