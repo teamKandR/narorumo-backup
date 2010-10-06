@@ -14,13 +14,7 @@ Be able to show class descriptions or hide them.
 Extra credit: search through all course descriptions and find out which department has the machine learning class this semester.
 
 == Sleep Furiously (formerly: TEB) ==
-TEB was and is my long-running electronic poetry project, originally for a class and written in Common Lisp on top of an inference engine. I should dust it off and make it awesome. At one point, I spoke with Jon Trowbridge from the Gnoetry project, and he seemed both interested in working on poetry and very busy with work. Does TEB want to use/be part of/merge with gnoetry?
-
-Word to the gnoet: [http://gnoetrydaily.wordpress.com/ Gnoetry is still going], as of February 2010.
-
-What TEB really really wants is to use NLTK (and probably be made of Python). Related: That horoscope remixer thing that never quite worked right.
-
-Also related: what if there was a fake microblogging service that never lets on that it's just snagging random chunks of text from user-generated content sites (people's tweets, blogs, comments (oh mans, youtube)), maybe remixing them slightly, and passing them off as tweets for fictional users? Bonus points for making it pretend that you can sign up for an account, but mysteriously diverting you away from where you can register. Authenticity/verisimilitude bonus points for keeping content persistently, serving it up as feeds.
+SleepFuriouslyScratchSpace
 
 == make your papers shorter ==
 *implemented and launched!* http://kompressr.appspot.com
