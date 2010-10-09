@@ -1,0 +1,14 @@
+mammal,2,naked,livebirth
+mammal,4,fur,livebirth
+mammal,4,fur,egg
+mammal,4,naked,livebirth
+mammal,4,fur,livebirth
+bird,2,feathers,egg
+bird,2,feathers,egg
+bird,2,feathers,egg
+reptile,4,scales,egg
+reptile,4,scales,egg
+reptile,4,scales,egg
+reptile,4,scales,egg
+reptile,0,scales,egg
+reptile,0,scales,livebirth
