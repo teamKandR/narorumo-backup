@@ -14,29 +14,14 @@ should have the same number of attributes)
 
 from __future__ import division
 from collections import defaultdict
+from functools import reduce
 import math
-
-
-## things to do:
-## read in the 
-
 
 class Instance(object):
     """An instance has a class (cl) and a list of attributes."""
     def __init__(self, cl, attributes):
         self.cl = cl
         self.attributes = attributes
-
-def estimate_class_probabilities(training):
-    """Estimate the probability of each class (aka value) from the training
-    data. Returns a dictionary from classes to probabilities."""
-    classcounts = defaultdict(lambda:0)
-
-    for x in training:
-        classcounts[x.cl] += 1
-
-    out = defaultdict(lambda:0)
-    return out
 
 ## TODO: add the m-estimates, so we can get something like smoothing here too.
 def estimate_probabilities(training):
@@ -91,7 +76,7 @@ def classify(instance, class_probs, attribute_probs):
     """Return a classification for this instance, given the class probabilities
     and attribute probabilities."""
 
-    possible_cls = class_probs.keys()
+    possible_cls = list(class_probs.keys())
 
     attr_pairs = [(pos, value)
                   for (pos,value) in zip(range(len(instance.attributes)),
@@ -104,7 +89,8 @@ def classify(instance, class_probs, attribute_probs):
     maxindex = scores.index(max(scores))
     maxclass = possible_cls[maxindex]
     correct = (instance.cl == maxclass)
-    print maxclass, ("Correct!" if correct else "Wrong!"), scores
+    print("%s %s %s" %
+      (maxclass, ("Correct!" if correct else "Wrong!"), scores))
 
 import sys
 def main():
