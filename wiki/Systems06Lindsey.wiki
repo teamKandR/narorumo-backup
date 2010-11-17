@@ -1,4 +1,7 @@
-#summary Lindsey studies for the systems qual.
+#summary What I did to prepare for my Ph.D. qualifying exam in Systems
+#labels Featured
+
+This page archives the questions I answered when I was studying for the Indiana University computer science Ph.D. qualifying exam in Systems during summer 2010.  I passed the exam in August 2010.  I leave this stuff here in case someone benefits from it. -- Lindsey
 
 = One: Threads =
 
@@ -691,4 +694,3 @@ scheduler runs and may schedule another process to run while this
 process is blocking on disk I/O.  When the system call is finished
 executing, it restores the contents of registers and returns control
 to user space.
-
