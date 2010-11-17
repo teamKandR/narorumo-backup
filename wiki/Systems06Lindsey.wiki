@@ -1,7 +1,7 @@
 #summary What I did to prepare for my Ph.D. qualifying exam in Systems
 #labels Featured
 
-This page archives the questions I answered when I was studying for the Indiana University computer science Ph.D. qualifying exam in Systems during summer 2010.  I passed the exam in August 2010.  I leave this stuff here in case someone benefits from it. -- Lindsey
+This page archives ten questions I answered when I was studying for the Indiana University computer science Ph.D. qualifying exam in Systems during summer 2010.  I passed the exam in August 2010.  I leave this stuff here in case someone benefits from it. -- Lindsey
 
 = One: Threads =
 
@@ -694,3 +694,68 @@ scheduler runs and may schedule another process to run while this
 process is blocking on disk I/O.  When the system call is finished
 executing, it restores the contents of registers and returns control
 to user space.
+
+#summary Lindsey studies for the systems qual some more.
+
+= Ten: Synchronization =
+
+A doctor's office consists of a waiting room with n chairs and the
+examination room containing the examination table.  If there are no
+customers to be served, the doctor goes to sleep.  If a patient enters
+the doctor's office and all waiting room chairs are occupied, then the
+patient leaves the office.  If the doctor is busy but chairs are
+available, then the patient sits in one of the free chairs.  If the
+doctor is asleep, the patient wakes up the doctor.  Write an algorithm
+that uses either POSIX threads or semaphores to coordinate the doctor
+and the patients.
+
+== Answer ==
+
+Here's something inspired by the semaphore solution to the
+producer/consumer problem in Tanenbaum p. 130.  The wrinkle here is
+that if a patient comes in and all the chairs are full, the patient
+process doesn't just wait; that patient just goes away.  That's why
+the patient process needs the queue_not_full() check.
+
+{{{
+semaphore empty_chairs = n;
+semaphore full_chairs = 0;
+semaphore mutex = 1; /* for controlling access to the queue */
+
+/* Doctor process -- runs forever */
+void doctor() {
+  patient p;
+
+  while(1) {
+    /* If full_chairs is already 0, then this down() call will just
+       wait -- the equivalent of the doctor sleeping.  */
+    down(&full_chairs);
+    
+    /* Critical region */
+    down(&mutex);
+    p = remove_patient_from_queue();
+    up(&mutex);
+    up(&empty_chairs);
+
+    treat_patient(p);
+  }
+}
+
+/* Patient process -- we'll have several of these */
+void patient() {
+  /* Critical region */
+  down(&mutex);
+  /* If the queue is full, don't do anything */
+  if (queue_not_full()) {
+    add_patient_to_queue();
+    
+    /* This call should never have to wait, since if we got this far,
+    we know the queue isn't full. */
+    down(&empty_chairs);
+
+    /* This will wake up the doctor if he's sleeping. */
+    up(&full_chairs);
+  }
+  up(&mutex);
+}
+}}}
