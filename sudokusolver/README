@@ -1,4 +1,4 @@
-April 2006, I tried rewriting my old sudoku solver to work with Google App
+April 2008, I tried rewriting my old sudoku solver to work with Google App
 Engine. And it worked, except it was really slow and might have a subtle bug in
 it (it runs way too long on underspecified problems), but naive backtracking
 search is a little boring anyway, and I want to have two versions now, one that
