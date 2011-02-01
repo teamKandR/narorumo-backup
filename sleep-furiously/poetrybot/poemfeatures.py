@@ -45,10 +45,9 @@ def last_words_rhyme(poem):
 
 vowels = "aeiouAEIOU"
 def maximize_vowels(poem):
+    """Fraction of the letters in the poem that are vowels."""
     text = astext(poem) 
-    total = reduce(lambda sofar,c: (sofar + 1) if c in vowels else sofar,
-                   text,
-                   0)
+    total = sum( [1 if c in vowels else 0 for c in text] )
     return (total / len(text))
 
 def maximize_alphabeticity(poem):
