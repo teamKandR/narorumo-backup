@@ -17,6 +17,7 @@
 from __future__ import division
 import random
 import copy
+import string
 
 def flatten(poem):
     return reduce(lambda sofar,line: sofar+line, poem, [])
@@ -61,3 +62,13 @@ def maximize_alphabeticity(poem):
         wordsinplace += sum([1 if tosort[i] == line[i] else 0
                                for i in xrange(len(line))])
     return wordsinplace / totalwords
+
+def prefer_capitals(poem):
+    """Give higher scores for words with ALL CAPS."""
+    totalwords = sum([len(line) for line in poem])
+    allcapscount = 0
+    for line in poem:
+        for word in line:
+            if all([c in string.uppercase for c in word]):
+                allcapscount += 1
+    return allcapscount / totalwords

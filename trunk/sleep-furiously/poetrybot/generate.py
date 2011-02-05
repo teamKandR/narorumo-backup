@@ -40,11 +40,17 @@ def line_of_length(nsyllables, model, context=[]):
 def count_line_syllables(words):
     return sum( map(count_syllables, words) )
 
-def buildmodel(textfn):
+def buildmodel(textfn, onlywholewords=False):
     """Takes a filename for some input text, tokenizes, and builds a bigram
     model."""
-    text = open(textfn, "r").read()[1:-1]
+    text = open(textfn, "r").read()
     words = nltk.word_tokenize(text)
+
+    if onlywholewords:
+        import string
+        isletter = lambda c: c in string.letters
+        words = [word for word in words if all(map(isletter, word))]
+
     model = NgramModel(2, words)
 
     return model
