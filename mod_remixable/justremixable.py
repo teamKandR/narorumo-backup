@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
 
+"""
+Script to pull out the Creative Commons (with derivs allowed) stories from the
+Machine of Death collection. It should have already been preprocessed by the
+rest of the accompanying shell script, makeremixable.sh.
+
+by Alex Rudnick (alex.rudnick at gmail dot com)
+"""
+
+## Optional; maybe you don't want Preface, Introduction and Contributors in
+## your training data. But David Malki ! says it's fine to include them, so I
+## did. I did decide, though, that I don't want the Copyright notice at the end
+## in my training data.
 remixable = [
     "Preface",
     "Introduction",
@@ -20,9 +32,7 @@ remixable = [
     "CANCER",
     "ANEURYSM",
     "EXHAUSTION FROM HAVING SEX WITH A MINOR",
-
-    # line actually ends at "WITH"
-    "AFTER MANY YEARS, STOPS BREATHING, WHILE ASLEEP, WITH" # SMILE ON FACE",
+    "AFTER MANY YEARS, STOPS BREATHING, WHILE ASLEEP, WITH SMILE ON FACE",
     "KILLED BY DANIEL",
     "FRIENDLY FIRE",
     "NOTHING",
@@ -35,6 +45,7 @@ remixable = [
     "DROWNING",
     "?",
     "CASSANDRA",
+    "Contributors"
 ]
 
 nonremixable = [
@@ -42,9 +53,7 @@ nonremixable = [
     "ALMOND",
     "VEGETABLES",
     "SHOT BY SNIPER",
-    "Contributors", # Arbitrary decision, really. Left in Preface and Intro,
-                    # taking out the Contributors. Do those count as stories?
-                    # Should they be in the corpus?
+    "Copyright",
 ]
 
 import sys
@@ -52,24 +61,24 @@ import re
 
 def main():
     printing = False
-    seenfirstpreface = False
+    seenfirstsection = False
     prevlineblank = False
-    digits = re.compile("^(\d+|[xvi]+)$")
+
+    sectionsfound = []
 
     with open(sys.argv[1]) as infile:
         for line in infile:
             if "\x0c" in line: continue
             line = line.strip()
 
-            if re.match(digits, line): continue
-
-            # The line "Preface" shows up twice; we only want the second one.
-            if line == "Preface" and not seenfirstpreface:
-                seenfirstpreface = True
+            if line == "###":
+                seenfirstsection = True
                 continue
 
-            if line in remixable and seenfirstpreface:
+            if line in remixable and seenfirstsection:
                 printing = True
+                sectionsfound.append(line)
+
             if line in nonremixable:
                 printing = False
 
@@ -79,5 +88,6 @@ def main():
                 print(line)
 
             prevlineblank = (line == "")
+    assert(sectionsfound == remixable)
 
 if __name__ == "__main__": main()
