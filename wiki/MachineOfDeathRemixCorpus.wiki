@@ -1,8 +1,11 @@
 #summary corpus of the remixable text from Machine of Death
+#labels Featured
 
 = Most of the stories in _Machine of Death_ allow derivative works =
 
 And when I hear "derivative works", I think the word "remix". But what's a remix of a text? Cut-up poetry? n-gram models to generate ominous-sounding emails to your family? Counting how many times the word "of" appears? This is for you to decide.
+
+Assuming you make use of this body of text: all the derivs-allowed stories from the _Machine of Death_ collection, in convenient ascii form!
 
 Just note that since the stories contained in this corpus are Creative Commons (Attribution, Noncommercial, Sharealike), so is the corpus itself, and your derivative works.
 
@@ -10,4 +13,8 @@ Just note that since the stories contained in this corpus are Creative Commons (
 (coming forthwith)
 
 = Download the script to make the corpus here. =
-(coming forthwith)
+You may want to edit the Python script to include different sections from the book (the Introduction or Preface or Contributor information), or a subset of the stories. Just grab `makeremixable.sh` and `justremixable.py` and put them in the same directory as [http://machineofdeath.net/mod.rtf the Machine of Death RTF ebook].
+
+http://narorumo.googlecode.com/svn/trunk/mod_remixable/
+http://narorumo.googlecode.com/svn/trunk/mod_remixable/makeremixable.sh
+http://narorumo.googlecode.com/svn/trunk/mod_remixable/justremixable.py
