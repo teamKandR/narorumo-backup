@@ -11,7 +11,7 @@ Assuming you make use of this body of text, that is. This is all of the derivs-a
 
 Just note that since the stories contained in this corpus are Creative Commons (Attribution, Noncommercial, Sharealike), so is the corpus itself, and your derivative works.
 
-= [http://code.google.com/p/narorumo/downloads/detail?name=mod_remixable.tgz Download the corpus here.] =
+= [http://narorumo.googlecode.com/files/mod_remixable.tgz Download the corpus here.] =
 
 See the included [http://narorumo.googlecode.com/svn/trunk/mod_remixable/README-CORPUS readme file] for author credits.
 
