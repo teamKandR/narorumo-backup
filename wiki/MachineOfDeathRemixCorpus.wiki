@@ -12,9 +12,9 @@ Just note that since the stories contained in this corpus are Creative Commons (
 = Download the corpus here. =
 (coming forthwith)
 
-= Download the script to make the corpus here. =
+= Download the script to make the corpus here. =tured
 You may want to edit the Python script to include different sections from the book (the Introduction or Preface or Contributor information), or a subset of the stories. Just grab `makeremixable.sh` and `justremixable.py` and put them in the same directory as [http://machineofdeath.net/mod.rtf the Machine of Death RTF ebook].
 
-http://narorumo.googlecode.com/svn/trunk/mod_remixable/
-http://narorumo.googlecode.com/svn/trunk/mod_remixable/makeremixable.sh
-http://narorumo.googlecode.com/svn/trunk/mod_remixable/justremixable.py
+ * http://narorumo.googlecode.com/svn/trunk/mod_remixable/README
+ * http://narorumo.googlecode.com/svn/trunk/mod_remixable/makeremixable.sh
+ * http://narorumo.googlecode.com/svn/trunk/mod_remixable/justremixable.py
