@@ -3,7 +3,7 @@
 
 _[http://machineofdeath.net/ Machine of Death]_ is fantastic.
 
-= Most of the stories in _Machine of Death_ allow derivative works =
+= Most of the stories in _Machine of Death_ allow derivative works. =
 
 And when I hear "derivative works", I think the word "remix". But what's a remix of a text? Cut-up poetry? n-gram models to generate ominous-sounding emails to your family? Counting how many times the word "of" appears? The original text, but with randomized capitalization? This is for you to decide.
 
