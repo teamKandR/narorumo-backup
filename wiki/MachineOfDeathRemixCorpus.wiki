@@ -1,7 +1,7 @@
 #summary corpus of the remixable text from Machine of Death
 #labels Featured
 
-[http://machineofdeath.net/ _Machine of Death_] is fantastic.
+_[http://machineofdeath.net/ Machine of Death]_ is fantastic.
 
 = Most of the stories in _Machine of Death_ allow derivative works =
 
@@ -12,6 +12,8 @@ Assuming you make use of this body of text, that is. This is all of the derivs-a
 Just note that since the stories contained in this corpus are Creative Commons (Attribution, Noncommercial, Sharealike), so is the corpus itself, and your derivative works.
 
 = [http://code.google.com/p/narorumo/downloads/detail?name=mod_remixable.tgz Download the corpus here.] =
+
+See the included [http://narorumo.googlecode.com/svn/trunk/mod_remixable/README-CORPUS readme file] for author credits.
 
 = Also: the script to make the corpus... =
 You may want to edit the Python script to include different sections from the book (the Introduction or Preface or Contributor information), or a subset of the stories. Just grab `makeremixable.sh` and `justremixable.py` and put them in the same directory as [http://machineofdeath.net/mod.rtf the Machine of Death RTF ebook].
