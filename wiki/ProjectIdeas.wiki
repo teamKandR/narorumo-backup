@@ -16,17 +16,6 @@ Extra credit: search through all course descriptions and find out which departme
 == Sleep Furiously (formerly: TEB) ==
 SleepFuriouslyScratchSpace
 
-== make your papers shorter ==
-*implemented and launched!* http://kompressr.appspot.com
-
-  * find all the ngrams (greater than, say, n=3, and up to a large n)
-  * for every ngram that happens more than once, define an acronym in the text.
-  * replace all subsequent occurrences by the acronym.
-
-"As you can see (AYCS) ..."
-
-(idea largely due to [http://research.google.com/pubs/author125.html Mike Riley])
-
 == collaborative latex editor for wave ==
 Wave is pretty great at collaborative editing for text (and as a platform, pretty great at collaborative whatever) -- what if there was a LaTeX editor for wave? You could be happily editing along with your, and there could be a "typeset!" button. LaTeX itself could either be made to run on App Engine (has it been ported to Java or Python?), or alternatively, the appengine-side of the wave robot could take your text and make a call out to a "latex web services" setup somewhere else, which would send back the typeset document, for your viewing pleasure. How does the pdf preview thing work in gmail? Is this accessible from, eg, wave?
 
@@ -104,3 +93,16 @@ There's something sort of like this, CacheViewer, but the UI doesn't look great.
 Say you have several people who all want to go running together, and they live fairly nearby. What if you had a Google Maps mashup that could help plan a route for everybody to meet up and run together? What if some participants are stronger runners than others, and wouldn't mind going farther to get to a meetup point?
 Could some routes be circuits, where not everybody goes on all parts of the run, and people get dropped back off at their starting location later?
 Didn't I have a demo of something like this, a few years ago? Where did that code go?
+
+= done =
+
+== make your papers shorter ==
+*implemented and launched!* http://kompressr.appspot.com
+
+  * find all the ngrams (greater than, say, n=3, and up to a large n)
+  * for every ngram that happens more than once, define an acronym in the text.
+  * replace all subsequent occurrences by the acronym.
+
+"As you can see (AYCS) ..."
+
+(idea largely due to [http://research.google.com/pubs/author125.html Mike Riley])
