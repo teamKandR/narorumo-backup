@@ -75,13 +75,7 @@ It'd be pretty cool to have a nicer Google Gadget (for igoogle) for keeping TODO
 
 There's a project going for Haskell, apparently: [http://github.com/nkchenz/hs-doctest/tree/master hs-doctest].
 
-== Firefox extensions ==
-=== ~~tear off tabs to be new windows~~ ===
-I'd like a Firefox extension that lets you take a tab and drag it out into space, causing it to become a new window. Or just context-menu the tab to do that same thing.
-
-*As of Firefox 3.1, there's a context menu to do exactly that, great!*
-
-=== browser cache browsing ===
+=== firefox: browser cache browsing ===
 There should be firefox functionality that lets you see what's in your browser cache, say if you're offline. It should show cached files like the history view, as a tree, by site.
 
 Also see:
@@ -106,3 +100,8 @@ Didn't I have a demo of something like this, a few years ago? Where did that cod
 "As you can see (AYCS) ..."
 
 (idea largely due to [http://research.google.com/pubs/author125.html Mike Riley])
+
+=== Firefox: ~~tear off tabs to be new windows~~ ===
+I'd like a Firefox extension that lets you take a tab and drag it out into space, causing it to become a new window. Or just context-menu the tab to do that same thing.
+
+*As of Firefox 3.1, there's a context menu to do exactly that, great!*
