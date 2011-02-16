@@ -2,6 +2,17 @@
 
 = Future project scratch space =
 
+== typewriter program that keeps track of daily wordcount ==
+AlexRudnick has a dumb program called typewriter.py that he should put into narorumo; it's the simplest possible text editor. It gets one character at a time from the console (raw input) and appends them to a file, also printing them to stdout.
+
+It should also keep a daily wordcount, so you can, y'know, make sure to write 1000 words a day, and finish your phd.
+
+http://www.academicproductivity.com/2008/how-to-complete-your-phd-or-any-large-project-hard-and-soft-deadlines-and-the-martini-method/
+
+This is seriously good advice, here:
+
+http://lifehacker.com/#!281626/jerry-seinfelds-productivity-secret
+
 == ajax class search for IUB ==
 surely this has been done before. I want something like Kayak, but for finding classes.
 
