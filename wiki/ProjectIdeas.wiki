@@ -3,7 +3,7 @@
 = Future project scratch space =
 
 == typewriter program that keeps track of daily wordcount ==
-AlexRudnick has a dumb program called typewriter.py that he should put into narorumo; it's the simplest possible text editor. It gets one character at a time from the console (raw input) and appends them to a file, also printing them to stdout.
+[Alex Alex] has a dumb program called typewriter.py that he should put into narorumo; it's the simplest possible text editor. It gets one character at a time from the console (raw input) and appends them to a file, also printing them to stdout.
 
 It should also keep a daily wordcount, so you can, y'know, make sure to write 1000 words a day, and finish your phd.
 
