@@ -1,0 +1,39 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+// Return the bit-th bit from the right in the number.
+int getbit(long n, int bit) {
+  return ((n & (1 << bit)) >> bit);
+}
+
+// Here p is a proposed solution.
+int trysoln(long p) {
+$TRYSOLNLINES
+}
+
+// print a proposed solution. Hopefully a working one.
+void printsoln(long p, int numvars) {
+  for (int i = 0; i < numvars; i++) {
+    puts(getbit(p, i) ? "T" : "F");
+  }
+}
+
+int main(int argc, char *argv[]) {
+  static int numvars = $NUMVARS;
+  long maxsoln = powl(2, numvars);
+
+  long proposed;
+  for (proposed = 0; proposed < maxsoln; proposed++) {
+    if (trysoln(proposed)) {
+      printsoln(proposed, numvars);
+      break;
+    }
+  }
+
+  if (proposed == maxsoln) {
+    puts("Not satisfiable");
+  }
+
+  exit(EXIT_SUCCESS);
+}
