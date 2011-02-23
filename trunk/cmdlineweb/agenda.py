@@ -27,6 +27,7 @@ import string
 import time
 import re
 import sys
+import os
 
 ONE_DAY = 24 * 60 * 60
 ONE_MINUTE = 60
@@ -53,18 +54,7 @@ def dayof(timestring):
 def usage():
     print ("usage: %s username@gmail.com [\"timezone\"]" % (sys.argv[0]))
 
-def main():
-    if len(sys.argv) == 3:
-        ctz = sys.argv[2]
-    else:
-        ctz = "America/New_York"
-
-    if len(sys.argv) in (2,3):
-        username = sys.argv[1]
-    else:
-        usage()
-        exit(-1)
-
+def get_agenda(username, ctz):
     now = time.localtime()
     tomorrowtime = time.localtime(time.time() + ONE_DAY)
 
@@ -91,17 +81,52 @@ def main():
     thekey = lambda ev: ev.when[0].start_time
     events.sort(key=thekey)
 
-    print "AGENDA FOR", today
+    out = ""
+    out += ("AGENDA FOR " + today + "\n")
     for event in events:
         for when in event.when:
             if today not in (dayof(when.start_time), dayof(when.end_time)):
                 continue
 
             if "T" in when.start_time:
-                print '%s' % (timeofday(when.start_time),),
-                print 'to %s' % (timeofday(when.end_time),),
+                out += '%s ' % (timeofday(when.start_time),)
+                out += 'to %s ' % (timeofday(when.end_time),)
             else:
-                print "today" + (" " * 9), 
-            print event.title.text
-    
+                out += "today" + (" " * 10)
+            out += event.title.text + "\n"
+    return out
+
+CACHEFN = os.path.expanduser("~/.agenda")
+def save_agenda(agenda):
+    with open(CACHEFN, "w") as outfile:
+        outfile.write(agenda)
+
+def retrieve_agenda():
+    try:
+        with open(CACHEFN, "r") as infile:
+            return infile.read()
+    except:
+        return "(no cached agenda)"
+
+import sys
+def main():
+    try:
+        if len(sys.argv) == 3:
+            ctz = sys.argv[2]
+        else:
+            ctz = "America/New_York"
+
+        if len(sys.argv) in (2,3):
+            username = sys.argv[1]
+        else:
+            usage()
+            exit(-1)
+        agenda = get_agenda(username, ctz)
+        save_agenda(agenda)
+        print(agenda)
+    except Exception,e:
+        print(e) 
+        print("[cached]")
+        print(retrieve_agenda())
+ 
 if __name__ == "__main__": main()
