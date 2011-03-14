@@ -1,0 +1,13 @@
+"Say something normal, like... Douglas."
+
+Douglas is where I'll implement a really, really simple phrase-based
+statistical MT system. For practice!
+
+Components include:
+- IBM model 1, for word alignments
+- phrase extraction and phrase-table building
+- a monotone phrase-based decoder
+
+This will not win any competitions. But it's good weights to lift!
+
+Douglas is in Python 3; the next version will be in C++ and called Ramsey.
