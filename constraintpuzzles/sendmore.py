@@ -37,7 +37,6 @@ class DigitCheckout(object):
         return runningtotal == totaldigit
 
 def digit_checks(problem, terms, total, letters):
-    shortest = min(map(len, terms))
     reversedterms = map(lambda term: list(reversed(term)), terms)
     reversedtotal = list(reversed(total))
 
