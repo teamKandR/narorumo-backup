@@ -10,41 +10,16 @@ from __future__ import print_function
 
 from constraint import AllDifferentConstraint
 from constraint import Problem
+from constraint import MinConflictsSolver
 import sys
 
-class LettersAddUp(object):
-    def __init__(self, terms, total, letters):
-        self.terms = terms
-        self.total = total
-        self.letters = letters
-
-    def __call__(self, *values):
-        termtotal = 0
-        assignments = {}
-        for k,v in zip(self.letters, values):
-            assignments[k] = v
-            
-        for term in self.terms:
-            place = 1
-            mytotal = 0
-            for letter in reversed(term):
-                mytotal += place * assignments[letter]
-                place *= 10
-            termtotal += mytotal
-
-        totaltotal = 0
-        place = 1
-        for letter in reversed(self.total):
-            totaltotal += place * assignments[letter]
-            place *= 10
-        return totaltotal == termtotal
-
 class DigitCheckout(object):
-    def __init__(self, totalletter, components, letters):
+    def __init__(self, totalletter, components, letters, lastone=False):
         """components is a list like [['d',e'],['n','r']]"""
         self.totalletter = totalletter
         self.components = components
         self.letters = letters
+        self.lastone = lastone
 
     def __call__(self, *values):
         assignments = {}
@@ -56,7 +31,9 @@ class DigitCheckout(object):
         for i in range(len(self.components)):
             runningtotal //= 10
             runningtotal += sum([assignments[x] for x in self.components[i]])
-        runningtotal %= 10
+
+        if not self.lastone:
+            runningtotal %= 10
         return runningtotal == totaldigit
 
 def digit_checks(problem, terms, total, letters):
@@ -64,12 +41,14 @@ def digit_checks(problem, terms, total, letters):
     reversedterms = map(lambda term: list(reversed(term)), terms)
     reversedtotal = list(reversed(total))
 
-    for end in range(min(3, shortest)):
+    for end in range(len(total)):
         problem.addConstraint(
             DigitCheckout(reversedtotal[end],
                           [[term[i] for term in reversedterms
                                     if i in range(len(term))]
-                           for i in range(end + 1)], letters),
+                           for i in range(end + 1)],
+                           letters,
+                           lastone=(end == len(total) - 1)),
                            letters)
 
 def buildproblem(terms, total):
@@ -85,8 +64,6 @@ def buildproblem(terms, total):
             problem.addVariable(letter, list(range(10)))
     problem.addConstraint(AllDifferentConstraint())
     digit_checks(problem, terms, total, letters)
-    problem.addConstraint(LettersAddUp(terms,total,letters), letters)
-
     return problem
 
 def main():
