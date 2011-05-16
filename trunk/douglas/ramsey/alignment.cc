@@ -71,7 +71,7 @@ void translation_tables(vector<string> &esentences,
   std::cerr << "it's this big: " << fvocab.size() << endl;
 
   /* # initialize t(e|f) uniformly */
-  double lowprob = 1 / evocab.size();
+  double lowprob = 1.0 / evocab.size();
 
   for (set<string>::iterator e = evocab.begin(); e != evocab.end(); ++e) {
     for (set<string>::iterator f = fvocab.begin(); f != fvocab.end(); ++f) {
@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
   map<string, map<string, double> > trans;
   translation_tables(esentences, fsentences, &trans);
 
-  std::cerr << trans["whenever"]["semana"] << endl;
+  std::cerr << trans["whenever"]["semana,"] << endl;
   std::cerr << trans["President"]["Presidente"] << endl;
   std::cerr << trans["legislature"]["político"] << endl;
 
