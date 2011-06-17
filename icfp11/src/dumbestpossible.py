@@ -157,8 +157,8 @@ def main():
             # queue.
             init_first_x_with_y(5, 4)
 
-            # Enqueue 10,000 alternations of each strategy.  (We won't
-            # get to all of these.)
+            # Enqueue 10,000 alternations of each strategy.  (We even
+            # have some time left at the end.)
             enqueue_strategy("playzero playdec", 10000)
             enqueue_strategy("playzero playsucc playdec", 10000)
             enqueue_strategy("playzero playsucc playsucc playdec", 10000)
