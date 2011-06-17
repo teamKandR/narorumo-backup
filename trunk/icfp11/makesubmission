@@ -1,0 +1,5 @@
+#!/bin/bash
+
+VERSION=0
+
+tar czvf team_kr_$VERSION.tar.gz run install src
