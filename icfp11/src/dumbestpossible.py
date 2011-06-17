@@ -2,6 +2,18 @@
 
 import sys
 
+def left_app(card, slot):
+    """Applies card to slot, leaving the result in slot."""
+    print("1")
+    print(card)
+    print(slot)
+
+def right_app(slot, card):
+    """Applies slot to card, leaving the result in slot."""
+    print("2")
+    print(slot)
+    print(card)
+
 def get_opponent_move():
     option = input().strip()
     one = input().strip()
@@ -27,7 +39,7 @@ def playzero():
 def playdec(slot=0):
     """
     Do a left application of the dec card to one of our slots (default
-    0).  Assuming the slot has n in it, This side-effects the
+    0).  Assuming that that slot has n in it, this side-effects the
     opponent's (255-n)th slot, decrementing its vitality by 1, and
     returns the identity function, causing our slot n to be
     overwritten by the identity function.
@@ -82,6 +94,16 @@ commands = {
     "playsucc" : playsucc,
     "playdbl" : playdbl,
 }
+
+def initialize_SK(slot, current_step):
+    """
+    Initializes the two slots starting at 'slot' with the S and K
+    combinators.  Threads the current step through.
+    """
+
+    # Right-app some identity slots to S and K cards.
+    right_app(slot, S)
+    right_app(slot, K)
 
 def strategy(cmds, turn):
     # On any given turn, we're only going to use one of the commands
