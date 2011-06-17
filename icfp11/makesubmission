@@ -2,4 +2,4 @@
 
 VERSION=0
 
-tar czvf team_kr_$VERSION.tar.gz run install src
+tar czvf team_kr_$VERSION.tar.gz --exclude=.svn run install src

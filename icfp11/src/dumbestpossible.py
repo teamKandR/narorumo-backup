@@ -36,6 +36,23 @@ def playdec():
     print("dec")
     print("0")
 
+def playsucc():
+    print("1")
+    print("succ")
+    print("0")
+
+commands = {
+    "playzero" : playzero,
+    "playdec" : playdec,
+    "playsucc" : playsucc,
+}
+
+def strategy(cmds, turn):
+    splitted = cmds.split()
+    i = turn % len(splitted)
+    funk = commands[splitted[i]]
+    funk()
+
 def main():
     whoami = sys.argv[1]
     if whoami == "1":
@@ -44,10 +61,12 @@ def main():
     turn = 0
     while True:
         try:
-            if turn % 2 == 0:
-                playzero()
+            if turn < 20000:
+                strategy("playzero playdec", turn)
+            elif turn <= 50000:
+                strategy("playzero playsucc playdec", turn)
             else:
-                playdec()
+                strategy("playzero playsucc playsucc playdec", turn)
             option, card, slot = get_opponent_move()
             turn += 1
         except EOFError as e:
