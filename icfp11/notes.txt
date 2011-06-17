@@ -1,0 +1,78 @@
+* Notes
+
+** Applying a slot to a slot
+
+(help 0 1 16)
+
+2, 0, help
+2, 0, zero
+1, K, 0
+1, S, 0
+2, 0, succ
+2, 0, zero
+2, 1, zero
+1, succ, 1
+1, dbl, 1
+1, dbl, 1
+1, dbl, 1
+1, dbl, 1
+1, K, 0
+1, S, 0
+2, 0, get
+1, K, 0
+1, S, 0
+2, 0, succ
+2, 0, zero
+
+builds up
+0={10000,S(K(S(K(help(zero)(1)))(get)))(succ)}
+1={10000,16}
+
+0={9984,I}
+1={10017,16}
+
+** In general
+
+We'd like to solve the general problem of applying the contents of
+slot a to the contents of slot b.
+
+The way to do this is to build up function foo in a slot with the
+following wrapping:
+
+S( K( S(K(foo))(get) ) ) I
+
+And then apply that slot to the number of b's slot.
+
+Why does this work?
+
+S(K(foo))(get) is the same as:
+
+define fooget =
+lambda x:
+ return foo (get x)
+
+Taking K of that gives us:
+
+define foogetK =
+lambda x:
+ fooget
+
+Taking S of foogetK and I gives us:
+
+lambda x:
+  h <-- foogetK x
+  y <-- I x
+  z <-- h y
+  return z
+
+which can be simplified as
+
+lambda x:
+  fooget x
+
+which is the same as fooget.  Recall that fooget just takes the
+contents of a slot and applies foo to it.
+
+So now we can apply an arbitrary function foo to the contents of an
+arbitrary slot.
+
