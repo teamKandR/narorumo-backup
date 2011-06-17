@@ -2,17 +2,11 @@
 
 import sys
 
-turn_queue = []
+# INSTRUCTION PIPELINING!!
+pipeline = []
 
-def run_all(tq):
-    while True:
-        try:
-            pop_and_print(tq)
-        except IndexError as e: # got 'em all
-            return
-
-def pop_and_print(tq):
-    move = tq.pop(0)
+def pop_and_print():
+    move = pipeline.pop(0)
     print(move[0])
     print(move[1])
     print(move[2])
@@ -49,14 +43,14 @@ def enqueue_left_app(card, slot):
     Enqueue an operation that applies card to slot, leaving the result
     in slot.
     """
-    turn_queue.append(["1", card, slot])
+    pipeline.append(["1", card, slot])
 
 def enqueue_right_app(slot, card):
     """
     Enqueue an operation that applies slot to card, leaving the result
     in slot.
     """
-    turn_queue.append(["2", slot, card])
+    pipeline.append(["2", slot, card])
 
 def get_opponent_move():
     option = input().strip()
@@ -147,24 +141,26 @@ def main():
     # TODO: Take advantage of those 1000 function applications we
     # have.  Do crazy shit.
 
+    # Enqueue instructions to write 16 into the first 5
+    # slots.
+    init_first_x_with_y(5, 4)
+
+    # Enqueue instructions to run 10,000 alternations of each
+    # strategy.  (We even have some time left at the end.)
+    enqueue_strategy("playzero playdec", 10000)
+    enqueue_strategy("playzero playsucc playdec", 10000)
+    enqueue_strategy("playzero playsucc playsucc playdec", 10000)
+
+    # Remember, turns in the actual game are numbered from 1, not 0.
+
     turn = 0
     while True:
         try:
-            # Remember, turns in the actual game are numbered from 1,
-            # not 0.
-            
-            # Write 16 into the first 5 slots.  Side-effects the turn
-            # queue.
-            init_first_x_with_y(5, 4)
-
-            # Enqueue 10,000 alternations of each strategy.  (We even
-            # have some time left at the end.)
-            enqueue_strategy("playzero playdec", 10000)
-            enqueue_strategy("playzero playsucc playdec", 10000)
-            enqueue_strategy("playzero playsucc playsucc playdec", 10000)
-
-            # Run 'em all.
-            run_all(turn_queue)
+            # If we have an instruction to execute, do it.
+            try:
+                pop_and_print()
+            except IndexError as e: # got 'em all
+                return
 
             option, card, slot = get_opponent_move()
             turn += 1
