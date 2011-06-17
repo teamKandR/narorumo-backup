@@ -1,0 +1,175 @@
+Fri Jun 17 13:41:01 PDT 2011
+
+0={10000,S(K(S(K(help(zero)(1)))(get)))(succ)}
+
+so all this business:
+S(K(S(K(help(zero)(1)))(get)))(succ)
+
+f: (K(S(K(help(zero)(1)))(get)))
+g: succ
+x: 0
+
+This causes...
+help(zero)(1) to happen on the contents of slot 1.
+
+template:
+f: (K(S(K(BEHAVIOR))(get)))
+g: succ
+x: 0
+
+... causes BEHAVIOR(*slot1), yes?
+
+then:
+all of that, applied to 0.
+
+f(0) => ... help 0 1 16.
+
+So S (K f) (K g) I ==> (f g)
+
+S(K(help(zero)(1)))(get)
+
+So like, K(...)(0) and get(0) goes off, and we get whatever was inside the K,
+applied to whatever was in slot 0.
+
+... so how could we do this for dec? What we really want is the Y combinator
+and...
+S f g x
+((f x) (g x))
+
+
+at turn 19, we have...
+0={10000,S(K(S(K(help(zero)(1)))(get)))(succ)}
+then apply that slot to 0.
+
+resulting in:
+(S (K(help(zero)(1))) (get) 1)
+==> help (zero) 1 (get 1)
+
+-------------------------
+| ycombinator interlude |
+-------------------------
+
+Question here is: do S and K take three and two arguments, in this case? They
+must, right?
+
+Y' = S S K (S (K (S S (S (S S K)))) K)
+
+
+(((S S) K)
+  (S (K ((S S)
+         (S
+          ((S S)
+           K))))
+           K) )
+
+Y' = (((S S) K)
+      ((S (K ((S S)
+              (S ((S S) K)))))
+        K))
+
+
+(define fact
+  (Y (lambda (f)
+       (lambda (n)
+         (if (<= n 0)
+             1
+             (* n (f (- n 1))))))))
+
+Alright, let's skip that business. Here's the Y combinator, fully
+parenthesized.
+
+Y = S (K (S I I)) (S (S (K S) K) (K (S I I)))
+      ----------- ---------------------------
+      abe         benny
+
+building abe:
+play S
+Apply the S to I
+Apply the S to I again.
+(now we have (S I I))
+Apply K to that.
+
+2,0,S
+2,0,I
+2,0,I
+1,K,0
+
+alright, now let's build benny, in slot 1. Benny has two parts, 
+(S (S (K S) K) (K (S I I)))
+   ----------- -----------
+   clarice      dianne
+
+clarice goes in slot 1 to start with.
+2,1,S
+1,K,1
+1,S,1
+2,1,K
+1,S,1 ## Now put at S around clarice in slot 1.
+
+Now let's build dianne in slot 2.
+1,S,2
+2,2,I
+1,K,2
+
+
+Current world state:
+0={10000,K(S(I)(I))} # abe
+1={10000,S(S(K(S))(K))} # clarice with the extra S
+2={10000,K(S(I)(I))}    # dianne.
+
+Goal: apply clarice with S to dianne, have result show up in slot 1.
+
+
+So here's the plan.
+
+Build clarice in slot 0.
+Build dianne in slot 1.
+Apply slot 0 to slot 1; and now we have benny in slot 0.
+Now put a 0 in slot 1, and use "get": benny is in slot 1.
+Now build abe in slot 0, add an S.
+Apply slot 0 to slot 1, and we have the Y combinator in slot 0.
+
+
+
+
+### the commands to apply slot 0 to slot 1.
+1, K, 0     ### K(FOO)
+1, S, 0     ### S(K(FOO))
+2, 0, get   ### S(K(FOO) get)
+1, K, 0     ### K(S(K(FOO) get))
+1, S, 0     ### S(K(S(K(FOO) get)))
+2, 0, succ  ### S (K(S(K(FOO) get))) succ
+2, 0, zero  ### S  succ 0
+
+Does this work in general? Let's see?
+Put succ in slot 0.
+2, 0, succ
+
+Put 1 in slot 1.
+2,1,zero
+1,succ,1
+
+
+1
+K
+0
+1
+S
+0
+2
+0
+get
+1
+K
+0
+1
+S
+0
+2
+0
+succ
+2
+0
+zero
+
+OK, this works.
