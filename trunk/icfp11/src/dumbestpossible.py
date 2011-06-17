@@ -37,6 +37,12 @@ def playdec():
     print("0")
 
 def playsucc():
+    """
+    Do a left application of the succ card to our slot 0.  Assuming
+    slot 0 has n in it, the effect of playsucc() is to write n+1 into
+    slot 0.  (Then we have an n+1 to work with, as an argument to dec,
+    for instance.)
+    """
     print("1")
     print("succ")
     print("0")
@@ -48,9 +54,16 @@ commands = {
 }
 
 def strategy(cmds, turn):
+    # On any given turn, we're only going to use one of the commands
+    # in cmds.  Pick the right one out of the list based on which
+    # of our turns it is.
     splitted = cmds.split()
     i = turn % len(splitted)
+
+    # Then pick the corresponding function out of the commands dict.
     funk = commands[splitted[i]]
+
+    # And run it.
     funk()
 
 def main():
@@ -62,10 +75,13 @@ def main():
     while True:
         try:
             if turn < 20000:
+                # Decrement opponent's slot 255.
                 strategy("playzero playdec", turn)
             elif turn <= 50000:
+                # Decrement opponent's slot 254.
                 strategy("playzero playsucc playdec", turn)
             else:
+                # Decrement opponent's slot 253.
                 strategy("playzero playsucc playsucc playdec", turn)
             option, card, slot = get_opponent_move()
             turn += 1
