@@ -34,16 +34,16 @@ builds up
 ** In general
 
 We'd like to solve the general problem of applying the contents of
-slot a to the contents of slot b.
+slot N to the contents of slot 0.
 
-The way to do this is to build up function foo in a slot with the
+The way to do this is to build up function foo in slot N with the
 following wrapping:
 
 S( K( S(K(foo))(get) ) ) I
 
-And then apply that slot to the number of b's slot.
+And then apply slot N to the 'zero' card.
 
-Why does this work?
+** Why does this work?
 
 S(K(foo))(get) is the same as:
 
@@ -70,9 +70,21 @@ which can be simplified as
 lambda x:
   fooget x
 
-which is the same as fooget.  Recall that fooget just takes the
-contents of a slot and applies foo to it.
+which is the same as fooget.  Recall that fooget just get the contents
+of a slot and applies foo to it.  So when we apply the function we've
+built up in slot N to the 'zero' card, we'll be getting the contents
+of slot 0 and applying foo to it.  The result will be left in slot 0.
 
-So now we can apply an arbitrary function foo to the contents of an
-arbitrary slot.
+** Want to apply to the contents of a different slot?
+
+To apply function foo to the contents of slot 1, build up function foo
+in slot N with the following wrapping:
+
+S( K( S(K(foo))(get) ) ) succ
+
+And then apply slot N to the 'zero' card.  The result will be left in
+slot 1.
+
+
+
 
