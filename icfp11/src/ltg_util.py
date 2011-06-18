@@ -5,6 +5,69 @@ import sys
 # INSTRUCTION PIPELINING!!
 pipeline = []
 
+def build_num_in_slot(num, slot):
+    """Build up a number in a slot (to be used as an address,
+    potentially).  Precondition: slot"""
+
+    # Make sure that slot already has identity in it.
+    apply_card("put", slot)
+
+    # Put in zero.
+    apply_slot(slot, "zero")
+
+    for i in range(num):
+        apply_card("succ", slot)
+
+def apply_slotX_to_slotY(x, y, yaddr=None):
+    """
+    Result ends up in slot X.
+
+    Example:
+    
+    We have:
+    1={10000,1}
+    7={10000,succ}
+
+    Executing apply_slotX_to_slotY(7, 1) leaves us with:
+
+    1={10000,1}
+    7={10000,2}
+    """
+    apply_card("K", x)
+    apply_card("S", x)
+    apply_slot(x, "get")
+    apply_card("K", x)
+    apply_card("S", x)
+
+    if (y == 0):
+        # I(0) is 0
+        apply_slot(x, "I") 
+        apply_slot(x, "zero")
+    elif (y == 1):
+        # resultslot is 1, succ(0) is 1
+        apply_slot(x, "succ")
+        apply_slot(x, "zero")
+    else:
+        # Applying a slot to an arbitrary slot number requires some
+        # extra work.  If we had, say, a "3" card, then we could apply
+        # a slot to slot 3 (or 4) easily.  We don't have a "3" card,
+        # but we could have a *slot containing*, say,
+        # succ(succ(succ(zero))) == 3.
+
+        # So then, to apply x to slot 3, we'd need to apply slot x to
+        # the slot containing 3.  We can do this as long as the slot
+        # containing 3 is either 0 or 1!
+        assert ((yaddr == 0) or (yaddr == 1))
+
+        if (yaddr == 0):
+            # slot 0 contains the slot number we want to apply X to
+            apply_slot(x, "I") 
+            apply_slotX_to_slotY(x, 0)
+        else:
+            # slot 1 contains the slot number we want to apply X to
+            apply_slot(x, "succ")
+            apply_slotX_to_slotY(x, 1)
+
 def apply_slot0_to_slot1():
     """Queue up the commands to apply the function in slot 0 to the value,
     which may also be a function, in slot 1. The result will be in slot 0."""
