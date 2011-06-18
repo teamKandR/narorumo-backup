@@ -1,17 +1,11 @@
 #!/usr/bin/env python3
 
-import sys
-
 from ltg_util import gameloop
 from ltg_util import enqueue_strategy
 from ltg_util import pop_and_print
 from ltg_util import get_opponent_move
 
 def main():
-    whoami = sys.argv[1]
-    if whoami == "1":
-        get_opponent_move()
-        
     enqueue_strategy("playzero playdec", 10000) # takes 20k turns.
     enqueue_strategy("playzero playsucc playdec", 10000) # 30k.
     enqueue_strategy("playzero playsucc playsucc playdec", 10000) # 40k.

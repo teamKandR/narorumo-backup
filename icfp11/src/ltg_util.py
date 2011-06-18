@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import sys
+
 # INSTRUCTION PIPELINING!!
 pipeline = []
 
@@ -141,7 +143,6 @@ def enqueue_strategy(cmds, times):
         funk = commands[splitted[i % num_cmds]]
         funk()
 
-import sys
 def gameloop():
     """Main loop for our default agents."""
     
