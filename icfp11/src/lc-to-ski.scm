@@ -42,6 +42,18 @@
 
 #|
 
+Y combinator: λf. (λx. f (λy. x x y)) (λx. f (λy. x x y))
+
+In Scheme:
+
+(lambda (f)
+  ((lambda (x)
+     (f (lambda (y)
+          ((x x) y))))
+   (lambda (x)
+     (f (lambda (y)
+          ((x x) y))))))
+
 Eventually, we want to write:
 
 (Y (lambda (f)
