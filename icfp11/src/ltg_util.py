@@ -8,13 +8,13 @@ pipeline = []
 def apply_slot0_to_slot1():
     """Queue up the commands to apply the function in slot 0 to the value,
     which may also be a function, in slot 1. The result will be in slot 0."""
-    enqueue_left_app("K", 0)
-    enqueue_left_app("S", 0)
-    enqueue_right_app(0, "get")
-    enqueue_left_app("K", 0)
-    enqueue_left_app("S", 0)
-    enqueue_right_app(0, "succ")
-    enqueue_right_app(0, "zero")
+    apply_card("K", 0)
+    apply_card("S", 0)
+    apply_slot(0, "get")
+    apply_card("K", 0)
+    apply_card("S", 0)
+    apply_slot(0, "succ")
+    apply_slot(0, "zero")
 
 def pop_and_print():
     move = pipeline.pop(0)
@@ -35,28 +35,28 @@ def init_first_x_with_y(x, y):
 
     # Get 0s in.  Uses X turns.
     for i in range(x):
-        enqueue_right_app(i, "zero")
+        apply_slot(i, "zero")
 
     # Get 1s in.  Uses X turns.
     for i in range(x):
-        enqueue_left_app("succ", i)
+        apply_card("succ", i)
 
     # Get bigger numbers in.  Uses X turns for each doubling.
     for i in range(x):
         for j in range(y):
-            enqueue_left_app("dbl", i)
+            apply_card("dbl", i)
 
     # Return the number of turns this takes.
     return 2*x + y*x
 
-def enqueue_left_app(card, slot):
+def apply_card(card, slot):
     """
     Enqueue an operation that applies card to slot, leaving the result
     in slot.
     """
     pipeline.append(["1", card, slot])
 
-def enqueue_right_app(slot, card):
+def apply_slot(slot, card):
     """
     Enqueue an operation that applies slot to card, leaving the result
     in slot.
@@ -81,7 +81,7 @@ def playzero():
     run, this will write the value of ((lambda (x) x) 0), which is to
     say, 0, into our slot 0.
     """
-    enqueue_right_app(0, "zero")
+    apply_slot(0, "zero")
 
 def playdec(slot=0):
     """
@@ -91,7 +91,7 @@ def playdec(slot=0):
     vitality by 1, and return the identity function, causing our slot
     n to be overwritten by the identity function.
     """
-    enqueue_left_app("dec", slot)
+    apply_card("dec", slot)
 
 def playsucc(slot=0):
     """
@@ -105,7 +105,7 @@ def playsucc(slot=0):
     assert (slot >= 0)
     assert (slot <= 255)
 
-    enqueue_left_app("succ", slot)
+    apply_card("succ", slot)
 
 def playdbl(slot=0):
     """
@@ -118,7 +118,7 @@ def playdbl(slot=0):
     assert (slot >= 0)
     assert (slot <= 255)
 
-    enqueue_left_app("dbl", slot)
+    apply_card("dbl", slot)
 
 commands = {
     "playzero" : playzero,
