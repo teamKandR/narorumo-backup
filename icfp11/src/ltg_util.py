@@ -140,3 +140,24 @@ def enqueue_strategy(cmds, times):
         # Pick the corresponding function out of the commands dict.
         funk = commands[splitted[i % num_cmds]]
         funk()
+
+import sys
+def gameloop():
+    """Main loop for our default agents."""
+    
+    whoami = sys.argv[1]
+    if whoami == "1":
+        get_opponent_move()
+
+    turn = 0
+    while True:
+        try:
+            # If we have an instruction to execute, do it.
+            try:
+                pop_and_print()
+            except IndexError as e: # got 'em all
+                return
+            option, card, slot = get_opponent_move()
+            turn += 1
+        except EOFError as e:
+            return
