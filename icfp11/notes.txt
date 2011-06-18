@@ -14,7 +14,7 @@ We want this:
  ((S (horace (greg (K dec)))) ian))
 
 fanny
-((S (K K)) (K K))
+(greg (K K))
 
 greg
 (S (K K))

@@ -29,3 +29,22 @@
       [(,x ,y) (guard (symbol? y) (equal? x y)) 'I]
       [(,x ,y) (guard (or (number? y) (symbol? y))) `(K ,y)]
       [(,x (,M ,N)) `((S ,(A x M)) ,(A x N))])))
+
+;; Eventually, we want to write:
+
+'(Y (lambda (f)
+     (lambda (slot)
+       ((lambda (ignoreme)
+          (f slot))
+        (dec slot)))))
+
+(define names
+  (lambda (e)
+    (pmatch e
+      [,var (guard (symbol? var)) var]
+      [((S (K K)) (K K)) 'fanny]
+      [(S (K K)) 'greg]
+      [(S (K S)) 'horace]
+      [(K I) 'ian]
+      [(,M ,N) `(,(names M) ,(names N))])))
+
