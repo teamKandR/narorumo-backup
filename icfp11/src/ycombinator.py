@@ -24,8 +24,10 @@ def build_abe(slot):
     apply_card("S",0)
 
 def build_y_combinator():
-    """Build the y combinator into slot 0. Assumes all the slots are currently
-    filled with I, but only touches slots 0 and 1."""
+    """Build the y combinator into slot 0. Only touches slots 0 and 1."""
+
+    apply_card("put",0)
+    apply_card("put",1)
 
     # Build clarice in slot 0.
     build_clarice(0)

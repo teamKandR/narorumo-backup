@@ -204,16 +204,85 @@ smash together to get ((S (horace (greg (K dec)))) ian) in 0.
 
 copy it somewhere else.
 
-building the left part:
-(S
-  (horace
-   ((S
-     (horace
-      ((S (horace (greg (K S))))
-       ((S (horace fanny)) (greg I)))))
-    ((S (horace fanny)) ian))))
-
 It might be easier if we could build horace around something else? Is that
 possible?
 
+building the left part:
+(S (horace
+((S (horace ((S (horace (greg (K S)))) ((S (horace fanny)) (greg I))))) ## june
+ ((S (horace fanny)) ian))))   ## kelly
 
+june:
+(S (horace ((S (horace (greg (K S)))) ((S (horace fanny)) (greg I)))))
+            ------------------------- -----------------------------
+             june1                      june2
+
+# june1: takes up slots 0 and 1.
+(S (horace (greg (K S))))
+put greg in 0
+put S in 1
+put K around the S
+smash together
+copy (greg (K S)) to 1
+put horace in 0
+smash together for (horace (greg (K S)))
+wrap with an S for (S (horace (greg (K S))))
+
+# june2: takes up slots 0 and 1.
+((S (horace fanny)) (greg I))
+build fanny (always in 0)
+move fanny to 1. 
+build horace in 0
+smash together to get (horace fanny) in 0
+wrap with an S
+build greg in slot 1
+apply greg to I
+smash together to get ((S (horace fanny)) (greg I))
+
+plan for june:
+build june2 in slot 0.
+copy june2 to slot 2.
+build june1 in slot 0,1.
+copy june2 back to slot 1.
+smash together to get (june1 june2) in slot 0.
+copy (june1 june2) to slot 1.
+build horace in slot 0
+smash together to get (horace june1 june2) in slot 0.
+wrap with an S for (S (horace june1 june2)) in slot 0, which is just june.
+
+kelly: (will blow away 0,1,2)
+((S (horace fanny)) ian)
+build fanny (always in 0)
+build horace in 2.
+move fanny to 1. 
+move horace to 0.
+smash together to get (horace fanny) in 0.
+put an S around (horace fanny) in 0 to get (S (horace fanny))
+build ian in 1.
+smash together to get ((S (horace fanny)) ian) in 0.
+
+The whole left part is just:
+(S (horace (june kelly)))
+
+left part plan:
+build kelly.
+copy kelly to 2.
+build june in slots 0,1
+copy kelly to slot 1
+smash together to get (june kelly) in 0
+copy (june kelly) to 1
+build horace in 0
+smash together to get (horace (june kelly)) in 0
+wrap with an S for the whole left part.
+
+whole fireball plan:
+build the right part, copy it to 3.
+build the left part, now it's in 0
+copy right part from 3 to 1.
+smash together for whole fireball.
+
+Then:
+copy fireball to 2
+build y combinator in 0
+copy fireball to 1
+smash together for recursive fireball
