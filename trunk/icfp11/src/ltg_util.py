@@ -75,6 +75,17 @@ def apply_slot0_to_slot1():
     apply_slot(0, "succ")
     apply_slot(0, "zero")
 
+def smash():
+    apply_slot0_to_slot1()
+
+def copy(src, trg):
+    """Copy contents of slot src into slot trg."""
+    apply_card("put", trg)
+    apply_slot(trg, "zero")
+    for i in range(src):
+        apply_card("succ", trg)
+    apply_card("get", trg)
+
 def pop_and_print():
     move = pipeline.pop(0)
     print(move[0])
