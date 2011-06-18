@@ -39,7 +39,54 @@ def build_ian(slot):
     apply_card("put", slot)
     apply_card("K", slot)
 
-# We want this:
+def build_rightpart():
+    """Build the right part of the fireball function."""
+    # build in 1: (K dec)
+    apply_card("put", 1)
+    apply_slot(1, "dec")
+    apply_card("K", 1)
+
+    # build in 0: greg
+    build_greg(0)
+
+    # smash together to get (greg (K dec)) in 0
+    apply_slot0_to_slot1()
+
+    # copy it to 1.
+    apply_card("put", 1)
+    apply_slot(1, "zero")
+    apply_card("get", 1)
+
+    # build horace in 0.
+    build_horace(0)
+
+    # smash together to get (horace (greg (K dec))) in 0.
+    apply_slot0_to_slot1()
+
+    # Wrap with an S.
+    apply_card("S", 0)
+
+    # build ian in 1.
+    build_ian(1)
+
+    # smash together to get ((S (horace (greg (K dec)))) ian) in 0.
+    apply_slot0_to_slot1()
+
+def build_fireball():
+    """Build the fireball function. We'll apply the Y combinator to it."""
+    pass
+
+## should look like this when we're done.
+# ((S
+#   ((S (K S))
+#    ((S
+#      ((S (K S))
+#       ((S ((S (K S)) ((S (K K)) (K S))))
+#        ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+#     ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
+#  ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+# Or more abstractly, like this:
 # ((S
 #   (horace
 #    ((S
@@ -51,11 +98,7 @@ def build_ian(slot):
 
 def main():
     # build_y_combinator()
-    build_fanny()
-    build_greg(11)
-    build_horace(12)
-    build_ian(13)
-    apply_card("ffff", 0)
+    build_rightpart()
     gameloop()
 
 if __name__ == "__main__": main()
