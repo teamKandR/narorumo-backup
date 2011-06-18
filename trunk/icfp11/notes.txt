@@ -1,5 +1,24 @@
 * Notes
 
+** Why we want the Y combinator
+
+(Y (lambda (f)
+     (lambda (slot)
+       (begin
+         (dec slot)  ;; side effect here.
+         (f slot)
+         ))))
+
+or, instead of the begin (lambda trick via Adam Foltzer's blog):
+
+((lambda (ignoreme)
+   (f slot))
+ (dec slot))
+
+
+==> returns recursive function that side effects until we run out of operations.
+
+
 ** Applying a slot to a slot
 
 (help 0 1 16)
