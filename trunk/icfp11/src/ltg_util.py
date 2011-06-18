@@ -7,13 +7,9 @@ pipeline = []
 
 def build_num_in_slot(num, slot):
     """Build up a number in a slot (to be used as an address,
-    potentially).  Precondition: slot"""
+    potentially)."""
 
-    # Make sure that slot already has identity in it.
-    apply_card("put", slot)
-
-    # Put in zero.
-    apply_slot(slot, "zero")
+    init_slot_with_card(slot, "zero")
 
     for i in range(num):
         apply_card("succ", slot)
@@ -125,6 +121,15 @@ def apply_slot(slot, card):
     in slot.
     """
     pipeline.append(["2", slot, card])
+
+def init_slot_with_card(slot, card):
+    """
+    Just like apply_slot, except that it makes sure that the slot
+    contains I first, so that applying the slot to a card simply
+    leaves that card in the slot.
+    """
+    apply_card("put", slot)
+    apply_slot(slot, card)
 
 def get_opponent_move():
     option = input().strip()

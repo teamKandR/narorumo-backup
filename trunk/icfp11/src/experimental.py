@@ -22,15 +22,13 @@ def main():
     # Set up contents of slot 255.
     build_num_in_slot(20, 255)
 
-    apply_card("put", 5)
-    apply_slot(5, "succ")
+    init_slot_with_card(5, "succ")
 
     # Apply succ, in slot 5, to 50, in slot 3.  Result should be 51,
     # and end up in slot 5.
     apply_slotX_to_slotY(5, 3, yaddr=0)
 
-    apply_card("put", 6)
-    apply_slot(6, "dbl")
+    init_slot_with_card(6, "dbl")
 
     # Apply dbl, in slot 6, to 20, in slot 255.  Result should be 40,
     # and end up in slot 6.
