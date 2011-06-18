@@ -65,7 +65,7 @@ def apply_slotX_to_slotY(x, y, yaddr=None):
             apply_slotX_to_slotY(x, 0)
         else:
             # slot 1 contains the slot number we want to apply X to
-            apply_slot(x, "succ")
+            apply_slot(x, "I")
             apply_slotX_to_slotY(x, 1)
 
 def apply_slot0_to_slot1():
