@@ -173,3 +173,47 @@ succ
 zero
 
 OK, this works.
+
+Sat Jun 18 00:06:47 PDT 2011
+
+-------------------------
+| building the fireball |
+-------------------------
+We want this:
+((S
+  (horace
+   ((S
+     (horace
+      ((S (horace (greg (K S))))
+       ((S (horace fanny)) (greg I)))))
+    ((S (horace fanny)) ian))))
+ ((S (horace (greg (K dec)))) ian))
+
+
+right part: ((S (horace (greg (K dec)))) ian)
+plan...
+build in 1: (K dec)
+build in 0: greg
+smash together to get (greg (K dec)) in 0
+copy it to 1.
+build horace in 0.
+smash together to get (horace (greg (K dec))) in 0.
+Wrap with an S.
+build ian in 1.
+smash together to get ((S (horace (greg (K dec)))) ian) in 0.
+
+copy it somewhere else.
+
+building the left part:
+(S
+  (horace
+   ((S
+     (horace
+      ((S (horace (greg (K S))))
+       ((S (horace fanny)) (greg I)))))
+    ((S (horace fanny)) ian))))
+
+It might be easier if we could build horace around something else? Is that
+possible?
+
+
