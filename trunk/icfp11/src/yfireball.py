@@ -9,10 +9,10 @@ from ltg_util import apply_card
 
 from ycombinator import build_y_combinator
 
-def build_s_kk_kk():
-    apply_slot(5, "K")
-    apply_slot(5, "K")
-    apply_card("S", 5)
+def build_fanny():
+    # TODO...
+
+def build_greg():
     # TODO...
 
  # We want this:

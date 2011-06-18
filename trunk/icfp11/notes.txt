@@ -1,6 +1,31 @@
 * Notes
 
-** Why we want the Y combinator
+** OK...
+ 
+We want this:
+
+((S
+  (horace
+   ((S
+     (horace
+      ((S (horace (greg (K S))))
+       ((S (horace fanny)) (greg I)))))
+    ((S (horace fanny)) ian))))
+ ((S (horace (greg (K dec)))) ian))
+
+fanny
+((S (K K)) (K K))
+
+greg
+(S (K K))
+
+horace
+(S (K S))
+
+ian
+(K I)
+
+** Why we (S (K S)) want the Y combinator
 
 (Y (lambda (f)
      (lambda (slot)
@@ -15,9 +40,8 @@ or, instead of the begin (lambda trick via Adam Foltzer's blog):
    (f slot))
  (dec slot))
 
-
-==> returns recursive function that side effects until we run out of operations.
-
+Ths returns a recursive function that side effects until we run out of
+operations.
 
 ** Applying a slot to a slot
 
