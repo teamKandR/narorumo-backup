@@ -17,13 +17,15 @@
 (define T
   (lambda (expr)
     (pmatch expr
-      [,var (guard (symbol? var)) var]
+      [,var (guard (or (number? var) (symbol? var))) var]
       [(lambda (,x) ,M) (A x (T M))]
       [(,M ,N) `(,(T M) ,(T N))])))
 
-(define A
+(define A 
   (lambda (x y)
-    (pmatch `(,x ,y)
+    (pmatch `(,x ,y) 
+      ;; x is the formal parameter of a lambda,
+      ;; so it's definitely a variable
       [(,x ,y) (guard (symbol? y) (equal? x y)) 'I]
-      [(,x ,y) (guard (symbol? y)) `(K ,y)]
-      [(,x (,M ,N)) `(S ,(A x M) ,(A x N))])))
+      [(,x ,y) (guard (or (number? y) (symbol? y))) `(K ,y)]
+      [(,x (,M ,N)) `((S ,(A x M)) ,(A x N))])))
