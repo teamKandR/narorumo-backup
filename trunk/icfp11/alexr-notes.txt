@@ -122,7 +122,7 @@ Goal: apply clarice with S to dianne, have result show up in slot 1.
 
 So here's the plan.
 
-Build clarice in slot 0.
+Build clarice in slot 0 (including the front S).
 Build dianne in slot 1.
 Apply slot 0 to slot 1; and now we have benny in slot 0.
 Now put a 0 in slot 1, and use "get": benny is in slot 1.

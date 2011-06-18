@@ -1,27 +1,27 @@
 #!/usr/bin/env python3
 
 from ltg_util import apply_slot0_to_slot1
-from ltg_util import enqueue_left_app
-from ltg_util import enqueue_right_app
+from ltg_util import apply_card
+from ltg_util import apply_slot
 
 def build_clarice(slot):
-    enqueue_right_app(slot,"S")
-    enqueue_left_app("K",slot)
-    enqueue_left_app("S",slot)
-    enqueue_right_app(slot,"K")
-    enqueue_left_app("S",slot) # and now the S around clarice.
+    apply_slot(slot,"S")
+    apply_card("K",slot)
+    apply_card("S",slot)
+    apply_slot(slot,"K")
+    apply_card("S",slot) # and now the S around clarice.
 
 def build_dianne(slot):
-    enqueue_left_app("S",slot)
-    enqueue_right_app(slot,"I")
-    enqueue_left_app("K",slot)
+    apply_card("S",slot)
+    apply_slot(slot,"I")
+    apply_card("K",slot)
 
 def build_abe(slot):
-    enqueue_right_app(slot,"S")
-    enqueue_right_app(0,"I")
-    enqueue_right_app(0,"I")
-    enqueue_left_app("K",0)
-    enqueue_left_app("S",0)
+    apply_slot(slot,"S")
+    apply_slot(0,"I")
+    apply_slot(0,"I")
+    apply_card("K",0)
+    apply_card("S",0)
 
 def build_y_combinator():
     """Build the y combinator into slot 0. Assumes all the slots are currently
@@ -37,9 +37,9 @@ def build_y_combinator():
     apply_slot0_to_slot1()
 
     # Now put a 0 in slot 1, and use "get": benny is in slot 1.
-    enqueue_left_app("put", 1)
-    enqueue_right_app(1, "zero")
-    enqueue_left_app("get", 1)
+    apply_card("put", 1)
+    apply_slot(1, "zero")
+    apply_card("get", 1)
 
     # Now build abe with an extra S in slot 0.
     build_abe(0)
