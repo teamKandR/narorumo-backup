@@ -30,14 +30,6 @@
       [(,x ,y) (guard (or (number? y) (symbol? y))) `(K ,y)]
       [(,x (,M ,N)) `((S ,(A x M)) ,(A x N))])))
 
-;; Eventually, we want to write:
-
-'(Y (lambda (f)
-     (lambda (slot)
-       ((lambda (ignoreme)
-          (f slot))
-        (dec slot)))))
-
 (define names
   (lambda (e)
     (pmatch e
@@ -47,4 +39,83 @@
       [(S (K S)) 'horace]
       [(K I) 'ian]
       [(,M ,N) `(,(names M) ,(names N))])))
+
+#|
+
+Eventually, we want to write:
+
+(Y (lambda (f)
+     (lambda (slot)
+       ((lambda (ignoreme)
+          (f slot))
+        (dec slot)))))
+
+The argument to Y,
+
+(lambda (f)
+  (lambda (slot)
+    ((lambda (ignoreme)
+       (f slot))
+     (dec slot))))
+
+, translates to
+
+((S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S)))) ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+    ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
+ ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+, or we might also like to do the moral equivalent of
+
+(begin
+  (dec slot)
+  (dec slot)
+  (f slot))
+
+, so the whole thing would be
+
+(lambda (f)
+  (lambda (slot)
+    ((lambda (ignoremetoo)
+       ((lambda (ignoreme)
+          (f slot))
+        (dec slot)))
+     (dec slot))))
+
+which, translated, looks like:
+
+((S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S))))
+       ((S
+         ((S (K S))
+          ((S ((S (K S)) ((S (K K)) (K S))))
+           ((S
+             ((S (K S))
+              ((S ((S (K S)) ((S (K K)) (K S))))
+               ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K S))))))
+            ((S
+              ((S (K S))
+               ((S ((S (K S)) ((S (K K)) (K S))))
+                ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K K))))))
+             ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))))
+        ((S
+          ((S (K S))
+           ((S ((S (K S)) ((S (K K)) (K S))))
+            ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K K))))))
+         ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))))
+    ((S
+      ((S (K S))
+       ((S ((S (K S)) ((S (K K)) (K S)))) ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K dec))))))
+     ((S ((S (K S)) ((S (K K)) (K K)))) (K I))))))
+ ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+|#
+
+
 
