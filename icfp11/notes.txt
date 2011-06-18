@@ -25,7 +25,7 @@ horace
 ian
 (K I)
 
-** Why we (S (K S)) want the Y combinator
+** Why we want the Y combinator
 
 (Y (lambda (f)
      (lambda (slot)
