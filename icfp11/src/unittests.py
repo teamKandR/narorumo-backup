@@ -10,11 +10,11 @@ from ltg_util import apply_slotX_to_slotY
 from ltg_util import build_num_in_slot
 
 def main():
+    build_num_in_slot(3, 0)
+    build_num_in_slot(40, 1)
     build_num_in_slot(3, 7)
     build_num_in_slot(10, 18)
     build_num_in_slot(0, 255)
-    build_num_in_slot(3, 0)
-    build_num_in_slot(40, 1)
 
     gameloop()
 
