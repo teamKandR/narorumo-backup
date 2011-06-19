@@ -1,5 +1,161 @@
 * Notes
 
+** applying the identity function, and then 5, to the Y combinator
+
+((lambda (f)
+  ((lambda (x)
+     (f (lambda (y)
+          ((x x) y))))
+   (lambda (x)
+     (f (lambda (y)
+          ((x x) y))))))
+ (lambda (a) a))
+
+==>
+
+(lambda (y)
+  (((lambda (x)
+      ((lambda (a) a) (lambda (y)
+                        ((x x) y))))
+    (lambda (x)
+      ((lambda (a) a) (lambda (y)
+                        ((x x) y)))))
+   y))
+
+If I were to apply 5 to that...
+
+((lambda (y)
+   (((lambda (x)
+       ((lambda (a) a) (lambda (y)
+                         ((x x) y))))
+     (lambda (x)
+       ((lambda (a) a) (lambda (y)
+                         ((x x) y)))))
+    y))
+ 5)
+
+==>
+
+(((lambda (x)
+    ((lambda (a) a) (lambda (y)
+                      ((x x) y))))
+  (lambda (x)
+    ((lambda (a) a) (lambda (y)
+                      ((x x) y)))))
+ 5)
+
+==>
+
+(((lambda (x)
+    ((lambda (a) a) (lambda (y)
+                      ((x x) y))))
+  (lambda (x)
+    ((lambda (a) a) (lambda (y)
+                      ((x x) y)))))
+ 5)
+
+==>
+
+((lambda (y)
+  (((lambda (x)
+      ((lambda (a) a) (lambda (y)
+                        ((x x) y))))
+    (lambda (x)
+      ((lambda (a) a) (lambda (y)
+                        ((x x) y))))) y))
+ 5)
+
+That's what you had before, so...infinite loop.
+
+** more stuff
+
+Y combinator (applicative-order version, which is the kind we want):
+λf. (λx. f (λy. x x y)) (λx. f (λy. x x y))
+
+In Scheme:
+
+(lambda (f)
+  ((lambda (x)
+     (f (lambda (y)
+          ((x x) y))))
+   (lambda (x)
+     (f (lambda (y)
+          ((x x) y))))))
+
+Eventually, we want to write:
+
+(Y (lambda (f)
+     (lambda (slot)
+       ((lambda (ignoreme)
+          (f slot))
+        (dec slot)))))
+
+The argument to Y,
+
+(lambda (f)
+  (lambda (slot)
+    ((lambda (ignoreme)
+       (f slot))
+     (dec slot))))
+
+, translates to
+
+((S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S)))) ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+    ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
+ ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+, or we might also like to do the moral equivalent of
+
+(begin
+  (dec slot)
+  (dec slot)
+  (f slot))
+
+, so the whole thing would be
+
+(lambda (f)
+  (lambda (slot)
+    ((lambda (ignoremetoo)
+       ((lambda (ignoreme)
+          (f slot))
+        (dec slot)))
+     (dec slot))))
+
+which, translated, looks like:
+
+((S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S))))
+       ((S
+         ((S (K S))
+          ((S ((S (K S)) ((S (K K)) (K S))))
+           ((S
+             ((S (K S))
+              ((S ((S (K S)) ((S (K K)) (K S))))
+               ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K S))))))
+            ((S
+              ((S (K S))
+               ((S ((S (K S)) ((S (K K)) (K S))))
+                ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K K))))))
+             ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))))
+        ((S
+          ((S (K S))
+           ((S ((S (K S)) ((S (K K)) (K S))))
+            ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K K))))))
+         ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))))
+    ((S
+      ((S (K S))
+       ((S ((S (K S)) ((S (K K)) (K S)))) ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) (K dec))))))
+     ((S ((S (K S)) ((S (K K)) (K K)))) (K I))))))
+ ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+
 ** OK...
  
 We want this:
