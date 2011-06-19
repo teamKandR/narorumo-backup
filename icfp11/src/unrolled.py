@@ -50,6 +50,11 @@ def build_base(slot):
     apply_card("S", slot)
     apply_slot(slot, "I")
 
+
+## LOOPS is how many times you have to iterate on a single slot, doing 67
+## damage each time, to kill it.
+LOOPS = 150
+
 def main():
     build_onemore()
     copy(0, 2) ## back up the onemore for later use
@@ -57,19 +62,35 @@ def main():
     smash()
     copy(0,1) ## move the now-bigger function into 1
 
-    for i in range(54):
+    ## build up a function that does 67 damage. That's the biggest one that we
+    ## can run without going over the function application limit.
+    for i in range(65):
         # copy the onemore into 0
         copy(2,0)
         smash()
         # copy the now-bigger function into 1
         copy(0,1)
 
-    ## two backup copies of the 55-damage thing.
+    ## two backup copies of the 67-damage thing.
     copy(0,2)
 
-    ## pass slot 0 a slot number.
+    ## step 1: kill their low-numberd slots. (high-numbered for us.)
+    build_num_in_slot(250,1)
+    smash()
+    for targetslot in range(251, 256):
+        for i in range(LOOPS):
+            ### put the unrolled fireball in slot 0.
+            unsafe_copy(2,0)
+            ## pass the function a target slot number.
+            smash()
+        if targetslot != 255:
+            apply_card("succ", 1)
+
+    unsafe_copy(2,0)
+    copy(2,1)
+    ## now start working on slot 0, which is easy to attack.
     apply_slot(0, "zero")
-    for i in range(182):
+    for i in range(LOOPS):
         unsafe_copy(1,0)
         ## pass slot 0 a slot number.
         apply_slot(0, "zero")
@@ -78,7 +99,7 @@ def main():
     ## really should be up to range 256. How fast are we?
     for targetslot in range(1, 100):
         apply_card("succ", 1)
-        for i in range(186):
+        for i in range(LOOPS):
             ### put the unrolled fireball in slot 0.
             unsafe_copy(2,0)
             ## pass the function a target slot number.
