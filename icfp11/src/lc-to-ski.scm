@@ -30,19 +30,34 @@
       [(,x ,y) (guard (or (number? y) (symbol? y))) `(K ,y)]
       [(,x (,M ,N)) `((S ,(A x M)) ,(A x N))])))
 
+;; Our mnemonics for various common SKI expressions.
+
 (define names
   (lambda (e)
     (pmatch e
       [,var (guard (symbol? var)) var]
+      [(S (S (K S) K) (K (S I I))) 'benny]
+      [(S (K S) K) 'clarice]
+      [(K (S I I)) 'dianne]
       [((S (K K)) (K K)) 'fanny]
       [(S (K K)) 'greg]
       [(S (K S)) 'horace]
       [(K I) 'ian]
       [(,M ,N) `(,(names M) ,(names N))])))
 
+(define metanames
+  (lambda (e)
+    (pmatch e
+      [,var (guard (symbol? var)) var]
+      [(S (horace (greg (K S)))) 'june1]
+      [((S (horace fanny)) (greg I)) 'june2]
+      [((S (horace fanny)) ian) 'kelly]
+      [(,M ,N) `(,(metanames M) ,(metanames N))])))
+
 #|
 
-Y combinator: λf. (λx. f (λy. x x y)) (λx. f (λy. x x y))
+Y combinator (applicative-order version, which is the kind we want):
+λf. (λx. f (λy. x x y)) (λx. f (λy. x x y))
 
 In Scheme:
 
