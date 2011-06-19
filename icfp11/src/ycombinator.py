@@ -6,6 +6,7 @@ from ltg_util import build_num_in_slot
 from ltg_util import apply_card
 from ltg_util import apply_slot
 from ltg_util import copy
+from ltg_util import smash
 
 from ltg_friends import build_abe
 from ltg_friends import build_clarice
@@ -54,9 +55,8 @@ def build_applicative_y(n):
     build_kelly()
     apply_slotX_to_slotY(n, 0)
 
-    # Put address of n in slot 0, and address of n+1 in slot 1.
+    # Put address of n in slot 0.
     build_num_in_slot(n, 0)
-    build_num_in_slot(n+1, 1)
 
     # Put (horace (june1 kelly)) in slot n+1.
     build_horace(n+1)
@@ -67,46 +67,45 @@ def build_applicative_y(n):
 
     # Put ((S (horace (june1 kelly))) kelly) in slot n+1.
     build_kelly() # always ends up in slot 0.
-    apply_slotX_to_slotY(0, n, yaddr=0)
+    apply_slotX_to_slotY(n+1, 0)
 
     # Put june1 in slot 0.
     build_june1()
 
-    # Put address of n in slot 0, and address of n+1 in slot 1.  (Have
-    # to redo this because build_june1 clobbered them.)
-    build_num_in_slot(n, 0)
+    # Put address of n+1 in slot 1.
     build_num_in_slot(n+1, 1)
 
-    # Put (june1 ((S (horace (june1 kelly))) kelly)) in slot n+1.
+    # Put (june1 ((S (horace (june1 kelly))) kelly)) in slot 0.
     apply_slotX_to_slotY(0, n+1, yaddr=1)
 
     # Put horace in slot n.
     build_horace(n)
 
-    # Put (horace (june1 ((S (horace (june1 kelly))) kelly))) in slot n+1.
-    apply_slotX_to_slotY(n, n+1, yaddr=1)
+    # Put (horace (june1 ((S (horace (june1 kelly))) kelly))) in slot n.
+    apply_slotX_to_slotY(n, 0)
 
-    # Put (S (horace (june1 ((S (horace (june1 kelly))) kelly)))) in slot n+1.
-    apply_card("S", n+1)
+    # Put (S (horace (june1 ((S (horace (june1 kelly))) kelly)))) in slot n.
+    apply_card("S", n)
 
-    # Put (greg ian) in slot n+2.
-    build_greg(n+2)
-    build_ian(n)
-    apply_slotX_to_slotY(n+2, n, yaddr=0)
+    # Put (greg ian) in slot 0.
+    build_greg(0)
+    build_ian(1)
+    smash()
 
     # Put 
     # ((S (horace (june1 ((S (horace (june1 kelly))) kelly)))) (greg ian)) 
-    # in slot n+1.
-    apply_card("succ", 1) # bump up address count in slot 1 first, so
-                          # it refers to slot n+2.
-    apply_slotX_to_slotY(n+1, n+2, yaddr=1)
+    # in slot n.
+    apply_slotX_to_slotY(n, 0)
     
-    # Put (greg I) in slot n+2.
-    apply_slot(n+2, "I") # greg is still in slot n+2 at this point
+    # Put (greg I) in slot n+1.
+    build_greg(n+1)
+    apply_slot(n+1, "I")
 
     # Put (horace (greg I)) in slot n+2.
-    apply_slotX_to_slotY(n, n+2, yaddr=1) # horace is still in slot n
-                                          # at this point
+    build_horace(n+2)
+    # Put address of n+1 in slot 1.
+    build_num_in_slot(n+1, 1)
+    apply_slotX_to_slotY(n+2, n+1, yaddr=1)
 
     # Put (S (horace (greg I))) in slot n+2.
     apply_card("S", n+2)
@@ -115,9 +114,8 @@ def build_applicative_y(n):
     # ((S (horace (greg I))) 
     #  ((S (horace (june1 ((S (horace (june1 kelly))) kelly)))) (greg ian)))
     # in slot n+2.
-    build_num_in_slot(n+1, 1) # redo this so slot 1 refers to slot n+1
-                              # again
-    apply_slotX_to_slotY(n+2, n+1, yaddr=1)
+    build_num_in_slot(n, 0)
+    apply_slotX_to_slotY(n+2, n, yaddr=0)
 
     # Copy slot n+2 to slot n+1.
     copy(n+2, n+1)
@@ -127,6 +125,7 @@ def build_applicative_y(n):
 
     # Apply contents of n+2 to contents of n+1, leaving the result in
     # slot n+2.
+    #build_num_in_slot(n+1, 1)
     apply_slotX_to_slotY(n+2, n+1, yaddr=1)
 
     # Copy slot n+2 to slot n.
