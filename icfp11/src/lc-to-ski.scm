@@ -30,6 +30,14 @@
       [(,x ,y) (guard (or (number? y) (symbol? y))) `(K ,y)]
       [(,x (,M ,N)) `((S ,(A x M)) ,(A x N))])))
 
+;; Optimization pass.
+(define optimize-ski
+  (lambda (ski)
+    (pmatch ski
+      [,var (guard (symbol? var)) var]
+      [((S (K K)) I) 'K]
+      [(,M ,N) `(,(optimize-ski M) ,(optimize-ski N))])))
+
 ;; Our mnemonics for various common SKI expressions.
 
 (define names
@@ -92,10 +100,6 @@
       [june '(S (horace (june1 june2)))]
       [(,M ,N) `(,(unmetametanames M) ,(unmetametanames N))])))
 
-(define translate
-  (lambda (exp)
-    (allthenames (T exp))))
-
 (define allthenames
   (lambda (ski)
     (metametanames (metanames (names ski)))))
@@ -104,12 +108,13 @@
   (lambda (metametanamed)
     (unnames (unmetanames (unmetametanames (metametanamed))))))
 
-(define leftpart
-  '(S
-     (horace
-       ((S
-         (horace
-           ((S (horace (greg (K S))))
-            ((S (horace fanny)) (greg I)))))
-       ((S (horace fanny)) ian)     ))))
+(define translate
+  (lambda (exp)
+    (allthenames (T exp))))
+
+(define translate-optimized
+  (lambda (exp)
+    (allthenames (optimize-ski (T exp)))))
+
+
 

@@ -1,5 +1,39 @@
 * Notes
 
+Micro-optimization opportunity:
+
+((S (K K)) I) --> K
+
+(in general:)
+
+S (K e) I --> e
+
+Before optimization:
+246={3260,I}
+247={0,I}
+248={0,I}
+249={0,I}
+250={0,I}
+251={0,I}
+252={0,I}
+253={0,I}
+254={0,I}
+255={0,I}
+
+After optimization:
+246={3250,I}
+247={0,I}
+248={0,I}
+249={0,I}
+250={0,I}
+251={0,I}
+252={0,I}
+253={0,I}
+254={0,I}
+255={0,I}
+
+A whole ten hit points!  Woooo!
+
 ** hand-application of Y to the fireball
 
 Hand-application:

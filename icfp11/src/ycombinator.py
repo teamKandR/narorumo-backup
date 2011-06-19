@@ -98,8 +98,9 @@ def build_applicative_y(n):
     apply_slotX_to_slotY(n, 0)
     
     # Put (greg I) in slot n+1.
-    build_greg(n+1)
-    apply_slot(n+1, "I")
+    # It turns out (greg I) is equivalent to K!
+    apply_card("put", n+1)
+    apply_slot(n+1, "K")
 
     # Put (horace (greg I)) in slot n+2.
     build_horace(n+2)

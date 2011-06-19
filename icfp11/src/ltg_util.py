@@ -7,11 +7,12 @@ from math import floor
 # INSTRUCTION PIPELINING!!
 pipeline = []
 
-def build_num_in_slot(num, slot):
+def build_num_in_slot(num, slot, safe=True):
     """Build up a number in a slot (to be used as an address,
     potentially)."""
 
-    init_slot_with_card(slot, "zero")
+    if safe == True:
+        init_slot_with_card(slot, "zero")
     
     if num == 0:
         return
@@ -105,8 +106,7 @@ def unsafe_copy(src, trg):
     """Copy contents of slot src into slot trg, but only if the contents of
     slot trg are already I."""
     apply_slot(trg, "zero")
-    for i in range(src):
-        apply_card("succ", trg)
+    build_num_in_slot(src, trg, safe=False)
     apply_card("get", trg)
 
 def pop_and_print():
