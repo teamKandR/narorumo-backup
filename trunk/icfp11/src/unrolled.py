@@ -10,8 +10,6 @@
 
 from ltg_util import gameloop
 from ltg_util import enqueue_strategy
-from ltg_util import pop_and_print
-from ltg_util import get_opponent_move
 from ltg_util import apply_card
 from ltg_util import apply_slot
 from ltg_util import smash
@@ -73,7 +71,7 @@ def main():
     ## two backup copies of the 67-damage thing.
     copy(0,2)
 
-    ## step 1: kill their low-numberd slots. (high-numbered for us.)
+    ## step 1: kill their low-numbered slots. (high-numbered for us.)
     build_num_in_slot(253,1)
     smash()
     for targetslot in range(253, 256):
