@@ -70,9 +70,11 @@ strategies for playing Lambda: The Gathering:
     S( S( S( S(dec, dec), dec), dec), dec)
 
     and then trigger all the 'dec' operations on say, slot 0 by
-    applying this function to 'zero'.  This turned out to be the
+    applying this function to 'zero'.  This turned out to be our
     fastest strategy yet: we can take out *all* our opponent's slots,
-    again, provided they don't fight back much.
+    again, provided they don't fight back much.  To try to ensure that
+    they won't, we try to attack the opponent's low-numbered slots
+    first, since those slots tend to be the most useful.
 
   -- Lindsey Kuper and Alex Rudnick (Team K&R)
 
