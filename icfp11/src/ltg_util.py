@@ -34,7 +34,7 @@ def build_num_in_slot(num, slot, safe=True):
 
 def apply_slotX_to_slotY(x, y, yaddr=None):
     """
-    More general, but less efficient than apply_slot0_to_slot1.
+    More general, but less efficient, than smash.
     Result ends up in slot X.
 
     Example:
@@ -83,7 +83,7 @@ def apply_slotX_to_slotY(x, y, yaddr=None):
             apply_slot(x, "I")
             apply_slotX_to_slotY(x, 1)
 
-def apply_slot0_to_slot1():
+def smash():
     """Queue up the commands to apply the function in slot 0 to the value,
     which may also be a function, in slot 1. The result will be in slot 0."""
     apply_card("K", 0)
@@ -93,9 +93,6 @@ def apply_slot0_to_slot1():
     apply_card("S", 0)
     apply_slot(0, "succ")
     apply_slot(0, "zero")
-
-def smash():
-    apply_slot0_to_slot1()
 
 def copy(src, trg):
     """Copy contents of slot src into slot trg."""
@@ -115,33 +112,6 @@ def pop_and_print():
     print(move[1])
     print(move[2])
     
-def init_first_x_with_y(x, y):
-    """
-    Initializes the first X slots with the Yth power of 2, assuming
-    they already contain I.
-
-    Uses 2X + YX turns.  For instance initializing the first 3 slots
-    with the 2nd power of 2 (that is, 4) would require: zero, zero,
-    zero, one, one, one, dbl, dbl, dbl, dbl, dbl, dbl, or 2*3 + 2*3 ==
-    12 turns.
-    """
-
-    # Get 0s in.  Uses X turns.
-    for i in range(x):
-        apply_slot(i, "zero")
-
-    # Get 1s in.  Uses X turns.
-    for i in range(x):
-        apply_card("succ", i)
-
-    # Get bigger numbers in.  Uses X turns for each doubling.
-    for i in range(x):
-        for j in range(y):
-            apply_card("dbl", i)
-
-    # Return the number of turns this takes.
-    return 2*x + y*x
-
 def apply_card(card, slot):
     """
     Enqueue an operation that applies card to slot, leaving the result
