@@ -16,6 +16,7 @@ def build_num_in_slot(num, slot):
 
 def apply_slotX_to_slotY(x, y, yaddr=None):
     """
+    More general, but less efficient than apply_slot0_to_slot1.
     Result ends up in slot X.
 
     Example:

@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+from ltg_util import apply_card
+from ltg_util import apply_slot
+from ltg_util import copy
+from ltg_util import smash
+from ltg_util import apply_slot0_to_slot1
+
 def build_abe(slot):
     """(S (K (S I I)))"""
     build_dianne(slot)
