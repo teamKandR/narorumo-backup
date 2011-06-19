@@ -1,30 +1,12 @@
 #!/usr/bin/env python3
 
-"""
-((S ((S (horace (greg (K dec)))) (greg I)))
- ((S ((S (horace (greg (K dec)))) (greg I)))
-   ((S ((S (horace (greg (K dec)))) (greg I)))
-      ((S ((S (horace (greg (K dec)))) (greg I)))
-          ((S (K dec)) I)))))
-
-Our strategy this time:
-
-
-"""
-
 from ltg_util import gameloop
-from ltg_util import enqueue_strategy
 from ltg_util import pipeline
-from ltg_util import pop_and_print
-from ltg_util import get_opponent_move
 from ltg_util import apply_card
 from ltg_util import apply_slot
 from ltg_util import smash
 from ltg_util import copy
-from ltg_util import unsafe_copy
 from ltg_util import build_num_in_slot
-from ltg_friends import build_greg
-from ltg_friends import build_horace
 
 def main():
 

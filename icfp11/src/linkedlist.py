@@ -7,9 +7,6 @@ SSSS...decdecdecdec....
 """
 
 from ltg_util import gameloop
-from ltg_util import enqueue_strategy
-from ltg_util import pop_and_print
-from ltg_util import get_opponent_move
 from ltg_util import apply_card
 from ltg_util import apply_slot
 from ltg_util import apply_slotX_to_slotY
