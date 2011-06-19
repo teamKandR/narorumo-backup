@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import sys
+from math import log
+from math import floor
 
 # INSTRUCTION PIPELINING!!
 pipeline = []
@@ -10,8 +12,23 @@ def build_num_in_slot(num, slot):
     potentially)."""
 
     init_slot_with_card(slot, "zero")
+    
+    if num == 0:
+        return
 
-    for i in range(num):
+    apply_card("succ", slot)
+
+    if num == 1:
+        return
+
+    double_times = floor(log(num,2))
+    total_gained_by_doubling = 2 ** double_times
+    still_to_go = num - total_gained_by_doubling
+
+    for i in range(double_times):
+        apply_card("dbl", slot)
+
+    for i in range(still_to_go):
         apply_card("succ", slot)
 
 def apply_slotX_to_slotY(x, y, yaddr=None):
