@@ -9,6 +9,7 @@ from ltg_util import apply_slot
 from ltg_util import apply_slotX_to_slotY
 from ltg_util import build_num_in_slot
 from ltg_util import init_slot_with_card
+from ycombinator import build_applicative_y
 
 def main():
     # Set up address of slot 3, in slot 0.
@@ -34,6 +35,10 @@ def main():
     # Apply dbl, in slot 6, to 20, in slot 255.  Result should be 40,
     # and end up in slot 6.
     apply_slotX_to_slotY(6, 255, yaddr=1)
+
+    # Build the applicative Y combinator in slot 30.  Should touch
+    # slots 0, 1, 30, 31, and 32.
+    build_applicative_y(30)
 
     gameloop()
 
