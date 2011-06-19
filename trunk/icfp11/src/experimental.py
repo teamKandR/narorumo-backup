@@ -40,6 +40,15 @@ def main():
     # slots 0, 1, 30, 31, and 32.
     build_applicative_y(30)
 
+    # The 'help target target amount' thing -- thanks, Jesse!
+    build_num_in_slot(30, 1)
+    build_num_in_slot(300,0)
+
+    apply_slot(70, "help")
+    apply_slotX_to_slotY(70, 1)
+    apply_slotX_to_slotY(70, 1)
+    apply_slotX_to_slotY(70, 0)
+
     gameloop()
 
 if __name__ == "__main__": main()
