@@ -55,6 +55,21 @@
       [((S (horace fanny)) ian) 'kelly]
       [(,M ,N) `(,(metanames M) ,(metanames N))])))
 
+(define metametanames
+  (lambda (e)
+    (pmatch e
+      [,var (guard (symbol? var)) var]
+      [(S (horace (june1 june2))) 'june]
+      [(,M ,N) `(,(metametanames M) ,(metametanames N))])))
+
+(define translate
+  (lambda (exp)
+    (allthenames (T exp))))
+
+(define allthenames
+  (lambda (ski)
+    (metametanames (metanames (names ski)))))
+
 #|
 
 Y combinator (applicative-order version, which is the kind we want):
@@ -145,5 +160,11 @@ which, translated, looks like:
 
 |#
 
-
-
+(define leftpart
+  '(S
+     (horace
+       ((S
+         (horace
+           ((S (horace (greg (K S))))
+            ((S (horace fanny)) (greg I)))))
+       ((S (horace fanny)) ian)     ))))
