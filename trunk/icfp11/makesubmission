@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0
+VERSION=1
 
 tar czvf team_kr_$VERSION.tar.gz \
   --exclude=__pycache__ \
