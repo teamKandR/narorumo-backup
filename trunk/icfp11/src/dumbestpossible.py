@@ -2,8 +2,6 @@
 
 from ltg_util import gameloop
 from ltg_util import enqueue_strategy
-from ltg_util import pop_and_print
-from ltg_util import get_opponent_move
 
 def main():
     enqueue_strategy("playzero playdec", 10000) # takes 20k turns.
