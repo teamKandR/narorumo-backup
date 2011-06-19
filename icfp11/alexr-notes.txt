@@ -299,3 +299,26 @@ s) ^y.((x) x) y) y) s) (d) s
 
 ... pre-y-combinated faster fireball?
 
+Sun Jun 19 12:56:12 PDT 2011
+
+First pass at building a linked list of dec. This is not as good as the one in
+linkedlist.py; that one builds up much faster and happens entirely in a single
+slot.
+
+def build_linkedlist():
+    """Builds the linked list of dec in slot 0."""
+    apply_slot(0, "S")
+    apply_slot(0,"dec")
+
+    ## base case.
+    apply_slot(1, "S")
+    apply_slot(1,"dec")
+    apply_slot(1,"dec")
+    smash()
+
+    for i in range(331):
+        copy(0,1)
+        apply_card("put",0)
+        apply_slot(0, "S")
+        apply_slot(0,"dec")
+        smash()
