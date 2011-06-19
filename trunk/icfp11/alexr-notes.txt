@@ -79,7 +79,7 @@ Alright, let's skip that business. Here's the Y combinator, fully
 parenthesized.
 
 Y = S (K (S I I)) (S (S (K S) K) (K (S I I)))
-      ----------- ---------------------------
+    ------------- ---------------------------
       abe         benny
 
 building abe:
