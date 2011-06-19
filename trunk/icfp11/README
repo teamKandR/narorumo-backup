@@ -1,0 +1,46 @@
+First of all, thanks to the contest organizers for crafting such a
+beautiful problem for us to hack on this year.  We had a great time
+with it!  Over the last 72 hours, we've laughed, we've cried, and
+we've implemented several strategies for playing Lambda: The
+Gathering:
+
+  * The *dumbest possible* strategy (src/dumbestpossible.py), in which
+    we simply play the 'dec' card 10,000 times on the opponent's slot
+    255 (which, of course, takes 20,000 turns, because each time we
+    have toset up the 'zero' argument to 'dec' in a slot), and then do
+    the same on their slots 254 and 253 (taking 30,000 and 40,000
+    turns, respectively).  Since killing off only three of the
+    opponent's slots (and that only if they don't fight back very
+    hard) is no way to win, we moved on to implementing...
+
+  * The *yfireball* strategy (src/yfireball.py), in which we decided
+    that in order to kill more of the opponent's slots, we needed to
+    build an applicative-order Y combinator out of S, K, and I
+    combinators and then apply it to an SKI-encoded "fireball"
+    function, which would take a slot number as an argument and then
+    apply 'dec' in a loop on that slot number.  In order to build
+    these gigantic SKI expressions we defined several
+    meta-combinators, which are named, respectively, 'abe', 'clarice',
+    'dianne', 'fanny', 'greg', 'horace', 'ian', 'june', and 'kelly'.
+    (If you're wondering what happened to the letters B and E, I'm
+    sorry to report that 'benny' was lost in a refactoring incident
+    and 'eugene' was captured by a rogue quantifier.  May they remain
+    in our hearts.)  Our translation from lambda calculus to SKI with
+    meta-combinators (code in src/lc-to-ski.scm) is powered by Oleg
+    Kiselyov's clever "pmatch" pattern matcher for Scheme.  
+
+    We were incredibly excited that we managed to construct a Y
+    combinator and trigger a recursive process.  Unfortunately, our Y
+    fireball takes so long to get rolling that it doesn't do all that
+    much more damage than the dumbest possible strategy -- it's
+    capable of knocking off about 9 of the opponent's slots provided
+    they don't fight back.  So we moved on to our next strategy,
+
+  * the *loop unrolling* strategy...
+
+  * the *linked list* strategy...
+
+  -- Lindsey Kuper and Alex Rudnick (Team K&R)
+
+Mountain View, California
+Sunday, June 19, 2011
