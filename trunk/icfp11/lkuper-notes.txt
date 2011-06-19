@@ -1,5 +1,85 @@
 * Notes
 
+** hand-application of Y to the fireball
+
+Hand-application:
+
+
+((lambda (f)
+   ((lambda (x)
+      (f (lambda (y)
+           ((x x) y))))
+    (lambda (x)
+      (f (lambda (y)
+           ((x x) y))))))
+ (lambda (f)
+   (lambda (slot)
+     ((lambda (ignoreme)
+        (f slot))
+      (dec slot)))))
+
+==>
+
+((lambda (x)
+   ((lambda (f)
+      (lambda (slot)
+        ((lambda (ignoreme)
+           (f slot))
+         (dec slot)))) (lambda (y)
+                         ((x x) y))))
+ (lambda (x)
+   ((lambda (f)
+      (lambda (slot)
+        ((lambda (ignoreme)
+           (f slot))
+         (dec slot)))) (lambda (y)
+                         ((x x) y)))))
+
+==>
+
+((lambda (f)
+   (lambda (slot)
+     ((lambda (ignoreme)
+        (f slot))
+      (dec slot))))
+ (lambda (y)
+   (((lambda (x)
+       ((lambda (f)
+          (lambda (slot)
+            ((lambda (ignoreme)
+               (f slot))
+             (dec slot)))) (lambda (y)
+                             ((x x) y))))
+     (lambda (x)
+       ((lambda (f)
+          (lambda (slot)
+            ((lambda (ignoreme)
+               (f slot))
+             (dec slot)))) (lambda (y)
+                             ((x x) y))))) y)))
+
+==>
+
+(lambda (slot)
+  ((lambda (ignoreme)
+     ((lambda (y)
+        (((lambda (x)
+            ((lambda (f)
+               (lambda (slot)
+                 ((lambda (ignoreme)
+                    (f slot))
+                  (dec slot)))) (lambda (y)
+                                  ((x x) y))))
+          (lambda (x)
+            ((lambda (f)
+               (lambda (slot)
+                 ((lambda (ignoreme)
+                    (f slot))
+                  (dec slot)))) (lambda (y)
+                                  ((x x) y))))) y)) slot))
+   (dec slot)))
+
+
 ** applying the identity function, and then 5, to the Y combinator
 
 ((lambda (f)
@@ -104,9 +184,18 @@ The argument to Y,
   ((S (K S))
    ((S
      ((S (K S))
-      ((S ((S (K S)) ((S (K K)) (K S)))) ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+      ((S ((S (K S)) ((S (K K)) (K S)))) 
+       ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
     ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
  ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+(S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S)))) 
+       ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+    ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
 
 , or we might also like to do the moral equivalent of
 
