@@ -131,10 +131,3 @@ def build_applicative_y(n):
 
     # Copy slot n+2 to slot n.
     copy(n+2, n)
-    
-    
-    
-    
-    
-    
-    

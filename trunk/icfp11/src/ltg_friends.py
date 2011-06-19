@@ -95,7 +95,13 @@ def build_june2():
 
 def build_june():
     """
+    Building june actually takes slots 0, 1 and 2.
+
     (S (horace ((S (horace (greg (K S)))) ((S (horace fanny)) (greg I)))))
+                ------------------------- -------------------------------
+                june1                     june2
+
+    or: (S (horace (june1 june2)))
     """
     # build june2 in slot 0.
     build_june2()
@@ -111,7 +117,7 @@ def build_june():
     copy(0, 1)
     # build horace in slot 0
     build_horace(0)
-    # smash together to get (horace june1 june2) in slot 0.
+    # smash together to get (horace (june1 june2)) in slot 0.
     smash()
     # wrap with an S for (S (horace june1 june2))
     apply_card("S", 0)
