@@ -5,23 +5,14 @@ from ltg_util import apply_card
 from ltg_util import apply_slot
 from ltg_util import copy
 
-def build_clarice(slot):
-    apply_slot(slot,"S")
-    apply_card("K",slot)
-    apply_card("S",slot)
-    apply_slot(slot,"K")
-    apply_card("S",slot) # and now the S around clarice.
-
-def build_dianne(slot):
-    apply_card("put",slot)
-    apply_card("S",slot)
-    apply_slot(slot,"I")
-    apply_card("K",slot)
-
-def build_abe(slot):
-    """(S (K (S I I)))"""
-    build_dianne(slot)
-    apply_card("S", slot)
+from ltg_friends import build_abe
+from ltg_friends import build_clarice
+from ltg_friends import build_dianne
+from ltg_friends import build_greg
+from ltg_friends import build_horace
+from ltg_friends import build_june1
+from ltg_friends import build_kelly
+from ltg_friends import build_ian
 
 def build_y_combinator():
     """Build the y combinator into slot 0. Only touches slots 0 and 1."""
@@ -39,3 +30,21 @@ def build_y_combinator():
     build_abe(0)
     # Apply slot 0 to slot 1, and we have the Y combinator in slot 0.
     apply_slot0_to_slot1()
+
+def build_applicative_y_combinator(slotnum):
+    """
+    Build the applicative-order Y combinator in slot 'slotnum'.  Only
+    touches slots 'slotnum' and 'slotnum'+1.
+    """
+
+    # TODO: build this.
+# ((S 
+# ((S (horace (greg I))) ((S (horace (june1 ((S (horace (june1 kelly))) kelly)))) (greg ian))))
+# ((S (horace (greg I))) ((S (horace (june1 ((S (horace (june1 kelly))) kelly)))) (greg ian)))))
+
+    
+    
+    
+    
+    
+    
