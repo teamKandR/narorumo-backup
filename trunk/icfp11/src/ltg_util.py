@@ -82,6 +82,11 @@ def smash():
 def copy(src, trg):
     """Copy contents of slot src into slot trg."""
     apply_card("put", trg)
+    unsafe_copy(src, trg)
+
+def unsafe_copy(src, trg):
+    """Copy contents of slot src into slot trg, but only if the contents of
+    slot trg are already I."""
     apply_slot(trg, "zero")
     for i in range(src):
         apply_card("succ", trg)

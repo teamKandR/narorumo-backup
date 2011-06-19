@@ -10,12 +10,12 @@ from ltg_util import apply_slot
 from ltg_util import apply_slot0_to_slot1
 from ltg_util import smash
 from ltg_util import copy
+from ltg_util import unsafe_copy
+from ltg_util import build_num_in_slot
 from ltg_friends import build_fanny
 from ltg_friends import build_greg
 from ltg_friends import build_horace
 from ltg_friends import build_ian
-from ltg_friends import build_june1
-from ltg_friends import build_june2
 from ltg_friends import build_june
 from ltg_friends import build_kelly
 
@@ -160,11 +160,27 @@ def main():
     copy(0,1)
     copy(5,0)
 
-    ## combinate.
+    ## combinate: now the combinated fireball is in 0.
     smash()
 
+    ## make backup copies of the combinated fireball.
+    copy(0,1)
+    copy(0,2)
     ## pass slot 0 a slot number.
     apply_slot(0, "zero")
+    for i in range(999):
+        unsafe_copy(1,0)
+        ## pass slot 0 a slot number.
+        apply_slot(0, "zero")
+
+    build_num_in_slot(0, 1)
+    for targetslot in range(1, 256):
+        apply_card("succ", 1)
+        for i in range(1000):
+            ### put the combinated fireball in slot 0.
+            unsafe_copy(2,0)
+            ## pass slot 0 a slot number.
+            smash()
 
     gameloop()
 if __name__ == "__main__": main()
