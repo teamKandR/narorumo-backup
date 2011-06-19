@@ -6,4 +6,4 @@ tar czvf team_kr_$VERSION.tar.gz \
   --exclude=__pycache__ \
   --exclude=.svn \
   --exclude=.* \
-  run install src
+  run install src README
