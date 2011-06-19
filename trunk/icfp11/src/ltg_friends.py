@@ -86,12 +86,10 @@ def build_june2():
     smash()
     # wrap with an S
     apply_card("S", 0)
-    # build greg in slot 1
-    build_greg(1)
-    # apply greg to I
-    apply_slot(1, "I")
-    # smash together to get ((S (horace fanny)) (greg I))
-    smash()
+
+    # (greg I) is the equivalent of K, so just apply what we have in
+    # slot 0 to K!
+    apply_slot(0, "K")
 
 def build_june():
     """

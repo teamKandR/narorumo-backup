@@ -37,11 +37,9 @@ def build_onemore():
     apply_card("S", 0)
     # now up to (S (horace (greg (K dec)))) in 0.
 
-    # build (greg I) in 1.
-    build_greg(1)
-    apply_slot(1, "I")
+    # (greg I) is equivalent to K, so we can just apply slot 0 to K!
+    apply_slot(0, "K")
 
-    smash()
     apply_card("S", 0)
 
 def build_base(slot):
