@@ -4,7 +4,6 @@ from ltg_util import apply_card
 from ltg_util import apply_slot
 from ltg_util import copy
 from ltg_util import smash
-from ltg_util import apply_slot0_to_slot1
 
 def build_abe(slot):
     """(S (K (S I I)))"""
@@ -31,7 +30,7 @@ def build_fanny():
     apply_slot(1, "K")
     apply_card("K", 1)
     build_greg(0)
-    apply_slot0_to_slot1()
+    smash()
 
 def build_greg(slot):
     """(S (K K))"""
@@ -140,7 +139,7 @@ def build_kelly():
     apply_card("get", 0)
 
     # smash together to get (horace fanny) in 0.
-    apply_slot0_to_slot1()
+    smash()
 
     # put an S around (horace fanny) in 0 to get (S (horace fanny))
     apply_card("S", 0)
@@ -148,5 +147,5 @@ def build_kelly():
     # build ian in 1.
     build_ian(1)
     # smash together to get ((S (horace fanny)) ian) in 0.
-    apply_slot0_to_slot1()
+    smash()
 

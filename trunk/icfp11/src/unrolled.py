@@ -14,7 +14,6 @@ from ltg_util import pop_and_print
 from ltg_util import get_opponent_move
 from ltg_util import apply_card
 from ltg_util import apply_slot
-from ltg_util import apply_slot0_to_slot1
 from ltg_util import smash
 from ltg_util import copy
 from ltg_util import unsafe_copy

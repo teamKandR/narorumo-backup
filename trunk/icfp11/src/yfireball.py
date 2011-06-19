@@ -7,7 +7,6 @@ from ltg_util import pop_and_print
 from ltg_util import get_opponent_move
 from ltg_util import apply_card
 from ltg_util import apply_slot
-from ltg_util import apply_slot0_to_slot1
 from ltg_util import smash
 from ltg_util import copy
 from ltg_util import unsafe_copy
@@ -32,7 +31,7 @@ def build_rightpart():
     build_greg(0)
 
     # smash together to get (greg (K dec)) in 0
-    apply_slot0_to_slot1()
+    smash()
 
     # copy it to 1.
     apply_card("put", 1)
@@ -43,7 +42,7 @@ def build_rightpart():
     build_horace(0)
 
     # smash together to get (horace (greg (K dec))) in 0.
-    apply_slot0_to_slot1()
+    smash()
 
     # Wrap with an S.
     apply_card("S", 0)
@@ -52,7 +51,7 @@ def build_rightpart():
     build_ian(1)
 
     # smash together to get ((S (horace (greg (K dec)))) ian) in 0.
-    apply_slot0_to_slot1()
+    smash()
 
 def build_leftpart():
     """Build the left part of the fireball function. Doing this uses slots
