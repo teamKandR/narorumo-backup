@@ -286,3 +286,16 @@ copy fireball to 2
 build y combinator in 0
 copy fireball to 1
 smash together for recursive fireball
+
+Sun Jun 19 01:19:07 PDT 2011
+Using this thing right here:
+http://zaach.github.com/lambdacalc/
+
+((^f. (^x. f (^y. x x y)) (^x. f (^y. x x y)))(^f. (^s. ((^q. (f s)) (d s)))))
+
+evaluates out to:
+^s.(^q.(^y.((^x.(^f.^s.(^q.(f) s) (d) s) ^y.((x) x) y) ^x.(^f.^s.(^q.(f) s) (d)
+s) ^y.((x) x) y) y) s) (d) s
+
+... pre-y-combinated faster fireball?
+
