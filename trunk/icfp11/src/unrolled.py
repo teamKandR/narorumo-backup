@@ -75,15 +75,25 @@ def main():
     copy(0,2)
 
     ## step 1: kill their low-numberd slots. (high-numbered for us.)
-    build_num_in_slot(250,1)
+    build_num_in_slot(253,1)
     smash()
-    for targetslot in range(251, 256):
+    for targetslot in range(253, 256):
         for i in range(LOOPS):
             ### put the unrolled fireball in slot 0.
             unsafe_copy(2,0)
             ## pass the function a target slot number.
             smash()
         if targetslot != 255:
+            apply_card("succ", 1)
+
+    build_num_in_slot(250,1)
+    for targetslot in range(250, 253):
+        for i in range(LOOPS):
+            ### put the unrolled fireball in slot 0.
+            unsafe_copy(2,0)
+            ## pass the function a target slot number.
+            smash()
+        if targetslot != 253:
             apply_card("succ", 1)
 
     unsafe_copy(2,0)
