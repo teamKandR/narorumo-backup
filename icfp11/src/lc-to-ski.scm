@@ -36,6 +36,7 @@
   (lambda (e)
     (pmatch e
       [,var (guard (symbol? var)) var]
+      [(S (K (S I I))) 'abe]
       [(S (S (K S) K) (K (S I I))) 'benny]
       [(S (K S) K) 'clarice]
       [(K (S I I)) 'dianne]
