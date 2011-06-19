@@ -19,7 +19,7 @@ from ltg_friends import build_june2
 from ltg_friends import build_june
 from ltg_friends import build_kelly
 
-from ycombinator import build_y_combinator
+from ycombinator import build_applicative_y
 
 def build_rightpart():
     """Build the right part of the fireball function."""
@@ -56,15 +56,36 @@ def build_rightpart():
 
 def build_leftpart():
     """Build the left part of the fireball function. Doing this uses slots
-    0,1,2, and the result will be in slot 0."""
+    0,1,2,3 and the result will be in slot 0.
+    (S
+     (horace
+
+       ((S
+         (horace
+           ((S (horace (greg (K S))))
+            ((S (horace fanny)) (greg I)))))
+        --------------------------------------
+        june
+
+       ((S (horace fanny)) ian)     )))
+       -----------------------
+       kelly
+    More abstractly:
+    (S (horace ((S (horace (june1 june2))) kelly)))
+
+    even more abstractly:
+    (S (horace (june kelly)))
+    """
     # build kelly.
     build_kelly()
-    # copy kelly to 2.
-    copy(0, 2)
-    # build june in slots 0,1
+    # copy kelly to 3.
+    copy(0, 3)
+
+    # build june in slots 0,1,2
     build_june()
     # copy kelly to slot 1
-    copy(2, 1)
+    copy(3, 1)
+
     # smash together to get (june kelly) in 0
     smash()
     # copy (june kelly) to 1
@@ -77,51 +98,73 @@ def build_leftpart():
     apply_card("S", 0)
 
 def build_fireball():
-    """Build the fireball function. We'll apply the Y combinator to it."""
+    """Build the fireball function. We'll apply the Y combinator to it.
+    Stomps registers [0,4].
+    """
     # build the right part
     build_rightpart()
-    # copy it to 3.
-    copy(0, 3)
+
+    # copy it to 4.
+    copy(0, 4)
 
     # build the left part, now it's in 0
     build_leftpart()
 
-    # copy right part from 3 to 1.
-    copy(3, 1)
+    # copy right part from 4 to 1.
+    copy(4, 1)
     # smash together for whole fireball.
     smash()
 
 ## should look like this when we're done.
-# ((S
-#   ((S (K S))
-#    ((S
-#      ((S (K S))
-#       ((S ((S (K S)) ((S (K K)) (K S))))
-#        ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
-#     ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
-#  ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+"""
+((S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S))))
+       ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+    ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
+ ((S ((S (K S)) ((S (K K)) (K dec)))) (K I)))
+
+just the left part:
+(S
+  ((S (K S))
+   ((S
+     ((S (K S))
+      ((S ((S (K S)) ((S (K K)) (K S))))
+       ((S ((S (K S)) ((S (K K)) (K K)))) ((S (K K)) I)))))
+    ((S ((S (K S)) ((S (K K)) (K K)))) (K I)))))
+"""
 
 # Or more abstractly, like this:
-# ((S
-#   (horace
-#    ((S
-#      (horace
-#       ((S (horace (greg (K S))))
-#        ((S (horace fanny)) (greg I)))))
-#     ((S (horace fanny)) ian))))
-#  ((S (horace (greg (K dec)))) ian))
+"""
+((S
+  (horace
+    ((S
+      (horace
+        ((S (horace (greg (K S))))
+         ((S (horace fanny)) (greg I)))))
+    ((S (horace fanny)) ian))))
+ ((S (horace (greg (K dec)))) ian))
+"""
 
 def main():
-    build_y_combinator()
-    copy(0,4)
-    build_fireball()
-    copy(0,1)
-    copy(4,0)
-    smash()
-    apply_card("ffff", 200)
-    # build_leftpart()
-    # build_kelly()
-    # build_june()
-    gameloop()
+    ## This takes up slots 0,1 and also 5,6,7, but it puts the y combinator
+    ## into slot 5.
+    build_applicative_y(5)
 
+    ## stomps registers [0,4]. Result is in 0.
+    build_fireball()
+
+    ## make 0 and 1 Y, fireball respectively
+    copy(0,1)
+    copy(5,0)
+
+    ## combinate.
+    smash()
+
+    ## pass slot 0 a slot number.
+    apply_slot(0, "zero")
+
+    gameloop()
 if __name__ == "__main__": main()
