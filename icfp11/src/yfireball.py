@@ -174,7 +174,9 @@ def main():
         apply_slot(0, "zero")
 
     build_num_in_slot(0, 1)
-    for targetslot in range(1, 256):
+
+    ## really should be up to range 256, but we're not fast enough yet.
+    for targetslot in range(1, 10):
         apply_card("succ", 1)
         for i in range(1000):
             ### put the combinated fireball in slot 0.
