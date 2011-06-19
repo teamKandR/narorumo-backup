@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 from ltg_util import gameloop
 from ltg_util import enqueue_strategy
 from ltg_util import pop_and_print
