@@ -64,23 +64,25 @@ def main():
         if targetslot != 253:
             apply_card("succ", 1)
 
-    unsafe_copy(2,0)
-    copy(2,1)
-    ## now start working on slot 0, which is easy to attack.
-    apply_slot(0, "zero")
-    for i in range(LOOPS):
-        unsafe_copy(1,0)
-        ## pass slot 0 a slot number.
+    ## just in case we've iterated over all the slots, try it twice. This
+    ## should take us through the end of a game.
+    for times in range(2):
+        unsafe_copy(2,0)
+        copy(2,1)
+        ## now start working on slot 0, which is easy to attack.
         apply_slot(0, "zero")
-
-    build_num_in_slot(0, 1)
-    ## really should be up to range 256. How fast are we?
-    for targetslot in range(1, 256):
-        apply_card("succ", 1)
         for i in range(LOOPS):
-            ### put the unrolled fireball in slot 0.
-            unsafe_copy(2,0)
-            ## pass the function a target slot number.
-            smash()
+            unsafe_copy(1,0)
+            ## pass slot 0 a slot number.
+            apply_slot(0, "zero")
+
+        build_num_in_slot(0, 1)
+        for targetslot in range(1, 256):
+            apply_card("succ", 1)
+            for i in range(LOOPS):
+                ### put the unrolled fireball in slot 0.
+                unsafe_copy(2,0)
+                ## pass the function a target slot number.
+                smash()
     gameloop()
 if __name__ == "__main__": main()
