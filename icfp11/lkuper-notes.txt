@@ -20,7 +20,7 @@ Before optimization:
 254={0,I}
 255={0,I}
 
-After optimization:
+After optimization on the Y combinator:
 246={3250,I}
 247={0,I}
 248={0,I}
@@ -33,6 +33,18 @@ After optimization:
 255={0,I}
 
 A whole ten hit points!  Woooo!
+
+And when the fireball is optimized as well:
+246={2564,I}
+247={0,I}
+248={0,I}
+249={0,I}
+250={0,I}
+251={0,I}
+252={0,I}
+253={0,I}
+254={0,I}
+255={0,I}
 
 ** hand-application of Y to the fireball
 
