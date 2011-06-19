@@ -46,6 +46,20 @@
       [(K I) 'ian]
       [(,M ,N) `(,(names M) ,(names N))])))
 
+(define unnames
+  (lambda (e)
+    (pmatch e
+      [,var (guard (symbol? var)) var]
+      [abe '(S (K (S I I)))]
+      [benny '(S (S (K S) K) (K (S I I)))]
+      [clarice '(S (K S) K)]
+      [dianne '(K (S I I))]
+      [fanny '((S (K K)) (K K))]
+      [greg '(S (K K))]
+      [horace '(S (K S))]
+      [ian '(K I)]
+      [(,M ,N) `(,(unnames M) ,(unnames N))])))
+
 (define metanames
   (lambda (e)
     (pmatch e
@@ -55,12 +69,28 @@
       [((S (horace fanny)) ian) 'kelly]
       [(,M ,N) `(,(metanames M) ,(metanames N))])))
 
+(define unmetanames
+  (lambda (e)
+    (pmatch e
+      [,var (guard (symbol? var)) var]
+      [june1 '(S (horace (greg (K S))))]
+      [june2 '((S (horace fanny)) (greg I))]
+      [kelly '((S (horace fanny)) ian)]
+      [(,M ,N) `(,(unmetanames M) ,(unmetanames N))])))
+
 (define metametanames
   (lambda (e)
     (pmatch e
       [,var (guard (symbol? var)) var]
       [(S (horace (june1 june2))) 'june]
       [(,M ,N) `(,(metametanames M) ,(metametanames N))])))
+
+(define unmetametanames
+  (lambda (e)
+    (pmatch e
+      [,var (guard (symbol? var)) var]
+      [june '(S (horace (june1 june2)))]
+      [(,M ,N) `(,(unmetametanames M) ,(unmetametanames N))])))
 
 (define translate
   (lambda (exp)
@@ -69,6 +99,10 @@
 (define allthenames
   (lambda (ski)
     (metametanames (metanames (names ski)))))
+
+(define unallthenames
+  (lambda (metametanamed)
+    (unnames (unmetanames (unmetametanames (metametanamed))))))
 
 #|
 
@@ -168,3 +202,4 @@ which, translated, looks like:
            ((S (horace (greg (K S))))
             ((S (horace fanny)) (greg I)))))
        ((S (horace fanny)) ian)     ))))
+
