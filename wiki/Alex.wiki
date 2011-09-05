@@ -1,5 +1,5 @@
 #summary Alex's bio.
 
-[http://hackmode.org/~alex Alex Rudnick] makes software and references to Internet memes of the early 2000s. He lives in <strike>Atlanta</strike> Bloomington, where he hangs out with some kitties and a bunch of programmers.
+[http://www.cs.indiana.edu/~alexr Alex Rudnick] makes software and references to Internet memes of the early 2000s. He lives in <strike>Atlanta</strike> Bloomington, where he hangs out with some kitties and a bunch of programmers.
 
 He is a mammal.
