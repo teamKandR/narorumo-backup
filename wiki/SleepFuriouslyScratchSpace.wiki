@@ -1,5 +1,13 @@
 #summary misc notes for Sleep Furiously
 
+== add an n+7 module ==
+Along these lines: http://www.spoonbill.org/n+7/
+
+== fuzz word choice from input text by picking wrong synonyms... ==
+Get a bilingual dictionary, look up source word, then get target word and pick a random source-language word. (maybe the original source word, maybe not.)
+
+Could also use translation tables or phrase tables.
+
 == use soundex or metaphone for rhyming, when a word's not in the pronunciation dictionary ==
 Schwern has an implementation of some pronunciation algorithms in Perl:
 
