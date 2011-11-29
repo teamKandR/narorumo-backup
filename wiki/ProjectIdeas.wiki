@@ -99,6 +99,9 @@ Say you have several people who all want to go running together, and they live f
 Could some routes be circuits, where not everybody goes on all parts of the run, and people get dropped back off at their starting location later?
 Didn't I have a demo of something like this, a few years ago? Where did that code go?
 
+== hook sleep-furiously up to an IRC bot ==
+http://code.google.com/p/ircbot-collection/
+
 = done =
 
 == make your papers shorter ==
