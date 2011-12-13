@@ -1,19 +1,28 @@
 #!/usr/bin/env python3
 
 import sys
+import os
+
+def maxfilesize(fns):
+    return max([os.stat(fn).st_size for fn in fns])
 
 def eightbits(b):
     assert (0 <= b <= 255)
     return [(b & (1 << shift)) >> shift
             for shift in range(7, -1, -1)]
     
-def bits(fn):
+def bits(fn, infinitepad=False):
     """Returns a generator that gives you the bits in the specified filename,
     one at a time."""
     with open(fn, "rb") as infile:
         while True:
             nextchar = infile.read(1)
-            if nextchar == b"": return
+            if nextchar == b"":
+                if infinitepad:
+                    yield(0)
+                    continue
+                else:
+                    return
             for bit in eightbits(ord(nextchar)):
                 yield(bit)
 

@@ -61,30 +61,48 @@ def encode(b, secret):
 
 def main():
     secret = trapdoor.loadtrapdoor()
-    if len(sys.argv) != 4:
-        print("usage: python3 encrypt.py <realtext> <faketext> <outfile>")
+    if len(sys.argv) < 5 or (sys.argv[-2] not in ("-out", "--out")):
+        print("usage: python3 encrypt.py <realtext>",
+              "<faketext0> [<faketext1> ...] -out <outfile>")
         return
 
-    inbits = streamofbits.bits(sys.argv[1])
-    fakebits = streamofbits.bits(sys.argv[2])
-    realkey = []
-    fakekey = []
+    faketextfns = sys.argv[2:-2]
+    realtextfn = sys.argv[1]
+    outfn = sys.argv[-1]
 
-    with open(sys.argv[3], "wb") as outfile:
-        for inbit,fakebit in zip(inbits, fakebits):
+    print("plaintext:", realtextfn)
+    print("decoy texts:", faketextfns)
+    print("encrypted output:", outfn)
+
+    inbits = streamofbits.bits(realtextfn, infinitepad=True)
+    fakestreams = [streamofbits.bits(fn, infinitepad=True)
+                   for fn in faketextfns]
+    realkey = []
+    fakekeys = []
+
+    for fn in faketextfns:
+        fakekeys.append([])
+    totalbits = 8 * streamofbits.maxfilesize([realtextfn] + faketextfns)
+
+    with open(outfn, "wb") as outfile:
+        for bitnum in range(totalbits):
+            inbit = next(inbits)
             enc = encode(inbit, secret)
             asbytes = streamofbits.bits_to_bytes(enc)
             outfile.write(bytes(asbytes))
-
             realkey.append(enc[0] ^ inbit)
-            fakekey.append(enc[0] ^ fakebit)
+
+            for fakestream,fakekey in zip(fakestreams,fakekeys):
+                fakebit = next(fakestream)
+                fakekey.append(enc[0] ^ fakebit)
 
     with open("realkey", "wb") as outfile:
         asbytes = streamofbits.bits_to_bytes(realkey)
         outfile.write(bytes(asbytes))
 
-    with open("fakekey", "wb") as outfile:
-        asbytes = streamofbits.bits_to_bytes(fakekey)
-        outfile.write(bytes(asbytes))
+    for i,fakekey in enumerate(fakekeys):
+        with open("fakekey{0}".format(i), "wb") as outfile:
+            asbytes = streamofbits.bits_to_bytes(fakekey)
+            outfile.write(bytes(asbytes))
 
 if __name__ == "__main__": main()
