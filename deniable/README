@@ -1,0 +1,50 @@
+This program presents a simple command-line interface that allows three
+different basic actions: encrypting, decrypting with the trapdoor information,
+and decrypting with the generated keys.
+
+It's described more fully in (... full writeup almost done! ...)
+
+--------------
+| encrypting |
+--------------
+The encryption script is called like so: 
+
+$ python3 encrypt.py realmessage fakemessage0 [fakemessage1 ...] -out ciphertext
+
+... where realmessage is the filename of the plaintext to be encrypted, and the
+fakemessage arguments are the decoy messages. There must be at least one decoy
+message.
+
+Running this program creates the files ciphertext (or whatever the user chose
+to name it), TRAPDOOR (containing the trapdoor permutation), realkey, and
+fakekeyi, where i is replaced by 0-indexed numbers for each fake key.
+
+If the files are not of the same length, then the encryption program acts as if
+the shorter ones were padded with a number of newlines, so the ciphertext
+scales in length with the longest file out of the real message and the decoy
+messages.
+
+--------------------------------
+| decrypting with the trapdoor |
+--------------------------------
+To decrypt using the trapdoor information, type: 
+
+$ python3 decrypt.py ciphertext
+
+This will decrypt the file ciphertext using the trapdoor permutation stored in
+the file TRAPDOOR, and will fail if that file is not in the current working
+directory. The decrypted text is printed to standard out, so the user may wish
+to redirect the output to a file with >.
+
+Hypothetically, a user should not carry the trapdoor permutation with them if
+expecting to be interrogated ...
+
+----------------------------------
+| decrypting with generated keys |
+----------------------------------
+To decrypt using a generated key, type: 
+
+$ python3 decryptwithkey.py ciphertext keyfile
+
+This will "decrypt" the ciphertext into any one of the different possible
+messages and print the results to standard out.
