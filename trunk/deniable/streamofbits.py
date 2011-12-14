@@ -19,8 +19,7 @@ def bits(fn, infinitepad=False):
             nextchar = infile.read(1)
             if nextchar == b"":
                 if infinitepad:
-                    yield(0)
-                    continue
+                    nextchar = b"\n"
                 else:
                     return
             for bit in eightbits(ord(nextchar)):
