@@ -16,7 +16,7 @@ from syllables import count_syllables, word_to_syllables
 def line_of_length(nsyllables, model, context=[]):
     """Generate a line with nsyllables syllables via recursive search."""
 
-    for i in xrange(10):
+    for i in range(10):
         if not context:
             candidate  = random.sample(model._ngrams, 1)[0][0]
         else:
@@ -59,8 +59,8 @@ def main():
     model = buildmodel("../teb-lisp/wordlist.sexpr")
     startword = random.sample(model._ngrams, 1)[0][0]
 
-    print " ".join(line_of_length(5, model))
-    print " ".join(line_of_length(7, model))
-    print " ".join(line_of_length(5, model))
+    print(" ".join(line_of_length(5, model)))
+    print(" ".join(line_of_length(7, model)))
+    print(" ".join(line_of_length(5, model)))
 
 if __name__ == "__main__": main()

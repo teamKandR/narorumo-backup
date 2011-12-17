@@ -14,10 +14,11 @@
 ###    from the language model. Maybe always do both and see which one wins.
 			  
 ## these things take a list of lines, where each line is a list of words
-from __future__ import division
+
 import random
 import copy
 import string
+from functools import reduce
 
 def flatten(poem):
     return reduce(lambda sofar,line: sofar+line, poem, [])
@@ -60,7 +61,7 @@ def maximize_alphabeticity(poem):
         tosort = copy.deepcopy(line)
         tosort.sort()
         wordsinplace += sum([1 if tosort[i] == line[i] else 0
-                               for i in xrange(len(line))])
+                               for i in range(len(line))])
     return wordsinplace / totalwords
 
 def prefer_capitals(poem):
@@ -72,3 +73,12 @@ def prefer_capitals(poem):
             if all([c in string.uppercase for c in word]):
                 allcapscount += 1
     return allcapscount / totalwords
+
+def prefer_coherent(poem):
+    """Average language model score for each transition in the poem."""
+    totalwords = sum([len(line) for line in poem])
+    allcapscount = 0
+    for line in poem:
+        for word in line:
+            if all([c in string.uppercase for c in word]):
+                allcapscount += 1

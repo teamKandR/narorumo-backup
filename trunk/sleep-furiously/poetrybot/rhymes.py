@@ -14,7 +14,7 @@ We then break the word into syllables; a syllable is also a list of phonemes,
 but there might be several per word.
 """
 
-from __future__ import division
+
 import string
 
 from syllables import word_to_syllables
@@ -85,7 +85,7 @@ def best_rhyming_word(word, possibilities):
     return bestpair[0]
 
 def main():
-    print best_rhyming_word("felon", ["flea", "computer", "melon", "egress"])
-    print best_rhyming_word("egret", ["flea", "regret", "melon", "egress"])
+    print(best_rhyming_word("felon", ["flea", "computer", "melon", "egress"]))
+    print(best_rhyming_word("egret", ["flea", "regret", "melon", "egress"]))
 
 if __name__ == "__main__": main()
