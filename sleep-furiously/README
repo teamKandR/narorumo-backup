@@ -3,3 +3,6 @@ sleep-furiously is the second iteration of my poetry generator project.
 The first iteration, which was a class project when I was a student at Georgia
 Tech, was done in Common Lisp and called TEB (for "Trurl's Electronic Bard",
 after Stanislaw Lem's Cyberiad).
+
+The ircbot code is forked from the project ircbot-collection, at
+http://code.google.com/p/ircbot-collection/, by the Red Bean Software folks.

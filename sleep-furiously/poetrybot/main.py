@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import sys
 import random
 import copy
 
@@ -73,13 +74,18 @@ def main():
     # metrics.append((poemfeatures.maximize_alphabeticity, 5.0))
     metrics.append((poemfeatures.last_words_rhyme, 100.0))
 
-    model = generate.buildmodel("../teb-lisp/wordlist.sexpr")
+    if len(sys.argv) > 1:
+        fn = sys.argv[1]
+    else:
+        fn = "../teb-lisp/wordlist.sexpr"
+    model = generate.buildmodel(fn, onlywholewords=True)
     startword = random.sample(model._ngrams, 1)[0][0]
 
-    for i in xrange(10):
+    for i in range(100):
         poems.append(PoemCandidate(naive_poem(model), model))
     better = beamsearch.beamsearch(poems, 100)
-    for i in xrange(5):
-        print better[i], better[i].score
+    better = sorted(better, key=lambda x: x.score, reverse=True)
+    for i in range(5):
+        print(better[i], better[i].score)
 
 if __name__ == "__main__": main()

@@ -4,14 +4,14 @@
 Routines that deal with syllables particularly.
 """
 
-from __future__ import division
+
 from collections import defaultdict
 import string
 
 from nltk.corpus import cmudict
 
 # requires a fix to textanalyzer that I need to commit.
-from nltk_contrib.readability.textanalyzer import textanalyzer
+# from nltk_contrib.readability.textanalyzer import textanalyzer
 
 import utils
 
@@ -21,10 +21,10 @@ def load_pronouncing():
     global PRONUNCIATIONS
     PRONUNCIATIONS = defaultdict(lambda:[], cmudict.dict())
 load_pronouncing()
-print "Got cmudict."
+print("Got cmudict.")
 
-analyzer = textanalyzer("eng")
-print "Got textanalyzer."
+# analyzer = textanalyzer("eng")
+# print("Got textanalyzer.")
 
 def word_to_syllables(word):
     return [ sounds_to_syllables(sounds) for sounds in PRONUNCIATIONS[word] ]
@@ -51,7 +51,7 @@ def sounds_to_syllables(sounds):
     getclosest = lambda pos: closest_vowel_index(sounds, pos)
 
     # indices of the closest vowel for the sound at the corresponding index
-    closests = map(getclosest, range(len(sounds)))
+    closests = list(map(getclosest, list(range(len(sounds)))))
     syllables_indexes = list(set(closests))
 
     return [[sounds[i] for i in range(len(sounds))
@@ -73,16 +73,19 @@ def closest_vowel_index(sounds, pos):
     return bestpair[0]
 
 def count_syllables(phonemes):
-    if isinstance(phonemes,basestring): # got a word, not a list of syllables!
+    if isinstance(phonemes,str): # got a word, not a list of syllables!
         word = phonemes
 
         if word in PRONUNCIATIONS:
-            return count_syllables(PRONUNCIATIONS[word][0])
-        else:
-            out = analyzer.countSyllables([word])
-            return out
+            try:
+                return count_syllables(PRONUNCIATIONS[word][0])
+            except:
+                print(("word in pronunciations but can't count it", word))
+        # out = analyzer.countSyllables([word])
+        out = 3
+        return out
     else:
-        return len( filter(isvowel, phonemes) )
+        return len( list(filter(isvowel, phonemes)) )
 
 def isvowel(sound):
     """Given a string representing a sound, we call it a vowel sound if it ends
@@ -130,11 +133,11 @@ def vowel_sound(sound):
     return sound[:-1]
 
 def main():
-    print PRONUNCIATIONS["food"]
-    print word_to_syllables("food")
-    print word_to_syllables("dude")
-    print word_to_syllables("tomato")
-    print count_syllables("tomato")
-    print count_syllables("clee")
+    print(PRONUNCIATIONS["food"])
+    print(word_to_syllables("food"))
+    print(word_to_syllables("dude"))
+    print(word_to_syllables("tomato"))
+    print(count_syllables("tomato"))
+    print(count_syllables("clee"))
 
 if __name__ == "__main__": main()

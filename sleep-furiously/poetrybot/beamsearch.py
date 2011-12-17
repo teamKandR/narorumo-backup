@@ -3,7 +3,7 @@
 """
 Routines for beamsearch.
 """
-from __future__ import division
+
 
 words = set()
 def loadallwords():
@@ -23,6 +23,7 @@ class Candidate(object):
         raise Exception("not implemented")
 
 import random
+from functools import reduce
 class NumberCandidate(Candidate):
     def __repr__(self):
         return str(self.val)
@@ -59,14 +60,12 @@ def beamsearch(candidates, maxiter=100):
 
     Do a beam search; return the list of candidates when done.
     """
-    iterations = 0
-    
-    for iterations in xrange(maxiter):
+    for i in range(maxiter):
         newones = [c.update() for c in candidates]
 
         candidates = [newones[i] if (newones[i].score >= candidates[i].score)
                                  else candidates[i]
-                      for i in xrange(len(candidates))]
+                      for i in range(len(candidates))]
 
     # different search algorithm: is this new poem better than the average old
     # one?
@@ -79,17 +78,12 @@ def beamsearch(candidates, maxiter=100):
     # benefit for being different from the other candidates?
     # candidates = allcandidates[:len(candidates)]
 
-    candidates.sort(key = lambda(c): c.score, reverse=True)
+    candidates.sort(key = lambda c: c.score, reverse=True)
     return candidates
 
-def main():
-    # numbers = random.sample(xrange(100), 10)
-    # candidates = [NumberCandidate(num) for num in numbers]
-    # output = beamsearch(candidates, 100)
-    # print output
-
+def demo():
     lines = []
-    for i in xrange(100):
+    for i in range(100):
         lines.append([random.choice(words),
                       random.choice(words),
                       random.choice(words),
@@ -98,7 +92,7 @@ def main():
     linecandidates = [LineThatWantsVowels(c) for c in lines]
     better = beamsearch(linecandidates, 2000)
 
-    for i in xrange(10):
-        print better[i], better[i].score
+    for i in range(10):
+        print(better[i], better[i].score)
 
-if __name__ == "__main__": main()
+if __name__ == "__main__": demo()
