@@ -1,4 +1,4 @@
-#lang r6rs
+#!r6rs
 ;; generate-tautologies: A little miniKanren program to generate
 ;; tautologies represented as S-expressions, inspired by Peter
 ;; Boothe's version at
