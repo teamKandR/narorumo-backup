@@ -55,6 +55,10 @@ to loadinstructions :fn
 
     if (and (:c <> "#) (:hashcount > 0)) [
       
+      if (:hashcount > 5) [
+        print [syntax error, too many hashes]
+        bye
+      ]
       make "cmd (item :hashcount :commands)
       
       make "instructions (lput (sentence :cmd :onecount) :instructions)
@@ -88,10 +92,67 @@ to testreadc :fn
   print :c
 end
 
+to interpret :instructions
+  make "ip 0
+  make "len (count :instructions)
+
+  while ["true] [
+    if (:ip > :len) [
+      print [crash: jumped off the end]
+      print plist "thestore
+      bye
+    ]
+    if (:ip < 0) [
+      print [crash: jumped before the beginning]
+      print plist "thestore
+      bye
+    ]
+    if (:ip = :len) [
+      print [successful termination.]
+      print plist "thestore
+      bye
+    ]
+
+    make "cmd first (item (:ip + 1) :instructions)
+    make "immediate first butfirst (item (:ip + 1) :instructions)
+
+    print (sentence cmd immediate)
+
+    if (:cmd = "addone) [
+      pprop "thestore :immediate (lput "1 (gprop "thestore :immediate))
+      make "ip (:ip + 1)
+    ]
+    if (:cmd = "addhash) [
+      pprop "thestore :immediate (lput "# (gprop "thestore :immediate))
+      make "ip (:ip + 1)
+    ]
+    if (:cmd = "forward) [
+      make "ip (:ip + :immediate)
+    ]
+    if (:cmd = "backward) [
+      make "ip (:ip - :immediate)
+    ]
+    if (:cmd = "cases) [
+      ifelse ((count (gprop "thestore :immediate)) = 0) [
+        make "ip (:ip + 1)
+      ]
+      [
+        if (first (gprop "thestore :immediate) = "1) [ make "ip (:ip + 2) ]
+        if (first (gprop "thestore :immediate) = "#) [ make "ip (:ip + 3) ]
+        pprop "thestore :immediate (butfirst (gprop "thestore :immediate))
+      ]
+    ]
+  ]
+end
+
 
 to main
   make "instructions (loadinstructions "write.os)
+
+  print [running this program]
   print :instructions
+
+  interpret :instructions
 end
 
 main
