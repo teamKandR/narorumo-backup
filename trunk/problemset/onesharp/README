@@ -1,0 +1,29 @@
+Problem: write an interpreter for the language 1#, described by Larry Moss
+over here: http://www.indiana.edu/~iulg/trm/
+
+1# implements what is called a Text Register Machine. It has just five
+operations in the language:
+
+http://www.indiana.edu/~iulg/trm/nutshell.shtml
+
+Add 1 to Rn    1n#
+Add # to Rn    1n##
+Go forward n   1n###
+Go backward n  1n####  
+Cases on Rn    1n#####
+
+The only things that can be in a register are strings of '1' and '#'. Registers
+are queues of those two characters.
+
+"Cases" means...
+If Rn is empty, we go to the very next instruction. 
+If the first symbol of Rn is 1, delete it and count down two instructions.
+  (skipping one)
+If the first symbol of Rn is #, delete it and count down three instructions.
+  (skipping two)
+
+Graceful termination, as opposed to a crash, happens when you go one spot past
+the final instruction. Jumping farther than that constitutes a crash, and 
+
+The name of the language may be pronounced however you want. Alex says
+"one-hash" in his head.

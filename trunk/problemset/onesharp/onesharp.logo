@@ -1,0 +1,98 @@
+#!/usr/local/bin/logo
+
+;; The five kinds of instructions shall be...
+;; addone
+;; addhash
+;; forward
+;; backward
+;; cases
+
+make "commands [addone addhash forward backward cases]
+
+make "readcbuffer []
+;; Version of readchar that has pushback too!!
+to readc
+  ifelse (:readcbuffer = []) [
+    ;; print [it's empty]
+    output (readchar)
+  ] [
+    make "c (first :readcbuffer)
+    make "readcbuffer (bf :readcbuffer)
+    output :c
+  ]
+end
+
+to unreadc :c
+  make "readcbuffer (fput :c :readcbuffer)
+end
+
+;; Given a filename, return the abstract syntax list.
+;; That's a list of lists that will look like:
+;; [ [cmd number] [cmd number] ... ]
+to loadinstructions :fn
+  openread :fn
+  setread :fn
+
+  make "instructions []
+  make "done "false
+  make "hashcount 0
+  make "onecount 0
+  make "prev "false
+
+  while [not :done] [
+    make "c (readc)
+    ;; print :c
+
+    if (:c = "\;) [ignore (readlist)]
+
+    if (:c = "1) [
+      make "onecount (:onecount + 1)
+    ]
+
+    if (:c = "#) [
+      make "hashcount (:hashcount + 1)
+    ]
+
+    if (and (:c <> "#) (:hashcount > 0)) [
+      
+      make "cmd (item :hashcount :commands)
+      
+      make "instructions (lput (sentence :cmd :onecount) :instructions)
+      make "hashcount 0
+      make "onecount 0
+    ]
+
+    if eof? [ make "done "true]
+  ]
+  closeall
+  
+  output :instructions
+end
+
+to testreadc :fn
+  openread :fn
+  setread :fn
+
+  make "instructions []
+  make "done "false
+
+  make "instructions (fput [addone 2] :instructions)
+  make "instructions (fput [forward 3] :instructions)
+
+  make "c (readc)
+  print :c
+  make "c (readc)
+  print :c
+  unreadc :c
+  make "c (readc)
+  print :c
+end
+
+
+to main
+  make "instructions (loadinstructions "write.os)
+  print :instructions
+end
+
+main
+bye
