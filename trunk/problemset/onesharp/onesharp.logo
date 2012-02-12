@@ -148,7 +148,7 @@ end
 
 
 to main
-  make "instructions (loadinstructions "multiplication.os)
+  make "instructions (loadinstructions "addition.os)
 
   print [running this program]
   print :instructions
