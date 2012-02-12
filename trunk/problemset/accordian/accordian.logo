@@ -15,13 +15,13 @@ end
 
 ;; fput is cons.
 to astep :stacks
-  if (stacks = []) [ output [] ]
+  if (:stacks = []) [ output [] ]
 
-  if (count stacks) >= 4 [ output astep.four stacks ]
+  if (count :stacks) >= 4 [ output astep.four :stacks ]
 
-  if (count stacks) >= 2 [ output astep.two stacks ]
+  if (count :stacks) >= 2 [ output astep.two :stacks ]
 
-  output fput (first stacks) (astep butfirst stacks)
+  output fput (first :stacks) (astep butfirst :stacks)
 end
 
 to astep.four :stacks
@@ -62,7 +62,7 @@ to astep.four :stacks
                               :ds)
                         rest)]
 
-  output fput (first stacks) (astep butfirst stacks)
+  output fput (first :stacks) (astep butfirst :stacks)
 end
 
 to astep.two :stacks
@@ -80,15 +80,15 @@ to astep.two :stacks
                               :bs)
                         rest)]
 
-  output fput (first stacks) (astep butfirst stacks)
+  output fput (first :stacks) (astep butfirst :stacks)
 end
 
 to matches :c1 :c2
-  output or ((first c1) = (first c2)) ((second c1) = (second c2))
+  output or ((first :c1) = (first :c2)) ((second :c1) = (second :c2))
 end
 
 to second :lst
-  output item 2 lst
+  output item 2 :lst
 end
 
 to nonEmpty :lst
