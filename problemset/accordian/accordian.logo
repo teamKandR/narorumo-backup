@@ -113,7 +113,7 @@ to readgames :fn
   make "lines []
   make "done "false
   
-  while [not done] [
+  while [not :done] [
     make "line (readlist)
     (if ((first first :line) = "#)
         [make "done "true]
