@@ -3,11 +3,11 @@
 
 ;; Given n in R1 and m in R2, multiply them and put the result in R1.
 
-;; put 1 1 1 in R1.
-1# 1# 1#
+;; put # in R1.
+1##
 
-;; put 1 1 in R2.
-11# 11#
+;; put # in R2 (representing 0).
+11#
 
 ;; now multiply.
 111##
