@@ -13,7 +13,6 @@ make "readcbuffer []
 ;; Version of readchar that has pushback too!!
 to readc
   ifelse (:readcbuffer = []) [
-    ;; print [it's empty]
     output (readchar)
   ] [
     make "c (first :readcbuffer)
@@ -41,7 +40,6 @@ to loadinstructions :fn
 
   while [not :done] [
     make "c (readc)
-    ;; print :c
 
     if (:c = "\;) [ignore (readlist)]
 
@@ -97,7 +95,6 @@ to interpret :instructions
   make "len (count :instructions)
 
   while ["true] [
-    ;; print plist "thestore
     if (:ip > :len) [
       print [crash: jumped off the end]
       print plist "thestore
@@ -116,8 +113,6 @@ to interpret :instructions
 
     make "cmd first (item (:ip + 1) :instructions)
     make "immediate first butfirst (item (:ip + 1) :instructions)
-
-    ;; print (sentence cmd immediate)
 
     if (:cmd = "addone) [
       pprop "thestore :immediate (lput "1 (gprop "thestore :immediate))
