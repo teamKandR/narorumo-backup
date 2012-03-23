@@ -11,6 +11,7 @@ Should work both under recent Python 2 and Python 3.
 """
 
 from __future__ import print_function
+from __future__ import division
 import csv
 import sys
 
