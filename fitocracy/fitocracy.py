@@ -33,12 +33,15 @@ def main():
     csvReader = csv.reader(open(sys.argv[1]))
 
     total_miles = 0
-    ## skip row headers from fitocracy
-    next(csvReader)
+    headers = next(csvReader)
+    distIndex = headers.index("Distance")
+    distUnitIndex = distIndex + 1
+    dateIndex = headers.index("Date (YYYYMMDD)")
 
     for row in csvReader:
-        (act, date,session,time,timeunit, dist, distunit, terrain, tunit,
-         combined,points) = row
+        dist = row[distIndex]
+        distunit = row[distUnitIndex]
+        date = row[dateIndex]
         if(dist):
             miles = to_miles(dist, distunit)
             print("on", date, "ran this many miles:", miles)
