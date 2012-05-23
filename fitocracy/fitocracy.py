@@ -26,6 +26,11 @@ def to_miles(dist, units):
     multiplier = multiplier_table[units]
     return asfloat * multiplier
 
+def find_dist_unit(text):
+    for unit in multiplier_table.keys():
+        if (" " + unit) in text:
+            return unit
+
 def main():
     if len(sys.argv) != 2:
         print("usage: python3 {0} myrunningstats.csv".format(sys.argv[0]))
@@ -34,18 +39,18 @@ def main():
 
     total_miles = 0
     headers = next(csvReader)
-    distIndex = headers.index("Distance")
-    distUnitIndex = distIndex + 1
+    combinedIndex = headers.index("Combined")
+    distIndex = 5
     dateIndex = headers.index("Date (YYYYMMDD)")
 
     for row in csvReader:
         dist = row[distIndex]
-        distunit = row[distUnitIndex]
+        distunit = find_dist_unit(row[combinedIndex])
         date = row[dateIndex]
         if(dist):
             miles = to_miles(dist, distunit)
-            print("on", date, "ran this many miles:", miles)
+            print("on", date, "did this many miles:", miles)
             total_miles += miles
-    print("You have run this many miles on Fitocracy:", total_miles)
+    print("You have gone this many miles on Fitocracy:", total_miles)
 
 if __name__ == "__main__": main()
