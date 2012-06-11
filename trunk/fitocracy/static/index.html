@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/> 
+  <title>distancetotalr</title>
+  <link href="static/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <h1><a href="/">distancetotalr: how far did you go on fitocracy?</a></h1>
+
+  <h2><a href="http://www.fitocracy.com/profile/">Go to your profile</a> and
+  click "Performance". Select an activity, click "CSV" to export the CSV, and
+  copy-paste it here!!</h2>
+
+  <form method="post" action="/results">
+    <input type="submit" value="Go!"/>
+    <input type="checkbox" name="kilometers"/>
+    <span>Kilometers? (otherwise miles)</span>
+    <textarea name="text" rows="10" style="display:block"></textarea>
+  </form>
+
+  <div class="sourcecode">
+    <a href="http://code.google.com/p/narorumo/source/browse/#svn/trunk/fitocracy">source here!</a>
+  </div>
+</body>
+</html>
