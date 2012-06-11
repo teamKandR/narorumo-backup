@@ -11,12 +11,13 @@
 
   <h2><a href="http://www.fitocracy.com/profile/">Go to your profile</a> and
   click "Performance". Select an activity, click "CSV" to export the CSV, and
-  copy-paste it here!!</h2>
+  copy-paste it here!! Whether you ran feet, km, miles, whatever, this tool
+  will give you your total distance.</h2>
 
   <form method="post" action="/results">
     <input type="submit" value="Go!"/>
     <input type="checkbox" name="kilometers"/>
-    <span>Kilometers? (otherwise miles)</span>
+    <span>Output kilometers? (will otherwise output miles)</span>
     <textarea name="text" rows="10" style="display:block"></textarea>
   </form>
 
