@@ -1,0 +1,41 @@
+body {
+  color:#666;
+  background:#aae;
+
+  margin-left: 4em;
+  margin-right: 4em;
+  font-family: arial,sans-serif;
+}
+
+a:link {
+  color:#33f;
+}
+
+a:visited {
+  color:#33f;
+}
+
+div.sourcecode {
+  text-align:right;
+}
+
+textarea {
+  font-family: 'Droid Sans Mono', arial, serif;
+  width: 100%;
+}
+
+div.output {
+  padding: 0.5em;
+  border: 2px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ccc;
+}
+
+h1 {
+  padding: 0.5em;
+  border: 2px solid black;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #ccc;
+}

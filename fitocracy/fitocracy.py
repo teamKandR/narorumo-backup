@@ -31,12 +31,9 @@ def find_dist_unit(text):
         if (" " + unit) in text:
             return unit
 
-def main():
-    if len(sys.argv) != 2:
-        print("usage: python3 {0} myrunningstats.csv".format(sys.argv[0]))
-        return
-    csvReader = csv.reader(open(sys.argv[1]))
-
+def total_miles_from_text(text, verbose=False):
+    lines = text.split("\n")
+    csvReader = csv.reader(lines)
     total_miles = 0
     headers = next(csvReader)
     combinedIndex = headers.index("Combined")
@@ -44,13 +41,24 @@ def main():
     dateIndex = headers.index("Date (YYYYMMDD)")
 
     for row in csvReader:
+        if len(row) <= min(distIndex, combinedIndex): continue
         dist = row[distIndex]
         distunit = find_dist_unit(row[combinedIndex])
         date = row[dateIndex]
         if(dist):
             miles = to_miles(dist, distunit)
-            print("on", date, "did this many miles:", miles)
+            if verbose:
+                print("on", date, "did this many miles:", miles)
             total_miles += miles
-    print("You have gone this many miles on Fitocracy:", total_miles)
+    return total_miles
+
+def main():
+    if len(sys.argv) != 2:
+        print("usage: python3 {0} myrunningstats.csv".format(sys.argv[0]))
+        return
+    with open(sys.argv[1], "r") as infile:
+        text = infile.read()
+        total_miles = total_miles_from_text(text)
+        print("You have gone this many miles on Fitocracy:", total_miles)
 
 if __name__ == "__main__": main()
