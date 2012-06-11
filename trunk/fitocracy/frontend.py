@@ -17,7 +17,10 @@ class MainHandler(webapp.RequestHandler):
     def post(self):
         text = self.request.get("text")
 
-        total_miles = fitocracy.total_miles_from_text(text)
+        try:
+            total_miles = fitocracy.total_miles_from_text(text)
+        except:
+            total_miles = 0
 
         if self.request.get("kilometers"):
             distancetype = "kilometers"
@@ -26,6 +29,10 @@ class MainHandler(webapp.RequestHandler):
         else:
             distancetype = "miles"
             output_distance = ("%0.2f" % total_miles)
+
+        if total_miles == 0:
+            output_distance = ("None at all. Are you sure you copy-pasted " +
+                               "the right data into the form?")
 
         template_values = {"output": output_distance,
                            "distancetype": distancetype}
