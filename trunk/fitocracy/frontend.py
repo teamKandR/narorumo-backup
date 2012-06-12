@@ -5,6 +5,7 @@ from google.appengine.ext.webapp import util
 from google.appengine.ext.webapp import template
 
 import os
+import base64
 
 import fitocracy
 
@@ -16,7 +17,10 @@ class MainHandler(webapp.RequestHandler):
 
     def post(self):
         text = self.request.get("text")
-
+        if (text.startswith("data:text/plain;base64,") or
+            text.startswith("base64,")):
+            comma = text.index(",")
+            text = base64.b64decode(text[comma+1:])
         try:
             total_miles = fitocracy.total_miles_from_text(text)
         except:
