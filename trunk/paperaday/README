@@ -1,0 +1,32 @@
+-------------
+| paperaday |
+-------------
+
+paperaday is a tiny program to send you one URL every day.
+
+James Clawson once told me that the way to become a godlike researcher (I'm
+pretty sure that he used the word "godlike", in fact), was to do these three
+things:
+
+1) read a paper every day
+2) write a paper every semester (at least)
+3) learn some new technology every month
+
+So paperaday will help you with the first one. You're otherwise on your own.
+
+---------
+| usage |
+---------
+
+paperaday.py youremail@host.com \
+  --tosend=/path/to/URLstosend \
+  --sent=/path/to/URLsalreadysent \
+  --message=/path/to/personalmessage
+
+When you run paperaday.py, if will take the first line of the file URLstosend,
+email it to you, remove that first line from the file, and append it to the
+file URLsalreadysent, with a date stamp for when it was sent. Of course you can
+name these two files whatever you want. The contents of the file
+"personalmessage" are also included in the email, if that flag is specified.
+
+To make paperaday.py run every day, put it in your crontab!
