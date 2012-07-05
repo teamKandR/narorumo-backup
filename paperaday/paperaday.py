@@ -51,7 +51,7 @@ def append_line(line, fn):
 
 def buildmessage(url, message, email_address):
     text = message
-    text += "\n" + url
+    text += url
     msg = MIMEText(text)
     msg['Subject'] = 'read this paper!'
     msg['From'] = "paperaday-noreply@cs.indiana.edu"
