@@ -63,7 +63,7 @@ def sendemail(url, message_fn, email_address):
     msg = buildmessage(url, message_fn, email_address)
     s = smtplib.SMTP("localhost")
     s.sendmail("paperaday-noreply@cs.indiana.edu",
-               recipients,
+               [email_address],
                msg.as_string())
     s.quit()
 
