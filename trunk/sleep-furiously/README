@@ -6,3 +6,5 @@ after Stanislaw Lem's Cyberiad).
 
 The ircbot code is forked from the project ircbot-collection, at
 http://code.google.com/p/ircbot-collection/, by the Red Bean Software folks.
+
+syllables_en backup approach to syllable counting borrowed from NLTK.
