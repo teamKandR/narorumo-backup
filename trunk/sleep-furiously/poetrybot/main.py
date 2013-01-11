@@ -86,6 +86,6 @@ def main():
     better = beamsearch.beamsearch(poems, 100)
     better = sorted(better, key=lambda x: x.score, reverse=True)
     for i in range(5):
-        print(better[i], better[i].score)
+        print((better[i], better[i].score))
 
 if __name__ == "__main__": main()

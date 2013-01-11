@@ -85,7 +85,7 @@ def best_rhyming_word(word, possibilities):
     return bestpair[0]
 
 def main():
-    print(best_rhyming_word("felon", ["flea", "computer", "melon", "egress"]))
-    print(best_rhyming_word("egret", ["flea", "regret", "melon", "egress"]))
+    print((best_rhyming_word("felon", ["flea", "computer", "melon", "egress"])))
+    print((best_rhyming_word("egret", ["flea", "regret", "melon", "egress"])))
 
 if __name__ == "__main__": main()
