@@ -93,6 +93,6 @@ def demo():
     better = beamsearch(linecandidates, 2000)
 
     for i in range(10):
-        print(better[i], better[i].score)
+        print((better[i], better[i].score))
 
 if __name__ == "__main__": demo()

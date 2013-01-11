@@ -59,8 +59,8 @@ def main():
     model = buildmodel("../teb-lisp/wordlist.sexpr")
     startword = random.sample(model._ngrams, 1)[0][0]
 
-    print(" ".join(line_of_length(5, model)))
-    print(" ".join(line_of_length(7, model)))
-    print(" ".join(line_of_length(5, model)))
+    print((" ".join(line_of_length(5, model))))
+    print((" ".join(line_of_length(7, model))))
+    print((" ".join(line_of_length(5, model))))
 
 if __name__ == "__main__": main()

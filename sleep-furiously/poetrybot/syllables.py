@@ -133,11 +133,11 @@ def vowel_sound(sound):
     return sound[:-1]
 
 def main():
-    print(PRONUNCIATIONS["food"])
-    print(word_to_syllables("food"))
-    print(word_to_syllables("dude"))
-    print(word_to_syllables("tomato"))
-    print(count_syllables("tomato"))
-    print(count_syllables("clee"))
+    print((PRONUNCIATIONS["food"]))
+    print((word_to_syllables("food")))
+    print((word_to_syllables("dude")))
+    print((word_to_syllables("tomato")))
+    print((count_syllables("tomato")))
+    print((count_syllables("clee")))
 
 if __name__ == "__main__": main()
