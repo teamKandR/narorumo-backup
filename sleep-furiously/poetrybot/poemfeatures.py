@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # We could imagine making features like...
 ## has internal rhymes

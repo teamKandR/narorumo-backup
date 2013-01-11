@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Generation. Able to take in a bunch of different signals, or will be sooner or
