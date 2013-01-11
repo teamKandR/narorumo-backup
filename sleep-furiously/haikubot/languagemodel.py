@@ -26,7 +26,7 @@ def language_model_for(nick):
     if len(sentences) < 10: return None
 
     print("got sentences")
-    out = nltk.NgramModel(2, sentences)
+    out = nltk.NgramModel(3, sentences)
     print("got lm")
     return out
 
