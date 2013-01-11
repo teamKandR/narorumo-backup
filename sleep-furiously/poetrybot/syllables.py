@@ -73,9 +73,10 @@ def count_syllables(word):
     """Given a a word as a string, return the number of syllables in that word,
     as best we can."""
     if word in PRONUNCIATIONS:
-        return count_syllables_phonemes(PRONUNCIATIONS[word][0])
-    else:
-        return syllables_en.count(word)
+        try:
+            return count_syllables_phonemes(PRONUNCIATIONS[word][0])
+        except: pass
+    return syllables_en.count(word)
 
 def isvowel(sound):
     """Given a string representing a sound, we call it a vowel sound if it ends

@@ -48,7 +48,7 @@ def buildmodel(textfn, onlywholewords=False):
 
     if onlywholewords:
         import string
-        isletter = lambda c: c in string.letters
+        isletter = lambda c: c in string.ascii_letters
         words = [word for word in words if all(map(isletter, word))]
 
     model = NgramModel(2, words)
