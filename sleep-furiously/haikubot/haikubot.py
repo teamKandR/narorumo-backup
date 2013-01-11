@@ -11,10 +11,12 @@ are given by prefixing the text by the bot name followed by a colon.
 """
 
 import sys, string, random, time
+import re
 
 from ircbot import SingleServerIRCBot
 from irclib import nm_to_n, nm_to_h, irc_lower
 import botcommon
+import generatehaiku
 
 class ElizaBot(SingleServerIRCBot):
   def __init__(self, channel, nickname, server, port, password=None):
@@ -86,8 +88,12 @@ class ElizaBot(SingleServerIRCBot):
     # pause before replying, for believable effect:
     time.sleep(random.randrange(4, 6))
 
-    response = eliza.eliza_response(cmd)
-    self.reply(response, target)
+    stripped = cmd.strip()
+    splitted = stripped.split()
+    if len(splitted) == 1:
+        nick = splitted[0]
+        response = generatehaiku.haiku_for(nick)
+        self.reply(response, target)
 
 if __name__ == "__main__":
   try:
