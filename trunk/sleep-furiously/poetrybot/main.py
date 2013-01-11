@@ -3,6 +3,7 @@
 import sys
 import random
 import copy
+import warnings
 
 import beamsearch
 import generate
@@ -66,6 +67,7 @@ def naive_poem(model):
             generate.line_of_length(5, model)]
 
 def main():
+    warnings.filterwarnings('ignore')
     poems = []
 
     metrics = PoemCandidate.metrics
