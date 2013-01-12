@@ -108,12 +108,13 @@ incisodenticulate ballistocardiograph ballistocardiogram glaciofluviatile
 tympanoperiotic deuterocanonical hypercuryprosopous
 hyperleptoprosopous""".split()
 
-def line_of_length(n, lm):
+def line_of_length(n, lm, thecontext=()):
     """Generate a line of n syllables, using the given language model."""
     for attempt in range(100):
         out = []
         total = 0
-        words = lm.generate(n)
+        words = lm.generate(n, context=thecontext)
+        words = words[len(thecontext):]
         for word in words:
             out.append(word)
             total += syllables.count_syllables(word)
@@ -130,8 +131,8 @@ def haiku_for(nick):
     if lm:
         print(lm)
         one = line_of_length(5, lm)
-        two = line_of_length(7, lm)
-        three = line_of_length(5, lm)
+        two = line_of_length(7, lm, thecontext=one.split())
+        three = line_of_length(5, lm, thecontext=two.split())
     else:
         one = random.choice(fives)
         two = random.choice(sevens)
