@@ -86,14 +86,19 @@ class ElizaBot(SingleServerIRCBot):
       target = from_private.strip()
 
     # pause before replying, for believable effect:
-    time.sleep(random.randrange(4, 6))
+    ## time.sleep(random.randrange(4, 6))
 
     stripped = cmd.strip()
     splitted = stripped.split()
     if len(splitted) == 1:
         nick = splitted[0]
-        response = generatehaiku.haiku_for(nick)
-        self.reply(response, target)
+        if nick == "help":
+            response = ("usage: haikubot: <username>, to generate "
+                        + "haiku in that user's voice.")
+            self.reply(response, target)
+        else:
+            response = generatehaiku.haiku_for(nick)
+            self.reply(response, target)
 
 if __name__ == "__main__":
   try:
