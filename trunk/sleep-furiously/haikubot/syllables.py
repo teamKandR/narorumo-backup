@@ -70,10 +70,31 @@ def closest_vowel_index(sounds, pos):
 def count_syllables_phonemes(phonemes):
     return len(list(filter(isvowel, phonemes)))
 
-@lru_cache(maxsize=100)
+def cyrillic_c(c):
+    """True if the specified character is in the Cyrillic unicode range."""
+    return ('\u0400' <= c <= '\u04FF')
+
+def cyrillic(word):
+    """True if the specified word contains a Cyrillic character."""
+    return any(map(cyrillic_c, word))
+
+def count_syllables_cyrillic(word):
+    """Russian/Cyrillic syllable counting, via Jonathan North Washington."""
+    vowels = "аоуиыеёюяэұүіәөүӳӗӑӣӯў"
+    syllables = 0
+    for c in word:
+        if c in vowels: syllables+=1
+    return syllables
+
+@lru_cache(maxsize=10000)
 def count_syllables(word):
     """Given a a word as a string, return the number of syllables in that word,
     as best we can."""
+
+    # special case for Russian, or perhaps other languages that use Cyrillic.
+    if cyrillic(word):
+        return count_syllables_cyrillic(word)
+
     if word in PRONUNCIATIONS:
         try:
             return count_syllables_phonemes(PRONUNCIATIONS[word][0])
@@ -130,5 +151,6 @@ def main():
     print(word_to_syllables("tomato"))
     print(count_syllables("tomato"))
     print(count_syllables("clee"))
+    print("улучится is 4 syllables 8-|", count_syllables("улучится"))
 
 if __name__ == "__main__": main()
