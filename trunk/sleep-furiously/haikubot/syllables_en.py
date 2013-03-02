@@ -138,7 +138,7 @@ def count(word):
     # Cache the syllable count
     fallback_cache[word] = count
 
-    return count
+    return max(count, 1)
 
 ###
 ### Phoneme-driven syllable counting
