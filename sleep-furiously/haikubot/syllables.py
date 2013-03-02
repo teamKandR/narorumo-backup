@@ -84,7 +84,7 @@ def count_syllables_cyrillic(word):
     syllables = 0
     for c in word:
         if c in vowels: syllables+=1
-    return syllables
+    return max(syllables, 1)
 
 @lru_cache(maxsize=10000)
 def count_syllables(word):
@@ -149,8 +149,8 @@ def main():
     print(word_to_syllables("food"))
     print(word_to_syllables("dude"))
     print(word_to_syllables("tomato"))
-    print(count_syllables("tomato"))
-    print(count_syllables("clee"))
-    print("улучится is 4 syllables 8-|", count_syllables("улучится"))
+    print("tomato should be 3:", count_syllables("tomato"))
+    print("clee should be 1:", count_syllables("clee"))
+    print("улучится is 4 syllables:", count_syllables("улучится"))
 
 if __name__ == "__main__": main()
