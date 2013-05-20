@@ -10,15 +10,19 @@ are given by prefixing the text by the bot name followed by a colon.
 
 """
 
-import sys, string, random, time
+import imp
 import re
+import sys, string, random, time
 
 from ircbot import SingleServerIRCBot
 from irclib import nm_to_n, nm_to_h, irc_lower
 import botcommon
 import generatehaiku
+from reload import reload_code
 
-class ElizaBot(SingleServerIRCBot):
+ADMINS = {"alexr"}
+
+class HaikuBot(SingleServerIRCBot):
   def __init__(self, channel, nickname, server, port, password=None):
     if password:
       SingleServerIRCBot.__init__(self, [(server, port, password)], nickname, nickname)
@@ -90,19 +94,26 @@ class ElizaBot(SingleServerIRCBot):
 
     stripped = cmd.strip()
     splitted = stripped.split()
-    if len(splitted) == 1:
-        nick = splitted[0]
-        if nick == "help":
-            response = ("usage: haikubot: <username>, to generate "
-                        + "haiku in that user's voice.")
-            self.reply(response, target)
-        else:
-            response = generatehaiku.haiku_for(nick)
-            self.reply(response, target)
+    if len(splitted) != 1: return
 
-if __name__ == "__main__":
-  try:
-    botcommon.trivial_bot_main(ElizaBot)
-  except KeyboardInterrupt:
-    print("Shutting down.")
+    nick = splitted[0]
+    if nick == "help":
+        response = ("usage: haikubot: <username>, to generate "
+                    + "haiku in that user's voice.")
+        self.reply(response, target)
+    elif nick == "RELOAD":
+        response = "You can't tell me what to do."
+        try:
+            sourcenick = e.source().split("!")[0]
+            if sourcenick in ADMINS:
+                response = "OK"
+        except:
+            pass
+        self.reply(response, target)
+        if response == "OK":
+            reload_code()
+    else:
+        ## response = generatehaiku.haiku_for(nick)
+        response = "don't feel like it"
+        self.reply(response, target)
 
