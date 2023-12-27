@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Given a filename (or optionally part of a filename), print the path where it
@@ -25,18 +25,18 @@ def find(needle, matcher):
     for dir in dirs:
       if matcher(needle,dir):
         path = join(root, dir)
-        print path
+        print(path)
         return
 
     for file in files:
       if matcher(needle,file):
-        print root
+        print(root)
         return
-  print "."
+  print(".")
 
 def main():
   if len(sys.argv) < 2:
-    print "."
+    print(".")
     return
 
   matcher = strictmatch
